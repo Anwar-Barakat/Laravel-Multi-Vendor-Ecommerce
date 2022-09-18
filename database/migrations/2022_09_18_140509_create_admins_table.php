@@ -17,11 +17,11 @@ class CreateAdminsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->foreignId('vendor_id')->constrained('vendors')->cascadeOnUpdate();
             $table->string('mobile');
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('status');
+            $table->foreignId('vendor_id')->cascadeOnUpdate();
             $table->timestamps();
         });
     }

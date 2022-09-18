@@ -21,7 +21,7 @@
                             <div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
                                 <div class="card-sigin">
                                     <div class="main-signup-header">
-                                        <h2>Multi-Vendor Store</h2>
+                                        <h2>Multi Vendor Store</h2>
                                         <h5 class="font-weight-semibold mb-4">Admin Login</h5>
                                         <form method="POST" action="{{ route('admin.login') }}">
                                             @csrf
@@ -29,7 +29,8 @@
                                                 <label>E-mail Address</label>
                                                 <input id="email" type="email"
                                                     class="form-control @error('email') is-invalid @enderror" name="email"
-                                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                    value="{{ old('email') }}" required autocomplete="email" id="email"
+                                                    autofocus>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -41,25 +42,13 @@
                                                 <label>Password</label>
                                                 <input id="password" type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
-                                                    name="password" required autocomplete="current-password">
+                                                    name="password" required autocomplete="current-password" id="password">
 
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
-                                                <div class="form-group row">
-                                                    <div class="col-md-6 ">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" name="remember"
-                                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <label class="form-check-label" for="remember">
-                                                                remember me
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <button type="submit" class="btn btn-main-primary btn-block">
                                                 Login
