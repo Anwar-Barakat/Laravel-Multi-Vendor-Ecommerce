@@ -15,10 +15,11 @@ class Admin extends Authenticatable
     protected $fillable = [
         'name',
         'type',
-        'vendor_id',
         'mobile',
         'email',
         'password',
         'status',
+        'about_me',
+        'vendor_id',
     ];
 }

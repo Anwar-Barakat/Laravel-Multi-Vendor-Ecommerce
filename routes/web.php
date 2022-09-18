@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\AdminController as AdminAdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,12 +34,14 @@ Route::get('/{page}', [AdminAdminController::class, 'index']);
 
 Route::prefix('admin/')->name('admin.')->group(function () {
 
-    Route::get('login-form',            [AdminAuthController::class, 'loginForm'])->name('login.form');
-    Route::post('login',                [AdminAuthController::class, 'login'])->name('login');
+    Route::get('login-form',                    [AdminAuthController::class, 'loginForm'])->name('login.form');
+    Route::post('login',                        [AdminAuthController::class, 'login'])->name('login');
 
     Route::group(['middleware' => 'admin'], function () {
 
-        Route::get('logout',                [AdminAuthController::class, 'logout'])->name('logout');
-        Route::get('dashboard',             [AdminAuthController::class, 'index'])->name('dashboard');
+        Route::get('logout',                    [AdminAuthController::class, 'logout'])->name('logout');
+        Route::get('dashboard',                 [AdminAuthController::class, 'index'])->name('dashboard');
+
+        Route::resource('admin-setting',        AdminSettingController::class);
     });
 });

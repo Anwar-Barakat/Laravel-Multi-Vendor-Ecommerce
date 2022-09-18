@@ -22,13 +22,18 @@ class AdminAuthController extends Controller
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
-
             $data   = $request->only(['email', 'password']);
 
+            $validated = $request->validate([
+                'email'     => 'required|email|max:255',
+                'password'  => 'required|min:8'
+            ]);
+
             if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
+                toastr()->success("Welcome Back !! " . auth()->guard('admin')->user()->name);
                 return redirect()->route('admin.dashboard');
             } else {
-
+                toastr()->error('Email or Password is Invalid');
                 return redirect()->back();
             }
         }

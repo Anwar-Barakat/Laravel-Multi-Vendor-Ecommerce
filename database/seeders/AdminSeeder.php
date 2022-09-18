@@ -23,6 +23,7 @@ class AdminSeeder extends Seeder
             'email'             => 'brkatanwar0@gmail.com',
             'password'          => Hash::make('adminadmin'),
             'status'            => 1,
+            'about_me'          => "Hi, Buddy. I am Anwar Barakat.Full Stack & Laravel Developer.",
             'vendor_id'         => 0,
         ];
 

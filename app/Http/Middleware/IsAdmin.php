@@ -17,8 +17,10 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('admin')->check())
+        if (!Auth::guard('admin')->check()) {
+            toastr()->error('Please, Login First !!');
             return redirect()->route('admin.login.form');
+        }
 
         return $next($request);
     }

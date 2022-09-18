@@ -21,6 +21,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('status');
+            $table->longText('about_me')->nullable();
             $table->foreignId('vendor_id')->cascadeOnUpdate();
             $table->timestamps();
         });
