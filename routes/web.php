@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\AdminController as AdminAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('admin.index');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
@@ -25,4 +25,13 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/{page}', [AdminController::class, 'index']);
+Route::get('/{page}', [AdminAdminController::class, 'index']);
+
+
+
+Route::prefix('admin/')->name('admin.')->group(function () {
+
+    Route::get('login-form',            [AdminController::class, 'loginForm'])->name('login.form');
+    Route::post('login',                [AdminController::class, 'login'])->name('login');
+    Route::get('dashboard',             [AdminController::class, 'index'])->name('dashboard');
+});
