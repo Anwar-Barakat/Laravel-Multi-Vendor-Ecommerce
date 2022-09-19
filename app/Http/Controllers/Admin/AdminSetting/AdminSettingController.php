@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\AdminSetting;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
@@ -73,9 +73,6 @@ class AdminSettingController extends Controller
         if ($request->isMethod('put')) {
             if ($request->has('old_password') && $request->has('new_password')) {
                 $passwordData   = $request->only(['old_password', 'new_password', 'confirmation_password']);
-
-                
-
             } else {
 
                 $InfoData       = $request->only(['name', 'about_me']);

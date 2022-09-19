@@ -170,6 +170,7 @@
                                     <label for="old_password">Old Password</label>
                                     <input type="password" value="" id="old_password" name="old_password"
                                         class="form-control @error('old_password') is-invalid @enderror">
+                                    <small id="password_checked"></small>
                                     @error('old_password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -253,3 +254,7 @@
 @endsection
 @section('js')
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/custom/admin-password-check.js') }}"></script>
+@endpush

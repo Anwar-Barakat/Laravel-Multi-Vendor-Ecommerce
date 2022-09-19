@@ -19,3 +19,4 @@
 <link href="{{ URL::asset('assets/css/skin-modes.css') }}" rel="stylesheet">
 
 <link href="{{ URL::asset('assets/css/custom/custom.css') }}" rel="stylesheet">
+
