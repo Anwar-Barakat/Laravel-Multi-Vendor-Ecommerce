@@ -178,10 +178,10 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="new_password">New Password</label>
-                                    <input type="password" value="" id="new_password" name="new_password"
-                                        class="form-control @error('new_password') is-invalid @enderror">
-                                    @error('new_password')
+                                    <label for="password">New Password</label>
+                                    <input type="password" value="" id="password" name="password"
+                                        class="form-control @error('password') is-invalid @enderror">
+                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -224,17 +224,32 @@
                                     <input type="text" value="{{ old('name', Auth::guard('admin')->user()->name) }}"
                                         id="FullName" class="form-control @error('name') is-invalid @enderror"
                                         name="name">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="AboutMe">About Me</label>
                                     <textarea id="AboutMe" class="form-control @error('about_me') is-invalid @enderror" name="about_me"
                                         rows="4">{{ old('about_me', Auth::guard('admin')->user()->about_me) }}
                                     </textarea>
+                                    @error('about_me')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch1"
                                         {{ Auth::guard('admin')->user()->status == 1 ? 'checked' : '' }}>
                                     <label class="custom-control-label" for="customSwitch1">Status</label>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <hr>
                                 <button class="btn btn-primary waves-effect waves-light w-md"

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin\AdminSetting;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSettingController extends Controller
 {
@@ -71,13 +73,34 @@ class AdminSettingController extends Controller
     public function update(Request $request, Admin $admin)
     {
         if ($request->isMethod('put')) {
-            if ($request->has('old_password') && $request->has('new_password')) {
-                $passwordData   = $request->only(['old_password', 'new_password', 'confirmation_password']);
-            } else {
+            if ($request->has('old_password') && $request->has('password')) {
+                $passwordData   = $request->only(['old_password', 'password', 'confirmation_password']);
 
+                if (Hash::check($passwordData['old_password'], Auth::guard('admin')->user()->password)) {
+
+                    $validated = $request->validate([
+                        'password'                  => 'required|min:8',
+                        'confirmation_password'     => 'required|min:8|same:password'
+                    ]);
+
+                    Admin::where('id', Auth::guard('admin')->user()->id)->update([
+                        'password' => Hash::make($passwordData['password'])
+                    ]);
+                    toastr()->success('Password has been updated successfully');
+                } else
+                    toastr()->error('Current Password Is not True !!');
+            } else {
                 $InfoData       = $request->only(['name', 'about_me']);
-                return $InfoData;
+
+                $validated = $request->validate([
+                    'name'          => 'required|min:3|regex:/^[\pL\s\-]+$/u',
+                    'about_me'      => 'required|min:10'
+                ]);
+
+                Admin::where('id', Auth::guard('admin')->user()->id)->update($InfoData);
+                toastr()->success('Admin Details has been updated successfully');
             }
+            return redirect()->route('admin.admin-setting.show', 'test');
         }
     }
 
