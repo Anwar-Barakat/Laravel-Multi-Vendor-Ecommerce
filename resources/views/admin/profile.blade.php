@@ -1,5 +1,9 @@
 @extends('admin.layouts.master')
 @section('css')
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    <!---Internal Fancy uploader css-->
+    <link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
 @endsection
 
 @section('breadcamb')
@@ -15,8 +19,11 @@
                     <div class="pl-0">
                         <div class="main-profile-overview">
                             <div class="main-img-user profile-user">
-                                <img alt="" src="{{ URL::asset('assets/img/faces/6.jpg') }}"><a
-                                    class="fas fa-camera profile-edit" href="JavaScript:void(0);"></a>
+                                @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
+                                    <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                                @else
+                                    <img src="{{ asset('assets/img/faces/6.jpg') }}">
+                                @endif
                             </div>
                             <div class="d-flex justify-content-between mg-b-20">
                                 <div>
@@ -206,7 +213,7 @@
                         </div>
                         <div class="tab-pane" id="settings">
                             <form role="form" action="{{ route('admin.admin-setting.update', 'test') }}"
-                                method="POST">
+                                method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -241,19 +248,19 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch1"
-                                        {{ Auth::guard('admin')->user()->status == 1 ? 'checked' : '' }}>
-                                    <label class="custom-control-label" for="customSwitch1">Status</label>
-                                    @error('status')
+                                <div class="form-group">
+                                    <label for="avatar">Avatar</label>
+                                    <input type="file" class="dropify" data-height="200" name="avatar"
+                                        class=" col-md-4" />
+                                    @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                                 <hr>
-                                <button class="btn btn-primary waves-effect waves-light w-md"
-                                    type="submit">Update</button>
+                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Update
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -262,12 +269,17 @@
         </div>
     </div>
     <!-- row closed -->
-    </div>
-    <!-- Container closed -->
-    </div>
-    <!-- main-content closed -->
 @endsection
 @section('js')
+    <!--Internal Fileuploads js-->
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+    <!--Internal Fancy uploader js-->
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
 @endsection
 
 @push('scripts')
