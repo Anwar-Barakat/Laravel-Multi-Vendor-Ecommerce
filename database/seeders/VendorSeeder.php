@@ -15,18 +15,18 @@ class VendorSeeder extends Seeder
     public function run()
     {
         $vendor = [
-            'name'      => 'Anwar Barakat',
-            'address'   => 'Beside the public garden',
+            'name'      => 'Mohamed Khalof',
+            'address'   => 'in the public avenue',
             'city'      => 'Yabroud',
             'state'     => 'Damascus',
             'country'   => 'Syria',
             'pincode'   => '110001',
             'mobile'    => '0987654321',
-            'email'     => 'brkatanwar0@gmail.com',
+            'email'     => 'khalof@gmail.com',
             'status'    => 0,
         ];
 
-        if (is_null(Vendor::where(['email' => 'brkatanwar0@gmail.com'])->first()))
+        if (is_null(Vendor::where(['email' => 'khalof@gmail.com'])->first()))
             Vendor::create($vendor);
     }
 }

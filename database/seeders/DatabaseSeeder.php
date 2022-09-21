@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             VendorSeeder::class,
             AdminSeeder::class,
+            VendorBusinessDetailSeeder::class,
+            VendorBankDetailSeeder::class,
         ]);
     }
 }

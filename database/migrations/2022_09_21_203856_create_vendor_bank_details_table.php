@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVendorsBankDetailsTable extends Migration
+class CreateVendorBankDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVendorsBankDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendors_bank_details', function (Blueprint $table) {
+        Schema::create('vendor_bank_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vendor_id')->constrained('vendors')->cascadeOnUpdate();
             $table->string('account_holder_name');
@@ -31,6 +31,6 @@ class CreateVendorsBankDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendors_bank_details');
+        Schema::dropIfExists('vendor_bank_details');
     }
 }
