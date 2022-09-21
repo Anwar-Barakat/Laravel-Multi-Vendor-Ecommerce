@@ -22,7 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->tinyInteger('status');
             $table->longText('about_me')->nullable();
-            $table->foreignId('vendor_id')->cascadeOnUpdate();
+            $table->foreignId('vendor_id')->constrained('vendors')->cascadeOnUpdate();
             $table->timestamps();
         });
     }

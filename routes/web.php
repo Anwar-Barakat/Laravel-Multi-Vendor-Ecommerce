@@ -47,7 +47,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
 
         Route::view('profile',                          'admin.profile')->name('profile');
         Route::post('check-password',                   CheckPasswordController::class)->name('check_password');
-        Route::put('update-details',                   UpdateDetailController::class)->name('update_details');
-        Route::put('update-password',                  UpdatePasswordController::class)->name('update_password');
+        Route::put('update-details',                    UpdateDetailController::class)->name('update_details');
+        Route::put('update-password',                   UpdatePasswordController::class)->name('update_password');
     });
 });

@@ -30,7 +30,7 @@ class AdminLoginController extends Controller
             ]);
 
             if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
-                toastr()->success("Welcome Back !! " . auth()->guard('admin')->user()->name);
+                toastr()->success("Welcome Back !! ");
                 return redirect()->route('admin.dashboard');
             } else {
                 toastr()->error('Email or Password is Invalid');
