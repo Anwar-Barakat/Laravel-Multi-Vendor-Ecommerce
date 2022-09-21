@@ -169,8 +169,7 @@
                             <p class="m-b-5">{{ Auth::guard('admin')->user()->about_me }}</p>
                         </div>
                         <div class="tab-pane" id="update_password">
-                            <form role="form" action="{{ route('admin.admin-setting.update', 'test') }}"
-                                method="POST">
+                            <form role="form" action="{{ route('admin.update_password') }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -212,8 +211,8 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="settings">
-                            <form role="form" action="{{ route('admin.admin-setting.update', 'test') }}"
-                                method="POST" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('admin.update_details') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -248,10 +247,9 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="width: 50%;">
                                     <label for="avatar">Avatar</label>
-                                    <input type="file" class="dropify" data-height="200" name="avatar"
-                                        class=" col-md-4" />
+                                    <input type="file" class="dropify" data-height="200" name="avatar" />
                                     @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

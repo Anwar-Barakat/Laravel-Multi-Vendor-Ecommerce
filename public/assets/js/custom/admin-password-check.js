@@ -4,7 +4,12 @@ $(function () {
         $.ajax({
             type: "post",
             url: "/admin/check-password",
-            data: { old_password: old_password },
+            data: {
+                old_password: old_password,
+            },
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
             dataType: "json",
             success: function (response) {
                 console.log(response);

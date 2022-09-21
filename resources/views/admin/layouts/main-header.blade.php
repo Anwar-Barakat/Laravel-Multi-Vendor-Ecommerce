@@ -312,7 +312,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('admin.admin-setting.show', 'test') }}"><i
+                        <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
                                 class="bx bx-user-circle"></i>Profile</a>
                         <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
                         <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
