@@ -29,13 +29,13 @@ class AdminSeeder extends Seeder
                 'vendor_id'         => Vendor::inRandomOrder()->first()->id,
             ],
             [
-                'name'              => 'Mohamed Issa',
+                'name'              => 'Mohamed Khalof',
                 'type'              => 'vendor',
                 'mobile'            => '0987654321',
                 'email'             => 'mohamed0@gmail.com',
                 'password'          => Hash::make('adminadmin'),
                 'status'            => 1,
-                'about_me'          => "Hi, Buddy. I am Mohamed Issa.",
+                'about_me'          => "Hi, Buddy. I am Mohamed Khalof.",
                 'vendor_id'         => Vendor::inRandomOrder()->first()->id,
             ]
         ];

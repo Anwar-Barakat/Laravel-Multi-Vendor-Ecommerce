@@ -19,16 +19,16 @@ class UpdatePasswordController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->isMethod('put')) {
-            $passwordData   = $request->only(['old_password', 'password', 'confirmation_password']);
-            if (Hash::check($passwordData['old_password'], Auth::guard('admin')->user()->password)) {
+            $data           = $request->only(['old_password', 'password', 'confirmation_password']);
+            if (Hash::check($data['old_password'], Auth::guard('admin')->user()->password)) {
 
-                $validated = $request->validate([
+                $validated  = $request->validate([
                     'password'                  => 'required|min:8',
                     'confirmation_password'     => 'required|min:8|same:password'
                 ]);
 
                 Admin::where('id', Auth::guard('admin')->user()->id)->update([
-                    'password' => Hash::make($passwordData['password'])
+                    'password' => Hash::make($data['password'])
                 ]);
                 toastr()->success('Password has been updated successfully');
                 return redirect()->route('admin.profile');

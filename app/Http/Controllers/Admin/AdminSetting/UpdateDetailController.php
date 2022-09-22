@@ -18,16 +18,17 @@ class UpdateDetailController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->isMethod('put')) {
-            $InfoData       = $request->only(['name', 'about_me', 'avatar']);
+            $data       = $request->only(['name', 'about_me', 'mobile', 'avatar']);
 
             $validated = $request->validate([
                 'name'          => 'required|min:3|regex:/^[\pL\s\-]+$/u',
                 'about_me'      => 'required|min:10',
+                'mobile'        => 'required|min:10|max:10',
                 'avatar'        => 'required|mimes:png,jpg,jpeg|image|max:2048',
             ]);
 
             $admin = Admin::where('id', Auth::guard('admin')->user()->id)->first();
-            $admin->update($InfoData);
+            $admin->update($data);
 
 
             if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {

@@ -312,8 +312,15 @@
                                 </div>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="{{ route('admin.profile') }}"><i
-                                class="bx bx-user-circle"></i>Profile</a>
+                        @if (Auth::guard('admin')->user()->type == 'vendor')
+                            <a class="dropdown-item" href="{{ route('vendor.profile') }}">
+                                <i class="bx bx-user-circle"></i>Profile
+                            </a>
+                        @else
+                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                <i class="bx bx-user-circle"></i>Profile
+                            </a>
+                        @endif
                         <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
                         <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
                         <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>

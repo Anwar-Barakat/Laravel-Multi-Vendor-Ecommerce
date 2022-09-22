@@ -36,4 +36,10 @@ class Admin extends Authenticatable implements HasMedia
             ->width(150)
             ->height(150);
     }
+
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
 }

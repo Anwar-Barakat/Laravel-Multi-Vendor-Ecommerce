@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
 use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
 use App\Http\Controllers\AdminController as AdminAdminController;
+use App\Http\Controllers\Vendor\UpdateVendorBankController;
+use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
+use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,4 +53,11 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::put('update-details',                    UpdateDetailController::class)->name('update_details');
         Route::put('update-password',                   UpdatePasswordController::class)->name('update_password');
     });
+});
+Route::prefix('vendor/')->name('vendor.')->group(function () {
+
+    Route::view('profile',                              'admin.vendors.profile')->name('profile');
+    Route::put('update-details',                       UpdateVendorDetailController::class)->name('peronsal-info.update');
+    Route::put('update-business',                      UpdateVendorBusinessController::class)->name('business-info.update');
+    Route::put('update-bank',                          UpdateVendorBankController::class)->name('bank-info.update');
 });

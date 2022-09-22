@@ -138,38 +138,149 @@
                         <!-- Tabs -->
                         <ul class="nav nav-tabs profile navtab-custom panel-tabs">
                             <li class="active">
-                                <a href="#home" data-toggle="tab" aria-expanded="true">
+                                <a href="#personal_info" data-toggle="tab" aria-expanded="true">
                                     <span class="visible-xs">
                                         <i class="las la-user-circle tx-16 mr-1"></i>
                                     </span>
-                                    <span class="hidden-xs">ABOUT ME</span>
+                                    <span class="hidden-xs">Personal Info</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#update_password" data-toggle="tab" aria-expanded="false">
+                                <a href="#business_info" data-toggle="tab" aria-expanded="false">
                                     <span class="visible-xs">
-                                        <i class="las la-lock tx-15 mr-1"></i>
+                                        <i class="las la-business-time tx-15 mr-1"></i>
                                     </span>
-                                    <span class="hidden-xs">Update Password</span>
+                                    <span class="hidden-xs">Business Info</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="#settings" data-toggle="tab" aria-expanded="false">
+                                <a href="#bank_info" data-toggle="tab" aria-expanded="false">
                                     <span class="visible-xs">
-                                        <i class="las la-cog tx-16 mr-1"></i>
+                                        <i class="las la-money-bill-wave-alt tx-16 mr-1"></i>
                                     </span>
-                                    <span class="hidden-xs">SETTINGS</span>
+                                    <span class="hidden-xs">Bank Info</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                     <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
-                        <div class="tab-pane active" id="home">
-                            <h4 class="tx-15 text-uppercase mb-3">BIOdata</h4>
-                            <p class="m-b-5">{{ Auth::guard('admin')->user()->about_me }}</p>
+                        <div class="tab-pane active" id="personal_info">
+                            <form role="form" action="{{ route('vendor.peronsal-info.update') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        <label for="Email">Email</label>
+                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
+                                            id="Email" class="form-control " disabled readonly>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="name">Full Name</label>
+                                        <input type="text"
+                                            value="{{ old('name', Auth::guard('admin')->user()->vendor->name) }}"
+                                            name="name" id="name"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="address">Address</label>
+                                        <input type="text" name="address"
+                                            value="{{ old('address', Auth::guard('admin')->user()->vendor->address) }}"
+                                            id="address" class="form-control @error('address') is-invalid @enderror">
+                                        @error('address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="city">City</label>
+                                        <input type="text" name="city"
+                                            value="{{ old('city', Auth::guard('admin')->user()->vendor->city) }}"
+                                            id="city" class="form-control @error('city') is-invalid @enderror">
+                                        @error('city')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="state">state</label>
+                                        <input type="text" name="state"
+                                            value="{{ old('state', Auth::guard('admin')->user()->vendor->state) }}"
+                                            id="state" class="form-control @error('state') is-invalid @enderror">
+                                        @error('state')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="country">country</label>
+                                        <input type="text" name="country"
+                                            value="{{ old('country', Auth::guard('admin')->user()->vendor->country) }}"
+                                            id="country" class="form-control @error('country') is-invalid @enderror">
+                                        @error('country')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="pincode">pincode</label>
+                                        <input type="text" name="pincode"
+                                            value="{{ old('pincode', Auth::guard('admin')->user()->vendor->pincode) }}"
+                                            id="pincode" class="form-control @error('pincode') is-invalid @enderror">
+                                        @error('pincode')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="mobile">Mobile</label>
+                                        <input type="tel" name="mobile"
+                                            value="{{ old('mobile', Auth::guard('admin')->user()->vendor->mobile) }}"
+                                            id="mobile" class="form-control @error('mobile') is-invalid @enderror">
+                                        @error('mobile')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12">
+                                        <label for="AboutMe">About Me</label>
+                                        <textarea id="AboutMe" class="form-control @error('about_me') is-invalid @enderror" name="about_me"
+                                            rows="4">{{ old('about_me', Auth::guard('admin')->user()->about_me) }}
+                                        </textarea>
+                                        @error('about_me')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="avatar">Avatar</label>
+                                        <input type="file" class="dropify" data-height="200" name="avatar" />
+                                        @error('avatar')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <hr>
+                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Update
+                                </button>
+                            </form>
                         </div>
-                        <div class="tab-pane" id="update_password">
-                            <form role="form" action="{{ route('admin.update_password') }}" method="POST">
+                        <div class="tab-pane" id="business_info">
+                            <form role="form" action="" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -210,9 +321,8 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="tab-pane" id="settings">
-                            <form role="form" action="{{ route('admin.update_details') }}" method="POST"
-                                enctype="multipart/form-data">
+                        <div class="tab-pane" id="bank_info">
+                            <form role="form" action="" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -231,17 +341,6 @@
                                         id="FullName" class="form-control @error('name') is-invalid @enderror"
                                         name="name">
                                     @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="mobile">Mobile</label>
-                                    <input type="tel" name="mobile"
-                                        value="{{ old('mobile', Auth::guard('admin')->user()->mobile) }}" id="mobile"
-                                        class="form-control @error('mobile') is-invalid @enderror">
-                                    @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
