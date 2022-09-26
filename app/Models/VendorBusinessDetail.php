@@ -16,4 +16,9 @@ class VendorBusinessDetail extends Model
         'gst_number',
         'pan_number',
     ];
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
 }

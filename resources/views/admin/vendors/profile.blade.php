@@ -280,44 +280,174 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="business_info">
-                            <form role="form" action="" method="POST">
+                            <form role="form" action="{{ route('vendor.business-info.update') }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="old_password">Old Password</label>
-                                    <input type="password" value="" id="old_password" name="old_password"
-                                        class="form-control @error('old_password') is-invalid @enderror">
-                                    <small id="password_checked"></small>
-                                    @error('old_password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">New Password</label>
-                                    <input type="password" value="" id="password" name="password"
-                                        class="form-control @error('password') is-invalid @enderror">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirmation_password">Confirmation Password</label>
-                                    <input type="password" value="" id="confirmation_password"
-                                        name="confirmation_password"
-                                        class="form-control @error('confirmation_password') is-invalid @enderror">
-                                    @error('confirmation_password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @php
+                                    $vendor = Auth::guard('admin')
+                                        ->user()
+                                        ->vendor->BusinessAccount()
+                                        ->first();
+
+                                @endphp
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        <label for="Email">Email</label>
+                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
+                                            id="Email" class="form-control " disabled readonly>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_name">Shop name</label>
+                                        <input type="text" value="{{ old('shop_name', $vendor->shop_name) }}"
+                                            name="shop_name" id="shop_name"
+                                            class="form-control @error('shop_name') is-invalid @enderror">
+                                        @error('shop_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_address">Shop address</label>
+                                        <input type="text" value="{{ old('shop_address', $vendor->shop_address) }}"
+                                            name="shop_address" id="shop_address"
+                                            class="form-control @error('shop_address') is-invalid @enderror">
+                                        @error('shop_address')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_city">Shop city</label>
+                                        <input type="text" value="{{ old('shop_city', $vendor->shop_city) }}"
+                                            name="shop_city" id="shop_city"
+                                            class="form-control @error('shop_city') is-invalid @enderror">
+                                        @error('shop_city')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_state">Shop state</label>
+                                        <input type="text" value="{{ old('shop_state', $vendor->shop_state) }}"
+                                            name="shop_state" id="shop_state"
+                                            class="form-control @error('shop_state') is-invalid @enderror">
+                                        @error('shop_state')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_country">Shop country</label>
+                                        <input type="text" name="shop_country"
+                                            value="{{ old('shop_country', $vendor->shop_country) }}" id="shop_country"
+                                            class="form-control @error('shop_country') is-invalid @enderror">
+                                        @error('shop_country')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_pincode">Shop pincode</label>
+                                        <input type="text" name="shop_pincode"
+                                            value="{{ old('shop_pincode', $vendor->shop_pincode) }}" id="shop_pincode"
+                                            class="form-control @error('shop_pincode') is-invalid @enderror">
+                                        @error('shop_pincode')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_mobile">Shop mobile</label>
+                                        <input type="text" name="shop_mobile"
+                                            value="{{ old('shop_mobile', $vendor->shop_mobile) }}" id="shop_mobile"
+                                            class="form-control @error('shop_mobile') is-invalid @enderror">
+                                        @error('shop_mobile')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_website">Shop website</label>
+                                        <input type="text" name="shop_website"
+                                            value="{{ old('shop_website', $vendor->shop_website) }}" id="shop_website"
+                                            class="form-control @error('shop_website') is-invalid @enderror">
+                                        @error('shop_website')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="address_proof">Shop proof</label>
+                                        <select name="address_proof"
+                                            class="form-control @error('address_proof') is-invalid @enderror">
+                                            <option value="" selected>Select...</option>
+                                            @foreach (App\Models\Vendor::ADDRESSPROOF as $key => $address)
+                                                <option value="{{ $key }}"
+                                                    {{ $vendor->address_proof == $key ? 'selected' : '' }}>
+                                                    {{ str_replace('_', ' ', $address) }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('address_proof')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="business_license_number">Business license number</label>
+                                        <input type="text" name="business_license_number"
+                                            value="{{ old('business_license_number', $vendor->business_license_number) }}"
+                                            id="business_license_number"
+                                            class="form-control @error('business_license_number') is-invalid @enderror">
+                                        @error('business_license_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="gst_number">Gst number</label>
+                                        <input type="text" name="gst_number"
+                                            value="{{ old('gst_number', $vendor->gst_number) }}" id="gst_number"
+                                            class="form-control @error('gst_number') is-invalid @enderror">
+                                        @error('gst_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="pan_number">Pan number</label>
+                                        <input type="text" name="pan_number"
+                                            value="{{ old('pan_number', $vendor->pan_number) }}" id="pan_number"
+                                            class="form-control @error('pan_number') is-invalid @enderror">
+                                        @error('pan_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="address_proof_image">Address proof image</label>
+                                        <input type="file" class="dropify" data-height="200"
+                                            name="address_proof_image" />
+                                        @error('address_proof_image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <hr>
-                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">
-                                    Update
+                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Update
                                 </button>
                             </form>
                         </div>
