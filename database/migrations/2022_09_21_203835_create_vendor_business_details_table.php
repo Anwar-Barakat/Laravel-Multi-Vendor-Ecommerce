@@ -26,7 +26,6 @@ class CreateVendorBusinessDetailsTable extends Migration
             $table->string('shop_website');
             $table->string('shop_email')->unique();
             $table->string('address_proof');
-            $table->string('address_proof_image')->nullable();
             $table->string('business_license_number');
             $table->string('gst_number');
             $table->string('pan_number');

@@ -24,20 +24,19 @@ class UpdateVendorBusinessRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'shop_name'                 => 'required',
-            // 'shop_address'              => 'required',
-            // 'shop_city'                 => 'required',
-            // 'shop_state'                => 'required',
-            // 'shop_country'              => 'required',
-            // 'shop_pincode'              => 'required',
-            // 'shop_mobile'               => 'required',
-            // 'shop_website'              => 'required',
-            // 'shop_email'                => 'required',
-            // 'address_proof'             => 'required|in:1,2,3,4,5',
-            // 'address_proof_image'       => 'required',
-            // 'business_license_number'   => 'required',
-            // 'gst_number'                => 'required',
-            // 'pan_number'                => 'required',
+            'shop_name'                 => 'required',
+            'shop_address'              => 'required',
+            'shop_city'                 => 'required',
+            'shop_state'                => 'required',
+            'shop_country'              => 'required',
+            'shop_pincode'              => 'required',
+            'shop_mobile'               => 'required',
+            'shop_website'              => 'required',
+            'shop_email'                => 'required',
+            'address_proof'             => 'required|in:1,2,3,4,5',
+            'business_license_number'   => 'required',
+            'gst_number'                => 'required',
+            'pan_number'                => 'required',
         ];
     }
 }

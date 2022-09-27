@@ -35,12 +35,11 @@ class Vendor extends Model implements HasMedia
     public function registerMediaCollections(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(150)
-            ->height(150);
+            ->width(300);
     }
 
-    public function BusinessAccount()
+    public function businessAccount()
     {
-        return $this->hasMany(VendorBusinessDetail::class);
+        return $this->hasOne(VendorBusinessDetail::class);
     }
 }

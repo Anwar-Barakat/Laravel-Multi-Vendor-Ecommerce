@@ -280,16 +280,26 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="business_info">
-                            <form role="form" action="{{ route('vendor.business-info.update') }}" method="POST">
+                            @if ($errors->any())
+                                {{ implode('', $errors->all('<div>:message</div>')) }}
+                            @endif
+                            <form role="form" action="{{ route('vendor.business-info.update') }}" method="POST"
+                                enctype="multipart/form-data">
+
                                 @csrf
                                 @method('PUT')
                                 @php
-                                    $vendor = Auth::guard('admin')
-                                        ->user()
-                                        ->vendor->BusinessAccount()
-                                        ->first();
-
+                                    $vendor = Auth::guard('admin')->user()->vendor->businessAccount;
                                 @endphp
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @if ($vendor->getFirstMediaUrl('vendor_address_proof_images'))
+                                            <img src="{{ $vendor->getFirstMediaUrl('vendor_address_proof_images') }}"
+                                                alt="">
+                                            <hr>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="form-group col-sm-12">
                                         <label for="Email">Email</label>
@@ -364,10 +374,21 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_mobile">Shop mobile</label>
-                                        <input type="text" name="shop_mobile"
+                                        <input type="tel" name="shop_mobile"
                                             value="{{ old('shop_mobile', $vendor->shop_mobile) }}" id="shop_mobile"
                                             class="form-control @error('shop_mobile') is-invalid @enderror">
                                         @error('shop_mobile')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="shop_email">Shop Email</label>
+                                        <input type="email" name="shop_email"
+                                            value="{{ old('shop_email', $vendor->shop_email) }}" id="shop_email"
+                                            class="form-control @error('shop_email') is-invalid @enderror">
+                                        @error('shop_email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -385,7 +406,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="address_proof">Shop proof</label>
+                                        <label for="address_proof">Address proof</label>
                                         <select name="address_proof"
                                             class="form-control @error('address_proof') is-invalid @enderror">
                                             <option value="" selected>Select...</option>

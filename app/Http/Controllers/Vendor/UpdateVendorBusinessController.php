@@ -22,18 +22,20 @@ class UpdateVendorBusinessController extends Controller
     {
         try {
             if ($request->isMethod('put')) {
+                $data = $request->all();
 
-                $admin  = Admin::where('id', Auth::guard('admin')->user()->id)->first();
-                $vendor = $admin->vendor;
+                $admin          = Admin::where('id', Auth::guard('admin')->user()->id)->first();
+                $vendorBusiness = $admin->vendor->businessAccount;
 
                 if ($request->hasFile('address_proof_image') && $request->file('address_proof_image')->isValid()) {
-                    $admin->clearMediaCollection('address_proof_images');
-                    $admin->addMediaFromRequest('address_proof_image')->toMediaCollection('address_proof_images');
+                    $vendorBusiness->clearMediaCollection('vendor_address_proof_images');
+                    $vendorBusiness->addMediaFromRequest('address_proof_image')->toMediaCollection('vendor_address_proof_images');
                 }
 
-                Vendor::where('id', Auth::guard('admin')->user()->id)->first();
+                $vendorBusiness->update($data);
 
-                return $vendor;
+                toastr()->success('Vendor Business Info Has Been Updated Successfully');
+                return redirect()->back();
             }
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
