@@ -169,16 +169,18 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+                                @php
+                                    $auth = Auth::guard('admin')->user();
+                                @endphp
                                 <div class="row">
                                     <div class="form-group col-sm-12">
                                         <label for="Email">Email</label>
-                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
-                                            id="Email" class="form-control " disabled readonly>
+                                        <input type="email" value="{{ $auth->email }}" id="Email"
+                                            class="form-control " disabled readonly>
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="name">Full Name</label>
-                                        <input type="text"
-                                            value="{{ old('name', Auth::guard('admin')->user()->vendor->name) }}"
+                                        <input type="text" value="{{ old('name', $auth->vendor->name) }}"
                                             name="name" id="name"
                                             class="form-control @error('name') is-invalid @enderror">
                                         @error('name')
@@ -190,8 +192,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="address">Address</label>
                                         <input type="text" name="address"
-                                            value="{{ old('address', Auth::guard('admin')->user()->vendor->address) }}"
-                                            id="address" class="form-control @error('address') is-invalid @enderror">
+                                            value="{{ old('address', $auth->vendor->address) }}" id="address"
+                                            class="form-control @error('address') is-invalid @enderror">
                                         @error('address')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -201,8 +203,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="city">City</label>
                                         <input type="text" name="city"
-                                            value="{{ old('city', Auth::guard('admin')->user()->vendor->city) }}"
-                                            id="city" class="form-control @error('city') is-invalid @enderror">
+                                            value="{{ old('city', $auth->vendor->city) }}" id="city"
+                                            class="form-control @error('city') is-invalid @enderror">
                                         @error('city')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -212,8 +214,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="state">state</label>
                                         <input type="text" name="state"
-                                            value="{{ old('state', Auth::guard('admin')->user()->vendor->state) }}"
-                                            id="state" class="form-control @error('state') is-invalid @enderror">
+                                            value="{{ old('state', $auth->vendor->state) }}" id="state"
+                                            class="form-control @error('state') is-invalid @enderror">
                                         @error('state')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -223,8 +225,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="country">country</label>
                                         <input type="text" name="country"
-                                            value="{{ old('country', Auth::guard('admin')->user()->vendor->country) }}"
-                                            id="country" class="form-control @error('country') is-invalid @enderror">
+                                            value="{{ old('country', $auth->vendor->country) }}" id="country"
+                                            class="form-control @error('country') is-invalid @enderror">
                                         @error('country')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -234,20 +236,9 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="pincode">pincode</label>
                                         <input type="text" name="pincode"
-                                            value="{{ old('pincode', Auth::guard('admin')->user()->vendor->pincode) }}"
-                                            id="pincode" class="form-control @error('pincode') is-invalid @enderror">
+                                            value="{{ old('pincode', $auth->vendor->pincode) }}" id="pincode"
+                                            class="form-control @error('pincode') is-invalid @enderror">
                                         @error('pincode')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="mobile">Mobile</label>
-                                        <input type="tel" name="mobile"
-                                            value="{{ old('mobile', Auth::guard('admin')->user()->vendor->mobile) }}"
-                                            id="mobile" class="form-control @error('mobile') is-invalid @enderror">
-                                        @error('mobile')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -256,9 +247,20 @@
                                     <div class="form-group col-sm-12">
                                         <label for="AboutMe">About Me</label>
                                         <textarea id="AboutMe" class="form-control @error('about_me') is-invalid @enderror" name="about_me"
-                                            rows="4">{{ old('about_me', Auth::guard('admin')->user()->about_me) }}
+                                            rows="4">{{ old('about_me', $auth->about_me) }}
                                         </textarea>
                                         @error('about_me')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="mobile">Mobile</label>
+                                        <input type="tel" name="mobile"
+                                            value="{{ old('mobile', $auth->vendor->mobile) }}" id="mobile"
+                                            class="form-control @error('mobile') is-invalid @enderror">
+                                        @error('mobile')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -285,16 +287,15 @@
                             @endif
                             <form role="form" action="{{ route('vendor.business-info.update') }}" method="POST"
                                 enctype="multipart/form-data">
-
                                 @csrf
                                 @method('PUT')
                                 @php
-                                    $vendor = Auth::guard('admin')->user()->vendor->businessAccount;
+                                    $vendorBusiness = Auth::guard('admin')->user()->vendor->businessInfo;
                                 @endphp
                                 <div class="row">
                                     <div class="form-group col-sm-12">
-                                        @if ($vendor->getFirstMediaUrl('vendor_address_proof_images'))
-                                            <img src="{{ $vendor->getFirstMediaUrl('vendor_address_proof_images') }}"
+                                        @if ($vendorBusiness->getFirstMediaUrl('vendor_address_proof_images'))
+                                            <img src="{{ $vendorBusiness->getFirstMediaUrl('vendor_address_proof_images') }}"
                                                 alt="">
                                             <hr>
                                         @endif
@@ -308,7 +309,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_name">Shop name</label>
-                                        <input type="text" value="{{ old('shop_name', $vendor->shop_name) }}"
+                                        <input type="text" value="{{ old('shop_name', $vendorBusiness->shop_name) }}"
                                             name="shop_name" id="shop_name"
                                             class="form-control @error('shop_name') is-invalid @enderror">
                                         @error('shop_name')
@@ -319,7 +320,8 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_address">Shop address</label>
-                                        <input type="text" value="{{ old('shop_address', $vendor->shop_address) }}"
+                                        <input type="text"
+                                            value="{{ old('shop_address', $vendorBusiness->shop_address) }}"
                                             name="shop_address" id="shop_address"
                                             class="form-control @error('shop_address') is-invalid @enderror">
                                         @error('shop_address')
@@ -330,7 +332,7 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_city">Shop city</label>
-                                        <input type="text" value="{{ old('shop_city', $vendor->shop_city) }}"
+                                        <input type="text" value="{{ old('shop_city', $vendorBusiness->shop_city) }}"
                                             name="shop_city" id="shop_city"
                                             class="form-control @error('shop_city') is-invalid @enderror">
                                         @error('shop_city')
@@ -341,7 +343,8 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_state">Shop state</label>
-                                        <input type="text" value="{{ old('shop_state', $vendor->shop_state) }}"
+                                        <input type="text"
+                                            value="{{ old('shop_state', $vendorBusiness->shop_state) }}"
                                             name="shop_state" id="shop_state"
                                             class="form-control @error('shop_state') is-invalid @enderror">
                                         @error('shop_state')
@@ -353,7 +356,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_country">Shop country</label>
                                         <input type="text" name="shop_country"
-                                            value="{{ old('shop_country', $vendor->shop_country) }}" id="shop_country"
+                                            value="{{ old('shop_country', $vendorBusiness->shop_country) }}"
+                                            id="shop_country"
                                             class="form-control @error('shop_country') is-invalid @enderror">
                                         @error('shop_country')
                                             <span class="invalid-feedback" role="alert">
@@ -364,7 +368,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_pincode">Shop pincode</label>
                                         <input type="text" name="shop_pincode"
-                                            value="{{ old('shop_pincode', $vendor->shop_pincode) }}" id="shop_pincode"
+                                            value="{{ old('shop_pincode', $vendorBusiness->shop_pincode) }}"
+                                            id="shop_pincode"
                                             class="form-control @error('shop_pincode') is-invalid @enderror">
                                         @error('shop_pincode')
                                             <span class="invalid-feedback" role="alert">
@@ -375,7 +380,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_mobile">Shop mobile</label>
                                         <input type="tel" name="shop_mobile"
-                                            value="{{ old('shop_mobile', $vendor->shop_mobile) }}" id="shop_mobile"
+                                            value="{{ old('shop_mobile', $vendorBusiness->shop_mobile) }}"
+                                            id="shop_mobile"
                                             class="form-control @error('shop_mobile') is-invalid @enderror">
                                         @error('shop_mobile')
                                             <span class="invalid-feedback" role="alert">
@@ -386,7 +392,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_email">Shop Email</label>
                                         <input type="email" name="shop_email"
-                                            value="{{ old('shop_email', $vendor->shop_email) }}" id="shop_email"
+                                            value="{{ old('shop_email', $vendorBusiness->shop_email) }}" id="shop_email"
                                             class="form-control @error('shop_email') is-invalid @enderror">
                                         @error('shop_email')
                                             <span class="invalid-feedback" role="alert">
@@ -397,7 +403,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_website">Shop website</label>
                                         <input type="text" name="shop_website"
-                                            value="{{ old('shop_website', $vendor->shop_website) }}" id="shop_website"
+                                            value="{{ old('shop_website', $vendorBusiness->shop_website) }}"
+                                            id="shop_website"
                                             class="form-control @error('shop_website') is-invalid @enderror">
                                         @error('shop_website')
                                             <span class="invalid-feedback" role="alert">
@@ -412,7 +419,7 @@
                                             <option value="" selected>Select...</option>
                                             @foreach (App\Models\Vendor::ADDRESSPROOF as $key => $address)
                                                 <option value="{{ $key }}"
-                                                    {{ $vendor->address_proof == $key ? 'selected' : '' }}>
+                                                    {{ $vendorBusiness->address_proof == $key ? 'selected' : '' }}>
                                                     {{ str_replace('_', ' ', $address) }}</option>
                                             @endforeach
                                         </select>
@@ -425,7 +432,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="business_license_number">Business license number</label>
                                         <input type="text" name="business_license_number"
-                                            value="{{ old('business_license_number', $vendor->business_license_number) }}"
+                                            value="{{ old('business_license_number', $vendorBusiness->business_license_number) }}"
                                             id="business_license_number"
                                             class="form-control @error('business_license_number') is-invalid @enderror">
                                         @error('business_license_number')
@@ -437,7 +444,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="gst_number">Gst number</label>
                                         <input type="text" name="gst_number"
-                                            value="{{ old('gst_number', $vendor->gst_number) }}" id="gst_number"
+                                            value="{{ old('gst_number', $vendorBusiness->gst_number) }}" id="gst_number"
                                             class="form-control @error('gst_number') is-invalid @enderror">
                                         @error('gst_number')
                                             <span class="invalid-feedback" role="alert">
@@ -448,7 +455,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="pan_number">Pan number</label>
                                         <input type="text" name="pan_number"
-                                            value="{{ old('pan_number', $vendor->pan_number) }}" id="pan_number"
+                                            value="{{ old('pan_number', $vendorBusiness->pan_number) }}" id="pan_number"
                                             class="form-control @error('pan_number') is-invalid @enderror">
                                         @error('pan_number')
                                             <span class="invalid-feedback" role="alert">
@@ -473,49 +480,65 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="bank_info">
-                            <form role="form" action="" method="POST" enctype="multipart/form-data">
+                            <form role="form" action="{{ route('vendor.bank-info.update') }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="Email">Email</label>
-                                    <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
-                                        id="Email" class="form-control " disabled readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="type">Admin Type</label>
-                                    <input type="text" value="{{ Auth::guard('admin')->user()->type }}"
-                                        id="type" class="form-control " disabled readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label for="FullName">Full Name</label>
-                                    <input type="text" value="{{ old('name', Auth::guard('admin')->user()->name) }}"
-                                        id="FullName" class="form-control @error('name') is-invalid @enderror"
-                                        name="name">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="AboutMe">About Me</label>
-                                    <textarea id="AboutMe" class="form-control @error('about_me') is-invalid @enderror" name="about_me"
-                                        rows="4">{{ old('about_me', Auth::guard('admin')->user()->about_me) }}
-                                    </textarea>
-                                    @error('about_me')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <div class="form-group" style="width: 50%;">
-                                    <label for="avatar">Avatar</label>
-                                    <input type="file" class="dropify" data-height="200" name="avatar" />
-                                    @error('avatar')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @php
+                                    $vendorBank = Auth::guard('admin')->user()->vendor->bankInfo;
+                                @endphp
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        <label for="Email">Email</label>
+                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
+                                            id="Email" class="form-control " disabled readonly>
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="account_holder_name">Account holder name</label>
+                                        <input type="text"
+                                            value="{{ old('account_holder_name', $vendorBank->account_holder_name) }}"
+                                            name="account_holder_name" id="account_holder_name"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('account_holder_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="bank_name">Bank name</label>
+                                        <input type="text" value="{{ old('bank_name', $vendorBank->bank_name) }}"
+                                            name="bank_name" id="bank_name"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('bank_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="account_number">Account number</label>
+                                        <input type="number"
+                                            value="{{ old('account_number', $vendorBank->account_number) }}"
+                                            name="account_number" id="account_number"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('account_number')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-sm-12 col-lg-6">
+                                        <label for="bank_ifsc_code">Bank IFSC code</label>
+                                        <input type="text"
+                                            value="{{ old('bank_ifsc_code', $vendorBank->bank_ifsc_code) }}"
+                                            name="bank_ifsc_code" id="bank_ifsc_code"
+                                            class="form-control @error('name') is-invalid @enderror">
+                                        @error('bank_ifsc_code')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <hr>
                                 <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Update

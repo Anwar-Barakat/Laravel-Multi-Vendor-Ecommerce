@@ -25,7 +25,7 @@ class UpdateVendorBusinessController extends Controller
                 $data = $request->all();
 
                 $admin          = Admin::where('id', Auth::guard('admin')->user()->id)->first();
-                $vendorBusiness = $admin->vendor->businessAccount;
+                $vendorBusiness = $admin->vendor->businessInfo;
 
                 if ($request->hasFile('address_proof_image') && $request->file('address_proof_image')->isValid()) {
                     $vendorBusiness->clearMediaCollection('vendor_address_proof_images');

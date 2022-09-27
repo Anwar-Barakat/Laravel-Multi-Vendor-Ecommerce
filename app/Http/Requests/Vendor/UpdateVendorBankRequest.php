@@ -13,7 +13,7 @@ class UpdateVendorBankRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateVendorBankRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'account_holder_name'   => 'required|min:3',
+            'bank_name'             => 'required|min:3',
+            'account_number'        => 'required|numeric',
+            'bank_ifsc_code'        => 'required|min:3',
         ];
     }
 }

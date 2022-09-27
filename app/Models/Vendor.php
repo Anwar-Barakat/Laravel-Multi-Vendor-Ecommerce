@@ -38,8 +38,13 @@ class Vendor extends Model implements HasMedia
             ->width(300);
     }
 
-    public function businessAccount()
+    public function businessInfo()
     {
         return $this->hasOne(VendorBusinessDetail::class);
+    }
+
+    public function bankInfo()
+    {
+        return $this->hasOne(VendorBankDetail::class);
     }
 }

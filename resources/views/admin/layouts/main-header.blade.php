@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="main-header-left ">
             <div class="responsive-logo">
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/logo.png') }}"
-                        class="logo-1" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}">
+                    <img src="{{ URL::asset('assets/img/brand/logo.png') }}" class="logo-1" alt="logo"></a>
                 <a href="{{ url('/' . ($page = 'index')) }}"><img
                         src="{{ URL::asset('assets/img/brand/logo-white.png') }}" class="dark-logo-1" alt="logo"></a>
                 <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('assets/img/brand/favicon.png') }}"
@@ -300,32 +300,44 @@
                         </svg></a>
                 </div>
                 <div class="dropdown main-profile-menu nav nav-item nav-link">
-                    <a class="profile-user d-flex" href=""><img alt=""
-                            src="{{ URL::asset('assets/img/faces/6.jpg') }}"></a>
-                    <div class="dropdown-menu">
-                        <div class="main-header-profile bg-primary p-3">
-                            <div class="d-flex wd-100p">
-                                <div class="main-img-user"><img alt=""
-                                        src="{{ URL::asset('assets/img/faces/6.jpg') }}" class=""></div>
-                                <div class="mr-3 my-auto">
-                                    <h6>Petey Cruiser</h6><span>Premium Member</span>
+                    <a class="profile-user d-flex" href="">
+                        @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
+                            <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                        @else
+                            <img src="{{ asset('assets/img/faces/6.jpg') }}">
+                        @endif
+                        <div class="dropdown-menu">
+                            <div class="main-header-profile bg-primary p-3 w-100">
+                                <div class="d-flex wd-100p align-items-center" style="gap: .5rem">
+                                    <div class="main-img-user">
+                                        @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
+                                            <img
+                                                src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                                        @else
+                                            <img src="{{ asset('assets/img/faces/6.jpg') }}">
+                                        @endif
+                                    </div>
+                                    <div class="mr-3">
+                                        <h6>{{ Auth::guard('admin')->user()->name }}</h6>
+                                        <span>{{ strtoupper(Auth::guard('admin')->user()->type) }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        @if (Auth::guard('admin')->user()->type == 'vendor')
-                            <a class="dropdown-item" href="{{ route('vendor.profile') }}">
-                                <i class="bx bx-user-circle"></i>Profile
-                            </a>
-                        @else
-                            <a class="dropdown-item" href="{{ route('admin.profile') }}">
-                                <i class="bx bx-user-circle"></i>Profile
-                            </a>
-                        @endif
-                        <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
-                        <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
-                        <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-                        <a class="dropdown-item" href="{{ route('admin.logout') }}" ">
+                            @if (Auth::guard('admin')->user()->type == 'vendor')
+                                <a class="dropdown-item" href="{{ route('vendor.profile') }}">
+                                    <i class="bx bx-user-circle"></i>Profile
+                                </a>
+                            @else
+                                <a class="dropdown-item" href="{{ route('admin.profile') }}">
+                                    <i class="bx bx-user-circle"></i>Profile
+                                </a>
+                            @endif
+                            <a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
+                            <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
+                            <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
+                            <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account
+                                Settings</a>
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}" ">
                             <i class="bx bx-log-out"></i> Sign Out
                         </a>
                     </div>

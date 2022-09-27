@@ -16,4 +16,10 @@ class VendorBankDetail extends Model
         'account_number',
         'bank_ifsc_code',
     ];
+
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
 }
