@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSetting\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
 use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
+use App\Http\Controllers\Admin\Supervisor\AdminController;
 use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
@@ -52,6 +53,12 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::post('check-password',                   CheckPasswordController::class)->name('check_password');
         Route::put('update-details',                    UpdateDetailController::class)->name('update_details');
         Route::put('update-password',                   UpdatePasswordController::class)->name('update_password');
+
+
+        // ======================
+        // Admins
+        // ======================
+        Route::resource('admins',                       AdminController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
         $admins = [
             [
                 'name'              => 'Anwar Barakat',
-                'type'              => 'superAdmin',
+                'type'              => 'super-admin',
                 'mobile'            => '0987654321',
                 'email'             => 'brkatanwar0@gmail.com',
                 'password'          => Hash::make('adminadmin'),

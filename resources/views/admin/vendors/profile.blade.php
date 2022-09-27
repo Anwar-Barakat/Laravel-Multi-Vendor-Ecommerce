@@ -6,6 +6,10 @@
     <link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
 @endsection
 
+@section('title')
+    Profile
+@endsection
+
 @section('breadcamb')
     {{ Auth::guard('admin')->user()->type }} Profile
 @endsection
