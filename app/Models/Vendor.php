@@ -17,7 +17,7 @@ class Vendor extends Model implements HasMedia
         'address',
         'city',
         'state',
-        'country',
+        'country_id',
         'pincode',
         'mobile',
         'email',
@@ -46,5 +46,10 @@ class Vendor extends Model implements HasMedia
     public function bankInfo()
     {
         return $this->hasOne(VendorBankDetail::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
     }
 }

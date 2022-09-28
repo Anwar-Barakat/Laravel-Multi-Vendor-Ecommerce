@@ -23,7 +23,7 @@ class UpdateVendorDetailController extends Controller
         DB::beginTransaction();
         try {
             if ($request->isMethod('put')) {
-                $data   = $request->only(['name', 'address', 'city', 'state', 'country', 'pincode', 'mobile', 'about_me', 'avatar']);
+                $data   = $request->only(['name', 'address', 'city', 'state', 'country_id', 'pincode', 'mobile', 'about_me', 'avatar']);
 
                 $admin  = Admin::where('id', Auth::guard('admin')->user()->id)->first();
                 $admin->update($data);

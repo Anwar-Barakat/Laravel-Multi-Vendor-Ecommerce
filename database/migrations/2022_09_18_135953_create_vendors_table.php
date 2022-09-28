@@ -19,7 +19,7 @@ class CreateVendorsTable extends Migration
             $table->text('address');
             $table->string('city');
             $table->string('state');
-            $table->string('country');
+            $table->foreignId('country_id')->constrained('countries')->cascadeOnUpdate();
             $table->string('pincode');
             $table->string('mobile');
             $table->string('email')->unique();

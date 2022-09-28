@@ -227,11 +227,16 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="country">country</label>
-                                        <input type="text" name="country"
-                                            value="{{ old('country', $auth->vendor->country) }}" id="country"
-                                            class="form-control @error('country') is-invalid @enderror">
-                                        @error('country')
+                                        <label for="country_id">country</label>
+                                        <select name="country_id" class="form-control">
+                                            <option value="" selected>Select...</option>
+                                            @foreach (App\Models\Country::all() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ $auth->vendor->country->id == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('country_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

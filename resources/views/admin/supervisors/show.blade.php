@@ -97,7 +97,7 @@
                                             </tr>
                                             <tr>
                                                 <th class="w-25">country</th>
-                                                <td>{{ $vendor->country }}</td>
+                                                <td>{{ $vendor->country->name }}</td>
                                             </tr>
                                             <tr>
                                                 <th class="w-25">pincode</th>
@@ -210,20 +210,20 @@
                                     <table class="table mg-b-0 text-md-nowrap table-striped">
                                         <tbody>
                                             <tr>
-                                                <th class="w-25">Account holder name</th>
-                                                <td>{{ $vendor->account_holder_name }}</td>
+                                                <th class="w-50">Account holder name</th>
+                                                <td>{{ $vendor->bankInfo->account_holder_name }}</td>
                                             </tr>
                                             <tr>
-                                                <th class="w-25">Bank name</th>
-                                                <td>{{ $vendor->bank_name }}</td>
+                                                <th class="w-50">Bank name</th>
+                                                <td>{{ $vendor->bankInfo->bank_name }}</td>
                                             </tr>
                                             <tr>
-                                                <th class="w-25">Account number</th>
-                                                <td>{{ $vendor->account_number }}</td>
+                                                <th class="w-50">Account number</th>
+                                                <td>{{ $vendor->bankInfo->account_number }}</td>
                                             </tr>
                                             <tr>
-                                                <th class="w-25">Bank IFSC code</th>
-                                                <td>{{ $vendor->bank_ifsc_code }}</td>
+                                                <th class="w-50">Bank IFSC code</th>
+                                                <td>{{ $vendor->bankInfo->bank_ifsc_code }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
