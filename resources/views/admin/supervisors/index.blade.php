@@ -31,33 +31,85 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table text-md-nowrap" id="example1">
+                        <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">Id</th>
-                                    <th class="wd-15p border-bottom-0">Type</th>
-                                    <th class="wd-20p border-bottom-0">E-mail</th>
-                                    <th class="wd-15p border-bottom-0">Status</th>
-                                    <th class="wd-10p border-bottom-0">Mobile</th>
-                                    <th class="wd-25p border-bottom-0">Actions</th>
+                                    <th class="border-bottom-0">Id</th>
+                                    <th class="border-bottom-0">Image</th>
+                                    <th class="border-bottom-0">Type</th>
+                                    <th class="border-bottom-0">E-mail</th>
+                                    <th class="border-bottom-0">Mobile</th>
+                                    <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($admins as $admin)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            @if ($admin->getFirstMediaUrl('avatars', 'thumb'))
+                                                <img src="{{ $admin->getFirstMediaUrl('avatars', 'thumb') }}"
+                                                    class=" img img-thumbnail" width="70">
+                                            @else
+                                                <img src="{{ asset('assets/img/faces/6.jpg') }}" class=" img img-thumbnail"
+                                                    width="70">
+                                            @endif
+                                        </td>
                                         <td>{{ ucwords(str_replace('-', ' ', $admin->type)) }}</td>
                                         <td>{{ $admin->email }}</td>
-                                        <td>
-                                            <div class="spinner-grow spinner-grow-sm {{ $admin->status == '1' ? 'green' : 'red' }}"
-                                                role="status">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                            {{ $admin->status == '1' ? 'Active' : 'Inactive' }}
-                                        </td>
                                         <td>{{ $admin->mobile }}</td>
                                         <td>
-
+                                            <div class="dropdown dropup">
+                                                <button class="btn btn-secondary dropdown-toggle btn-sm btn-group-sm"
+                                                    type="button" id="triggerId" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-bars"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.admins.destroy', $admin) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        @if ($admin->status == 1)
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateAdminStatus text-success dropdown-item"
+                                                                id="admin-{{ $admin->id }}"
+                                                                admin_id="{{ $admin->id }}"
+                                                                status="{{ $admin->status }}">
+                                                                <i class="fas fa-power-off"></i>&nbsp;
+                                                                Active
+                                                            </a>
+                                                        @else
+                                                            <a href="javascript:void(0);"
+                                                                title="{{ __('translation.update_status') }}"
+                                                                class="updateAdminStatus text-danger  dropdown-item"
+                                                                id="admin-{{ $admin->id }}"
+                                                                admin_id="{{ $admin->id }}"
+                                                                status="{{ $admin->status }}">
+                                                                <i class="fas fa-power-off "></i>&nbsp;
+                                                                Inactive
+                                                            </a>
+                                                        @endif
+                                                        <a href="{{ route('admin.admins.edit', $admin) }}"
+                                                            class="dropdown-item" title="Edit">
+                                                            <i class="fas fa-edit text-primary"></i>&nbsp;
+                                                            Edit
+                                                        </a>
+                                                        <a href="{{ route('admin.admins.show', $admin) }}"
+                                                            class="dropdown-item" title="Show">
+                                                            <i class="fas fa-eye text-warning"></i>&nbsp;
+                                                            Show
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="confirmationDelete dropdown-item"
+                                                            data-product="{{ $admin->id }}" title="Delete">
+                                                            <i class="fas fa-trash text-danger"></i>&nbsp;
+                                                            Delete
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

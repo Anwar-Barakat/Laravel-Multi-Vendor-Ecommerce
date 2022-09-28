@@ -26,7 +26,7 @@ class AdminSeeder extends Seeder
                 'password'          => Hash::make('adminadmin'),
                 'status'            => 1,
                 'about_me'          => "Hi, Buddy. I am Anwar Barakat.Full Stack & Laravel Developer.",
-                'vendor_id'         => Vendor::inRandomOrder()->first()->id,
+                'vendor_id'         => null,
             ],
             [
                 'name'              => 'Mohamed Khalof',

@@ -424,7 +424,7 @@
                                             @foreach (App\Models\Vendor::ADDRESSPROOF as $key => $address)
                                                 <option value="{{ $key }}"
                                                     {{ $vendorBusiness->address_proof == $key ? 'selected' : '' }}>
-                                                    {{ str_replace('_', ' ', $address) }}</option>
+                                                    {{ strtoupper(str_replace('_', ' ', $address)) }}</option>
                                             @endforeach
                                         </select>
                                         @error('address_proof')
@@ -446,7 +446,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="gst_number">Gst number</label>
+                                        <label for="gst_number">GST number</label>
                                         <input type="text" name="gst_number"
                                             value="{{ old('gst_number', $vendorBusiness->gst_number) }}" id="gst_number"
                                             class="form-control @error('gst_number') is-invalid @enderror">
@@ -457,7 +457,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="pan_number">Pan number</label>
+                                        <label for="pan_number">PAN number</label>
                                         <input type="text" name="pan_number"
                                             value="{{ old('pan_number', $vendorBusiness->pan_number) }}" id="pan_number"
                                             class="form-control @error('pan_number') is-invalid @enderror">

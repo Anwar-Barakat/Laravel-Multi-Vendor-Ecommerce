@@ -49,7 +49,9 @@ class AdminController extends Controller
      */
     public function show(Admin $admin)
     {
-        //
+        $adminDetail    = Admin::with(['vendor'])->findOrFail($admin->id);
+        return view('admin.supervisors.show', ['adminDetail' => $adminDetail]);
+
     }
 
     /**
