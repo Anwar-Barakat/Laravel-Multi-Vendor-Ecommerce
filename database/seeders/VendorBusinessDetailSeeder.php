@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use App\Models\Vendor;
 use App\Models\VendorBusinessDetail;
 use Illuminate\Database\Seeder;
@@ -21,7 +22,7 @@ class VendorBusinessDetailSeeder extends Seeder
             'shop_address'              => 'in the public avenue',
             'shop_city'                 => 'Yabroud',
             'shop_state'                => 'Damascus',
-            'shop_country'              => 'Syria',
+            'shop_country_id'           => Country::inRandomOrder()->first()->id,
             'shop_pincode'              => '11001',
             'shop_mobile'               => '0987654321',
             'shop_website'              => 'khalof-center.net',

@@ -230,9 +230,9 @@
                                         <label for="country_id">country</label>
                                         <select name="country_id" class="form-control">
                                             <option value="" selected>Select...</option>
-                                            @foreach (App\Models\Country::all() as $country)
+                                            @foreach (App\Models\Country::where('status', 1)->get() as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ $auth->vendor->country->id == $country->id ? 'selected' : '' }}>
+                                                    {{ old('country_id', $auth->vendor->country->id) == $country->id ? 'selected' : '' }}>
                                                     {{ $country->name }}</option>
                                             @endforeach
                                         </select>
@@ -363,12 +363,17 @@
                                         @enderror
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
-                                        <label for="shop_country">Shop country</label>
-                                        <input type="text" name="shop_country"
-                                            value="{{ old('shop_country', $vendorBusiness->shop_country) }}"
-                                            id="shop_country"
-                                            class="form-control @error('shop_country') is-invalid @enderror">
-                                        @error('shop_country')
+                                        <label for="shop_country_id">Shop country</label>
+                                        <select name="shop_country_id"
+                                            class="form-control @error('shop_country_id') is-invalid @enderror">
+                                            <option value="" selected>Select</option>
+                                            @foreach (App\Models\Country::where('status', 1)->get() as $country)
+                                                <option value="{{ $country->id }}"
+                                                    {{ old('shop_country_id', $vendorBusiness->shop_country_id) == $country->id ? 'selected' : '' }}>
+                                                    {{ $country->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('shop_country_id')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

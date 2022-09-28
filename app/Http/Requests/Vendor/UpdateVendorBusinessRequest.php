@@ -28,7 +28,7 @@ class UpdateVendorBusinessRequest extends FormRequest
             'shop_address'              => 'required',
             'shop_city'                 => 'required',
             'shop_state'                => 'required',
-            'shop_country'              => 'required',
+            'shop_country_id'           => 'required',
             'shop_pincode'              => 'required',
             'shop_mobile'               => 'required',
             'shop_website'              => 'required',

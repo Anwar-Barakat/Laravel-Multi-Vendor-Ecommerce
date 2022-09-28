@@ -13,7 +13,7 @@ class VendorBusinessDetail extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'vendor_id', 'shop_name', 'shop_address', 'shop_city', 'shop_state', 'shop_country', 'shop_pincode', 'shop_mobile', 'shop_website', 'shop_email',
+        'vendor_id', 'shop_name', 'shop_address', 'shop_city', 'shop_state', 'shop_country_id', 'shop_pincode', 'shop_mobile', 'shop_website', 'shop_email',
         'address_proof',
         'business_license_number',
         'gst_number',
@@ -29,5 +29,10 @@ class VendorBusinessDetail extends Model implements HasMedia
     public function vendor()
     {
         return $this->belongsTo(Vendor::class, 'vendor_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'shop_country_id');
     }
 }

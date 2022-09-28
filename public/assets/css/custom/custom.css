@@ -17,3 +17,8 @@
 .spinner-grow.blue {
     background-color: #2196f3;
 }
+
+.main-content .container,
+.main-content .container-fluid {
+    padding-bottom: 1rem;
+}

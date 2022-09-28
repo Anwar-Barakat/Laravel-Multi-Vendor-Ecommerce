@@ -150,7 +150,7 @@
                                             </tr>
                                             <tr>
                                                 <th class="w-50">Shop country</th>
-                                                <td>{{ $vendor->businessInfo->shop_country }}</td>
+                                                <td>{{ $vendor->businessInfo->country->name }}</td>
                                             </tr>
                                             <tr>
                                                 <th class="w-50">Shop pincode</th>

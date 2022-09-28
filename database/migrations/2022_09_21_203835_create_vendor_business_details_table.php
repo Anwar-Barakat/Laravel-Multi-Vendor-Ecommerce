@@ -20,7 +20,7 @@ class CreateVendorBusinessDetailsTable extends Migration
             $table->string('shop_address');
             $table->string('shop_city');
             $table->string('shop_state');
-            $table->string('shop_country');
+            $table->string('shop_country_id');
             $table->string('shop_pincode');
             $table->string('shop_mobile');
             $table->string('shop_website');
