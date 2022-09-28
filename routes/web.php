@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
 use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
+use App\Http\Controllers\Admin\Supervisor\UpdateAdminStatusController;
 use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
@@ -59,6 +60,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         // Admins
         // ======================
         Route::resource('admins',                       AdminController::class);
+        Route::post('update-admin-status',               UpdateAdminStatusController::class)->name('update.status');
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

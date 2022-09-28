@@ -141,4 +141,6 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
+
+    <script src="{{ asset('assets/js/custom/update-admin-status.js') }}"></script>
 @endsection
