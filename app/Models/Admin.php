@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +37,15 @@ class Admin extends Authenticatable implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(150)
             ->height(150);
+    }
+
+    public function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+            }
+        );
     }
 
 

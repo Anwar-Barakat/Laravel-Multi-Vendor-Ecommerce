@@ -26,8 +26,9 @@
                     <span class="avatar-status profile-status bg-green"></span>
                 </div>
                 <div class="user-info">
-                    <h4 class="font-weight-semibold mt-3 mb-0">Petey Cruiser</h4>
-                    <span class="mb-0 text-muted">Premium Member</span>
+                    <h4 class="font-weight-semibold mt-3 mb-0">{{ Auth::guard('admin')->user()->name }}</h4>
+                    <span
+                        class="mb-0 text-muted">{{ strtoupper(str_replace('-', ' ', Auth::guard('admin')->user()->type)) }}</span>
                 </div>
             </div>
         </div>
@@ -46,6 +47,7 @@
             <li class="side-item side-item-category">General</li>
             @if (Auth::guard('admin')->user()->type == 'vendor')
             @else
+                {{-- Admins --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                         <i class="fas fa-user-shield side-menu__icon"></i>
@@ -55,6 +57,20 @@
                     <ul class="slide-menu">
                         <li>
                             <a href="{{ route('admin.admins.index') }}" class="slide-item">Admins List</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Sections --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-th-large side-menu__icon"></i>
+                        <span class="side-menu__label">Sections</span>
+                        <i class="angle fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.sections.index') }}" class="slide-item">Sections List</a>
                         </li>
                     </ul>
                 </li>

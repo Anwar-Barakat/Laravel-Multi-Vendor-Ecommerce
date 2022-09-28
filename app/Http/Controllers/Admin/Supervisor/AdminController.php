@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreAdminRequest;
+use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\Models\Admin;
-use App\Http\Requests\StoreAdminRequest;
-use App\Http\Requests\UpdateAdminRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller

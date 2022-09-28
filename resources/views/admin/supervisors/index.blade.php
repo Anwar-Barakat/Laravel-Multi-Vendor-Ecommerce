@@ -39,6 +39,7 @@
                                     <th class="border-bottom-0">Type</th>
                                     <th class="border-bottom-0">E-mail</th>
                                     <th class="border-bottom-0">Mobile</th>
+                                    <th class="border-bottom-0">Created At</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
@@ -49,21 +50,28 @@
                                         <td>
                                             @if ($admin->getFirstMediaUrl('avatars', 'thumb'))
                                                 <img src="{{ $admin->getFirstMediaUrl('avatars', 'thumb') }}"
-                                                    class=" img img-thumbnail" width="70">
+                                                    class=" img img-thumbnail" width="90">
                                             @else
                                                 <img src="{{ asset('assets/img/faces/6.jpg') }}" class=" img img-thumbnail"
-                                                    width="70">
+                                                    width="90">
                                             @endif
                                         </td>
-                                        <td>{{ ucwords(str_replace('-', ' ', $admin->type)) }}</td>
+                                        <td>
+                                            <span
+                                                class="badge badge-{{ $admin->type == 'vendor' ? 'warning' : 'success' }}">
+                                                {{ ucwords(str_replace('-', ' ', $admin->type)) }}
+                                        </td>
+                                        </span>
                                         <td>{{ $admin->email }}</td>
                                         <td>{{ $admin->mobile }}</td>
+                                        <td>{{ $admin->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
-                                                <button class="btn btn-secondary dropdown-toggle btn-sm btn-group-sm"
+                                                <button
+                                                    class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm"
                                                     type="button" id="triggerId" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-bars"></i>
+                                                    <i class="fas fa-bars fa-1x"></i>
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
                                                     <form action="{{ route('admin.admins.destroy', $admin) }}"
@@ -91,22 +99,22 @@
                                                                 Inactive
                                                             </a>
                                                         @endif
-                                                        <a href="{{ route('admin.admins.edit', $admin) }}"
+                                                        {{-- <a href="{{ route('admin.admins.edit', $admin) }}"
                                                             class="dropdown-item" title="Edit">
                                                             <i class="fas fa-edit text-primary"></i>&nbsp;
                                                             Edit
-                                                        </a>
+                                                        </a> --}}
                                                         <a href="{{ route('admin.admins.show', $admin) }}"
                                                             class="dropdown-item" title="Show">
                                                             <i class="fas fa-eye text-warning"></i>&nbsp;
                                                             Show
                                                         </a>
-                                                        <a href="javascript:void(0);"
+                                                        {{-- <a href="javascript:void(0);"
                                                             class="confirmationDelete dropdown-item"
                                                             data-product="{{ $admin->id }}" title="Delete">
                                                             <i class="fas fa-trash text-danger"></i>&nbsp;
                                                             Delete
-                                                        </a>
+                                                        </a> --}}
                                                     </form>
                                                 </div>
                                             </div>
