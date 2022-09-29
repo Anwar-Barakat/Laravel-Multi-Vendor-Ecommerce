@@ -39,11 +39,15 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        if ($request->isMethod('post')) {
-            $data   = $request->only(['name', 'status']);
-            Section::create($data);
-            toastr()->success('Section Has Been Added Successfully');
-            return redirect()->back();
+        try {
+            if ($request->isMethod('post')) {
+                $data   = $request->only(['name', 'status']);
+                Section::create($data);
+                toastr()->success('Section Has Been Added Successfully');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 
@@ -78,7 +82,16 @@ class SectionController extends Controller
      */
     public function update(UpdateSectionRequest $request, Section $section)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data   = $request->only(['name', 'status']);
+                $section->update($data);
+                toastr()->success('Section Has Been Updated Successfully');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

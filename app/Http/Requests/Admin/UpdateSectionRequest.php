@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateSectionRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => ['required', Rule::unique('sections')->ignore($this->section->id), 'regex:/^[\pL\s\-]+$/u'],
+            'status'    => ['required', 'in:0,1'],
         ];
     }
 }
