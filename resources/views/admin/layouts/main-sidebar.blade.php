@@ -44,7 +44,7 @@
                     </svg><span class="side-menu__label">Index</span><span
                         class="badge badge-success side-badge">1</span></a>
             </li>
-            <li class="side-item side-item-category">General</li>
+
             @if (Auth::guard('admin')->user()->type == 'vendor')
             @else
                 {{-- Admins --}}
@@ -60,6 +60,7 @@
                         </li>
                     </ul>
                 </li>
+                <li class="side-item side-item-category">General</li>
 
                 {{-- Sections --}}
                 <li class="slide">
@@ -71,6 +72,20 @@
                     <ul class="slide-menu">
                         <li>
                             <a href="{{ route('admin.sections.index') }}" class="slide-item">Sections List</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Category --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-th-list side-menu__icon"></i>
+                        <span class="side-menu__label">Categories</span>
+                        <i class="angle fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.categories.index') }}" class="slide-item">Categories List</a>
                         </li>
                     </ul>
                 </li>

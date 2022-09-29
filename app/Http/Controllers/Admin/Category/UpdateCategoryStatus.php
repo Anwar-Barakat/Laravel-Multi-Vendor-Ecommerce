@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Supervisor;
+namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class UpdateAdminStatusController extends Controller
+class UpdateCategoryStatus extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,13 +17,13 @@ class UpdateAdminStatusController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->ajax()) {
-            $data = $request->only(['status', 'admin_id']);
+            $data = $request->only(['status', 'category_id']);
             $data['status'] == 1 ? $status = 0 : $status = 1;
-            Admin::where('id', $data['admin_id'])->update(['status' => $status]);
+            Category::where('id', $data['category_id'])->update(['status' => $status]);
 
             return response()->json([
                 'status'            => $status,
-                'admin_id'          => $data['admin_id']
+                'category_id'       => $data['category_id']
             ]);
         }
     }

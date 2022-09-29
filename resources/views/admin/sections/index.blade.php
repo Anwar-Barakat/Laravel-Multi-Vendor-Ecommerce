@@ -10,13 +10,9 @@
 @endsection
 
 
-@section('title')
-    Sections List
-@endsection
+@section('title', 'Sections List')
 
-@section('breadcamb')
-    Sections List
-@endsection
+@section('breadcamb', 'Sections List')
 
 @section('content')
     <div class="row row-sm">

@@ -16,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::with(['section', 'parentCategory'])->latest()->get();
+        return view('admin.categories.index', ['categories' => $categories]);
     }
 
     /**
