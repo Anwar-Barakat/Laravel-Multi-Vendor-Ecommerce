@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             VendorBankDetailSeeder::class,
 
             SectionSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }
