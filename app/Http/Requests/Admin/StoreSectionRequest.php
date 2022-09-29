@@ -13,7 +13,7 @@ class StoreSectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => ['required', 'unique:sections,name', 'regex:/^[\pL\s\-]+$/u'],
+            'status'    => ['required', 'in:0,1']
         ];
     }
 }

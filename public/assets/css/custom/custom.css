@@ -22,3 +22,7 @@
 .main-content .container-fluid {
     padding-bottom: 1rem;
 }
+
+.modal-footer {
+    padding: 1rem 0;
+}

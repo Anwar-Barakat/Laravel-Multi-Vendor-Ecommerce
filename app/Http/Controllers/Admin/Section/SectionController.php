@@ -6,6 +6,7 @@ use App\Models\Section;
 use App\Http\Requests\Admin\StoreSectionRequest;
 use App\Http\Requests\Admin\UpdateSectionRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class SectionController extends Controller
 {
@@ -38,7 +39,12 @@ class SectionController extends Controller
      */
     public function store(StoreSectionRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            $data   = $request->only(['name', 'status']);
+            Section::create($data);
+            toastr()->success('Section Has Been Added Successfully');
+            return redirect()->back();
+        }
     }
 
     /**
