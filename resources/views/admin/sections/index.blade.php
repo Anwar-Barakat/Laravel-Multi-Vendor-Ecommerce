@@ -47,11 +47,12 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>
-                                            <div class="spinner-grow spinner-grow-sm {{ $section->status == '1' ? 'green' : 'red' }}"
-                                                role="status">
+                                            <div class="spinner-grow  spinner-grow-sm {{ $section->status == '1' ? 'green' : 'red' }}"
+                                                role="status" id="status-{{ $section->id }}">
                                                 <span class="sr-only">Loading...</span>
                                             </div>
-                                            <span class="text text-{{ $section->status == '1' ? 'success' : 'danger' }}">
+                                            <span class="text text-{{ $section->status == '1' ? 'success' : 'danger' }}"
+                                                id="status-text{{ $section->id }}">
                                                 {{ $section->status == '1' ? 'Active' : 'Inactive' }}
                                             </span>
                                         </td>
@@ -59,16 +60,14 @@
                                         <td>
                                             @if ($section->status == 1)
                                                 <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="section-{{ $section->id }}" section_id="{{ $section->id }}"
-                                                    status="{{ $section->status }}">
+                                                    title="Update Status" id="section-{{ $section->id }}"
+                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
                                                     <i class="fas fa-power-off"></i>
                                                 </a>
                                             @else
                                                 <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
-                                                    title="{{ __('translation.update_status') }}"
-                                                    id="section-{{ $section->id }}" section_id="{{ $section->id }}"
-                                                    status="{{ $section->status }}">
+                                                    title="Update Status" id="section-{{ $section->id }}"
+                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
                                                     <i class="fas fa-power-off text-danger"></i>
                                                 </a>
                                             @endif
@@ -109,5 +108,9 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom/update-admin-status.js') }}"></script>
+    <!-- Internal Modal js-->
+    <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
+    <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
+
+    <script src="{{ asset('assets/js/custom/update-section-status.js') }}"></script>
 @endsection
