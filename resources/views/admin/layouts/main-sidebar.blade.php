@@ -87,6 +87,9 @@
                         <li>
                             <a href="{{ route('admin.categories.index') }}" class="slide-item">Categories List</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.categories.create') }}" class="slide-item">Add Category</a>
+                        </li>
                     </ul>
                 </li>
             @endif

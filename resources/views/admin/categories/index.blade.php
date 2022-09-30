@@ -24,10 +24,9 @@
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 tx-gray-500 mb-3">List of Categories & Sub-categories</p>
-                    <button type="button" class="btn btn-primary  modal-effect" data-effect="effect-rotate-left"
-                        role="button" data-toggle="modal" data-target="#addNewSection">
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
                         <i class="fas fa-plus"></i> Add
-                    </button>
+                    </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

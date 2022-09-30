@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
 use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
 use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Category\GetCategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatus;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Section\UpdateSectionStatusController;
@@ -74,10 +75,11 @@ Route::prefix('admin/')->name('admin.')->group(function () {
 
 
         // ======================
-        // Sections
+        // Categories
         // ======================
         Route::resource('categories',                   CategoryController::class);
         Route::post('update-category-status',           UpdateCategoryStatus::class);
+        Route::get('get-categories/{section_id}',       GetCategoryController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

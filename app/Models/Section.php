@@ -21,4 +21,14 @@ class Section extends Model
             }
         );
     }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    public function parentCategories()
+    {
+        return $this->hasMany(Category::class)->where(['categories.parent_id' => 0])->select('id', 'name');
+    }
 }
