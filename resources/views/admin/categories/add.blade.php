@@ -2,6 +2,9 @@
 @section('css')
     <!-- Internal Select2 css -->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 
@@ -24,17 +27,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal">
-                        <livewire:get-section-categories />
-                        <div class="row">
-
-                        </div>
-                        <hr>
-                        <div class="form-group mb-0 mt-3 justify-content-end">
-                            <div>
-                                <button type="submit" class="btn btn-primary">Add</button>
-                            </div>
-                        </div>
+                    <livewire:get-section-categories />
                     </form>
                 </div>
             </div>
@@ -61,6 +54,11 @@
     <script src="{{ URL::asset('assets/plugins/pickerjs/picker.min.js') }}"></script>
     <!-- Internal form-elements js -->
     <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
+
+
+    <!--Internal Fileuploads js-->
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 @endsection
 
 @section('livewire-js')

@@ -39,7 +39,9 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        if ($request->isMethod('post')) {
+            return $request;
+        }
     }
 
     /**
