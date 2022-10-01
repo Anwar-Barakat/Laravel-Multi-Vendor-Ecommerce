@@ -86,7 +86,7 @@
                                 <div class="form-group">
                                     <label for="meta_title">Meta title</label>
                                     <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
-                                        id="meta_title" name="meta_title">
+                                        id="meta_title" name="meta_title" value="{{ old('meta_title') }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -99,7 +99,8 @@
                                     <label for="meta_description">Meta description</label>
                                     <input type="text"
                                         class="form-control  @error('meta_description') is-invalid @enderror"
-                                        id="meta_description" name="meta_description">
+                                        id="meta_description" name="meta_description"
+                                        value="{{ old('meta_description') }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -111,7 +112,7 @@
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta keywords</label>
                                     <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
-                                        id="meta_keywords" name="meta_keywords">
+                                        id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

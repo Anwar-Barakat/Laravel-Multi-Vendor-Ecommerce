@@ -25,12 +25,12 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u', 'unique:categories,name,' . $this->category->id],
+            'name'              => ['required', 'min:3', 'unique:categories,name,' . $this->category->id],
             'url'               => ['required', 'unique:categories,url,' . $this->category->id],
             'section_id'        => ['required'],
             'parent_id'         => ['required'],
             'discount'          => ['required', 'numeric'],
-            'image'             => ['required', 'image', 'mimes:png,jpg', 'max:1024'],
+            'image'             => ['image', 'mimes:png,jpg', 'max:1024'],
             'description'       => ['required', 'min:10'],
             'description'       => ['required', 'min:10'],
             'description'       => ['required', 'min:10'],

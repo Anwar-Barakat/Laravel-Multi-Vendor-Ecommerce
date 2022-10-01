@@ -24,5 +24,9 @@
 }
 
 .modal-footer {
-    padding: 1rem 0;
+    padding: 1rem;
+}
+
+.invalid-feedback {
+    display: block;
 }

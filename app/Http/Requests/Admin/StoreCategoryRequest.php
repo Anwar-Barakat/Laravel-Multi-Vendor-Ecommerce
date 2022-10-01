@@ -24,7 +24,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'              => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u', 'unique:categories,name'],
+            'name'              => ['required', 'min:3', 'unique:categories,name'],
             'url'               => ['required', 'unique:categories,url'],
             'section_id'        => ['required'],
             'parent_id'         => ['required'],

@@ -7,7 +7,6 @@
     <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
-
 @section('livewire-css')
     @livewireStyles
 @endsection
@@ -31,6 +30,9 @@
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        @if ($errors->any())
+                            {{ implode('', $errors->all('<div>:message</div>')) }}
+                        @endif
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group text-center">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCategoryRequest;
 use App\Http\Requests\Admin\UpdateCategoryRequest;
 use App\Models\Section;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class CategoryController extends Controller
 {
@@ -115,6 +116,18 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        try {
+            if ($category->subCategories->count() > 0)
+                toastr()->error(ucwords($category->name) . ' Has Sub-Categories');
+            else {
+                $category->clearMediaCollection('categories');
+                Media::where(['model_id' => $category->id, 'collection_name' => 'categories'])->delete();
+                $category->delete();
+                toastr()->info('Category Has Been Deleted Successfully');
+            }
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 }
