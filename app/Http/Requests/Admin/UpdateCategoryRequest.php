@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,18 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'              => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u', 'unique:categories,name,' . $this->category->id],
+            'url'               => ['required', 'unique:categories,url,' . $this->category->id],
+            'section_id'        => ['required'],
+            'parent_id'         => ['required'],
+            'discount'          => ['required', 'numeric'],
+            'image'             => ['required', 'image', 'mimes:png,jpg', 'max:1024'],
+            'description'       => ['required', 'min:10'],
+            'description'       => ['required', 'min:10'],
+            'description'       => ['required', 'min:10'],
+            'meta_title'        => ['required', 'min:3'],
+            'meta_description'  => ['required', 'min:10'],
+            'meta_keywords'     => ['required', 'min:3'],
         ];
     }
 }

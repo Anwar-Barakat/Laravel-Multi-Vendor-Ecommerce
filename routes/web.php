@@ -79,7 +79,6 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         // ======================
         Route::resource('categories',                   CategoryController::class);
         Route::post('update-category-status',           UpdateCategoryStatus::class);
-        Route::get('get-categories/{section_id}',       GetCategoryController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

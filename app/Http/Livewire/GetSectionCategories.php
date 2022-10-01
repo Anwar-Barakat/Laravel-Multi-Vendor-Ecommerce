@@ -12,6 +12,7 @@ class GetSectionCategories extends Component
 {
     use WithFileUploads;
     public  $section,
+        $parent_id,
         $categories;
 
 

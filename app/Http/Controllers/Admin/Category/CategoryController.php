@@ -76,7 +76,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $categories = Category::with('subCategories')->where(['section_id' => $category->section_id, 'parent_id' => 0])->get();
+        return view('admin.categories.edit', ['category' => $category, 'categories' => $categories]);
     }
 
     /**
@@ -88,7 +89,22 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data       = $request->only(['section_id', 'parent_id', 'name', 'discount', 'description', 'url', 'meta_title', 'meta_description', 'meta_keywords', 'status']);
+                $category->update($data);
+
+                if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                    $category->clearMediaCollection('categories');
+                    $category->addMediaFromRequest('image')->toMediaCollection('categories');
+                }
+
+                toastr()->success('Category Has Been Updated Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**

@@ -3,7 +3,7 @@
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name"
-                    wire:model="name" wire:keyup="generateURL" value="{{ old('name') }}">
+                    wire:model="name" wire:keyup="generateURL">
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                     class="form-control  @error('section_id') is-invalid @enderror">
                     <option value="" selected>Select...</option>
                     @foreach ($sections as $section)
-                        <option value="{{ $section->id }}" {{ old('section_id') == $section->id ? 'selected' : '' }}>
+                        <option value="{{ $section->id }}">
                             {{ $section->name }}</option>
                     @endforeach
                 </select>
@@ -45,12 +45,14 @@
             <div class="col-md-12 col-lg-6">
                 <div class="form-group">
                     <label for="parent_id">Categories</label>
-                    <select name="parent_id" class="form-control  @error('parent_id') is-invalid @enderror">
+                    <select name="parent_id" class="form-control  @error('parent_id') is-invalid @enderror"
+                        wire:model="parent_id">
                         <option value="" selected>Select...</option>
                         <option value="0">Root</option>
                         <option style="background:#eeeeee; max-height: 1px; height: 1px;" disabled></option>
                         @foreach ($categories as $root)
-                            <option value="{{ $root->id }}">{{ ucwords($root->name) }}</option>
+                            <option value="{{ $root->id }}">
+                                {{ ucwords($root->name) }}</option>
                             @foreach ($root->subCategories as $child)
                                 <option value="{{ $child->id }}">&nbsp;&raquo;
                                     {{ ucwords($child->name) }}

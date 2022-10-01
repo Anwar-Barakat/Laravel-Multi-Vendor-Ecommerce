@@ -12,9 +12,9 @@
     @livewireStyles
 @endsection
 
-@section('title', 'Add Category')
+@section('title', 'Edit Category')
 
-@section('breadcamb', 'Add Category')
+@section('breadcamb', 'Edit Category')
 
 @section('content')
     <div class="row row-sm">
@@ -22,15 +22,35 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Add Category</h4>
+                        <h4 class="card-title mg-b-0">Edit Category</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}"
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.update', $category) }}"
                         enctype="multipart/form-data">
                         @csrf
-                        @livewire('get-section-categories')
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group text-center">
+                                    @if ($category->getFirstMediaUrl('categories', 'thumb'))
+                                        <img src="{{ $category->getFirstMediaUrl('categories', 'thumb') }}"
+                                            alt="{{ $category->name }}" class="img img-thumbnail" height="300">
+                                    @else
+                                        <img src="{{ asset('assets/img/20.jpg') }}" alt=""
+                                            class="img img-thumbnail">
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @livewire('get-section-categories', [
+                            'name' => $category->name,
+                            'url' => $category->url,
+                            'section' => $category->section_id,
+                            'categories' => $categories,
+                            'parent_id' => $category->parent_id,
+                        ])
                         <div class="row">
                             <div class="col-md-12 col-lg-6 d-flex flex-column justify-content-between">
                                 <div>
@@ -41,7 +61,7 @@
                                         </div>
                                         <input aria-label="Amount (to the nearest dollar)"
                                             class="form-control  @error('discount') is-invalid @enderror" type="number"
-                                            value="{{ old('discount') }}" name="discount">
+                                            value="{{ old('discount', $category->discount) }}" name="discount">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -55,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <div class="form-group has-success mg-b-0">
-                                        <textarea class="form-control @error('description') is-invalid @enderror"="" rows="3" name="description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3" name="description">{{ old('description', $category->description) }}</textarea>
                                         @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -77,16 +97,12 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-lg-6">
-
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="meta_title">Meta title</label>
                                     <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
-                                        id="meta_title" name="meta_title">
+                                        id="meta_title" name="meta_title"
+                                        value="{{ old('meta_title', $category->meta_title) }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -99,7 +115,8 @@
                                     <label for="meta_description">Meta description</label>
                                     <input type="text"
                                         class="form-control  @error('meta_description') is-invalid @enderror"
-                                        id="meta_description" name="meta_description">
+                                        id="meta_description" name="meta_description"
+                                        value="{{ old('meta_description', $category->meta_description) }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -111,7 +128,8 @@
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta keywords</label>
                                     <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
-                                        id="meta_keywords" name="meta_keywords">
+                                        id="meta_keywords" name="meta_keywords"
+                                        value="{{ old('meta_keywords', $category->meta_keywords) }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -123,7 +141,7 @@
                         <hr>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add</button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i> Update</button>
                             </div>
                         </div>
                     </form>
