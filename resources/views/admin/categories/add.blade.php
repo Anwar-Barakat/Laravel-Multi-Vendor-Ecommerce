@@ -27,7 +27,105 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <livewire:get-section-categories />
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <livewire:get-section-categories />
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6 d-flex flex-column justify-content-between">
+                                <div>
+                                    <label for="discount">Discount</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input aria-label="Amount (to the nearest dollar)"
+                                            class="form-control  @error('discount') is-invalid @enderror" type="number"
+                                            value="{{ old('discount') }}" name="discount">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                        @error('discount')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <div class="form-group has-success mg-b-0">
+                                        <textarea class="form-control @error('description') is-invalid @enderror"="" rows="3" name="description">{{ old('description') }}</textarea>
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="form-group">
+                                    <label for="avatar">Image</label>
+                                    <input type="file" class="dropify" data-height="200" name="image" />
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="meta_title">Meta title</label>
+                                    <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
+                                        id="meta_title" name="meta_title">
+                                    @error('meta_title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="meta_description">Meta description</label>
+                                    <input type="text"
+                                        class="form-control  @error('meta_description') is-invalid @enderror"
+                                        id="meta_description" name="meta_description">
+                                    @error('meta_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="meta_keywords">Meta keywords</label>
+                                    <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
+                                        id="meta_keywords" name="meta_keywords">
+                                    @error('meta_keywords')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="form-group mb-0 mt-3 justify-content-end">
+                            <div>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

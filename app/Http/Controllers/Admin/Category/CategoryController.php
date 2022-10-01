@@ -39,8 +39,21 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        if ($request->isMethod('post')) {
-            return $request;
+        try {
+            if ($request->isMethod('post')) {
+                $data       = $request->only(['section_id', 'parent_id', 'name', 'discount', 'description', 'url', 'meta_title', 'meta_description', 'meta_keywords', 'status']);
+                $category   = Category::create($data);
+
+                if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                    $category->clearMediaCollection('categories');
+                    $category->addMediaFromRequest('image')->toMediaCollection('categories');
+                }
+
+                toastr()->success('Category Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 

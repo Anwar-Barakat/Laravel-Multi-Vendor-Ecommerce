@@ -23,6 +23,19 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            'name'              => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u'],
+            'url'               => ['required'],
+            'section_id'        => ['required'],
+            'parent_id'         => ['required'],
+            'discount'          => ['required', 'numeric'],
+            'image'             => ['required', 'image', 'mimes:png,jpg', 'max:1024'],
+            'description'       => ['required', 'min:10'],
+            'description'       => ['required', 'min:10'],
+            'description'       => ['required', 'min:10'],
+            'meta_title'        => ['required', 'min:3'],
+            'meta_description'  => ['required', 'min:10'],
+            'meta_keywords'     => ['required', 'min:3'],
+        ];
     }
 }
