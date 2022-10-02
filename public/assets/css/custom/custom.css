@@ -30,3 +30,7 @@
 .invalid-feedback {
     display: block;
 }
+
+img {
+    object-fit: cover !important;
+}

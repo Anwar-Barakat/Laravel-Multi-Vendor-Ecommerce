@@ -50,14 +50,15 @@
                                         <td>
                                             <span
                                                 class="badge badge-{{ !empty($category->parentCategory->name) ? 'warning' : 'success' }}">
-                                                {{ $category->parentCategory->name ?? 'Root' }}</span>
+                                                {{ $category->parentCategory->name ?? 'Root' }}
+                                            </span>
                                         </td>
                                         <td>
-                                            <span
-                                                class="badge badge-primary">{{ ucwords($category->section->name) }}</span>
+                                            <span class="badge badge-primary">
+                                                {{ ucwords($category->section->name) }}</span>
                                         </td>
                                         <td>
-                                            <div class="spinner-grow  spinner-grow-sm {{ $category->status == '1' ? 'green' : 'red' }}"
+                                            <div class="spinner-grow spinner-grow-sm {{ $category->status == '1' ? 'green' : 'red' }}"
                                                 role="status" id="status-{{ $category->id }}">
                                                 <span class="sr-only">Loading...</span>
                                             </div>

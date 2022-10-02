@@ -92,6 +92,23 @@
                         </li>
                     </ul>
                 </li>
+
+                {{-- Brands --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-bars side-menu__icon"></i>
+                        <span class="side-menu__label">Brands</span>
+                        <i class="angle fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.brands.index') }}" class="slide-item">Brands List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.brands.create') }}" class="slide-item">Add Brand</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}">
