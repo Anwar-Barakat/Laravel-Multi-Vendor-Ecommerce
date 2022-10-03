@@ -1,23 +1,21 @@
-    {{-- Edit Section Modal --}}
-    <div class="modal fade" id="edit{{ $section->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="edit{{ $section->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+    {{-- Add New Brand Modal --}}
+    <div class="modal effect-rotate-left" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Section</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Brand</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.sections.update', $section) }}" method="post">
+                    <form action="{{ route('admin.brands.store') }}" method="post">
                         @csrf
-                        @method('PUT')
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control  @error('name') is-invalid @enderror"
-                                id="name" name="name" value="{{ $section->name }}" placeholder="Section Name"
-                                required>
+                                id="name" name="name" placeholder="Brand Name" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -28,12 +26,11 @@
                             <label for="status">Status</label>
                             <select class="form-control @error('status') is-invalid @enderror" id="status"
                                 name="status" required>
-                                <option value=""> Select...</option>
-                                <option value="1" {{ old('status', $section->status) == '1' ? 'selected' : '' }}>
+                                <option value="">Select...</option>
+                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
                                     Active</option>
-                                <option value="0" {{ old('status', $section->status) == '0' ? 'selected' : '' }}>
-                                    Inactive
-                                </option>
+                                <option value="0" {{ old('status') == '1' ? 'selected' : '' }}>
+                                    Inactive</option>
                             </select>
                             @error('status')
                                 <span class="invalid-feedback" role="alert">
@@ -42,10 +39,9 @@
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary modal-effect"
-                                data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-edit"></i> Update
+                                <i class="fas fa-plus"></i> Add
                             </button>
                         </div>
                     </form>

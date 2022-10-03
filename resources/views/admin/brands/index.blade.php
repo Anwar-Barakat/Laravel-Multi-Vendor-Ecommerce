@@ -10,9 +10,9 @@
 @endsection
 
 
-@section('title', 'Sections List')
+@section('title', 'Brands List')
 
-@section('breadcamb', 'Sections List')
+@section('breadcamb', 'Brands List')
 
 @section('content')
     <div class="row row-sm">
@@ -20,10 +20,10 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Sections TABLE</h4>
+                        <h4 class="card-title mg-b-0">Brands TABLE</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 tx-gray-500 mb-3">List of Section that Contains Categories</p>
+                    <p class="tx-12 tx-gray-500 mb-3">A lot Of Brands</p>
                     <button type="button" class="btn btn-primary  modal-effect" data-effect="effect-rotate-left"
                         role="button" data-toggle="modal" data-target="#addNew">
                         <i class="fas fa-plus"></i> Add
@@ -42,41 +42,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sections as $section)
+                                @foreach ($brands as $brand)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $section->name }}</td>
+                                        <td>{{ $brand->name }}</td>
                                         <td>
-                                            <div class="spinner-grow  spinner-grow-sm {{ $section->status == '1' ? 'green' : 'red' }}"
-                                                role="status" id="status-{{ $section->id }}">
+                                            <div class="spinner-grow  spinner-grow-sm {{ $brand->status == '1' ? 'green' : 'red' }}"
+                                                role="status" id="status-{{ $brand->id }}">
                                                 <span class="sr-only">Loading...</span>
                                             </div>
-                                            <span class="text text-{{ $section->status == '1' ? 'success' : 'danger' }}"
-                                                id="status-text{{ $section->id }}">
-                                                {{ $section->status == '1' ? 'Active' : 'Inactive' }}
+                                            <span class="text text-{{ $brand->status == '1' ? 'success' : 'danger' }}"
+                                                id="status-text{{ $brand->id }}">
+                                                {{ $brand->status == '1' ? 'Active' : 'Inactive' }}
                                             </span>
                                         </td>
-                                        <td>{{ $section->created_at }}</td>
+                                        <td>{{ $brand->created_at }}</td>
                                         <td>
-                                            @if ($section->status == 1)
-                                                <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
-                                                    title="Update Status" id="section-{{ $section->id }}"
-                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
+                                            @if ($brand->status == 1)
+                                                <a href="javascript:void(0);" class="updateBrandStatus text-success p-2"
+                                                    title="Update Status" id="brand-{{ $brand->id }}"
+                                                    brand_id="{{ $brand->id }}" status="{{ $brand->status }}">
                                                     <i class="fas fa-power-off"></i>
                                                 </a>
                                             @else
-                                                <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
-                                                    title="Update Status" id="section-{{ $section->id }}"
-                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
+                                                <a href="javascript:void(0);" class="updateBrandStatus text-danger p-2"
+                                                    title="Update Status" id="brand-{{ $brand->id }}"
+                                                    brand_id="{{ $brand->id }}" status="{{ $brand->status }}">
                                                     <i class="fas fa-power-off text-danger"></i>
                                                 </a>
                                             @endif
                                             <a href="javascript:void(0);" role="button" data-toggle="modal" title="Update"
-                                                data-target="#edit{{ $section->id }}" class="text-primary">
+                                                data-target="#edit{{ $brand->id }}" class="text-primary">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </td>
-                                        @include('admin.sections.edit')
+                                        @include('admin.brands.edit')
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-    @include('admin.sections.add')
+    @include('admin.brands.add')
 @endsection
 @section('js')
     <!-- Internal Data tables -->
@@ -113,5 +113,5 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom/update-section-status.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/update-brand-status.js') }}"></script>
 @endsection

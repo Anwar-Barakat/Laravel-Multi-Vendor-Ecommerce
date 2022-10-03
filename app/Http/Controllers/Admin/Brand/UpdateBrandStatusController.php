@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Section;
+namespace App\Http\Controllers\Admin\Brand;
 
 use App\Http\Controllers\Controller;
-use App\Models\Section;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
-class UpdateSectionStatusController extends Controller
+class UpdateBrandStatusController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -17,14 +17,14 @@ class UpdateSectionStatusController extends Controller
     public function __invoke(Request $request)
     {
         if ($request->ajax()) {
-            $data = $request->only(['status', 'section_id']);
+            $data = $request->only(['status', 'brand_id']);
             $data['status'] == 1 ? $status = 0 : $status = 1;
-            Section::where('id', $data['section_id'])->update([
+            Brand::where('id', $data['brand_id'])->update([
                 'status'            => $status
             ]);
             return response()->json([
                 'status'            => $status,
-                'section_id'        => $data['section_id']
+                'brand_id'          => $data['brand_id']
             ]);
         }
     }

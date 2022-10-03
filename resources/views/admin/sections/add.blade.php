@@ -1,6 +1,6 @@
     {{-- Add New Section Modal --}}
-    <div class="modal effect-rotate-left" id="addNewSection" tabindex="-1" role="dialog"
-        aria-labelledby="addNewSectionLabel" aria-hidden="true">
+    <div class="modal effect-rotate-left" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

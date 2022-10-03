@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
 use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
 use App\Http\Controllers\Admin\Brand\BrandController;
+use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\GetCategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatus;
@@ -86,6 +87,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         // Brands
         // ======================
         Route::resource('brands',                       BrandController::class);
+        Route::post('update-brand-status',              UpdateBrandStatusController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

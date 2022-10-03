@@ -104,9 +104,6 @@
                         <li>
                             <a href="{{ route('admin.brands.index') }}" class="slide-item">Brands List</a>
                         </li>
-                        <li>
-                            <a href="{{ route('admin.brands.create') }}" class="slide-item">Add Brand</a>
-                        </li>
                     </ul>
                 </li>
             @endif
