@@ -13,7 +13,7 @@ class StoreBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'              => ['required', 'min:2', 'unique:brands,name'],
+            'status'            => ['required', 'in:0,1']
         ];
     }
 }

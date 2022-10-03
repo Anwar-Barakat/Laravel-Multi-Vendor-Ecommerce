@@ -13,7 +13,7 @@ class UpdateBrandRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class UpdateBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'              => ['required', 'min:3', 'unique:brands,name,' . $this->brand->id],
+            'status'            => ['required', 'in:0,1']
         ];
     }
 }

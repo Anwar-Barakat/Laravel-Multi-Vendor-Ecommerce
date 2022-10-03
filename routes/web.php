@@ -7,8 +7,7 @@ use App\Http\Controllers\Admin\AdminSetting\UpdatePasswordController;
 use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
-use App\Http\Controllers\Admin\Category\GetCategoryController;
-use App\Http\Controllers\Admin\Category\UpdateCategoryStatus;
+use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Section\UpdateSectionStatusController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
@@ -80,7 +79,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         // Categories
         // ======================
         Route::resource('categories',                   CategoryController::class);
-        Route::post('update-category-status',           UpdateCategoryStatus::class);
+        Route::post('update-category-status',           UpdateCategoryStatusController::class);
 
 
         // ======================

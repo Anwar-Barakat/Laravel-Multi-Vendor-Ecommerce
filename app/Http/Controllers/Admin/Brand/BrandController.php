@@ -38,7 +38,17 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        try {
+            if ($request->isMethod('post')) {
+                $data = $request->only(['name', 'status']);
+                Brand::create($data);
+
+                toastr()->success('Brand Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
@@ -72,7 +82,17 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data = $request->only(['name', 'status']);
+                $brand->update($data);
+
+                toastr()->success('Brand Has Been Updated Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
