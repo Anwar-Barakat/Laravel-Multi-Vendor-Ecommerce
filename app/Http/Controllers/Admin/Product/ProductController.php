@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Models\Product;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreProductRequest;
+use App\Http\Requests\Admin\UpdateProductRequest;
+use Illuminate\Pagination\Paginator;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        Paginator::useBootstrap();
+        $products   = Product::with(['section', 'category', 'brand', 'admin'])->paginate(1);
+        return view('admin.products.index', ['products' => $products]);
     }
 
     /**

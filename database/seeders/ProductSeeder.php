@@ -27,13 +27,16 @@ class ProductSeeder extends Seeder
         $brand_id       = Brand::inRandomOrder()->first()->id;
         $admin_id       = Admin::where('type', 'super-admin')->first()->id;
 
+        $title          = 'black casual t-shirt';
+        $url            = Str::slug($title);
+
         $product = [
             'section_id'        => $section_id,
             'category_id'       => $category_id,
             'brand_id'          => $brand_id,
             'admin_id'          => $admin_id,
-            'name'              => 'Black Casual T-shirt',
-            'url'               => 'black-casual-t-shirt',
+            'name'              => $title,
+            'url'               => $url,
             'code'              => rand(11111, 99999),
             'color'             => 'black',
             'price'             => rand(10, 30),

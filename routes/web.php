@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
+use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Section\UpdateSectionStatusController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
@@ -46,7 +47,6 @@ Route::get('/{page}', [AdminAdminController::class, 'index']);
 
 
 Route::prefix('admin/')->name('admin.')->group(function () {
-
     Route::get('login-form',                            [AdminLoginController::class, 'loginForm'])->name('login.form');
     Route::post('login',                                [AdminLoginController::class, 'login'])->name('login');
 
@@ -87,10 +87,15 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         // ======================
         Route::resource('brands',                       BrandController::class);
         Route::post('update-brand-status',              UpdateBrandStatusController::class);
+
+
+        // ======================
+        // Products
+        // ======================
+        Route::resource('products',                     ProductController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {
-
     Route::view('profile',                              'admin.vendors.profile')->name('profile');
     Route::put('update-details',                       UpdateVendorDetailController::class)->name('peronsal-info.update');
     Route::put('update-business',                      UpdateVendorBusinessController::class)->name('business-info.update');
