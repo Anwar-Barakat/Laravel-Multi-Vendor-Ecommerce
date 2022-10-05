@@ -18,9 +18,9 @@ class CreateCategoriesTable extends Migration
             $table->foreignId('section_id')->constrained('sections')->cascadeOnUpdate();
             $table->integer('parent_id');
             $table->string('name');
+            $table->string('url')->unique();
             $table->float('discount');
             $table->longText('description');
-            $table->string('url')->unique();
             $table->string('meta_title');
             $table->text('meta_description');
             $table->text('meta_keywords');

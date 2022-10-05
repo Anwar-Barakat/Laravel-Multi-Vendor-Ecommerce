@@ -15,9 +15,9 @@ class SectionSeeder extends Seeder
     public function run()
     {
         $sections = [
-            'Clothes',
-            'Electronic',
-            'Appliances',
+            'clothes',
+            'electronic',
+            'appliances',
         ];
 
         foreach ($sections as $section) {
