@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreProductRequest;
 use App\Http\Requests\Admin\UpdateProductRequest;
 use Illuminate\Pagination\Paginator;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class ProductController extends Controller
 {
@@ -18,7 +20,17 @@ class ProductController extends Controller
     public function index()
     {
         Paginator::useBootstrap();
-        $products   = Product::with(['section', 'category', 'brand', 'admin'])->paginate(1);
+
+        $products   = QueryBuilder::for(Product::class)
+            ->allowedFilters([
+                'name',
+                'code',
+                AllowedFilter::exact('section_id'),
+                AllowedFilter::exact('category_id'),
+                AllowedFilter::exact('brand_id'),
+                AllowedFilter::exact('admin_id'),
+            ])
+            ->paginate(10);
         return view('admin.products.index', ['products' => $products]);
     }
 

@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10",
         "spatie/laravel-medialibrary": "*",
+        "spatie/laravel-query-builder": "*",
         "yoeunes/toastr": "^2.0"
     },
     "require-dev": {
