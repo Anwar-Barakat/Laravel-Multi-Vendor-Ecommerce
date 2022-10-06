@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\StoreProductRequest;
 use App\Http\Requests\Admin\UpdateProductRequest;
 use Illuminate\Pagination\Paginator;
 use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\Filters\FiltersScope;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class ProductController extends Controller
@@ -24,11 +25,12 @@ class ProductController extends Controller
         $products   = QueryBuilder::for(Product::class)
             ->allowedFilters([
                 'name',
-                'code',
+                'price',
                 AllowedFilter::exact('section_id'),
                 AllowedFilter::exact('category_id'),
                 AllowedFilter::exact('brand_id'),
                 AllowedFilter::exact('admin_id'),
+                AllowedFilter::scope('max_price'),
             ])
             ->paginate(10);
         return view('admin.products.index', ['products' => $products]);

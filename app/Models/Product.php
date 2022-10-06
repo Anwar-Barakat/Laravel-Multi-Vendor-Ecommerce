@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -48,6 +49,11 @@ class Product extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(210)
             ->height(210);
+    }
+
+    public function scopeMaxPrice(Builder $query, $max_price): Builder
+    {
+        return $query->where("price", "<=", $max_price);
     }
 
     public function section()

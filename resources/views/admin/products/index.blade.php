@@ -25,7 +25,7 @@
                     <div class="card-body pb-0">
                         <div class="form-group">
                             <label class="form-label">Sections</label>
-                            <select name="beast" id="select-beast" class="form-control nice-select custom-select">
+                            <select name="beast" id="section_id" class="form-control nice-select custom-select">
                                 <option value="" selected>Select...</option>
                                 @foreach (App\Models\Section::all() as $section)
                                     <option value="{{ $section->id }}">{{ $section->name }}</option>
@@ -34,8 +34,8 @@
                         </div>
                         <div class="form-group mt-2">
                             <label class="form-label">Categories</label>
-                            <select name="beast" id="select-beast1" class="form-control  nice-select  custom-select">
-                                <option value="0" selected>Select...</option>
+                            <select name="beast" id="category_id" class="form-control nice-select custom-select">
+                                <option value="" selected selected>Select...</option>
                                 @foreach (App\Models\Category::where('status', 1)->get() as $category)
                                     <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
                                     @if ($category->subCategories)
@@ -54,25 +54,17 @@
                     <div class="card-body">
                         <div class="form-group mt-2">
                             <label class="form-label">Brands</label>
-                            <select name="beast" id="select-beast3" class="form-control  nice-select  custom-select">
-                                <option value="0">Select...</option>
+                            <select name="beast" id="brand_id" class="form-control  nice-select  custom-select">
+                                <option value="" selected>Select...</option>
                                 @foreach (App\Models\Brand::all() as $brand)
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group mt-2">
-                            <label class="form-label">Admins & Vendors</label>
-                            <select name="beast" id="select-beast3" class="form-control  nice-select  custom-select">
-                                <option value="0">Select...</option>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary-gradient mt-2 mb-2 pb-2" type="submit">Filter</button>
+                        <button class="btn btn-primary-gradient mt-2 mb-2 pb-2" type="button"
+                            id="select-filter">Filter</button>
                     </div>
                 </form>
             </div>
@@ -85,6 +77,18 @@
                             <input type="text" id="name" class="form-control" placeholder="Search by name ...">
                             <span class="input-group-append">
                                 <button class="btn btn-primary" type="button" id="name-filter">Search</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                <form>
+                    <div class="card-body p-2">
+                        <div class="input-group">
+                            <input type="text" id="price" class="form-control" placeholder="Search by max price ...">
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" type="button" id="price-filter">Search</button>
                             </span>
                         </div>
                     </div>
@@ -167,23 +171,84 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
+    {{-- filtering by name --}}
     <script>
-        let product_name = document.getElementById('name');
-        let product_name_btn = document.getElementById('name-filter');
-        product_name.onkeyup = () => {
-            product_name.value.length > 0 ?
-                product_name_btn.style.display = 'block' :
-                product_name_btn.style.display = 'none';
+        let pName = document.getElementById('name');
+        let pName_btn = document.getElementById('name-filter');
+        pName.onkeyup = () => {
+            pName.value.length > 0 ?
+                pName_btn.style.display = 'block' :
+                pName_btn.style.display = 'none';
         }
 
         function nameFiltering() {
             let url = "products?";
-            var name = product_name.value;
+            var name = pName.value;
 
             url += "filter[name]=" + name;
 
             document.location.href = url;
         }
-        product_name_btn.addEventListener('click', nameFiltering);
+        pName_btn.addEventListener('click', nameFiltering);
+    </script>
+
+    {{-- filtering by select options --}}
+    <script>
+        let p_section_id = document.getElementById('section_id');
+        let p_category_id = document.getElementById('category_id');
+        let p_brand_id = document.getElementById('brand_id');
+        let p_select_btn = document.getElementById('select-filter');
+        p_select_btn.style.display = 'none';
+
+        p_section_id.onchange = () => p_select_btn.style.display = 'block';
+        p_category_id.onchange = () => p_select_btn.style.display = 'block';
+        p_brand_id.onchange = () => p_select_btn.style.display = 'block';
+
+        function selectFiltering() {
+            let url = "products?";
+            var section_id = p_section_id.value;
+            var category_id = p_category_id.value;
+            var brand_id = p_brand_id.value;
+
+            if (section_id !== '' && category_id !== '' && brand_id !== '')
+                url += "filter[section_id]=" + section_id + "&filter[category_id]=" + category_id + "&filter[brand_id]=" +
+                brand_id
+            else if (section_id !== '' && category_id !== '')
+                url += "filter[section_id]=" + section_id + "&filter[category_id]=" + category_id;
+            else if (category_id !== '' && brand_id !== '')
+                url += "filter[category_id]=" + category_id + "&filter[brand_id]=" + brand_id;
+            else if (section_id !== '' && brand_id !== '')
+                url += "filter[section_id]=" + section_id + "&filter[brand_id]=" + brand_id;
+            else if (section_id !== '')
+                url += "filter[section_id]=" + section_id;
+            else if (category_id !== '')
+                url += "filter[category_id]=" + category_id;
+            else if (brand_id !== '')
+                url += "filter[brand_id]=" + brand_id;
+
+            document.location.href = url;
+        }
+        p_select_btn.addEventListener('click', selectFiltering);
+    </script>
+
+    {{-- filtering by name --}}
+    <script>
+        let pPrice = document.getElementById('price');
+        let pPrice_btn = document.getElementById('price-filter');
+        pPrice.onkeyup = () => {
+            pPrice.value.length > 0 && Number(pPrice.value) ?
+                pPrice_btn.style.display = 'block' :
+                pPrice_btn.style.display = 'none';
+        }
+
+        function priceFiltering() {
+            let url = "products?";
+            var price = pPrice.value;
+
+            url += "filter[max_price]=" + price;
+
+            document.location.href = url;
+        }
+        pPrice_btn.addEventListener('click', priceFiltering);
     </script>
 @endsection
