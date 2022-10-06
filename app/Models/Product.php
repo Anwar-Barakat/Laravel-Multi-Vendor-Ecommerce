@@ -16,6 +16,7 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
+        'section_id',
         'category_id',
         'brand_id',
         'admin_id',
@@ -34,7 +35,7 @@ class Product extends Model implements HasMedia
     ];
 
     const  COLORS = [
-        'red', 'green', 'yellow', 'olive', 'orange', 'teal', 'blue', 'violet', 'purple', 'pink',
+        'red', 'green', 'yellow', 'olive', 'orange', 'teal', 'blue', 'violet', 'purple', 'pink', 'white', 'gray', 'black'
     ];
 
     public function createdAt(): Attribute
@@ -48,9 +49,17 @@ class Product extends Model implements HasMedia
 
     public function registerMediaCollections(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')
-            ->width(210)
-            ->height(210);
+        $this->addMediaConversion('small')
+            ->width(250)
+            ->height(250);
+
+        $this->addMediaConversion('midium')
+            ->width(500)
+            ->height(500);
+
+        $this->addMediaConversion('large')
+            ->width(1000)
+            ->height(1000);
     }
 
     public function scopeMaxPrice(Builder $query, $max_price): Builder

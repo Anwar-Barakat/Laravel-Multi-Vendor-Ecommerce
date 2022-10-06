@@ -16,6 +16,10 @@ class BrandSeeder extends Seeder
     {
         $brands = [
             [
+                'name'              => 'Nike',
+                'status'            => rand(0, 1),
+            ],
+            [
                 'name'              => 'Arrow',
                 'status'            => rand(0, 1),
             ],

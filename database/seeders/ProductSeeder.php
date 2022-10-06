@@ -28,7 +28,6 @@ class ProductSeeder extends Seeder
         $admin_id       = Admin::where('type', 'super-admin')->first()->id;
 
         $title          = 'black casual t-shirt';
-        $url            = Str::slug($title);
 
         $product = [
             'section_id'        => $section_id,
@@ -36,7 +35,6 @@ class ProductSeeder extends Seeder
             'brand_id'          => $brand_id,
             'admin_id'          => $admin_id,
             'name'              => $title,
-            'url'               => $url,
             'code'              => rand(11111, 99999),
             'color'             => 'black',
             'price'             => rand(10, 30),
@@ -49,7 +47,7 @@ class ProductSeeder extends Seeder
             'is_featured'       => 'yes',
             'status'            => true,
         ];
-        if (is_null(Product::where('url', $product['url'])->where('code', $product['code'])->first()))
+        if (is_null(Product::where('code', $product['code'])->first()))
             Product::create($product);
     }
 }

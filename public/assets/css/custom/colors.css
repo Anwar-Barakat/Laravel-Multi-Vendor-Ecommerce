@@ -37,6 +37,15 @@
 .colors input[type="radio"]:checked + label .pink {
     border: 2px solid #851554;
 }
+.colors input[type="radio"]:checked + label .white {
+    border: 2px solid #9e9e9e;
+}
+.colors input[type="radio"]:checked + label .black {
+    border: 2px solid #ccc;
+}
+.colors input[type="radio"]:checked + label .pink {
+    border: 2px solid #f8f8f8;
+}
 
 .colors label {
     display: inline-block;
@@ -45,7 +54,7 @@
     cursor: pointer;
 }
 .colors label:hover span {
-    transform: scale(1.25);
+    transform: scale(1.4);
 }
 .colors label span {
     display: block;
@@ -83,6 +92,15 @@
 }
 .colors label span.pink {
     background: #e03997;
+}
+.colors label span.white {
+    background: #ffffff;
+}
+.colors label span.black {
+    background: #121212;
+}
+.colors label span.gray {
+    background: #9e9e9e;
 }
 
 .custom-flex {

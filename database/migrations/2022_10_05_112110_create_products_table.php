@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->foreignId('admin_id')->nullable()->constrained()->cascadeOnUpdate();
 
             $table->string('name')->unique();
-            $table->string('url')->unique();
             $table->string('code')->unique();
             $table->string('color');
             $table->float('price');

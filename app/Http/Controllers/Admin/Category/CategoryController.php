@@ -46,7 +46,6 @@ class CategoryController extends Controller
                 $category   = Category::create($data);
 
                 if ($request->hasFile('image') && $request->file('image')->isValid()) {
-                    $category->clearMediaCollection('categories');
                     $category->addMediaFromRequest('image')->toMediaCollection('categories');
                 }
 

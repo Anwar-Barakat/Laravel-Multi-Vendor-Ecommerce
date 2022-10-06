@@ -105,8 +105,9 @@
                                             <div class="badge bg-pink">Featured</div>
                                         @endif
                                     </div>
-                                    @if ($product->getFirstMediaUrl('products', 'thumb'))
-                                        <img class="w-100" src="{{ $product->getFirstMediaUrl('products', 'thumb') }}"
+                                    @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
+                                        <img class="w-100"
+                                            src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                             alt="product-image">
                                     @else
                                         <img class="w-100" src="{{ URL::asset('assets/img/ecommerce/01.jpg') }}"
