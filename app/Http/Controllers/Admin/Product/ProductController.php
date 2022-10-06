@@ -56,22 +56,26 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        if ($request->isMethod('post')) {
-            $data                   = $request->only(['category_id', 'brand_id', 'admin_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'description', 'meta_title', 'meta_description', 'meta_keywords', 'is_featured', 'status']);
-            $category               = Category::findOrFail($data['category_id']);
-            $section_id             = Section::findOrFail($category->section_id)->id;
-            $data['section_id']     = $section_id;
+        try {
+            if ($request->isMethod('post')) {
+                $data                   = $request->only(['category_id', 'brand_id', 'admin_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'description', 'meta_title', 'meta_description', 'meta_keywords', 'is_featured', 'status']);
+                $category               = Category::findOrFail($data['category_id']);
+                $section_id             = Section::findOrFail($category->section_id)->id;
+                $data['section_id']     = $section_id;
 
-            $product = Product::create($data);
+                $product = Product::create($data);
 
-            if ($request->hasFile('image') && $request->file('image')->isValid())
-                $product->addMediaFromRequest('image')->toMediaCollection('main_img_of_product');
+                if ($request->hasFile('image') && $request->file('image')->isValid())
+                    $product->addMediaFromRequest('image')->toMediaCollection('main_img_of_product');
 
-            if ($request->hasFile('video') && $request->file('video')->isValid())
-                $product->addMediaFromRequest('video')->toMediaCollection('main_video_of_product');
+                if ($request->hasFile('video') && $request->file('video')->isValid())
+                    $product->addMediaFromRequest('video')->toMediaCollection('main_video_of_product');
 
-            toastr()->success('Product Has Been Added Successfully');
-            return back();
+                toastr()->success('Product Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 
@@ -94,7 +98,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $sections = Section::with(['categories'])->get();
+        return view('admin.products.edit', ['product' => $product, 'sections' => $sections]);
     }
 
     /**
@@ -106,7 +111,31 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data                   = $request->only(['category_id', 'brand_id', 'admin_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'description', 'meta_title', 'meta_description', 'meta_keywords', 'is_featured', 'status']);
+                $category               = Category::findOrFail($data['category_id']);
+                $section_id             = Section::findOrFail($category->section_id)->id;
+                $data['section_id']     = $section_id;
+
+                $product->update($data);
+
+                if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                    $category->clearMediaCollection('main_img_of_product');
+                    $product->addMediaFromRequest('image')->toMediaCollection('main_img_of_product');
+                }
+
+                if ($request->hasFile('video') && $request->file('video')->isValid()) {
+                    $category->clearMediaCollection('main_video_of_product');
+                    $product->addMediaFromRequest('video')->toMediaCollection('main_video_of_product');
+                }
+
+                toastr()->success('Product Has Been Updated Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

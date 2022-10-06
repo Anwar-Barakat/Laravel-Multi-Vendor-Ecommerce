@@ -113,7 +113,7 @@
                                         <img class="w-100" src="{{ URL::asset('assets/img/ecommerce/01.jpg') }}"
                                             alt="product-image">
                                     @endif
-                                    <a href="#" class="adtocart">
+                                    <a href="{{ route('admin.products.edit', $product) }}" class="adtocart">
                                         <i class="las la-edit"></i>
                                     </a>
                                 </div>

@@ -5,7 +5,7 @@
     display: none;
 }
 .colors input[type="radio"]:checked + label span {
-    transform: scale(1.25);
+    transform: scale(1.5);
 }
 .colors input[type="radio"]:checked + label .red {
     border: 2px solid #711313;
@@ -54,7 +54,7 @@
     cursor: pointer;
 }
 .colors label:hover span {
-    transform: scale(1.4);
+    transform: scale(1.5);
 }
 .colors label span {
     display: block;
