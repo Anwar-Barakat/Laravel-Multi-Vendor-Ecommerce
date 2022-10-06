@@ -1,0 +1,93 @@
+.colors {
+    gap: 0.5rem;
+}
+.colors input[type="radio"] {
+    display: none;
+}
+.colors input[type="radio"]:checked + label span {
+    transform: scale(1.25);
+}
+.colors input[type="radio"]:checked + label .red {
+    border: 2px solid #711313;
+}
+.colors input[type="radio"]:checked + label .orange {
+    border: 2px solid #873a08;
+}
+.colors input[type="radio"]:checked + label .yellow {
+    border: 2px solid #816102;
+}
+.colors input[type="radio"]:checked + label .olive {
+    border: 2px solid #505a0b;
+}
+.colors input[type="radio"]:checked + label .green {
+    border: 2px solid #0e4e1d;
+}
+.colors input[type="radio"]:checked + label .teal {
+    border: 2px solid #003633;
+}
+.colors input[type="radio"]:checked + label .blue {
+    border: 2px solid #103f62;
+}
+.colors input[type="radio"]:checked + label .violet {
+    border: 2px solid #321a64;
+}
+.colors input[type="radio"]:checked + label .purple {
+    border: 2px solid #501962;
+}
+.colors input[type="radio"]:checked + label .pink {
+    border: 2px solid #851554;
+}
+
+.colors label {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.colors label:hover span {
+    transform: scale(1.25);
+}
+.colors label span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+    border-radius: 50%;
+}
+.colors label span.red {
+    background: #db2828;
+}
+.colors label span.orange {
+    background: #f2711c;
+}
+.colors label span.yellow {
+    background: #fbbd08;
+}
+.colors label span.olive {
+    background: #b5cc18;
+}
+.colors label span.green {
+    background: #21ba45;
+}
+.colors label span.teal {
+    background: #00b5ad;
+}
+.colors label span.blue {
+    background: #2185d0;
+}
+.colors label span.violet {
+    background: #6435c9;
+}
+.colors label span.purple {
+    background: #a333c8;
+}
+.colors label span.pink {
+    background: #e03997;
+}
+
+.custom-flex {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: fit-content;
+}

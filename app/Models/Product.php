@@ -16,12 +16,10 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'section_id',
         'category_id',
         'brand_id',
         'admin_id',
         'name',
-        'url',
         'code',
         'color',
         'price',
@@ -33,6 +31,10 @@ class Product extends Model implements HasMedia
         'meta_keywords',
         'is_featured',
         'status',
+    ];
+
+    const  COLORS = [
+        'red', 'green', 'yellow', 'olive', 'orange', 'teal', 'blue', 'violet', 'purple', 'pink',
     ];
 
     public function createdAt(): Attribute

@@ -30,8 +30,8 @@
                     class="form-control  @error('section_id') is-invalid @enderror">
                     <option value="" selected>Select...</option>
                     @foreach ($sections as $section)
-                        <option value="{{ $section->id }}">
-                            {{ $section->name }}</option>
+                        <option value="{{ $section->id }}" {{ old('section_id') == $section->id ? 'selected' : '' }}>
+                            {{ ucwords(str_replace('-', ' ', $section->name)) }}</option>
                     @endforeach
                 </select>
                 @error('section_id')
@@ -49,18 +49,15 @@
                         wire:model="parent_id">
                         <option value="" selected>Select...</option>
                         <option value="0">Root</option>
-                        <option style="background:#eeeeee; max-height: 1px; height: 1px;" disabled></option>
                         @foreach ($categories as $root)
-                            <option value="{{ $root->id }}">
+                            <option value="{{ $root->id }}" {{ old('parent_id') == $root->id ? 'selected' : '' }}>
                                 {{ ucwords($root->name) }}</option>
                             @foreach ($root->subCategories as $child)
-                                <option value="{{ $child->id }}">&nbsp;&raquo;
+                                <option value="{{ $child->id }}">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;&raquo;
                                     {{ ucwords($child->name) }}
                                 </option>
                             @endforeach
-                            @if ($loop->iteration < count($categories))
-                                <option style="background:#eeeeee; max-height: 1px; height: 1px;" disabled></option>
-                            @endif
                         @endforeach
                     </select>
                     @error('parent_id')

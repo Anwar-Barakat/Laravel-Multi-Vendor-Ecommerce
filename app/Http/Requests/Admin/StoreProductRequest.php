@@ -13,7 +13,7 @@ class StoreProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class StoreProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_id'       => ['required'],
+            'brand_id'          => ['required'],
+            'admin_id'          => ['required'],
+            'name'              => ['required', 'min:3', 'unique:products,name', 'regex:/^[\pL\s\-]+$/u'],
+            'code'              => ['required'],
+            'color'             => ['required'],
+            'price'             => ['required', 'numeric'],
+            'discount'          => ['required', 'numeric'],
+            'weight'            => ['required', 'numeric'],
+            'description'       => ['required', 'min:10'],
+            'meta_title'        => ['required', 'min:3'],
+            'meta_description'  => ['required', 'min:10'],
+            'meta_keywords'     => ['required', 'min:10'],
+            'is_featured'       => ['required', 'in:no,yes'],
+            'status'            => ['required', 'in:0,1'],
+            'image'             => ['required', 'image', 'mimes:png,jpg', 'max:1024'],
         ];
     }
 }

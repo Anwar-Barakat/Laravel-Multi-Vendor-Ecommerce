@@ -139,7 +139,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center pt-3">
-                                    <h4>No results found</h4>
+                                    <img src="{{ URL::asset('assets/img/svgicons/note_taking.svg') }}" alt=""
+                                        width="120">
+                                    <h5 class="mg-b-10 mg-t-15 tx-18">Not results found !!</h5>
                                 </div>
                             </div>
                         </div>

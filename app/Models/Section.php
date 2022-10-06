@@ -24,7 +24,7 @@ class Section extends Model
 
     public function categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class)->with('subCategories')->where('parent_id', 0);
     }
 
     public function parentCategories()
