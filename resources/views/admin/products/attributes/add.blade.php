@@ -7,6 +7,8 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 @endsection
 
 @section('title', 'Add Product Attributes')
@@ -45,7 +47,25 @@
                                 </tr>
                                 <tr>
                                     <th>Color</th>
-                                    <td>{{ ucwords($product->color) }}</td>
+                                    <td>
+                                        <div class="colors custom-flex">
+                                            @foreach (App\Models\Product::COLORS as $item)
+                                                @if ($product->color == $item)
+                                                    <input type="radio" name="color" id="{{ $item }}"
+                                                        value="{{ $item }}" />
+                                                    <label for="{{ $item }}">
+                                                        <span class="{{ $item }}"></span>
+                                                    </label>
+                                                @endif
+                                            @endforeach
+                                            @error('color')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </td>
+
                                 </tr>
                                 <tr>
                                     <th>Price</th>
@@ -65,98 +85,7 @@
                     </div>
                 </div>
                 @if (!empty($product->attributes))
-                    <div class="card-header pb-0">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title mg-b-0">Added Attributes</h4>
-                        </div>
-                    </div>
-                    <div class="card-body product-attributes-info">
-                        <form action="{{ route('admin.products.attributes.update', $product) }}" method="post"
-                            name="UpdateProductAttributes" id="UpdateProductAttributes">
-                            @csrf
-                            <div class="table-responsive">
-                                <table class="table text-md-nowrap" id="productAttributes">
-                                    <thead>
-                                        <tr>
-                                            <th class="wd-15p border-bottom-0">#</th>
-                                            <th class="wd-15p border-bottom-0">Size</th>
-                                            <th class="wd-15p border-bottom-0">SKU</th>
-                                            <th class="wd-15p border-bottom-0">Price</th>
-                                            <th class="wd-15p border-bottom-0">Stock</th>
-                                            <th class="wd-15p border-bottom-0">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($product->attributes as $attribute)
-                                            <input type="text" class="d-none" name="attribute_id[]"
-                                                value="{{ $attribute['id'] }}">
-                                            <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $attribute['size'] }}</td>
-                                                <td>{{ $attribute['sku'] }}</td>
-                                                <td>
-                                                    <input type="number" class="form-control" name="price[]"
-                                                        value="{{ $attribute['price'] }}" style="height: 2rem;">
-                                                </td>
-                                                <td>
-                                                    <input type="number" class="form-control" name="stock[]"
-                                                        value="{{ $attribute['stock'] }}" style="height: 2rem;">
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown dropup">
-                                                        <button aria-expanded="false" aria-haspopup="true"
-                                                            style="font-size: 11px" class="btn ripple btn-secondary"
-                                                            data-toggle="dropdown"
-                                                            type="button">{{ __('translation.actions') }}
-                                                            <i class="fas fa-caret-down ml-1"></i></button>
-                                                        <div class="dropdown-menu tx-13">
-                                                            <form
-                                                                action="{{ route('admin.products.attributes.destroy', $attribute['id']) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                @if ($attribute['status'] == 1)
-                                                                    <a href="javascript:void(0);" title="Update Status"
-                                                                        class="updateAttributeStatus text-success dropdown-item"
-                                                                        id="attribute-{{ $attribute['id'] }}"
-                                                                        attribute_id="{{ $attribute['id'] }}"
-                                                                        status="{{ $attribute['status'] }}">
-                                                                        <i class="fas fa-power-off "></i>
-                                                                        {{ __('translation.active') }}
-                                                                    </a>
-                                                                @else
-                                                                    <a href="javascript:void(0);" title="Update Status"
-                                                                        class="updateAttributeStatus text-danger  dropdown-item"
-                                                                        id="attribute-{{ $attribute['id'] }}"
-                                                                        attribute_id="{{ $attribute['id'] }}"
-                                                                        status="{{ $attribute['status'] }}">
-                                                                        <i class="fas fa-power-off "></i>
-                                                                        {{ __('translation.disactive') }}
-                                                                    </a>
-                                                                @endif
-                                                                <a href="javascript:void(0);"
-                                                                    class="confirmationDelete dropdown-item"
-                                                                    data-attribute="{{ $attribute['id'] }}"
-                                                                    title="{{ __('buttons.delete') }}">
-                                                                    <i class="fas fa-trash text-danger"></i>
-                                                                    {{ __('buttons.delete') }}
-                                                                </a>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="form-group mb-0 mt-3 justify-content-end">
-                                <div>
-                                    <button type="submit" class="button-30"
-                                        role="button">{{ __('buttons.update') }}</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    @include('admin.products.attributes.index')
                 @endif
             </div>
         </div>
@@ -206,7 +135,7 @@
                         <hr>
                         <div class="row mt-2">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary-gradient">
                                     <i class="fas fa-plus"></i> Add
                                 </button>
                             </div>

@@ -15,6 +15,12 @@ class CreateAttributesTable extends Migration
     {
         Schema::create('attributes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('product_id')->constrained()->cascadeOnUpdate();
+            $table->string('size');
+            $table->float('price');
+            $table->integer('stock');
+            $table->string('sku');
+            $table->boolean('status')->default('1');
             $table->timestamps();
         });
     }

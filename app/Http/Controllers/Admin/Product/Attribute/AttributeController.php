@@ -36,9 +36,9 @@ class AttributeController extends Controller
      * @param  \App\Http\Requests\StoreAttributeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAttributeRequest $request)
+    public function store(StoreAttributeRequest $request, Product $product)
     {
-        //
+        return $request;
     }
 
     /**
@@ -70,9 +70,9 @@ class AttributeController extends Controller
      * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAttributeRequest $request, Attribute $attribute)
+    public function update(UpdateAttributeRequest $request, Product $product)
     {
-        //
+        return $request;
     }
 
     /**

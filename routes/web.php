@@ -98,7 +98,8 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //?_________________________
         //? Products Attributes
         //?_________________________
-        Route::resource('products.attributes',          AttributeController::class);
+        Route::resource('products.attributes',          AttributeController::class)->only(['create', 'store', 'destroy']);
+        Route::put('products/{product}/attributes',     [AttributeController::class, 'update'])->name('products.attributes.update');
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {
