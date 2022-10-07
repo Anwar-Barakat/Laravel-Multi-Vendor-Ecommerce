@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
+use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Section\UpdateSectionStatusController;
@@ -61,38 +62,43 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::put('update-password',                   UpdatePasswordController::class)->name('update_password');
 
 
-        // ======================
-        // Admins
-        // ======================
+        //?_________________________
+        //? Admins
+        //?_________________________
         Route::resource('admins',                       AdminController::class);
         Route::post('update-admin-status',              UpdateAdminStatusController::class);
 
 
-        // ======================
-        // Sections
-        // ======================
+        //?_________________________
+        //? Sections
+        //?_________________________
         Route::resource('sections',                     SectionController::class);
         Route::post('update-section-status',            UpdateSectionStatusController::class);
 
 
-        // ======================
-        // Categories
-        // ======================
+        //?_________________________
+        //? Categories
+        //?_________________________
         Route::resource('categories',                   CategoryController::class);
         Route::post('update-category-status',           UpdateCategoryStatusController::class);
 
 
-        // ======================
-        // Brands
-        // ======================
+        //?_________________________
+        //? Brands
+        //?_________________________
         Route::resource('brands',                       BrandController::class);
         Route::post('update-brand-status',              UpdateBrandStatusController::class);
 
 
-        // ======================
-        // Products
-        // ======================
+        //?_________________________
+        //? Products
+        //?_________________________
         Route::resource('products',                     ProductController::class);
+
+        //?_________________________
+        //? Products Attributes
+        //?_________________________
+        Route::resource('products.attributes',          AttributeController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

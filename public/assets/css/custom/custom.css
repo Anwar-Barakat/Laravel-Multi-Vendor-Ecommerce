@@ -35,5 +35,45 @@ img {
     object-fit: cover !important;
 }
 
-/* colors */
+/* **************************************************************************** */
+/* **************** MultField Form Product Attributes  ************************ */
 
+.multiAttributesForm {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 1rem;
+    background: #ecf0fa;
+    flex-wrap: wrap;
+}
+
+.added-field-attribute {
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    column-gap: 1.5rem;
+}
+
+.product-info {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    display: grid;
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .product-info {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media screen and (max-width: 551px) {
+    .product-info {
+        grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
+    }
+    .multiAttributesForm .form-group {
+        width: 100%;
+    }
+}
+
+/* **************** MultField Form Product Attributes  ************************ */
+/* **************************************************************************** */
