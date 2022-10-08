@@ -24,7 +24,7 @@
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 tx-gray-500 mb-3">List of Categories & Sub-categories</p>
-                    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.categories.create') }}" class="btn btn-primary-gradient">
                         <i class="fas fa-plus"></i> Add
                     </a>
                 </div>

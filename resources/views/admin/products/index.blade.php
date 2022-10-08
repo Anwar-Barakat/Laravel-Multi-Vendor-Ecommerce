@@ -133,10 +133,16 @@
                                             ${{ $product->price }}
                                             <span class="text-secondary font-weight-normal tx-13 ml-1 prev-price">$59</span>
                                         </h4>
-                                        <a href="{{ route('admin.products.attributes.create', $product) }}"
-                                            class="btn btn-info-gradient btn-sm rounded">
-                                            <i class="las la-plus"></i>
-                                        </a>
+                                        <div class="d-flex align-content-center" style="gap:.5rem">
+                                            <a href="{{ route('admin.products.attributes.create', $product) }}"
+                                                class="btn btn-info-gradient btn-sm rounded">
+                                                <i class="las la-plus"></i>
+                                            </a>
+                                            <a href="{{ route('admin.products.attachments.create', $product) }}"
+                                                class="btn btn-dark-gradient btn-sm rounded">
+                                                <i class="las la-images"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

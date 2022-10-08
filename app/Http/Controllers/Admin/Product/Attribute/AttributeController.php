@@ -110,9 +110,9 @@ class AttributeController extends Controller
             foreach ($data['attribute_id'] as $key => $value) {
                 if (!empty($value)) {
                     Attribute::where(['product_id' => $product->id, 'id' => $value])->update([
-                        'size'         => $data['size'][$key],
+                        'size'          => $data['size'][$key],
                         'price'         => $data['price'][$key],
-                        'stock'          => $data['stock'][$key],
+                        'stock'         => $data['stock'][$key],
                     ]);
                 }
             }

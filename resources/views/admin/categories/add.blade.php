@@ -124,7 +124,7 @@
                         <hr>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add</button>
+                                <button type="submit" class="btn btn-primary-gradient"><i class="fas fa-plus"></i> Add</button>
                             </div>
                         </div>
                     </form>

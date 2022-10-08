@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Brand\BrandController;
 use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
+use App\Http\Controllers\Admin\Product\Attachment\AttachmentController;
 use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
 use App\Http\Controllers\Admin\Product\Attribute\UpdateAttributeStatusController;
 use App\Http\Controllers\Admin\Product\ProductController;
@@ -102,6 +103,11 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::resource('products.attributes',          AttributeController::class)->only(['create', 'store']);
         Route::put('products/{product}/attributes',     [AttributeController::class, 'update'])->name('products.attributes.update');
         Route::post('update-attribute-status',          UpdateAttributeStatusController::class);
+
+        //?_________________________
+        //? Products Attributes
+        //?_________________________
+        Route::resource('products.attachments',          AttachmentController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {
