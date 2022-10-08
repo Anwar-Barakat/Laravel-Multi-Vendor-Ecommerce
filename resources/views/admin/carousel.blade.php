@@ -149,7 +149,8 @@
                     <div>
                         <h6 class="card-title mb-1">With Caption</h6>
                         <p class="text-muted card-sub-title">Add captions to your slides easily with the
-                            <code>.carousel-caption</code> element within any <code>.carousel-item.</code></p>
+                            <code>.carousel-caption</code> element within any <code>.carousel-item.</code>
+                        </p>
                     </div>
                     <div>
                         <div class="carousel slide" data-ride="carousel" id="carouselExample4">
@@ -301,7 +302,7 @@
             <div class="card custom-card">
                 <div class="card-body ht-100p">
                     <div>
-                        <h6 class="card-title mb-1">Multi Slider</h6>
+                        <h6 class="card-title mb-1">All Attachments</h6>
                         <p class="text-muted card-sub-title">Multislider is a jQuery powered slideshow that specializes in
                             showing more than one slide at a time. There's no need to find messy CSS and JS work arounds for
                             other single-slide solutions. Multislider allows the developer to focus fully on each individual

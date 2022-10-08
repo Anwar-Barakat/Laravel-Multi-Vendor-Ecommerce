@@ -7,6 +7,10 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <!---Internal  Owl Carousel css-->
+    <link href="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
+    <!---Internal  Multislider css-->
+    <link href="{{ URL::asset('assets/plugins/multislider/multislider.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 @endsection
@@ -86,6 +90,28 @@
                 </div>
             </div>
         </div>
+        @if ($product->getFirstMediaUrl('product_attachments'))
+            <div class="col-lg-12 col-md-12">
+                <div class="card custom-card">
+                    <div class="card-body ht-100p">
+                        <div>
+                            <h6 class="card-title mb-1">All Attachments</h6>
+                        </div>
+                        <div id="basicSlider">
+                            <div class="MS-content">
+                                @foreach ($product->getMedia('product_attachments') as $key => $attachment)
+                                    <div class="item">
+                                        <a href="#" target="_blank">
+                                            <img src="{{ $attachment->getUrl('small') }}" alt="" />
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
     <div class="row  mb-5">
         <div class="col-sm-12">
@@ -140,9 +166,6 @@
                                 </div>
                             @endif
                         </div>
-                        @if ($product->getFirstMediaUrl('product_attachments'))
-                            {{-- <x-delete-modal :id="$product->id" :title="'Delete All Attachments'" :action="" /> --}}
-                        @endif
                     </form>
                     <hr>
                     <div class="d-flex justify-content-between">
@@ -176,9 +199,12 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
-    <!-- Internal Modal js-->
-    <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
-    <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
+
+    <!-- Internal Owl Carousel js-->
+    <script src="{{ URL::asset('assets/plugins/owl-carousel/owl.carousel.js') }}"></script>
+    <!---Internal  Multislider js-->
+    <script src="{{ URL::asset('assets/plugins/multislider/multislider.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/carousel.js') }}"></script>
 
     <script>
         $(document).on("click", ".confirmationDeleteAllAttachments", function() {
