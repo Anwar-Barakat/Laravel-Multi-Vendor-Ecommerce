@@ -77,7 +77,6 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Sections
         //?_________________________
         Route::resource('sections',                     SectionController::class);
-        Route::post('update-section-status',            UpdateSectionStatusController::class);
 
 
         //?_________________________

@@ -9,7 +9,6 @@
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 
-
 @section('title', 'Sections List')
 
 @section('breadcamb', 'Sections List')
@@ -47,34 +46,18 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>
-                                            <div class="spinner-grow  spinner-grow-sm {{ $section->status == '1' ? 'green' : 'red' }}"
-                                                role="status" id="status-{{ $section->id }}">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                            <span class="text text-{{ $section->status == '1' ? 'success' : 'danger' }}"
-                                                id="status-text{{ $section->id }}">
-                                                {{ $section->status == '1' ? 'Active' : 'Inactive' }}
-                                            </span>
+                                            @livewire('admin.update-section-status', ['status' => $section->status, 'section_id' => $section->id])
                                         </td>
                                         <td>{{ $section->created_at }}</td>
                                         <td>
-                                            @if ($section->status == 1)
-                                                <a href="javascript:void(0);" class="updateSectionStatus text-success p-2"
-                                                    title="Update Status" id="section-{{ $section->id }}"
-                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
-                                                    <i class="fas fa-power-off"></i>
+                                            <span class="tag tag-gray">
+                                                <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                    title="Update" data-target="#edit{{ $section->id }}"
+                                                    style="color: white">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
                                                 </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateSectionStatus text-danger p-2"
-                                                    title="Update Status" id="section-{{ $section->id }}"
-                                                    section_id="{{ $section->id }}" status="{{ $section->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" role="button" data-toggle="modal" title="Update"
-                                                data-target="#edit{{ $section->id }}" class="text-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                            </span>
                                         </td>
                                         @include('admin.sections.edit')
                                     </tr>
@@ -112,6 +95,4 @@
     <!-- Internal Modal js-->
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
-
-    <script src="{{ asset('assets/js/custom/update-section-status.js') }}"></script>
 @endsection

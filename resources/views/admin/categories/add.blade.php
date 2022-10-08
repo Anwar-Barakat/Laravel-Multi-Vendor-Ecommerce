@@ -6,12 +6,6 @@
     <!---Internal Fileupload css-->
     <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 @endsection
-
-
-@section('livewire-css')
-    @livewireStyles
-@endsection
-
 @section('title', 'Add Category')
 
 @section('breadcamb', 'Add Category')
@@ -158,8 +152,4 @@
     <!--Internal Fileuploads js-->
     <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
-@endsection
-
-@section('livewire-js')
-    @livewireScripts
 @endsection
