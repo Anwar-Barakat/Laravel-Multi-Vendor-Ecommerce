@@ -97,33 +97,38 @@
                     <h4 class="card-title mb-1">Add Attributes</h4>
                 </div>
                 <div class="card-body pt-0">
+                    @if ($errors->any())
+                        <ul class="list-unstyled alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <form class="form-horizontal" method="POST"
-                        action="{{ route('admin.products.attributes.store', $product) }}" enctype="multipart/form-data"
-                        name="ProductAttributesForm" id="ProductAttributesForm">
+                        action="{{ route('admin.products.attributes.store', $product) }}">
                         @csrf
-                        <input type="hidden" name="id" value="{{ $product->id }}">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="field_wrapper multiAttributesForm p-2">
                                     <div class="form-group">
                                         <label for="size">Size</label>
-                                        <input type="text" name="size[]" value="{{ old('size') }}" id="size"
-                                            class="form-control" placeholder="Type the size" required />
+                                        <input type="text" name="size[]" id="size" class="form-control"
+                                            placeholder="Type the size" required />
                                     </div>
                                     <div class="form-group">
                                         <label for="sku">SKU</label>
-                                        <input type="text" name="sku[]" value="{{ old('sku') }}" id="sku"
-                                            class="form-control" required="" placeholder="Type the sku" />
+                                        <input type="text" name="sku[]" id="sku" class="form-control"
+                                            required="" placeholder="Type the sku" />
                                     </div>
                                     <div class="form-group">
                                         <label for="price">Price</label>
-                                        <input type="number" name="price[]" value="{{ old('price') }}" id="price"
-                                            class="form-control" required="" placeholder="Type the price" />
+                                        <input type="number" name="price[]" id="price" class="form-control"
+                                            required="" placeholder="Type the price" />
                                     </div>
                                     <div class="form-group">
                                         <label for="stock">Stock</label>
-                                        <input type="number" name="stock[]" value="{{ old('stock') }}" id="stock"
-                                            class="form-control" required="" placeholder="Type the stock" />
+                                        <input type="number" name="stock[]" id="stock" class="form-control"
+                                            required="" placeholder="Type the stock" />
                                     </div>
                                     <a href="javascript:void(0);" class="add_button btn btn-success-gradient"
                                         title="Add field" style="margin-top: 13px;">
@@ -178,16 +183,16 @@
             var fieldHTML =
                 `<div class="multiAttributesForm mt-3">
                     <div class="form-group">
-                        <input type="text" name="size[]" value="{{ old('size') }}" class="form-control" required="" placeholder="Type the size" id="size" />
+                        <input type="text" name="size[]" class="form-control" required="" placeholder="Type the size" id="size" />
                     </div>
                     <div class="form-group">
-                        <input type="text" name="sku[]" value="{{ old('sku') }}" class="form-control" required="" placeholder="Type the sku" id="sku" />
+                        <input type="text" name="sku[]" class="form-control" required="" placeholder="Type the sku" id="sku" />
                     </div>
                     <div class="form-group">
-                        <input type="number" name="price[]" value="{{ old('price') }}" class="form-control" required="" placeholder="Type the price" id="price" />
+                        <input type="number" name="price[]" class="form-control" required="" placeholder="Type the price" id="price" />
                     </div>
                     <div class="form-group">
-                    <input type="number" name="stock[]" value="{{ old('stock') }}" class="form-control" required="" placeholder="Type the stock" id="stock" />
+                    <input type="number" name="stock[]" class="form-control" required="" placeholder="Type the stock" id="stock" />
                     </div>
                     <a href="javascript:void(0);" class="mb-3 remove_button btn btn-danger-gradient added-field-attribute-deleted-btn"><i class='fas fa-times'></i> Delete Row</a>
                 </div>`;

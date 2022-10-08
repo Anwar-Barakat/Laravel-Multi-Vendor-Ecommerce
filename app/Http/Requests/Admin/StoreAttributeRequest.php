@@ -24,10 +24,10 @@ class StoreAttributeRequest extends FormRequest
     public function rules()
     {
         return [
-            'size.*'      => 'required|unique:attributes,size',
-            'sku.*'       => 'required|unique:attributes,sku',
-            'price.*'     => 'required|numeric|array',
-            'strock.*'    => 'required|numeric|array',
+            'size.*'      => 'required',
+            'sku.*'       => 'required',
+            'price.*'     => 'required|numeric',
+            'strock.*'    => 'required|numeric',
         ];
     }
 }

@@ -158,6 +158,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'sku.0'   => 'First SKU Row',
+        'sku.1'   => 'Second SKU Row',
+        'sku.2'   => 'Third SKU Row',
+        'sku.3'   => 'Fourth SKU Row',
+        'sku.4'   => 'Fifth SKU Row',
+        'sku.5'   => 'Sixth SKU Row',
+        'sku.6'   => 'Seventh SKU Row',
+        'sku.7'   => 'Eighth SKU Row',
+        'sku.8'   => 'Nineth SKU Row',
+        'sku.9'   => 'Tenth SKU Row',
+    ],
 
 ];

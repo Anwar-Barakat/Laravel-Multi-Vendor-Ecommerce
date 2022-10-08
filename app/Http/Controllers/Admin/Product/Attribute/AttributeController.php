@@ -38,7 +38,39 @@ class AttributeController extends Controller
      */
     public function store(StoreAttributeRequest $request, Product $product)
     {
-        return $request;
+        try {
+            $data = $request->only(['size', 'sku', 'price', 'stock']);
+
+            foreach ($data['sku'] as $key => $value) {
+                if (!empty($value)) {
+                    // SKU Must Be Unique :
+                    $skuCount = Attribute::where('sku', $value)->count();
+                    if ($skuCount > 0) {
+                        toastr()->info('SkU Has Already Existed');
+                        return back();
+                    }
+                    // Size of Product Must Be Unique :
+                    $sizeCount = Attribute::where(['size' => $data['size'][$key], 'product_id' => $product->id])->count();
+                    if ($sizeCount > 0) {
+                        toastr()->info('Size Has Already Existed');
+                        return back();
+                    }
+
+                    Attribute::create([
+                        'product_id'    => $product->id,
+                        'sku'           => $value,
+                        'size'          => $data['size'][$key],
+                        'price'         => $data['price'][$key],
+                        'stock'         => $data['stock'][$key],
+                        'status'        => 1,
+                    ]);
+                }
+            }
+            toastr()->success('Attributes Has Been Added Successfuly');
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
