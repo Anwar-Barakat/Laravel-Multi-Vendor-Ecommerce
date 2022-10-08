@@ -46,7 +46,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $section->name }}</td>
                                         <td>
-                                            @livewire('admin.update-section-status', ['status' => $section->status, 'section_id' => $section->id])
+                                            @livewire('admin.section.update-status', ['status' => $section->status, 'section_id' => $section->id])
                                         </td>
                                         <td>{{ $section->created_at }}</td>
                                         <td>

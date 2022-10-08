@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        @livewire('get-section-categories', [
+                        @livewire('admin.category.get-section-categories', [
                             'name' => $category->name,
                             'url' => $category->url,
                             'section' => $category->section_id,

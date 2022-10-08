@@ -24,7 +24,7 @@
                     <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}"
                         enctype="multipart/form-data">
                         @csrf
-                        @livewire('get-section-categories')
+                        @livewire('admin.category.get-section-categories')
                         <div class="row">
                             <div class="col-md-12 col-lg-6 d-flex flex-column justify-content-between">
                                 <div>
@@ -118,7 +118,8 @@
                         <hr>
                         <div class="form-group mb-0 mt-3 justify-content-end">
                             <div>
-                                <button type="submit" class="btn btn-primary-gradient"><i class="fas fa-plus"></i> Add</button>
+                                <button type="submit" class="btn btn-primary-gradient"><i class="fas fa-plus"></i>
+                                    Add</button>
                             </div>
                         </div>
                     </form>

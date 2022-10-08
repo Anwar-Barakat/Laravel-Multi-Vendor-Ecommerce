@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Section;
 
 use App\Models\Section;
 use Livewire\Component;
 
-class UpdateSectionStatus extends Component
+class UpdateStatus extends Component
 {
     public $status;
     public $section_id;
@@ -23,6 +23,6 @@ class UpdateSectionStatus extends Component
 
     public function render()
     {
-        return view('livewire.admin.update-section-status');
+        return view('livewire.admin.section.update-status');
     }
 }

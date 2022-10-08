@@ -47,34 +47,19 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $brand->name }}</td>
                                         <td>
-                                            <div class="spinner-grow  spinner-grow-sm {{ $brand->status == '1' ? 'green' : 'red' }}"
-                                                role="status" id="status-{{ $brand->id }}">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                            <span class="text text-{{ $brand->status == '1' ? 'success' : 'danger' }}"
-                                                id="status-text{{ $brand->id }}">
-                                                {{ $brand->status == '1' ? 'Active' : 'Inactive' }}
-                                            </span>
+                                            @livewire('admin.brand.update-status', ['status' => $brand->status, 'brand_id' => $brand->id])
                                         </td>
                                         <td>{{ $brand->created_at }}</td>
                                         <td>
-                                            @if ($brand->status == 1)
-                                                <a href="javascript:void(0);" class="updateBrandStatus text-success p-2"
-                                                    title="Update Status" id="brand-{{ $brand->id }}"
-                                                    brand_id="{{ $brand->id }}" status="{{ $brand->status }}">
-                                                    <i class="fas fa-power-off"></i>
+                                            <span class="tag tag-gray">
+
+                                                <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                    title="Update" data-target="#edit{{ $brand->id }}"
+                                                    style="color: white">
+                                                    <i class="fas fa-edit"></i>
+                                                    Edit
                                                 </a>
-                                            @else
-                                                <a href="javascript:void(0);" class="updateBrandStatus text-danger p-2"
-                                                    title="Update Status" id="brand-{{ $brand->id }}"
-                                                    brand_id="{{ $brand->id }}" status="{{ $brand->status }}">
-                                                    <i class="fas fa-power-off text-danger"></i>
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" role="button" data-toggle="modal" title="Update"
-                                                data-target="#edit{{ $brand->id }}" class="text-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
+                                            </span>
                                         </td>
                                         @include('admin.brands.edit')
                                     </tr>

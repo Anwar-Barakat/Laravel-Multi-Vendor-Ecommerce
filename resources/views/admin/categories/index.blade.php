@@ -58,14 +58,7 @@
                                                 {{ ucwords($category->section->name) }}</span>
                                         </td>
                                         <td>
-                                            <div class="spinner-grow spinner-grow-sm {{ $category->status == '1' ? 'green' : 'red' }}"
-                                                role="status" id="status-{{ $category->id }}">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                            <span class="text text-{{ $category->status == '1' ? 'success' : 'danger' }}"
-                                                id="status-text{{ $category->id }}">
-                                                {{ $category->status == '1' ? 'Active' : 'Inactive' }}
-                                            </span>
+                                            @livewire('admin.category.update-status', ['status' => $category->status, 'category_id' => $category->id])
                                         </td>
                                         <td>{{ $category->created_at }}</td>
                                         <td>
@@ -81,27 +74,6 @@
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        @if ($category->status == 1)
-                                                            <a href="javascript:void(0);"
-                                                                title="{{ __('translation.update_status') }}"
-                                                                class="updateCategoryStatus text-success dropdown-item"
-                                                                id="category-{{ $category->id }}"
-                                                                category_id="{{ $category->id }}"
-                                                                status="{{ $category->status }}">
-                                                                <i class="fas fa-power-off"></i>&nbsp;
-                                                                Active
-                                                            </a>
-                                                        @else
-                                                            <a href="javascript:void(0);"
-                                                                title="{{ __('translation.update_status') }}"
-                                                                class="updateCategoryStatus text-danger  dropdown-item"
-                                                                id="category-{{ $category->id }}"
-                                                                category_id="{{ $category->id }}"
-                                                                status="{{ $category->status }}">
-                                                                <i class="fas fa-power-off "></i>&nbsp;
-                                                                Inactive
-                                                            </a>
-                                                        @endif
                                                         <a href="{{ route('admin.categories.edit', $category) }}"
                                                             class="dropdown-item" title="Edit">
                                                             <i class="fas fa-edit text-primary"></i>&nbsp;
