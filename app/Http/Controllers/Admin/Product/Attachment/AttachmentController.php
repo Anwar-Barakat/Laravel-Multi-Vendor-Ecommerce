@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Product\Attachment;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class AttachmentController extends Controller
 {
@@ -99,6 +100,12 @@ class AttachmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $media = Media::whereId($id)->first();
+            $media->delete();
+            toastr()->info('Attachment Has Been Deleted Successfully');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+        }
     }
 }

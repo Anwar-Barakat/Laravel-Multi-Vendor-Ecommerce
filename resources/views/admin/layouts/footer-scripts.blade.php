@@ -26,6 +26,10 @@
 <!-- Eva-icons js -->
 <script src="{{ URL::asset('assets/js/eva-icons.min.js') }}"></script>
 
+{{-- Sweet Alert 2 --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     $.ajaxSetup({
         headers: {
@@ -41,6 +45,9 @@
 <!-- custom js -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script><!-- Left-menu js-->
 <script src="{{ URL::asset('assets/plugins/side-menu/sidemenu.js') }}"></script>
+
+
+
 
 
 @stack('scripts')

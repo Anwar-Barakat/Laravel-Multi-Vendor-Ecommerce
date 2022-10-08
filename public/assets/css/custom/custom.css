@@ -35,6 +35,9 @@ img {
     object-fit: cover !important;
 }
 
+.swal2-icon.swal2-warning {
+    font-size: 1em;
+}
 /* **************************************************************************** */
 /* **************** MultField Form Product Attributes  ************************ */
 

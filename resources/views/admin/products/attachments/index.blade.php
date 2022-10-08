@@ -8,24 +8,34 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($product->getMedia('product_attachments') as $key => $image)
+            @foreach ($product->getMedia('product_attachments') as $key => $attachment)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img width="130" src="{{ $image->getUrl('small') }}" class="img img-thumbnail  admin-image">
+                        <img width="200" src="{{ $attachment->getUrl('small') }}" class="img img-thumbnail">
                     </td>
                     <td>
-                        <div class="d-flex align-items-center justify-content-around">
-                            <form action="" method="post">
-                                @csrf
-                                <a href="javascript:void(0);" class="confirmationDelete"
-                                    data-image="{{ $image->id }}" title="Delete Attachment">
-                                    <i class="fas fa-trash-alt text-danger"></i>
+                        <div class="dropdown dropup">
+                            <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button"
+                                id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars fa-1x"></i>
+                            </button>
+                            <div class="dropdown-menu tx-13">
+                                <form action="{{ route('admin.products.attachments.destroy', $attachment->id) }}"
+                                    method="post">
+                                    @csrf
+                                    <a href="{{ route('admin.products.attachments.destroy', $attachment->id) }}"
+                                        class="dropdown-item" data-image="{{ $attachment->id }}" title="Delete">
+                                        <i class="fas fa-trash-alt text-danger"></i>
+                                        Delete
+                                    </a>
+                                </form>
+                                <a href="{{ route('admin.products.attachments.download', $attachment->id) }}"
+                                    class="dropdown-item" title="Download">
+                                    <i class="fas fa-download text-primary"></i>
+                                    Download
                                 </a>
-                            </form>
-                            <a href="" title="Download Attachment">
-                                <i class="fas fa-download text-primary"></i>
-                            </a>
+                            </div>
                         </div>
                     </td>
                 </tr>

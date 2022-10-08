@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
 use App\Http\Controllers\Admin\Product\Attachment\AttachmentController;
+use App\Http\Controllers\Admin\Product\Attachment\DeleteAllAttachmentController;
+use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
 use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
 use App\Http\Controllers\Admin\Product\Attribute\UpdateAttributeStatusController;
 use App\Http\Controllers\Admin\Product\ProductController;
@@ -95,19 +97,22 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //?_________________________
         //? Products
         //?_________________________
-        Route::resource('products',                     ProductController::class);
+        Route::resource('products',                                 ProductController::class);
 
         //?_________________________
         //? Products Attributes
         //?_________________________
-        Route::resource('products.attributes',          AttributeController::class)->only(['create', 'store']);
-        Route::put('products/{product}/attributes',     [AttributeController::class, 'update'])->name('products.attributes.update');
-        Route::post('update-attribute-status',          UpdateAttributeStatusController::class);
+        Route::resource('products.attributes',                      AttributeController::class)->only(['create', 'store']);
+        Route::put('products/{product}/attributes',                 [AttributeController::class, 'update'])->name('products.attributes.update');
+        Route::post('update-attribute-status',                      UpdateAttributeStatusController::class);
 
         //?_________________________
         //? Products Attributes
         //?_________________________
-        Route::resource('products.attachments',          AttachmentController::class);
+        Route::resource('products.attachments',                     AttachmentController::class)->only(['create', 'store']);
+        Route::get('attachment/{attachment}/destroy',               [AttachmentController::class, 'destroy'])->name('products.attachments.destroy');
+        Route::get('attachment/{attachment}/download',              DownloadAttachmentController::class)->name('products.attachments.download');
+        Route::get('attachment/{attachment}/delete-all',            DeleteAllAttachmentController::class)->name('products.attachments.deleteAll');
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

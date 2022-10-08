@@ -116,13 +116,29 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <label></label>
-                                <div class="form-group" style="margin-top: 0.35rem">
+                            <div class="col-lg-2 col-sm-12">
+                                <label>&nbsp;</label>
+                                <div class="form-group">
                                     <button type="submit" class="btn btn-primary-gradient"><i class="fas fa-plus"></i>
                                         Add</button>
                                 </div>
                             </div>
+                            @if ($product->getFirstMediaUrl('product_attachments'))
+                                <div class="col-lg-2 col-sm-12">
+                                    <label>&nbsp;</label>
+                                    <div class="form-group">
+                                        <form action="{{ route('admin.products.attachments.deleteAll', $product->id) }}"
+                                            method="post">
+                                            @csrf
+                                            <a href="javascript:void(0);"
+                                                class="confirmationDeleteAllAttachments btn btn-danger-gradient"
+                                                data-product="{{ $product->id }}" title="Delete All">
+                                                Delete All
+                                            </a>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                         @if ($product->getFirstMediaUrl('product_attachments'))
                             {{-- <x-delete-modal :id="$product->id" :title="'Delete All Attachments'" :action="" /> --}}
@@ -163,4 +179,23 @@
     <!-- Internal Modal js-->
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
+
+    <script>
+        $(document).on("click", ".confirmationDeleteAllAttachments", function() {
+            Swal.fire({
+                title: 'Delete All Attachments',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Close',
+                confirmButtonText: 'Delete',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('admin.products.attachments.deleteAll', $product) }}";
+
+                }
+            });
+        });
+    </script>
 @endsection
