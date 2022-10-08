@@ -173,6 +173,10 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
+    <!-- Internal Modal js-->
+    <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
+    <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
+
 
     {{-- MultiField Form Script --}}
     <script type="text/javascript">
@@ -251,26 +255,6 @@
                     }
                 },
                 error: function() {},
-            });
-        });
-    </script>
-
-    {{-- Confirmation Delete Attribute --}}
-    <script>
-        $(document).on("click", ".confirmationDelete", function() {
-            Swal.fire({
-                title: '{{ __('msgs.are_your_sure') }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: '{{ __('buttons.close') }}',
-                confirmButtonText: '{{ __('msgs.yes_delete') }}',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = '/admin/delete-attribute/' + $(this).data(
-                        'attribute');
-                }
             });
         });
     </script>

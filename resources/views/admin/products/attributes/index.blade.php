@@ -4,11 +4,11 @@
     </div>
 </div>
 <div class="card-body product-attributes-info">
-    <form action="{{ route('admin.products.attributes.update', ['product' => $product]) }}" method="post"
-        name="UpdateProductAttributes" id="UpdateProductAttributes">
+    <form action="{{ route('admin.products.attributes.update', ['product' => $product]) }}" method="post">
         @csrf
+        @method('PUT')
         <div class="table-responsive">
-            <table class="table text-md-nowrap table-hover table-striped" id="example1">
+            <table class="table text-md-nowrap  table-striped" id="example1">
                 <thead>
                     <tr>
                         <th class="wd-15p border-bottom-0">#</th>
@@ -24,7 +24,8 @@
                         <input type="text" class="d-none" name="attribute_id[]" value="{{ $attribute['id'] }}">
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ ucwords($attribute['size']) }}</td>
+                            <td><input type="text" class="form-control" name="size[]"
+                                    value="{{ ucwords($attribute['size']) }}" style="height: 2rem;"></td>
                             <td>{{ $attribute['sku'] }}</td>
                             <td>
                                 <input type="number" class="form-control" name="price[]"
@@ -42,34 +43,25 @@
                                         <i class="fas fa-bars fa-1x"></i>
                                     </button>
                                     <div class="dropdown-menu tx-13">
-                                        <form
-                                            action="{{ route('admin.products.attributes.destroy', ['attribute' => $attribute['id'], 'product' => $product]) }}"
-                                            method="post">
-                                            @csrf
-                                            @if ($attribute['status'] == 1)
-                                                <a href="javascript:void(0);" title="Update Status"
-                                                    class="updateAttributeStatus text-success dropdown-item"
-                                                    id="attribute-{{ $attribute['id'] }}"
-                                                    attribute_id="{{ $attribute['id'] }}"
-                                                    status="{{ $attribute['status'] }}">
-                                                    <i class="fas fa-power-off "></i>
-                                                    Active
-                                                </a>
-                                            @else
-                                                <a href="javascript:void(0);" title="Update Status"
-                                                    class="updateAttributeStatus text-danger dropdown-item"
-                                                    id="attribute-{{ $attribute['id'] }}"
-                                                    attribute_id="{{ $attribute['id'] }}"
-                                                    status="{{ $attribute['status'] }}">
-                                                    <i class="fas fa-power-off "></i>
-                                                    Inactive
-                                                </a>
-                                            @endif
-                                            <a href="javascript:void(0);" class="confirmationDelete dropdown-item"
-                                                data-attribute="{{ $attribute['id'] }}" title="Delete">
-                                                <i class="fas fa-trash text-danger"></i> Delete
+                                        @if ($attribute['status'] == 1)
+                                            <a href="javascript:void(0);" title="Update Status"
+                                                class="updateAttributeStatus text-success dropdown-item"
+                                                id="attribute-{{ $attribute['id'] }}"
+                                                attribute_id="{{ $attribute['id'] }}"
+                                                status="{{ $attribute['status'] }}">
+                                                <i class="fas fa-power-off "></i>
+                                                Active
                                             </a>
-                                        </form>
+                                        @else
+                                            <a href="javascript:void(0);" title="Update Status"
+                                                class="updateAttributeStatus text-danger dropdown-item"
+                                                id="attribute-{{ $attribute['id'] }}"
+                                                attribute_id="{{ $attribute['id'] }}"
+                                                status="{{ $attribute['status'] }}">
+                                                <i class="fas fa-power-off "></i>
+                                                Inactive
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

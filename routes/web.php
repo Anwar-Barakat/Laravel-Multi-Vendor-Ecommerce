@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Brand\UpdateBrandStatusController;
 use App\Http\Controllers\Admin\Category\CategoryController;
 use App\Http\Controllers\Admin\Category\UpdateCategoryStatusController;
 use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
+use App\Http\Controllers\Admin\Product\Attribute\UpdateAttributeStatusController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Section\UpdateSectionStatusController;
@@ -98,8 +99,9 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //?_________________________
         //? Products Attributes
         //?_________________________
-        Route::resource('products.attributes',          AttributeController::class)->only(['create', 'store', 'destroy']);
+        Route::resource('products.attributes',          AttributeController::class)->only(['create', 'store']);
         Route::put('products/{product}/attributes',     [AttributeController::class, 'update'])->name('products.attributes.update');
+        Route::post('update-attribute-status',          UpdateAttributeStatusController::class);
     });
 });
 Route::prefix('vendor/')->name('vendor.')->group(function () {

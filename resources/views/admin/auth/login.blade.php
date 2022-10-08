@@ -49,7 +49,7 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <button type="submit" class="btn btn-main-primary btn-block">
+                                            <button type="submit" class="btn btn-primary-gradient btn-block">
                                                 Login
                                             </button>
                                         </form>

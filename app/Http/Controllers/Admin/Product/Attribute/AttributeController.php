@@ -104,7 +104,23 @@ class AttributeController extends Controller
      */
     public function update(UpdateAttributeRequest $request, Product $product)
     {
-        return $request;
+        try {
+            $data = $request->only(['attribute_id', 'size', 'price', 'stock']);
+
+            foreach ($data['attribute_id'] as $key => $value) {
+                if (!empty($value)) {
+                    Attribute::where(['product_id' => $product->id, 'id' => $value])->update([
+                        'size'         => $data['size'][$key],
+                        'price'         => $data['price'][$key],
+                        'stock'          => $data['stock'][$key],
+                    ]);
+                }
+            }
+            toastr()->success('Attributes Has Been Updated Successfuly');
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
