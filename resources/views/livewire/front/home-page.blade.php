@@ -1,3 +1,4 @@
+@yield('title', 'Home Page')
 <div>
     <div class="banner-layer">
         <div class="container">

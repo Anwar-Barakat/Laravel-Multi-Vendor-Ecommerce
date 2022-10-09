@@ -47,7 +47,7 @@ class ProductSeeder extends Seeder
             'is_featured'       => 'yes',
             'status'            => true,
         ];
-        if (is_null(Product::where('code', $product['code'])->first()))
+        if (is_null(Product::where(['name' => $product['name']])->first()))
             Product::create($product);
     }
 }
