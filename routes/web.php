@@ -35,10 +35,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -119,4 +115,9 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
     Route::put('update-details',                       UpdateVendorDetailController::class)->name('peronsal-info.update');
     Route::put('update-business',                      UpdateVendorBusinessController::class)->name('business-info.update');
     Route::put('update-bank',                          UpdateVendorBankController::class)->name('bank-info.update');
+});
+
+Route::name('front.')->group(function () {
+
+    Route::view('/',                          'front.home')->name('home');
 });

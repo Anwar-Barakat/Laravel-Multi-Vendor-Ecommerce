@@ -30,23 +30,24 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row mt-3 mb-3 d-flex justify-content-around align-items-center">
-                        <div class="form-group">
+                    <div class="m-3 d-flex justify-content-around align-items-center card flex-row flex-wrap">
+                        <div class="form-group m-3">
                             @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
-                                <img class="img-fluid"
+                                <img class="img img-thumbnail img-activity"
                                     src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                     alt="product-image">
                             @else
-                                <img class="img-fluid" src="{{ URL::asset('assets/img/6.jpg') }}" alt="product-image">
+                                <img class="img img-thumbnail img-activity" src="{{ URL::asset('assets/img/6.jpg') }}"
+                                    alt="product-image">
                             @endif
                         </div>
-                        <div class="form-group">
+                        <div class="form-group m-3">
                             @if ($product->getFirstMediaUrl('main_video_of_product'))
                                 <video width="200" class="img img-thumbnail mb-4 admin-image" controls>
                                     <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}" type="video/mp4"
-                                        class="img-fluid">
+                                        class="img img-thumbnail img-activity">
                                     <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}" type="video/ogg"
-                                        class="img-fluid">
+                                        class="img img-thumbnail img-activity">
                                     {{ __('msgs.browser_error') }}
                                 </video>
                             @else

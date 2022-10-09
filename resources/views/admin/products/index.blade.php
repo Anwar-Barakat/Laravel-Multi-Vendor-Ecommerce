@@ -128,7 +128,7 @@
                                         <i class="ion ion-md-star-half text-warning"></i>
                                         <i class="ion ion-md-star-outline text-warning"></i>
                                     </span>
-                                    <div class="d-flex justify-content-between align-items-center h-100">
+                                    <div class="d-flex justify-content-between align-items-center h-100 mt-2">
                                         <h4 class="h5 mb-0 mt-2 text-center font-weight-bold text-danger">
                                             ${{ $product->price }}
                                             <span class="text-secondary font-weight-normal tx-13 ml-1 prev-price">$59</span>
