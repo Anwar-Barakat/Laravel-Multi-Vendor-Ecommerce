@@ -17,7 +17,7 @@
         @include('front.layouts.slider')
         <!-- Main-Slider /- -->
 
-        @yield('content')
+        {{ $slot }}
 
         <!-- Footer -->
         @include('front.layouts.footer')

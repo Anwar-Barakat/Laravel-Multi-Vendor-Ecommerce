@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
+use App\Http\Livewire\Front\HomePage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -119,5 +120,5 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
 
 Route::name('front.')->group(function () {
 
-    Route::view('/',                          'front.home')->name('home');
+    Route::get('/',                          HomePage::class)->name('home');
 });

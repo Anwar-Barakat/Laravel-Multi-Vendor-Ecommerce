@@ -31,4 +31,9 @@ class Section extends Model
     {
         return $this->hasMany(Category::class)->where(['categories.parent_id' => 0])->select('id', 'name');
     }
+
+    public function allCategories()
+    {
+        return $this->hasMany(Category::class);
+    }
 }
