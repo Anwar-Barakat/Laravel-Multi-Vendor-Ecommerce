@@ -13,7 +13,6 @@ class HomePage extends Component
 
     public function render()
     {
-        $section = Section::with(['allCategories'])->get();
-        return view('livewire.front.home-page', ['section' => $section])->layout('front.layouts.master');
+        return view('livewire.front.home-page')->layout('front.layouts.master');
     }
 }

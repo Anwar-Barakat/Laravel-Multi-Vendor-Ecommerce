@@ -22,6 +22,11 @@ class Section extends Model
         );
     }
 
+    public static function activeSections()
+    {
+        return Section::with(['categories'])->where('status', 1)->get();
+    }
+
     public function categories()
     {
         return $this->hasMany(Category::class)->with('subCategories')->where('parent_id', 0);
@@ -30,10 +35,5 @@ class Section extends Model
     public function parentCategories()
     {
         return $this->hasMany(Category::class)->where(['categories.parent_id' => 0])->select('id', 'name');
-    }
-
-    public function allCategories()
-    {
-        return $this->hasMany(Category::class);
     }
 }
