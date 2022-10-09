@@ -87,9 +87,13 @@
             <div class="row clearfix align-items-center">
                 <div class="col-lg-3 col-md-9 col-sm-6">
                     <div class="brand-logo text-lg-center">
-                        <a href="index.html">
-                            <img src="images/main-logo/stack-developers-logo.png" alt="Stack Developers"
-                                class="app-brand-logo">
+                        <a href="{{ route('front.home') }}" class="logo d-flex align-items-center " target="_blank">
+                            <img src="https://i.postimg.cc/QCyRWB1P/IMG-20220826-172957-743-removebg-preview.png"
+                                alt="IMG-20220826-172957-743-removebg-preview" class="app-brand-logo" />
+                            <p>
+                                <span>Multi Vendor</span>
+                                <span>Store</span>
+                            </p>
                         </a>
                     </div>
                 </div>

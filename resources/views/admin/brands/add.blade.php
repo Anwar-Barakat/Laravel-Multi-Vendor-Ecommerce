@@ -39,8 +39,8 @@
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary-gradient" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary-gradient">
                                 <i class="fas fa-plus"></i> Add
                             </button>
                         </div>

@@ -215,47 +215,4 @@
             });
         });
     </script>
-
-    {{-- turn on/off the Product Attribute status --}}
-    <script>
-        $(document).on("click", ".updateAttributeStatus", function() {
-            var status = $(this).attr('status');
-            var attribute_id = $(this).attr('attribute_id');
-            var activeIc = `<i class="fas fa-power-off text-success"></i>`;
-            var disactiveIcon = `<i class="fas fa-power-off text-danger"></i>`;
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                type: 'post',
-                url: '/admin/update-attribute-status',
-                data: {
-                    status: status,
-                    attribute_id: attribute_id,
-                },
-                success: function(response) {
-                    if (response['status'] == 0) {
-                        $('#attribute-' + response['attribute_id'])
-                            .attr('status', `${response['status']}`);
-                        $('#attribute-' + response['attribute_id']).text('Inactive');
-                        $('#attribute-' + response['attribute_id']).attr('style',
-                            'color : #ee335e  !important');
-                        $('#attribute-' + response['attribute_id']).prepend(
-                            '<i class="fas fa-power-off text-danger"></i> ');
-                    } else {
-                        $('#attribute-' + response['attribute_id'])
-                            .attr('status', `${response['status']}`);
-                        $('#attribute-' + response['attribute_id']).text('Active');
-                        $('#attribute-' + response['attribute_id']).attr('style',
-                            'color : #22c03c   !important');
-                        $('#attribute-' + response['attribute_id']).prepend(
-                            '<i class="fas fa-power-off text-success"></i> ');
-
-                    }
-                },
-                error: function() {},
-            });
-        });
-    </script>
 @endsection

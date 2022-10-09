@@ -21,3 +21,5 @@
 <link rel="stylesheet" href="{{ asset('front/css/utility.css') }}">
 <!-- Main -->
 <link rel="stylesheet" href="{{ asset('front/css/bundle') }}.css">
+
+<link rel="stylesheet" href="{{ asset('assets/css/custom/custom-frontend.css') }}">

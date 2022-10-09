@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreBannerRequest;
 use App\Http\Requests\Admin\UpdateBannerRequest;
+use Illuminate\Support\Str;
 
 class BannerController extends Controller
 {
@@ -16,7 +17,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.banners.index', ['banners' => Banner::latest()->get()]);
     }
 
     /**
@@ -37,7 +38,22 @@ class BannerController extends Controller
      */
     public function store(StoreBannerRequest $request)
     {
-        //
+        try {
+            if ($request->isMethod('post')) {
+                $data           = $request->only(['title', 'status', 'alternative']);
+                $data['link']   = Str::slug($data['title'], '-');
+                $banner         = Banner::create($data);
+
+                if ($request->hasFile('image') && $request->file('image')->isValid()) {
+                    $banner->addMediaFromRequest('image')->toMediaCollection('banners');
+                }
+
+                toastr()->success('Banner Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

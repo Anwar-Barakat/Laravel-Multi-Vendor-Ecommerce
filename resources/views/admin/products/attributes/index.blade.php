@@ -36,34 +36,7 @@
                                     value="{{ $attribute['stock'] }}" style="height: 2rem;">
                             </td>
                             <td>
-                                <div class="dropdown dropup">
-                                    <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm"
-                                        type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        <i class="fas fa-bars fa-1x"></i>
-                                    </button>
-                                    <div class="dropdown-menu tx-13">
-                                        @if ($attribute['status'] == 1)
-                                            <a href="javascript:void(0);" title="Update Status"
-                                                class="updateAttributeStatus text-success dropdown-item"
-                                                id="attribute-{{ $attribute['id'] }}"
-                                                attribute_id="{{ $attribute['id'] }}"
-                                                status="{{ $attribute['status'] }}">
-                                                <i class="fas fa-power-off "></i>
-                                                Active
-                                            </a>
-                                        @else
-                                            <a href="javascript:void(0);" title="Update Status"
-                                                class="updateAttributeStatus text-danger dropdown-item"
-                                                id="attribute-{{ $attribute['id'] }}"
-                                                attribute_id="{{ $attribute['id'] }}"
-                                                status="{{ $attribute['status'] }}">
-                                                <i class="fas fa-power-off "></i>
-                                                Inactive
-                                            </a>
-                                        @endif
-                                    </div>
-                                </div>
+                                @livewire('admin.product.attribute.update-status', ['status' => $attribute->status, 'attribute_id' => $attribute->id])
                             </td>
                         </tr>
                     @endforeach

@@ -7,12 +7,14 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+    <!---Internal Fileupload css-->
+    <link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
+@section('title', 'Banners List')
 
-@section('title', 'Brands List')
-
-@section('breadcamb', 'Brands List')
+@section('breadcamb', 'Banners List')
 
 @section('content')
     <div class="row row-sm">
@@ -20,10 +22,10 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Brands TABLE</h4>
+                        <h4 class="card-title mg-b-0">Banners TABLE</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 tx-gray-500 mb-3">A lot Of Brands</p>
+                    <p class="tx-12 tx-gray-500 mb-3">List of Banners</p>
                     <button type="button" class="btn btn-primary-gradient  modal-effect" data-effect="effect-rotate-left"
                         role="button" data-toggle="modal" data-target="#addNew">
                         <i class="fas fa-plus"></i> Add
@@ -35,33 +37,32 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Id</th>
-                                    <th class="border-bottom-0">Name</th>
+                                    <th class="border-bottom-0">Title</th>
                                     <th class="border-bottom-0">Status</th>
                                     <th class="border-bottom-0">Created At</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($brands as $brand)
+                                @foreach ($banners as $banner)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $brand->name }}</td>
+                                        <td>{{ ucwords($banner->title) }}</td>
                                         <td>
-                                            @livewire('admin.brand.update-status', ['status' => $brand->status, 'brand_id' => $brand->id])
+                                            @livewire('admin.banner.update-status', ['status' => $banner->status, 'banner_id' => $banner->id])
                                         </td>
-                                        <td>{{ $brand->created_at }}</td>
+                                        <td>{{ $banner->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
-
                                                 <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                    title="Update" data-target="#edit{{ $brand->id }}"
+                                                    title="Update" data-target="#edit{{ $banner->id }}"
                                                     style="color: white">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
                                             </span>
                                         </td>
-                                        @include('admin.brands.edit')
+
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -71,7 +72,7 @@
             </div>
         </div>
     </div>
-    @include('admin.brands.add')
+    @include('admin.banners.add')
 @endsection
 @section('js')
     <!-- Internal Data tables -->
@@ -98,5 +99,8 @@
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom/update-brand-status.js') }}"></script>
+
+    <!--Internal Fileuploads js-->
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+    <script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
 @endsection

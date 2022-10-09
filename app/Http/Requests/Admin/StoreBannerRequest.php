@@ -13,7 +13,7 @@ class StoreBannerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreBannerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'         => ['required', 'min:3'],
+            'alternative'   => ['required', 'min:3'],
+            'status'        => ['required', 'in:0,1'],
+            'image'         => ['required', 'image', 'mimes:png,jpg', 'max:1024'],
         ];
     }
 }

@@ -1,0 +1,18 @@
+.full-layer-mid-header .logo {
+    gap: 0.5rem;
+}
+.full-layer-mid-header .logo img {
+    max-width: 50px;
+}
+.full-layer-mid-header .logo p {
+    font-size: 1rem;
+    display: grid;
+    margin: 0;
+}
+
+@media screen and (max-width: 551px) {
+    .full-layer-mid-header .logo {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+}

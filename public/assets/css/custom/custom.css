@@ -24,7 +24,7 @@
 }
 
 .modal-footer {
-    padding: 1rem;
+    padding: 1rem 0 0;
 }
 
 .invalid-feedback {
@@ -38,6 +38,7 @@ img {
 .swal2-icon.swal2-warning {
     font-size: 1em;
 }
+
 /* **************************************************************************** */
 /* **************** MultField Form Product Attributes  ************************ */
 
