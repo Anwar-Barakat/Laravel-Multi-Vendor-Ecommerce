@@ -80,8 +80,7 @@
                                                             Edit
                                                         </a>
                                                         <a href="javascript:void(0);"
-                                                            class="confirmationDelete dropdown-item"
-                                                            data-product="{{ $category->id }}" title="Delete"
+                                                            class="confirmationDelete dropdown-item" title="Delete"
                                                             data-toggle="modal" data-target="#delete{{ $category->id }}">
                                                             <i class="fas fa-trash text-danger"></i>&nbsp;
                                                             Delete
@@ -89,7 +88,6 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </td>
                                         </td>
                                         <x-delete-modal :id="$category->id" :title="'Delete The Category'" :action="route('admin.categories.destroy', $category)" />
                                     </tr>

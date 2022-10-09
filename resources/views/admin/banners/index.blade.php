@@ -36,34 +36,64 @@
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">Id</th>
-                                    <th class="border-bottom-0">Title</th>
-                                    <th class="border-bottom-0">Status</th>
-                                    <th class="border-bottom-0">Created At</th>
-                                    <th class="border-bottom-0">Actions</th>
+                                    <th class="border-bottom-15">#</th>
+                                    <th class="border-bottom-15">Image</th>
+                                    <th class="border-bottom-15">Title</th>
+                                    <th class="border-bottom-15">Status</th>
+                                    <th class="border-bottom-15">Created At</th>
+                                    <th class="border-bottom-15">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($banners as $banner)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            @if ($banner->getFirstMediaUrl('banners', 'thumb'))
+                                                <img class="img img-thumbnail" width="300"
+                                                    src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}">
+                                            @else
+                                                <img class="img img-thumbnail" width="300"
+                                                    src="{{ asset('assets/img/banners/banner-default.jpg') }}">
+                                            @endif
+                                        </td>
                                         <td>{{ ucwords($banner->title) }}</td>
                                         <td>
                                             @livewire('admin.banner.update-status', ['status' => $banner->status, 'banner_id' => $banner->id])
                                         </td>
                                         <td>{{ $banner->created_at }}</td>
                                         <td>
-                                            <span class="tag tag-gray">
-                                                <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                    title="Update" data-target="#edit{{ $banner->id }}"
-                                                    style="color: white">
-                                                    <i class="fas fa-edit"></i>
-                                                    Edit
-                                                </a>
-                                            </span>
+                                            <div class="dropdown dropup">
+                                                <button
+                                                    class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm"
+                                                    type="button" id="triggerId" data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-bars fa-1x"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.categories.destroy', $banner) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a href="javascript:void(0);" role="button" data-toggle="modal"
+                                                            class="dropdown-item" title="Update"
+                                                            data-target="#edit{{ $banner->id }}">
+                                                            <i class="fas fa-edit text-primary"></i>&nbsp;
+                                                            Edit
+                                                        </a>
+                                                        <a href="javascript:void(0);"
+                                                            class="confirmationDelete dropdown-item" title="Delete"
+                                                            data-toggle="modal" data-target="#delete{{ $banner->id }}">
+                                                            <i class="fas fa-trash text-danger"></i>&nbsp;
+                                                            Delete
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
-
+                                        <x-delete-modal :id="$banner->id" :title="'Delete The Banner'" :action="route('admin.banners.destroy', $banner)" />
                                     </tr>
+                                    @include('admin.banners.edit')
                                 @endforeach
                             </tbody>
                         </table>

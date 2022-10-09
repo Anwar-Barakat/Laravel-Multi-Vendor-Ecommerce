@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -22,7 +24,16 @@ class Banner extends Model implements HasMedia
     public function registerMediaCollections(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->width(250)
-            ->height(250);
+            ->width(1170)
+            ->height(350);
+    }
+
+    public function createdAt(): Attribute
+    {
+        return new Attribute(
+            get: function ($value) {
+                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
+            }
+        );
     }
 }

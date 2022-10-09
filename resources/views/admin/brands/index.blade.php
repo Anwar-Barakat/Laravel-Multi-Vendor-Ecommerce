@@ -52,7 +52,6 @@
                                         <td>{{ $brand->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
-
                                                 <a href="javascript:void(0);" role="button" data-toggle="modal"
                                                     title="Update" data-target="#edit{{ $brand->id }}"
                                                     style="color: white">

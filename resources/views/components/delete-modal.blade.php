@@ -21,10 +21,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                    <div class="modal-footer m-2">
+                        <button type="button" class="btn btn-secondary-gradient" data-dismiss="modal"><i
                                 class="fas fa-times"></i> Close</button>
-                        <button type="submit" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> Delete
+                        <button type="submit" class="btn btn-danger-gradient"> <i class="fas fa-trash-alt"></i> Delete
                         </button>
                     </div>
                 </form>
