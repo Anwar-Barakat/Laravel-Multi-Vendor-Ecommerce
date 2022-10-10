@@ -129,9 +129,17 @@
                                         <i class="ion ion-md-star-outline text-warning"></i>
                                     </span>
                                     <div class="d-flex justify-content-between align-items-center h-100 mt-2">
+                                        @php
+                                            $final_price = App\Models\Product::applyDiscount($product->id);
+                                        @endphp
                                         <h4 class="h5 mb-0 mt-2 text-center font-weight-bold text-danger">
-                                            ${{ $product->price }}
-                                            <span class="text-secondary font-weight-normal tx-13 ml-1 prev-price">$59</span>
+                                            @if ($final_price > 0)
+                                                ${{ $product->price }}
+                                                <span
+                                                    class="text-secondary font-weight-normal tx-13 ml-1 prev-price">${{ $final_price }}</span>
+                                            @else
+                                                ${{ $product->price }}
+                                            @endif
                                         </h4>
                                         <div class="d-flex align-content-center" style="gap:.5rem">
                                             <a href="{{ route('admin.products.attributes.create', $product) }}"

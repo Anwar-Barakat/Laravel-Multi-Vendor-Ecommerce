@@ -39,7 +39,6 @@ class BannerController extends Controller
      */
     public function store(StoreBannerRequest $request)
     {
-        return $request;
         try {
             if ($request->isMethod('post')) {
                 $data           = $request->only(['title', 'status', 'alternative', 'image']);

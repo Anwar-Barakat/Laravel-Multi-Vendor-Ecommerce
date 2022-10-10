@@ -174,7 +174,7 @@
                                 <label for="discount">Discount</label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">$</span>
+                                        <span class="input-group-text">%</span>
                                     </div>
                                     <input aria-label="Amount (to the nearest dollar)"
                                         class="form-control  @error('discount') is-invalid @enderror" type="number"
@@ -297,8 +297,10 @@
                                     <select name="is_featured"
                                         class="form-control  @error('is_featured') is-invalid @enderror">
                                         <option value="" selected>Select...</option>
-                                        <option value="no" {{ old('status') == 'no' ? 'selected' : '' }}>No</option>
-                                        <option value="yes" {{ old('status') == 'yes' ? 'selected' : '' }}>Yes</option>
+                                        <option value="no" {{ old('is_featured') == 'no' ? 'selected' : '' }}>No
+                                        </option>
+                                        <option value="yes" {{ old('is_featured') == 'yes' ? 'selected' : '' }}>Yes
+                                        </option>
                                     </select>
                                     @error('is_featured')
                                         <span class="invalid-feedback" role="alert">

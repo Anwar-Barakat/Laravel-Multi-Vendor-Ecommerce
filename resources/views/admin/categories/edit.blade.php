@@ -59,7 +59,7 @@
                                     <label for="discount">Discount</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">$</span>
+                                            <span class="input-group-text">%</span>
                                         </div>
                                         <input aria-label="Amount (to the nearest dollar)"
                                             class="form-control  @error('discount') is-invalid @enderror" type="number"

@@ -63,6 +63,22 @@ class Product extends Model implements HasMedia
             ->height(1000);
     }
 
+    public static function applyDiscount($product_id)
+    {
+        $product    = Product::select('category_id', 'price', 'discount')->where('id', $product_id)->first();
+        $category   = Category::select('discount')->where('id', $product->category_id)->first();
+
+        if ($product->discount > 0) :
+            $final_price = $product->price - ($product->price * $product->discount / 100);
+        elseif ($category->discount > 0) :
+            $final_price = $product->price - ($product->price * $category->discount / 100);
+        else :
+            $final_price = 0;
+        endif;
+
+        return $final_price;
+    }
+
     public function scopeMaxPrice(Builder $query, $max_price): Builder
     {
         return $query->where("price", "<=", $max_price);

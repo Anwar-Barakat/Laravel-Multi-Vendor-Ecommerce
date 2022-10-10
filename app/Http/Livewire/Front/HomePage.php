@@ -13,6 +13,9 @@ class HomePage extends Component
 
     public function render()
     {
-        return view('livewire.front.home-page')->layout('front.layouts.master');
+        $products   = Product::where('status', 1)->inRandomOrder()->limit(8)->get();
+        return view('livewire.front.home-page', [
+            'products'  => $products,
+        ])->layout('front.layouts.master');
     }
 }
