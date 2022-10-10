@@ -114,7 +114,7 @@
                                             alt="product-image">
                                     @endif
                                     <a href="{{ route('admin.products.edit', $product) }}" class="adtocart">
-                                        <i class="las la-edit"></i>
+                                        <i class="fas fa-edit fa-1x icon"></i>
                                     </a>
                                 </div>
                                 <div class="text-center pt-3">
@@ -136,11 +136,11 @@
                                         <div class="d-flex align-content-center" style="gap:.5rem">
                                             <a href="{{ route('admin.products.attributes.create', $product) }}"
                                                 class="btn btn-info-gradient btn-sm rounded">
-                                                <i class="las la-plus"></i>
+                                                <i class="fas fa-plus"></i>
                                             </a>
                                             <a href="{{ route('admin.products.attachments.create', $product) }}"
                                                 class="btn btn-dark-gradient btn-sm rounded">
-                                                <i class="las la-images"></i>
+                                                <i class="fas fa-images"></i>
                                             </a>
                                         </div>
                                     </div>

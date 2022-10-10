@@ -39,6 +39,20 @@ img {
     font-size: 1em;
 }
 
+.adtocart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adtocart .icon {
+    color: white;
+    font-size: 1.4rem;
+}
+
+textarea {
+    resize: none;
+}
 /* **************************************************************************** */
 /* **************** MultField Form Product Attributes  ************************ */
 
@@ -74,6 +88,7 @@ img {
     .product-info {
         grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
     }
+
     .multiAttributesForm .form-group {
         width: 100%;
     }

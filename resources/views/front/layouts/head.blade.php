@@ -1,6 +1,6 @@
 <title>Multi Vendor E-commerce | @yield('title')</title>
-<!-- Standard Favicon -->
-<link href="favicon.ico" rel="shortcut icon">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+<script src="{{ asset('js/app.js') }}" defer></script>
 <!-- Base Google Font for Web-app -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <!-- Google Fonts for Banners only -->

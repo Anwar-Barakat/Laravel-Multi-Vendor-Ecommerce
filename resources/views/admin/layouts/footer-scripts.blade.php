@@ -1,5 +1,7 @@
 <!-- Back-to-top -->
 <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
+<!-- Fontawesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <!-- JQuery min js -->
 <script src="{{ URL::asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap Bundle js -->

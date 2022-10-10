@@ -1283,8 +1283,9 @@ slide is-expanded side-menu__item {
 }
 
 .app-sidebar .slide-menu a:before {
-  content: "\e92f";
-  font-family: "feather" !important;
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
   position: absolute;
   top: 9px;
   left: 27px;

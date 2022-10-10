@@ -52,7 +52,7 @@
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                         <i class="fas fa-user-shield side-menu__icon"></i>
                         <span class="side-menu__label">Admins</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -67,7 +67,7 @@
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                         <i class="fas fa-th-large side-menu__icon"></i>
                         <span class="side-menu__label">Sections</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -81,7 +81,7 @@
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                         <i class="fas fa-th-list side-menu__icon"></i>
                         <span class="side-menu__label">Categories</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -96,9 +96,9 @@
                 {{-- Brands --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                        <i class="fas fa-flag-checkered side-menu__icon"></i>
+                        <i class="fas fa-fire side-menu__icon"></i>
                         <span class="side-menu__label">Brands</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -112,7 +112,7 @@
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
                         <i class="fas fa-tags side-menu__icon"></i>
                         <span class="side-menu__label">Products</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -124,12 +124,12 @@
                     </ul>
                 </li>
 
-                {{-- Brands --}}
+                {{-- Banners --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
-                        <i class="fas fa-flag side-menu__icon"></i>
+                        <i class="fas fa-flag-checkered side-menu__icon"></i>
                         <span class="side-menu__label">Banners</span>
-                        <i class="angle fe fe-chevron-down"></i>
+                        <i class="angle fas fa-chevron-down"></i>
                     </a>
                     <ul class="slide-menu">
                         <li>
@@ -160,7 +160,7 @@
                         <path d="M19 5H5v14h14V5zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" opacity=".3" />
                         <path
                             d="M3 5v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2zm2 0h14v14H5V5zm2 5h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z" />
-                    </svg><span class="side-menu__label">Charts</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Charts</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-morris')) }}">Morris Charts</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'chart-flot')) }}">Flot Charts</a></li>
@@ -179,7 +179,7 @@
                             opacity=".3" />
                         <path
                             d="M22 9h-4.79l-4.38-6.56c-.19-.28-.51-.42-.83-.42s-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1zM12 4.8L14.8 9H9.2L12 4.8zM18.5 19l-12.99.01L3.31 11H20.7l-2.2 8zM12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg><span class="side-menu__label">Ecommerce</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Ecommerce</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'products')) }}">Products</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'product-details')) }}">Product-Details</a>
@@ -195,7 +195,7 @@
                         <path d="M4 12c0 4.08 3.06 7.44 7 7.93V4.07C7.05 4.56 4 7.92 4 12z" opacity=".3" />
                         <path
                             d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.05-7.44 7-7.93v15.86zm2-15.86c1.03.13 2 .45 2.87.93H13v-.93zM13 7h5.24c.25.31.48.65.68 1H13V7zm0 3h6.74c.08.33.15.66.19 1H13v-1zm0 9.93V19h2.87c-.87.48-1.84.8-2.87.93zM18.24 17H13v-1h5.92c-.2.35-.43.69-.68 1zm1.5-3H13v-1h6.93c-.04.34-.11.67-.19 1z" />
-                    </svg><span class="side-menu__label">Apps</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Apps</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'cards')) }}">Cards</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'darggablecards')) }}">Darggablecards</a>
@@ -218,7 +218,7 @@
                         <path d="M6.26 9L12 13.47 17.74 9 12 4.53z" opacity=".3" />
                         <path
                             d="M19.37 12.8l-7.38 5.74-7.37-5.73L3 14.07l9 7 9-7zM12 2L3 9l1.63 1.27L12 16l7.36-5.73L21 9l-9-7zm0 11.47L6.26 9 12 4.53 17.74 9 12 13.47z" />
-                    </svg><span class="side-menu__label">Elements</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Elements</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'alerts')) }}">Alerts</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'avatar')) }}">Avatar</a></li>
@@ -256,7 +256,7 @@
                         <circle cx="14.5" cy="7.5" r="1.5" />
                         <circle cx="17.5" cy="11.5" r="1.5" />
                     </svg><span class="side-menu__label">Advanced UI</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'accordion')) }}">Accordion</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'carousel')) }}">Carousel</a></li>
@@ -279,7 +279,7 @@
                         <path d="M15 11V4H4v8.17l.59-.58.58-.59H6z" opacity=".3" />
                         <path
                             d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-5 7c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10zM4.59 11.59l-.59.58V4h11v7H5.17l-.58.59z" />
-                    </svg><span class="side-menu__label">Mail</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Mail</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'mail')) }}">Mail</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'mail-compose')) }}">Mail Compose</a></li>
@@ -296,7 +296,7 @@
                         <path d="M13 4H6v16h12V9h-5V4zm3 14H8v-2h8v2zm0-6v2H8v-2h8z" opacity=".3" />
                         <path
                             d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" />
-                    </svg><span class="side-menu__label">Forms</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Forms</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'form-elements')) }}">Form Elements</a>
                     </li>
@@ -316,7 +316,7 @@
                         <path d="M5 5h15v3H5zm12 5h3v9h-3zm-7 0h5v9h-5zm-5 0h3v9H5z" opacity=".3" />
                         <path
                             d="M20 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 19H5v-9h3v9zm7 0h-5v-9h5v9zm5 0h-3v-9h3v9zm0-11H5V5h15v3z" />
-                    </svg><span class="side-menu__label">Tables</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Tables</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'table-basic')) }}">Basic Tables</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'table-data')) }}">Data Tables</a></li>
@@ -343,7 +343,7 @@
                         <path
                             d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" />
                         <circle cx="12" cy="9" r="2.5" />
-                    </svg><span class="side-menu__label">Maps</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Maps</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'map-leaflet')) }}">Mapel Maps</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'map-vector')) }}">Vector Maps</a></li>
@@ -375,7 +375,7 @@
                                     d="M17.5,15.83c0.88,0,1.73,0.09,2.5,0.26v-1.52c-0.79-0.15-1.64-0.24-2.5-0.24c-1.28,0-2.46,0.16-3.5,0.47v1.57 C14.99,16.02,16.18,15.83,17.5,15.83z" />
                             </g>
                         </g>
-                    </svg><span class="side-menu__label">Pages</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Pages</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'profile')) }}">Profile</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'editprofile')) }}">Edit-Profile</a></li>
@@ -396,7 +396,7 @@
                             opacity=".3" />
                         <path
                             d="M12 22c5.52 0 10-4.48 10-10 0-4.75-3.31-8.72-7.75-9.74l-.08-.04-.01.02C13.46 2.09 12.74 2 12 2 6.48 2 2 6.48 2 12s4.48 10 10 10zm0-2c-.38 0-.74-.04-1.1-.09L14.89 13l2.72 4.7C16.16 19.12 14.18 20 12 20zm8-8c0 1.85-.64 3.55-1.7 4.91l-4-6.91h5.43c.17.64.27 1.31.27 2zm-.59-3h-7.99l2.71-4.7c2.4.66 4.35 2.42 5.28 4.7zM12 4c.37 0 .74.03 1.1.08L10.27 9l-1.15 2L6.4 6.3C7.84 4.88 9.82 4 12 4zm-8 8c0-1.85.64-3.55 1.7-4.91L8.54 12l1.15 2H4.26C4.1 13.36 4 12.69 4 12zm6.27 3h2.3l-2.71 4.7c-2.4-.67-4.35-2.42-5.28-4.7h5.69z" />
-                    </svg><span class="side-menu__label">Utilities</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Utilities</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'background')) }}">Background</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'border')) }}">Border</a></li>
@@ -418,7 +418,7 @@
                         <path
                             d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
                     </svg><span class="side-menu__label">Custom Pages</span><i
-                        class="angle fe fe-chevron-down"></i></a>
+                        class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'signin')) }}">Sign In</a></li>
                     <li><a class="slide-item" href="{{ url('/' . ($page = 'signup')) }}">Sign Up</a></li>
@@ -440,12 +440,12 @@
                             opacity=".3" />
                         <path
                             d="M20 13H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-1 6H5v-4h14v4zm-12-.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zM20 3H4c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1zm-1 6H5V5h14v4zM7 8.5c.83 0 1.5-.67 1.5-1.5S7.83 5.5 7 5.5 5.5 6.17 5.5 7 6.17 8.5 7 8.5z" />
-                    </svg><span class="side-menu__label">Submenus</span><i class="angle fe fe-chevron-down"></i></a>
+                    </svg><span class="side-menu__label">Submenus</span><i class="angle fas fa-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li class="sub-slide">
                         <a class="sub-side-menu__item" data-toggle="sub-slide"
                             href="{{ url('/' . ($page = '#')) }}"><span class="sub-side-menu__label">Level1</span><i
-                                class="sub-angle fe fe-chevron-down"></i></a>
+                                class="sub-angle fas fa-chevron-down"></i></a>
                         <ul class="sub-slide-menu">
                             <li><a class="sub-slide-item" href="{{ url('/' . ($page = '#')) }}">Level01</a></li>
                             <li><a class="sub-slide-item" href="{{ url('/' . ($page = '#')) }}">Level02</a></li>
