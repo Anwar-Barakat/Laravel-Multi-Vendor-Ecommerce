@@ -16,9 +16,6 @@
 <body>
     <div id="app">
         @include('front.layouts.main-header')
-        <!-- Main-Slider -->
-        @include('front.layouts.slider')
-        <!-- Main-Slider /- -->
 
         {{ $slot }}
 

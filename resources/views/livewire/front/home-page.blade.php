@@ -1,13 +1,24 @@
-@yield('title', 'Home Page')
 <div>
     <div class="banner-layer">
         <div class="container">
             <div class="image-banner">
-                <a target="_blank" rel="nofollow" href="https://youtube.com/stackdevelopers"
-                    class="mx-auto banner-hover effect-dark-opacity">
-                    <img class="img-fluid" src="{{ asset('front/images/banners/stack-developers.png') }}"
-                        alt="Winter Season Banner">
-                </a>
+                @php
+                    $randomBanner = App\Models\Banner::where('status', 1)
+                        ->inRandomOrder()
+                        ->first();
+                @endphp
+                @if ($randomBanner)
+                    <a target="_blank" rel="nofollow" href="{{ $randomBanner->link }}"
+                        class="mx-auto banner-hover effect-dark-opacity">
+                        <img class="img-fluid" src="{{ $randomBanner->getFirstMediaUrl('banners', 'slider') }}"
+                            alt="{{ $randomBanner->title }}">
+                    </a>
+                @else
+                    <a target="_blank" rel="nofollow" href="javascript:void(0);"
+                        class="mx-auto banner-hover effect-dark-opacity">
+                        <img class="img-fluid" src="{{ asset('assets/img/media/banner-default.jpg') }}" alt="">
+                    </a>
+                @endif
             </div>
         </div>
     </div>

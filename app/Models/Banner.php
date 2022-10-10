@@ -23,9 +23,9 @@ class Banner extends Model implements HasMedia
 
     public function registerMediaCollections(Media $media = null): void
     {
-        $this->addMediaConversion('thumb')
-            ->width(1170)
-            ->height(350);
+        $this->addMediaConversion('slider')
+            ->width(1920)
+            ->height(720);
     }
 
     public function createdAt(): Attribute

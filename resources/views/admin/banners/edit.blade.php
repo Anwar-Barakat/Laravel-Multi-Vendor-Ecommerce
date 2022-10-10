@@ -16,9 +16,9 @@
                         @method('PUT')
                         <div class="row mb-4">
                             <div class="col-12">
-                                @if ($banner->getFirstMediaUrl('banners', 'thumb'))
+                                @if ($banner->getFirstMediaUrl('banners', 'slider'))
                                     <img class="img img-thumbnail"
-                                        src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}">
+                                        src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}">
                                 @else
                                     <img class="img img-thumbnail"
                                         src="{{ asset('assets/img/banners/banner-default.jpg') }}">

@@ -49,9 +49,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            @if ($banner->getFirstMediaUrl('banners', 'thumb'))
+                                            @if ($banner->getFirstMediaUrl('banners', 'slider'))
                                                 <img class="img img-thumbnail" width="300"
-                                                    src="{{ $banner->getFirstMediaUrl('banners', 'thumb') }}">
+                                                    src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}">
                                             @else
                                                 <img class="img img-thumbnail" width="300"
                                                     src="{{ asset('assets/img/banners/banner-default.jpg') }}">
