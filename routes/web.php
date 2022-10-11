@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\Product\Attachment\AttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DeleteAllAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
 use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
-use App\Http\Controllers\Admin\Product\Attribute\UpdateAttributeStatusController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
@@ -19,6 +18,7 @@ use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
+use App\Http\Livewire\Front\CategoryProducts;
 use App\Http\Livewire\Front\HomePage;
 use App\Http\Livewire\Front\ShopPage;
 use Illuminate\Support\Facades\Route;
@@ -34,14 +34,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__ . '/auth.php';
 
 
-// Route::get('/{page}', [AdminAdminController::class, 'index']);
 
 
 
@@ -120,7 +120,11 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
 
 Route::name('front.')->group(function () {
 
-    Route::get('/',                          HomePage::class)->name('home');
+    Route::get('/',                             HomePage::class)->name('home');
 
-    Route::get('/listing',                   ShopPage::class)->name('listing');
+    Route::get('/shop',                         ShopPage::class)->name('listing');
+
+    Route::get('/shop/{url}',                   CategoryProducts::class)->name('category.products');
 });
+
+Route::get('/{page}', [AdminAdminController::class, 'index']);

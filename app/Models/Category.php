@@ -37,9 +37,29 @@ class Category extends Model  implements HasMedia
             ->height(720);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where(['status' => 1]);
+    }
+
     public function scopeParent($query)
     {
         return $query->where(['parent_id' => 0, 'status' => 1]);
+    }
+
+    public static function categoryDetails($url)
+    {
+        $category   = Category::select('id', 'name', 'url')->with(['subCategories'])
+            ->where('url', $url)->active()->first();
+
+        $catIds     = [];
+        $catIds[]   = $category->id;
+        foreach ($category->subCategories as $sub) :
+            $catIds[]   = $sub->id;
+        endforeach;
+
+        $categoryDetails = ['category' => $category, 'catIds' => $catIds];
+        return $categoryDetails;
     }
 
     public function section()

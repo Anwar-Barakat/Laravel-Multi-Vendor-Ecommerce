@@ -6,10 +6,10 @@
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="listing.html">Shop</a>
+                        <a href="{{ route('front.listing') }}">Shop</a>
                     </li>
                 </ul>
             </div>
@@ -20,14 +20,14 @@
             <div class="shop-intro">
                 <ul class="bread-crumb">
                     <li class="has-separator">
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="has-separator">
-                        <a href="shop-v1-root-category.html">Men Clothing </a>
+                        <a href="">All Products</a>
                     </li>
-                    <li class="is-marked">
-                        <a href="listing.html">T-Shirts</a>
-                    </li>
+                    {{-- <li class="is-marked">
+                        <a href="listing.html"></a>
+                    </li> --}}
                 </ul>
             </div>
             <div class="row">
@@ -36,15 +36,16 @@
                         <h3 class="title-name">Browse Categories</h3>
                         @foreach ($categories as $category)
                             <h3 class="fetch-mark-category">
-                                <a href="listing.html">{{ ucwords($category->name) }}
+                                <a href="{{ route('front.category.products', ['url' => $category->url]) }}">{{ ucwords($category->name) }}
                                     <span class="total-fetch-items">({{ $category->products_count }})</span>
                                 </a>
                             </h3>
                             <ul>
-                                @foreach ($category->subCategories as $subCategory)
+                                @foreach ($category->subCategories as $sub)
                                     <li>
-                                        <a href="shop-v3-sub-sub-category.html">{{ ucwords($subCategory->name) }}
-                                            <span class="total-fetch-items">({{ $subCategory->products_count }})</span>
+                                        <a href="{{ route('front.category.products', ['url' => $sub->url]) }}">
+                                            {{ ucwords($sub->name) }}
+                                            <span class="total-fetch-items">({{ $sub->products_count }})</span>
                                         </a>
                                     </li>
                                 @endforeach
@@ -335,7 +336,7 @@
                                         <div class="what-product-is">
                                             <ul class="bread-crumb">
                                                 <li class="has-separator">
-                                                    <a href="shop-v1-root-category.html">Category</a>
+                                                    <a href="">Category</a>
                                                 </li>
                                                 <li class="has-separator">
                                                     <a href="listing.html">Sub</a>
@@ -397,27 +398,27 @@
                     <div class="pagination-number">
                         <ul>
                             <li style="display: none">
-                                <a href="shop-v1-root-category.html" title="Previous">
+                                <a href="" title="Previous">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                             </li>
                             <li class="active">
-                                <a href="shop-v1-root-category.html">1</a>
+                                <a href="">1</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html">2</a>
+                                <a href="">2</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html">3</a>
+                                <a href="">3</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html">...</a>
+                                <a href="">...</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html">10</a>
+                                <a href="">10</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html" title="Next">
+                                <a href="" title="Next">
                                     <i class="fa fa-angle-right"></i>
                                 </a>
                             </li>

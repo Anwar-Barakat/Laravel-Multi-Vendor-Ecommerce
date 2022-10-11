@@ -51,6 +51,11 @@ class Product extends Model implements HasMedia
             ->height(1000);
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where(['status' => 1]);
+    }
+
     public static function applyDiscount($product_id)
     {
         $product    = Product::select('category_id', 'price', 'discount')->where('id', $product_id)->first();
