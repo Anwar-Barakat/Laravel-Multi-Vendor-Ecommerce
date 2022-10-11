@@ -15,15 +15,9 @@ class Category extends Model  implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'section_id',
-        'parent_id',
-        'name',
-        'discount',
-        'description',
-        'url',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
+        'section_id', 'parent_id',
+        'name', 'discount', 'description', 'url',
+        'meta_title', 'meta_description', 'meta_keywords',
         'status',
     ];
 
@@ -43,6 +37,11 @@ class Category extends Model  implements HasMedia
             ->height(720);
     }
 
+    public function scopeParent($query)
+    {
+        return $query->where(['parent_id' => 0, 'status' => 1]);
+    }
+
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id');
@@ -55,6 +54,11 @@ class Category extends Model  implements HasMedia
 
     public function subCategories()
     {
-        return $this->hasMany(Category::class, 'parent_id')->where('status', 1);
+        return $this->hasMany(Category::class, 'parent_id')->withCount('products')->where('status', 1);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

@@ -76,7 +76,7 @@ class Product extends Model implements HasMedia
     public function scopeSearch($query, $term)
     {
         $term = "%$term%";
-        $query->where(fn ($query)  => $query->where('name', 'LIKE', $term));
+        $query->where(fn ($query)  => $query->where('name', 'LIKE', $term))->orWhere('color', 'LIKE', $term);
     }
 
     public function section()

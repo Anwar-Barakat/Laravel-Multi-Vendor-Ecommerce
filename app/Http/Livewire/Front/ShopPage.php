@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Models\Category;
 use App\Models\Product;
 
 use Illuminate\Pagination\Paginator;
@@ -17,16 +18,15 @@ class ShopPage extends Component
         $sortBy = 'asc',
         $search;
 
-
-
     public function render()
     {
         Paginator::useTailwind();
-        $data['products']   = Product::with(['category', 'brand'])
-            ->where('status', 1)
+        $data['products']   = Product::where('status', 1)
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);
+
+        $data['categories'] = Category::with(['subCategories'])->withCount('products')->parent()->get();
 
         return view('livewire.front.shop-page', $data)->layout('front.layouts.master');
     }
