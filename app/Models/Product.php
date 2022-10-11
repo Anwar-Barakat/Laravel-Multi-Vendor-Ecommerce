@@ -32,6 +32,7 @@ class Product extends Model implements HasMedia
         'meta_description',
         'meta_keywords',
         'is_featured',
+        'is_best_seller',
         'status',
     ];
 

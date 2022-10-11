@@ -344,7 +344,7 @@
 
 <div class="default-height ph-item">
     <div class="slider-main owl-carousel">
-        @forelse (App\Models\Banner::where('status', 1)->get() as $banner)
+        @forelse (App\Models\Banner::where('status', 1)->inRandomOrder()->get() as $banner)
             <div class="bg-image">
                 <div class="slide-content">
                     <h1><img src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}"></h1>

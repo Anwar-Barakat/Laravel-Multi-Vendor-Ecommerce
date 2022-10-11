@@ -291,7 +291,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="is_featured">Is Featured</label>
                                     <select name="is_featured"
@@ -309,7 +309,26 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-6">
+                            <div class="col-md-12 col-lg-4">
+                                <div class="form-group">
+                                    <label for="is_best_seller">Is Best Seller</label>
+                                    <select name="is_best_seller"
+                                        class="form-control  @error('is_best_seller') is-invalid @enderror">
+                                        <option value="" selected>Select...</option>
+                                        <option value="0" {{ old('is_best_seller') == '0' ? 'selected' : '' }}>
+                                            No
+                                        </option>
+                                        <option value="1" {{ old('is_best_seller') == '1' ? 'selected' : '' }}>Yes
+                                        </option>
+                                    </select>
+                                    @error('is_best_seller')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="status">Status</label>
                                     <select name="status" class="form-control  @error('status') is-invalid @enderror">

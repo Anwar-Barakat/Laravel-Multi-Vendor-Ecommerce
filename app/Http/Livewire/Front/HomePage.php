@@ -13,9 +13,11 @@ class HomePage extends Component
 
     public function render()
     {
-        $products   = Product::where('status', 1)->inRandomOrder()->limit(8)->get();
-        return view('livewire.front.home-page', [
-            'products'  => $products,
-        ])->layout('front.layouts.master');
+        $data['new_arrivals']   = Product::where('status', 1)->latest()->limit(8)->get();
+        $data['best_sellers']   = Product::where(['status' => 1, 'is_best_seller' => 1])->limit(5)->get();
+        $data['discounted']     = Product::where('status', 1)->where('discount', '>', '0')->limit(5)->get();
+        $data['featured']       = Product::where(['status' => 1, 'is_featured' => 1])->limit(5)->get();
+
+        return view('livewire.front.home-page', $data)->layout('front.layouts.master');
     }
 }

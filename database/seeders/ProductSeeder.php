@@ -45,6 +45,7 @@ class ProductSeeder extends Seeder
             'meta_description'  => $faker->sentence(10),
             'meta_keywords'     => $faker->sentence(5),
             'is_featured'       => 'yes',
+            'is_best_seller'    => true,
             'status'            => true,
         ];
         if (is_null(Product::where(['name' => $product['name']])->first()))
