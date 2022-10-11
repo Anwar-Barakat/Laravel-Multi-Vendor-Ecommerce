@@ -17,23 +17,10 @@ class Product extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'section_id',
-        'category_id',
-        'brand_id',
-        'admin_id',
-        'name',
-        'code',
-        'color',
-        'price',
-        'discount',
-        'weight',
-        'description',
-        'meta_title',
-        'meta_description',
-        'meta_keywords',
-        'is_featured',
-        'is_best_seller',
-        'status',
+        'section_id', 'category_id', 'brand_id', 'admin_id',
+        'name', 'code', 'color', 'price', 'discount', 'weight',
+        'description', 'meta_title', 'meta_description', 'meta_keywords',
+        'is_featured', 'is_best_seller', 'status',
     ];
 
     const  COLORS = [
@@ -84,6 +71,12 @@ class Product extends Model implements HasMedia
     public function scopeMaxPrice(Builder $query, $max_price): Builder
     {
         return $query->where("price", "<=", $max_price);
+    }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(fn ($query)  => $query->where('name', 'LIKE', $term));
     }
 
     public function section()

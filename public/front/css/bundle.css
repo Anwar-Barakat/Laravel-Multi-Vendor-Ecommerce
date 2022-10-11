@@ -4457,10 +4457,6 @@ body {
     height: 35px;
 }
 
-.page-bar .toolbar-sorter {
-    margin-left: 16px;
-}
-
 /* 23.3 Shop-Grid-View */
 .grid-style .product-item {
     display: flex;

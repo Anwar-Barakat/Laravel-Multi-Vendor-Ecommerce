@@ -298,32 +298,46 @@
                                 <i class="fas fa-th"></i>
                             </a>
                         </div>
-                        <!-- Toolbar Sorter 1  -->
-                        <div class="toolbar-sorter">
-                            <div class="select-box-wrapper">
-                                <label class="sr-only" for="sort-by">Sort By</label>
-                                <select class="select-box" id="sort-by">
-                                    <option selected="selected" value="">Sort By: Best Selling</option>
-                                    <option value="">Sort By: Latest</option>
-                                    <option value="">Sort By: Lowest Price</option>
-                                    <option value="">Sort By: Highest Price</option>
-                                    <option value="">Sort By: Best Rating</option>
-                                </select>
+                        <div class="flex  justify-end flex-wrap" style="gap: 1rem">
+                            <div class="toolbar-sorter">
+                                <div class="select-box-wrapper">
+                                    <label class="sr-only" for="sort-by">Order By</label>
+                                    <select class="select-box" id="sort-by" wire:model="ordering">
+                                        <option value="name" selected>Order By : Name</option>
+                                        <option value="price">Order By : Price</option>
+                                        <option value="is_best_seller">Order By : Is Best Saller</option>
+                                        <option value="created_at">Order By : Latest</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="toolbar-sorter-2">
+                                <div class="select-box-wrapper">
+                                    <label class="sr-only" for="show-records">Show Records Per Page</label>
+                                    <select class="select-box" id="show-records" wire:model="perPage">
+                                        <option value="9" selected>Show: 9</option>
+                                        <option value="12">Show: 12</option>
+                                        <option value="16">Show: 16</option>
+                                        <option value="20">Show: 20</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="toolbar-sorter-2">
+                                <div class="select-box-wrapper">
+                                    <label class="sr-only" for="show-records">Search</label>
+                                    <input type="search" class="select-box" placeholder="Search..."
+                                        wire:model.debounce.350ms="search">
+                                </div>
+                            </div>
+                            <div class="toolbar-sorter-2">
+                                <div class="select-box-wrapper">
+                                    <label class="sr-only" for="show-records">Sort By</label>
+                                    <select class="select-box" id="show-records" wire:model="sortBy">
+                                        <option value="asc" selected>Sort By: ASC</option>
+                                        <option value="desc">Sort By: DESC</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <!-- //end Toolbar Sorter 1  -->
-                        <!-- Toolbar Sorter 2  -->
-                        <div class="toolbar-sorter-2">
-                            <div class="select-box-wrapper">
-                                <label class="sr-only" for="show-records">Show Records Per Page</label>
-                                <select class="select-box" id="show-records">
-                                    <option selected="selected" value="">Show: 8</option>
-                                    <option value="">Show: 16</option>
-                                    <option value="">Show: 28</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- //end Toolbar Sorter 2  -->
                     </div>
                     <div class="row product-container list-style">
                         @forelse ($products as $product)
