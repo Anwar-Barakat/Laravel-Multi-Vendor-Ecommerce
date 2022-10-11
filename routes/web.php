@@ -20,6 +20,7 @@ use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use App\Http\Livewire\Front\HomePage;
+use App\Http\Livewire\Front\ShopPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +41,7 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/{page}', [AdminAdminController::class, 'index']);
+// Route::get('/{page}', [AdminAdminController::class, 'index']);
 
 
 
@@ -120,4 +121,6 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
 Route::name('front.')->group(function () {
 
     Route::get('/',                          HomePage::class)->name('home');
+
+    Route::get('/listing',                   ShopPage::class)->name('listing');
 });

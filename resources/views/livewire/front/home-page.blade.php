@@ -1,4 +1,23 @@
 <div>
+    <div class="default-height ph-item">
+        <div class="slider-main owl-carousel">
+            @forelse ($banners as $banner)
+                <div class="bg-image">
+                    <div class="slide-content">
+                        <h1><img src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}"></h1>
+                        <h2>{{ ucwords($banner->title) }}</h2>
+                    </div>
+                </div>
+            @empty
+                <div class="bg-image">
+                    <div class="slide-content">
+                        <h1><img src="{{ asset('assets/img/media/banner-default.jpg') }}"></h1>
+                        <h2>{{ ucwords($banner->title) }}</h2>
+                    </div>
+                </div>
+            @endforelse
+        </div>
+    </div>
     <div class="banner-layer">
         <div class="container">
             <div class="image-banner">

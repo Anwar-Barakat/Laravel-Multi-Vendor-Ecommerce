@@ -80,6 +80,7 @@ class Product extends Model implements HasMedia
         return $final_price;
     }
 
+
     public function scopeMaxPrice(Builder $query, $max_price): Builder
     {
         return $query->where("price", "<=", $max_price);
