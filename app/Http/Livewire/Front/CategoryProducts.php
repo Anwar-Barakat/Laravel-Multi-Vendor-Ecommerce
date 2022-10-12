@@ -12,10 +12,9 @@ class CategoryProducts extends Component
 {
     use WithPagination;
 
-    public $perPage = 9,
-        $ordering = 'name',
-        $sortBy = 'asc',
-        $search;
+    public $clearFilter = false;
+
+    public $perPage = 3, $ordering = 'name', $sortBy = 'asc', $search;
 
     public $url;
 
@@ -38,6 +37,17 @@ class CategoryProducts extends Component
 
         $data['categories'] = Category::with(['subCategories'])->withCount('products')->parent()->get();
 
-        return view('livewire.front.shop-page', $data)->layout('front.layouts.master');
+        return view('livewire.front.category-products', $data)->layout('front.layouts.master');
+    }
+
+    public function showClearFilters()
+    {
+        $this->clearFilter = true;
+    }
+
+    public function clearFiltering()
+    {
+        $this->reset(['search', 'ordering', 'sortBy', 'perPage']);
+        $this->clearFilter = false;
     }
 }

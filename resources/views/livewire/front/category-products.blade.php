@@ -268,6 +268,12 @@
                             @endphp
                         </ul>
                         <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
+                        @if ($clearFilter)
+                            <p wire:click="clearFiltering"
+                                class=" text-danger px-2 py-1 rounded shadow-md inline-block text-xs cursor-pointer">
+                                Clear
+                                Filters</p>
+                        @endif
                     </div>
                     <div class="page-bar clearfix">
                         <div class="shop-settings">
@@ -282,7 +288,8 @@
                             <div class="toolbar-sorter">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="sort-by">Order By</label>
-                                    <select class="select-box" id="sort-by" wire:model="ordering">
+                                    <select class="select-box" id="sort-by" wire:model="ordering"
+                                        wire:change="showClearFilters">
                                         <option value="name" selected>Order By : Name</option>
                                         <option value="price">Order By : Price</option>
                                         <option value="is_best_seller">Order By : Is Best Saller</option>
@@ -293,8 +300,9 @@
                             <div class="toolbar-sorter-2">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Show Records Per Page</label>
-                                    <select class="select-box" id="show-records" wire:model="perPage">
-                                        <option value="9" selected>Show: 9</option>
+                                    <select class="select-box" id="show-records" wire:model="perPage"
+                                        wire:change="showClearFilters">
+                                        <option value="3" selected>Show: 9</option>
                                         <option value="12">Show: 12</option>
                                         <option value="16">Show: 16</option>
                                         <option value="20">Show: 20</option>
@@ -305,13 +313,14 @@
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Search</label>
                                     <input type="search" class="select-box" placeholder="Search..."
-                                        wire:model.debounce.350ms="search">
+                                        wire:model.debounce.350ms="search" wire:keyup="showClearFilters">
                                 </div>
                             </div>
                             <div class="toolbar-sorter-2">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Sort By</label>
-                                    <select class="select-box" id="show-records" wire:model="sortBy">
+                                    <select class="select-box" id="show-records" wire:model="sortBy"
+                                        wire:change="showClearFilters">
                                         <option value="asc" selected>Sort By: ASC</option>
                                         <option value="desc">Sort By: DESC</option>
                                     </select>

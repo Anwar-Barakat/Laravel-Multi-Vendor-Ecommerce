@@ -122,8 +122,6 @@ Route::name('front.')->group(function () {
 
     Route::get('/',                             HomePage::class)->name('home');
 
-    Route::get('/shop',                         ShopPage::class)->name('shop');
-
     Route::get('/shop/{url}',                   CategoryProducts::class)->name('shop.category.products');
 });
 
