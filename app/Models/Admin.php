@@ -48,6 +48,10 @@ class Admin extends Authenticatable implements HasMedia
         );
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where(['status' => 1]);
+    }
 
     public function vendor()
     {

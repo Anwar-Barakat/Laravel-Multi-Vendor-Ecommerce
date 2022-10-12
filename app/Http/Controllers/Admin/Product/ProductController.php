@@ -21,19 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        Paginator::useBootstrap();
-
-        $products   = QueryBuilder::for(Product::class)
-            ->allowedFilters([
-                'name',
-                'price',
-                AllowedFilter::exact('section_id'),
-                AllowedFilter::exact('category_id'),
-                AllowedFilter::exact('brand_id'),
-                AllowedFilter::exact('admin_id'),
-                AllowedFilter::scope('max_price'),
-            ])->paginate(9);
-        return view('admin.products.index', ['products' => $products]);
+        return view('admin.products.index');
     }
 
     /**

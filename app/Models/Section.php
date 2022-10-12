@@ -22,6 +22,11 @@ class Section extends Model
         );
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where(['status' => 1]);
+    }
+
     public static function activeSections()
     {
         return Section::with(['categories'])->where('status', 1)->get();
