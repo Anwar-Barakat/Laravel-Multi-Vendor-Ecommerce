@@ -15,7 +15,7 @@
 
 <body>
     <div id="app">
-        @include('front.layouts.main-header')
+        @livewire('front.main-header')
 
         {{ $slot }}
 

@@ -26,8 +26,6 @@ class CategoryProducts extends Component
 
     public function render()
     {
-        Paginator::useTailwind();
-
         $category   = Category::where(['url' => $this->url])->active()->count();
         $category > 0 ? $categoryDetails = Category::categoryDetails($this->url) : abort(404);
 

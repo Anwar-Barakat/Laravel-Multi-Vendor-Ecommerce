@@ -1,4 +1,5 @@
 <div>
+
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
@@ -9,7 +10,7 @@
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="{{ route('front.listing') }}">Shop</a>
+                        <a href="{{ route('front.shop') }}">Shop</a>
                     </li>
                 </ul>
             </div>
@@ -36,14 +37,14 @@
                         <h3 class="title-name">Browse Categories</h3>
                         @foreach ($categories as $category)
                             <h3 class="fetch-mark-category">
-                                <a href="{{ route('front.category.products', ['url' => $category->url]) }}">{{ ucwords($category->name) }}
+                                <a href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">{{ ucwords($category->name) }}
                                     <span class="total-fetch-items">({{ $category->products_count }})</span>
                                 </a>
                             </h3>
                             <ul>
                                 @foreach ($category->subCategories as $sub)
                                     <li>
-                                        <a href="{{ route('front.category.products', ['url' => $sub->url]) }}">
+                                        <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
                                             {{ ucwords($sub->name) }}
                                             <span class="total-fetch-items">({{ $sub->products_count }})</span>
                                         </a>
@@ -335,15 +336,8 @@
                                     <div class="item-content">
                                         <div class="what-product-is">
                                             <ul class="bread-crumb">
-                                                <li class="has-separator">
-                                                    <a href="">Category</a>
-                                                </li>
-                                                <li class="has-separator">
-                                                    <a href="listing.html">Sub</a>
-                                                </li>
-                                                <li>
-                                                    {{ ucwords($product->name) }}
-                                                </li>
+                                                <li class="has-separator">{{ $product->code }}</li>
+                                                <li>{{ ucwords($product->color) }}</li>
                                             </ul>
                                             <h6 class="text-gray-500 text-xs">{{ $product->created_at }}</h6>
                                             <h6 class="item-title">

@@ -32,8 +32,7 @@ class ProductController extends Controller
                 AllowedFilter::exact('brand_id'),
                 AllowedFilter::exact('admin_id'),
                 AllowedFilter::scope('max_price'),
-            ])
-            ->paginate(10);
+            ])->paginate(9);
         return view('admin.products.index', ['products' => $products]);
     }
 

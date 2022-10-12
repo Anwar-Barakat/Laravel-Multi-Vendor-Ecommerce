@@ -28,12 +28,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        Paginator::useBootstrap();
+        Paginator::useTailwind();
 
-        View::composer('front.layouts.main-header', function ($view) {
-            $view->with([
-                'sections'  => Section::activeSections()
-            ]);
-        });
+        // View::composer('front.layouts.main-header', function ($view) {
+        //     $view->with([
+        //         'sections'  => Section::activeSections()
+        //     ]);
+        // });
     }
 }
