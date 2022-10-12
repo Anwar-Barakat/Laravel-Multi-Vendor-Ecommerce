@@ -21,7 +21,8 @@ class ShopPage extends Component
     public function render()
     {
         Paginator::useTailwind();
-        $data['products']   = Product::where('status', 1)
+        $data['products']   = Product::with(['brand'])
+            ->where('status', 1)
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);

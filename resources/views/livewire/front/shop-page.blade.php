@@ -1,5 +1,4 @@
 <div>
-
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
@@ -9,28 +8,15 @@
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
-                    <li class="is-marked">
-                        <a href="{{ route('front.shop') }}">Shop</a>
-                    </li>
+                    @php
+                        echo $categoryDetails['breadcrumb'];
+                    @endphp
                 </ul>
             </div>
         </div>
     </div>
-    <div class="page-shop u-s-p-t-80">
+    <div class="page-shop pt-4">
         <div class="container">
-            <div class="shop-intro">
-                <ul class="bread-crumb">
-                    <li class="has-separator">
-                        <a href="{{ route('front.home') }}">Home</a>
-                    </li>
-                    <li class="has-separator">
-                        <a href="">All Products</a>
-                    </li>
-                    {{-- <li class="is-marked">
-                        <a href="listing.html"></a>
-                    </li> --}}
-                </ul>
-            </div>
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="fetch-categories">
@@ -265,6 +251,24 @@
                     <!-- Filters /- -->
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div>
+                        @if ($selectedCategory->getFirstMediaUrl('categories', 'thumb'))
+                            <img src="{{ $selectedCategory->getFirstMediaUrl('categories', 'thumb') }}"
+                                alt="{{ $selectedCategory->name }}" class="img img-thumbnail category-shadow"
+                                height="300">
+                        @else
+                            <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
+                                class="img img-thumbnail category-shadow" height="300">
+                        @endif
+                    </div>
+                    <div class="shop-intro">
+                        <ul class="bread-crumb">
+                            @php
+                                echo $categoryDetails['breadcrumb'];
+                            @endphp
+                        </ul>
+                        <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
+                    </div>
                     <div class="page-bar clearfix">
                         <div class="shop-settings">
                             <a id="list-anchor" class="active">
@@ -274,7 +278,7 @@
                                 <i class="fas fa-th"></i>
                             </a>
                         </div>
-                        <div class="flex  justify-end flex-wrap" style="gap: 1rem">
+                        <div class="flex lg:justify-end flex-wrap justify-between" style="gap: 1rem">
                             <div class="toolbar-sorter">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="sort-by">Order By</label>
@@ -318,7 +322,7 @@
                     <div class="row product-container list-style">
                         @forelse ($products as $product)
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
-                                <div class="item">
+                                <div class="item main-shadow">
                                     <div class="image-container">
                                         <a class="item-img-wrapper-link" href="single-product.html">
                                             <img class="img-fluid"
@@ -337,7 +341,8 @@
                                         <div class="what-product-is">
                                             <ul class="bread-crumb">
                                                 <li class="has-separator">{{ $product->code }}</li>
-                                                <li>{{ ucwords($product->color) }}</li>
+                                                <li class="has-separator">{{ ucwords($product->color) }}</li>
+                                                <li>{{ ucwords($product->brand->name) }}</li>
                                             </ul>
                                             <h6 class="text-gray-500 text-xs">{{ $product->created_at }}</h6>
                                             <h6 class="item-title">

@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-    --main-color: #03a9f4;
+    --main-color: #0162e8;
 }
 
 /**
@@ -52,6 +52,13 @@ a:not([href]):not([tabindex]) {
 a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
     color: var(--main-color);
+}
+.main-shadow {
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 4px, rgb(0 0 0 / 18%) 0px 7px 13px -3px,
+        rgb(0 0 0 / 20%) 0px -3px 0px inset;
+}
+.category-shadow {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 
 /**
@@ -4329,8 +4336,7 @@ body {
 23.0 Shop:
 --------------------------------------------------------------*/
 .shop-intro {
-    margin-bottom: 30px;
-    text-align: center;
+    margin: 1rem 0 2rem;
 }
 
 .shop-intro > h3 {
@@ -4340,7 +4346,7 @@ body {
 }
 
 .shop-intro .bread-crumb > li {
-    font-size: 12px;
+    font-size: 15px;
     color: #292929;
 }
 

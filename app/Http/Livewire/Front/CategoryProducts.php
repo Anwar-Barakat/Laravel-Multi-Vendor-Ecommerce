@@ -26,10 +26,11 @@ class CategoryProducts extends Component
 
     public function render()
     {
-        $category   = Category::where(['url' => $this->url])->active()->count();
-        $category > 0 ? $categoryDetails = Category::categoryDetails($this->url) : abort(404);
+        $category           = Category::where(['url'    => $this->url])->active()->count();
+        $category > 0       ? $data['categoryDetails']  = Category::categoryDetails($this->url) : abort(404);
+        $data['selectedCategory']   = $data['categoryDetails']['category'];
 
-        $data['products']   = Product::whereIn('category_id', $categoryDetails['catIds'])
+        $data['products']   = Product::whereIn('category_id', $data['categoryDetails']['catIds'])
             ->active()
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)

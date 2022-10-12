@@ -49,8 +49,9 @@ class Category extends Model  implements HasMedia
 
     public static function categoryDetails($url)
     {
-        $category   = Category::select('id', 'name', 'url')->with(['subCategories'])
-            ->where('url', $url)->active()->first();
+        $category   = Category::with([
+            'subCategories' => fn ($q) => $q->select('id', 'parent_id', 'name', 'url', 'description')
+        ])->where('url', $url)->active()->first();
 
         $catIds     = [];
         $catIds[]   = $category->id;
@@ -58,7 +59,23 @@ class Category extends Model  implements HasMedia
             $catIds[]   = $sub->id;
         endforeach;
 
-        $categoryDetails = ['category' => $category, 'catIds' => $catIds];
+        if ($category->parent_id == 0) :
+            $breadcrumb = "
+                <li class='is-marked'>
+                    <a href=" . route('front.shop.category.products', $category->url) . ">$category->name</a>
+                </li>";
+        else :
+            $parent     = $category->parentCategory;
+            $breadcrumb = "
+                <li class='has-separator'>
+                    <a href=" . route('front.shop.category.products', $parent->url) . ">$parent->name</a>
+                </li>
+                <li class='is-marked'>
+                    <a href=" . route('front.shop.category.products', $category->url) . ">$category->name</a>
+                </li>";
+        endif;
+
+        $categoryDetails = ['category' => $category, 'catIds' => $catIds, 'breadcrumb' => $breadcrumb];
         return $categoryDetails;
     }
 
@@ -69,7 +86,7 @@ class Category extends Model  implements HasMedia
 
     public function parentCategory()
     {
-        return $this->belongsTo(Category::class, 'parent_id')->select('id', 'name');
+        return $this->belongsTo(Category::class, 'parent_id')->select('id', 'name', 'url');
     }
 
     public function subCategories()
