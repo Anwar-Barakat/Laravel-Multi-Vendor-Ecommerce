@@ -16,8 +16,8 @@ class FilterValueController extends Controller
      */
     public function index()
     {
-        $filterValues = FilterValue::active()->get();
-        return view('admin.products.filters.values', ['filterValues' => $filterValues]);
+        $filter_values = FilterValue::active()->get();
+        return view('admin.products.filter-values.index', ['filter_values' => $filter_values]);
     }
 
     /**

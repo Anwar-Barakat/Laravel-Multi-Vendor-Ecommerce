@@ -10,9 +10,9 @@
 @endsection
 
 
-@section('title', 'Filters List')
+@section('title', 'Filters Values List')
 
-@section('breadcamb', 'Filters List')
+@section('breadcamb', 'Filters Values List')
 
 @section('content')
     <div class="row row-sm">
@@ -20,10 +20,10 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Filters TABLE</h4>
+                        <h4 class="card-title mg-b-0">Filters Values TABLE</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 tx-gray-500 mb-3">A lot Of Filters</p>
+                    <p class="tx-12 tx-gray-500 mb-3">A lot Of Filters Values</p>
                     <button type="button" class="btn btn-primary-gradient  modal-effect" data-effect="effect-rotate-left"
                         role="button" data-toggle="modal" data-target="#addNew">
                         <i class="fas fa-plus"></i> Add
@@ -43,26 +43,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($filterValues as $filter)
+                                @foreach ($filter_values as $filter_value)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $filter->filter_id }}</td>
-                                        <td>{{ $filter->filter_value }}</td>
+                                        <td>{{ $filter_value->filter->filter_name }}</td>
+                                        <td>{{ $filter_value->filter_value }}</td>
                                         <td>
-                                            {{ $filter->status }}
+                                            @livewire('admin.product.filter-value.update-status', ['status' => $filter_value->status, 'filter_value_id' => $filter_value->id])
                                         </td>
-                                        <td>{{ $filter->created_at }}</td>
+                                        <td>{{ $filter_value->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
                                                 <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                    title="Update" data-target="#edit{{ $filter->id }}"
+                                                    title="Update" data-target="#edit{{ $filter_value->id }}"
                                                     style="color: white">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
                                             </span>
                                         </td>
-                                        {{-- @include('admin.brands.edit') --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -72,7 +71,6 @@
             </div>
         </div>
     </div>
-    {{-- @include('admin.brands.add') --}}
 @endsection
 @section('js')
     <!-- Internal Data tables -->

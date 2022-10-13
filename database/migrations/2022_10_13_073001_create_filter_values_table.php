@@ -15,7 +15,7 @@ class CreateFilterValuesTable extends Migration
     {
         Schema::create('filter_values', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('filter_id');
+            $table->foreignId('filter_id')->constrained('filters');
             $table->string('filter_value');
             $table->boolean('status')->default(true);
             $table->timestamps();

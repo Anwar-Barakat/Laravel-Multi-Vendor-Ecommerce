@@ -30,4 +30,9 @@ class FilterValue extends Model
     {
         return $query->where(['status' => 1]);
     }
+
+    public function filter()
+    {
+        return $this->belongsTo(Filter::class, 'filter_id');
+    }
 }

@@ -49,7 +49,17 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $filter->filter_name }}</td>
                                         <td>{{ $filter->filter_column }}</td>
-                                        <td>{{ $filter->category_ids }}</td>
+                                        <td class="flex flex-wrap" style="gap: .5rem">
+                                            @php
+                                                $cat_ids = explode(',', $filter->category_ids);
+                                            @endphp
+
+                                            @foreach ($cat_ids as $id)
+                                                <span class="badge badge-danger">
+                                                    {{ App\Models\Category::where('id', $id)->first()->name }}
+                                                </span>
+                                            @endforeach
+                                        </td>
                                         <td>
                                             @livewire('admin.product.filter.update-status', ['status' => $filter->status, 'filter_id' => $filter->id])
                                         </td>

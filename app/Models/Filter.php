@@ -15,6 +15,7 @@ class Filter extends Model
         'category_ids',
         'filter_name',
         'filter_column',
+        'status',
     ];
 
     public function createdAt(): Attribute
