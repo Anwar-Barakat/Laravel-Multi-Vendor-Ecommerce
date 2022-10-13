@@ -13,7 +13,7 @@ class FilterValue extends Model
 
     protected $fillable = [
         'filter_id',
-        'filer_value',
+        'filter_value',
         'status',
     ];
 

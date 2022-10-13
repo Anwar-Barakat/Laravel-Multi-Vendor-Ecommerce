@@ -71,7 +71,9 @@
             </div>
         </div>
     </div>
+    @include('admin.filter-values.add')
 @endsection
+
 @section('js')
     <!-- Internal Data tables -->
     <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -93,9 +95,8 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
+
     <!-- Internal Modal js-->
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
-
-    <script src="{{ asset('assets/js/custom/update-brand-status.js') }}"></script>
 @endsection

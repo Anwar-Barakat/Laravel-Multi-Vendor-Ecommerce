@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Filter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreFilterValueRequest;
 use App\Http\Requests\Admin\UpdateFilterValueRequest;
+use App\Models\Filter;
 use App\Models\FilterValue;
 
 class FilterValueController extends Controller
@@ -16,8 +17,9 @@ class FilterValueController extends Controller
      */
     public function index()
     {
-        $filter_values = FilterValue::active()->get();
-        return view('admin.filter-values.index', ['filter_values' => $filter_values]);
+        $data['filter_values']  = FilterValue::active()->get();
+        $data['filters']        = Filter::active()->get();
+        return view('admin.filter-values.index', $data);
     }
 
     /**
@@ -38,7 +40,17 @@ class FilterValueController extends Controller
      */
     public function store(StoreFilterValueRequest $request)
     {
-        //
+        try {
+            if ($request->isMethod('post')) {
+                $data   = $request->only(['filter_id', 'filter_value', 'status']);
+                FilterValue::create($data);
+
+                toastr()->success('Filter Value Has Been Added Successfully');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
