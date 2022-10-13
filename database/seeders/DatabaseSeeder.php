@@ -27,8 +27,6 @@ class DatabaseSeeder extends Seeder
 
             ProductSeeder::class,
             AttributeSeeder::class,
-            FilterSeeder::class,
-            FilterValueSeeder::class,
         ]);
     }
 }

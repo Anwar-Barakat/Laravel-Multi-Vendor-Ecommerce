@@ -6,7 +6,9 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <!-- Internal Select2 css -->
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
 @endsection
 
 
@@ -61,7 +63,7 @@
                                             @endforeach
                                         </td>
                                         <td>
-                                            @livewire('admin.product.filter.update-status', ['status' => $filter->status, 'filter_id' => $filter->id])
+                                            @livewire('admin.filter.update-status', ['status' => $filter->status, 'filter_id' => $filter->id])
                                         </td>
                                         <td>{{ $filter->created_at }}</td>
                                         <td>
@@ -84,7 +86,7 @@
             </div>
         </div>
     </div>
-    {{-- @include('admin.brands.add') --}}
+    @include('admin.filters.add')
 @endsection
 @section('js')
     <!-- Internal Data tables -->
@@ -107,9 +109,20 @@
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
 
+
     <!-- Internal Modal js-->
     <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
     <script src="{{ URL::asset('assets/css/modal-popup.js') }}"></script>
 
-    <script src="{{ asset('assets/js/custom/update-brand-status.js') }}"></script>
+    <!-- Internal Select2.min js -->
+    <script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                placeholder: 'Choose one',
+                searchInputPlaceholder: 'Search'
+            });
+        });
+    </script>
 @endsection

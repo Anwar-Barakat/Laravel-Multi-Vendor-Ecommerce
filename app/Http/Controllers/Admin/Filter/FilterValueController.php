@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Product\Filter;
+namespace App\Http\Controllers\Admin\Filter;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\StoreFilterRequest;
-use App\Http\Requests\Admin\UpdateFilterRequest;
-use App\Models\Filter;
+use App\Http\Requests\Admin\StoreFilterValueRequest;
+use App\Http\Requests\Admin\UpdateFilterValueRequest;
+use App\Models\FilterValue;
 
-class FilterController extends Controller
+class FilterValueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class FilterController extends Controller
      */
     public function index()
     {
-        return view('admin.products.filters.index', ['filters' => Filter::active()->get()]);
+        $filter_values = FilterValue::active()->get();
+        return view('admin.filter-values.index', ['filter_values' => $filter_values]);
     }
 
     /**
@@ -32,10 +33,10 @@ class FilterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFilterRequest  $request
+     * @param  \App\Http\Requests\StoreFilterValueRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFilterRequest $request)
+    public function store(StoreFilterValueRequest $request)
     {
         //
     }
@@ -43,10 +44,10 @@ class FilterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Filter  $filter
+     * @param  \App\Models\FilterValue  $filterValue
      * @return \Illuminate\Http\Response
      */
-    public function show(Filter $filter)
+    public function show(FilterValue $filterValue)
     {
         //
     }
@@ -54,10 +55,10 @@ class FilterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Filter  $filter
+     * @param  \App\Models\FilterValue  $filterValue
      * @return \Illuminate\Http\Response
      */
-    public function edit(Filter $filter)
+    public function edit(FilterValue $filterValue)
     {
         //
     }
@@ -65,11 +66,11 @@ class FilterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFilterRequest  $request
-     * @param  \App\Models\Filter  $filter
+     * @param  \App\Http\Requests\UpdateFilterValueRequest  $request
+     * @param  \App\Models\FilterValue  $filterValue
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFilterRequest $request, Filter $filter)
+    public function update(UpdateFilterValueRequest $request, FilterValue $filterValue)
     {
         //
     }
@@ -77,10 +78,10 @@ class FilterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Filter  $filter
+     * @param  \App\Models\FilterValue  $filterValue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Filter $filter)
+    public function destroy(FilterValue $filterValue)
     {
         //
     }

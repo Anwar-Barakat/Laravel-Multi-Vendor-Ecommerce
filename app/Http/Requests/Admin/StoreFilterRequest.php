@@ -13,7 +13,7 @@ class StoreFilterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'category_ids'      => ['required'],
+            'filter_name'       => ['required'],
+            'status'            => ['required', 'in:0,1'],
         ];
     }
 }

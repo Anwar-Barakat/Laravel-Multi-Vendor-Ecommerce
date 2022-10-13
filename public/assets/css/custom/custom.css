@@ -53,6 +53,9 @@ img {
 textarea {
     resize: none;
 }
+.select2-container {
+    width: 100% !important;
+}
 /* **************************************************************************** */
 /* **************** MultField Form Product Attributes  ************************ */
 

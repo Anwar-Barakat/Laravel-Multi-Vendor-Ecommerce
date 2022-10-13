@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Product\Filter;
+namespace App\Http\Livewire\Admin\Filter;
 
 use App\Models\Filter;
 use Livewire\Component;
@@ -22,6 +22,6 @@ class UpdateStatus extends Component
 
     public function render()
     {
-        return view('livewire.admin.product.filter.update-status');
+        return view('livewire.admin.filter.update-status');
     }
 }

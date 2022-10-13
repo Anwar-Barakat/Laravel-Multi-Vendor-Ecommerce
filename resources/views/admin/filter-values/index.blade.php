@@ -49,7 +49,7 @@
                                         <td>{{ $filter_value->filter->filter_name }}</td>
                                         <td>{{ $filter_value->filter_value }}</td>
                                         <td>
-                                            @livewire('admin.product.filter-value.update-status', ['status' => $filter_value->status, 'filter_value_id' => $filter_value->id])
+                                            @livewire('admin.filter-value.update-status', ['status' => $filter_value->status, 'filter_value_id' => $filter_value->id])
                                         </td>
                                         <td>{{ $filter_value->created_at }}</td>
                                         <td>
