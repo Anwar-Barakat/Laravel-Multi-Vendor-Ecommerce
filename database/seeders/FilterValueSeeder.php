@@ -18,16 +18,16 @@ class FilterValueSeeder extends Seeder
         $filterValues = [
             [
                 'filter_id'     => Filter::where('filter_column', 'fabric')->first()->id,
-                'filer_value'   => 'cotton'
+                'filter_value'  => 'cotton'
             ],
             [
                 'filter_id'     => Filter::where('filter_column', 'fabric')->first()->id,
-                'filer_value'   => 'polyester'
+                'filter_value'  => 'polyester'
             ],
         ];
 
         foreach ($filterValues as $filter) {
-            if (is_null(FilterValue::where('filer_value', $filter['filer_value'])->first()))
+            if (is_null(FilterValue::where('filter_value', $filter['filter_value'])->first()))
                 FilterValue::create($filter);
         }
     }

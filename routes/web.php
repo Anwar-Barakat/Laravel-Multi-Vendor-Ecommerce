@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\Product\Attachment\AttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DeleteAllAttachmentController;
 use App\Http\Controllers\Admin\Product\Attachment\DownloadAttachmentController;
 use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
+use App\Http\Controllers\Admin\Product\Filter\FilterController;
+use App\Http\Controllers\Admin\Product\Filter\FilterValueController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
@@ -89,6 +91,16 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Products
         //?_________________________
         Route::resource('products',                                 ProductController::class);
+
+        //?_________________________
+        //? Products Filters
+        //?_________________________
+        Route::resource('filters',                                  FilterController::class);
+
+        //?_________________________
+        //? Products Filters
+        //?_________________________
+        Route::resource('filters-values',                           FilterValueController::class);
 
         //?_________________________
         //? Products Attributes

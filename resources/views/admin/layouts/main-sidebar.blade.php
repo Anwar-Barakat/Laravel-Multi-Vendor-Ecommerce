@@ -124,6 +124,25 @@
                     </ul>
                 </li>
 
+                {{-- Filters --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-filter  side-menu__icon"></i>
+                        <span class="side-menu__label">Filters</span>
+                        <i class="angle fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.filters.index') }}" class="slide-item">Filters List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.filters-values.index') }}" class="slide-item">
+                                Filters Values List
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 {{-- Banners --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
