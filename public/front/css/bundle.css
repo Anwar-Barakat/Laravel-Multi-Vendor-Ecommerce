@@ -4374,7 +4374,7 @@ body {
 
 /* 23.1 Extract-Categories */
 .fetch-categories > .fetch-mark-category {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -4385,12 +4385,11 @@ body {
 .fetch-categories > ul {
     list-style: none;
     margin-bottom: 32px;
-    padding: 0 0 16px;
-    border-bottom: 1px solid #dcdcdd;
 }
 
 .fetch-categories > ul > li > a {
     font-size: 13px;
+    padding-left: 1.5em;
 }
 
 .fetch-categories > ul > li > ul > li > a {

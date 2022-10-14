@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front;
 
 use App\Models\Category;
+use App\Models\Filter;
 use App\Models\Product;
 use Illuminate\Pagination\Paginator;
 use Livewire\Component;
@@ -36,6 +37,8 @@ class CategoryProducts extends Component
             ->paginate($this->perPage);
 
         $data['categories'] = Category::with(['subCategories'])->withCount('products')->parent()->get();
+
+        $data['filters']    = Filter::with(['filterValues'])->active()->get();
 
         return view('livewire.front.category-products', $data)->layout('front.layouts.master');
     }

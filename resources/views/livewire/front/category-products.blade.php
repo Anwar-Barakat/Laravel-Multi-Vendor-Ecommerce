@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12">
-                    <div class="fetch-categories">
+                    <div class="fetch-categories img-thumbnail filtering-padding">
                         <h3 class="title-name">Browse Categories</h3>
                         @foreach ($categories as $category)
                             <h3 class="fetch-mark-category">
@@ -29,115 +29,20 @@
                             </h3>
                             <ul>
                                 @foreach ($category->subCategories as $sub)
-                                    <li>
-                                        <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
-                                            {{ ucwords($sub->name) }}
-                                            <span class="total-fetch-items">({{ $sub->products_count }})</span>
-                                        </a>
-                                    </li>
+                                    @if ($sub->products_count > 0)
+                                        <li>
+                                            <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
+                                                <i class="fas fa-chevron-circle-right"></i> &nbsp;
+                                                {{ ucwords($sub->name) }}
+                                                <span class="total-fetch-items">({{ $sub->products_count }})</span>
+                                            </a>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         @endforeach
                     </div>
-                    <div class="facet-filter-associates">
-                        <h3 class="title-name">Size</h3>
-                        <form class="facet-form" action="#" method="post">
-                            <div class="associate-wrapper">
-                                <input type="checkbox" class="check-box" id="cbs-01">
-                                <label class="label-text" for="cbs-01">Male 2XL
-                                    <span class="total-fetch-items">(2)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-02">
-                                <label class="label-text" for="cbs-02">Male 3XL
-                                    <span class="total-fetch-items">(2)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-03">
-                                <label class="label-text" for="cbs-03">Kids 4
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-04">
-                                <label class="label-text" for="cbs-04">Kids 6
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-05">
-                                <label class="label-text" for="cbs-05">Kids 8
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-06">
-                                <label class="label-text" for="cbs-06">Kids 10
-                                    <span class="total-fetch-items">(2)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-07">
-                                <label class="label-text" for="cbs-07">Kids 12
-                                    <span class="total-fetch-items">(2)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-08">
-                                <label class="label-text" for="cbs-08">Female Small
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-09">
-                                <label class="label-text" for="cbs-09">Male Small
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-10">
-                                <label class="label-text" for="cbs-10">Female Medium
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-11">
-                                <label class="label-text" for="cbs-11">Male Medium
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-12">
-                                <label class="label-text" for="cbs-12">Female Large
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-13">
-                                <label class="label-text" for="cbs-13">Male Large
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-14">
-                                <label class="label-text" for="cbs-14">Female XL
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-15">
-                                <label class="label-text" for="cbs-15">Male XL
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Filter-Size -->
-                    <!-- Filter-Color -->
-                    <div class="facet-filter-associates">
-                        <h3 class="title-name">Color</h3>
-                        <form class="facet-form" action="#" method="post">
-                            <div class="associate-wrapper">
-                                <input type="checkbox" class="check-box" id="cbs-16">
-                                <label class="label-text" for="cbs-16">Heather Grey
-                                    <span class="total-fetch-items">(1)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-17">
-                                <label class="label-text" for="cbs-17">Black
-                                    <span class="total-fetch-items">(1)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-18">
-                                <label class="label-text" for="cbs-18">White
-                                    <span class="total-fetch-items">(3)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-19">
-                                <label class="label-text" for="cbs-19">Mischka Plain
-                                    <span class="total-fetch-items">(1)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-20">
-                                <label class="label-text" for="cbs-20">Black Bean
-                                    <span class="total-fetch-items">(1)</span>
-                                </label>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- Filter-Color /- -->
-                    <!-- Filter-Brand -->
-                    <div class="facet-filter-associates">
+                    <div class="facet-filter-associates img-thumbnail filtering-padding">
                         <h3 class="title-name">Brand</h3>
                         <form class="facet-form" action="#" method="post">
                             <div class="associate-wrapper">
@@ -160,8 +65,28 @@
                             </div>
                         </form>
                     </div>
-                    <!-- Filter-Brand /- -->
-                    <!-- Filter-Price -->
+                    @if ($filters)
+                        @foreach ($filters as $filter)
+                            @php
+                                $available = App\Models\Filter::where('id', $filter->id)->first();
+                            @endphp
+                            @if (in_array($selectedCategory->id, explode(',', $available->category_ids)))
+                                <div class="facet-filter-associates img-thumbnail filtering-padding">
+                                    <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
+                                    <div class="associate-wrapper">
+                                        @foreach ($filter->filterValues as $filterValue)
+                                            <input type="checkbox" class="check-box" id="filter{{ $filterValue->id }}"
+                                                value="{{ $filterValue->id }}">
+                                            <label class="label-text" for="filter{{ $filterValue->id }}">
+                                                {{ $filterValue->filter_value }}
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
+
                     <div class="facet-filter-by-price">
                         <h3 class="title-name">Price</h3>
                         <form class="facet-form" action="#" method="post">
@@ -181,8 +106,6 @@
                             <button type="submit" class="button button-primary">Filter</button>
                         </form>
                     </div>
-                    <!-- Filter-Price /- -->
-                    <!-- Filter-Free-Shipping -->
                     <div class="facet-filter-by-shipping">
                         <h3 class="title-name">Shipping</h3>
                         <form class="facet-form" action="#" method="post">
@@ -190,8 +113,6 @@
                             <label class="label-text" for="cb-free-ship">Free Shipping</label>
                         </form>
                     </div>
-                    <!-- Filter-Free-Shipping /- -->
-                    <!-- Filter-Rating -->
                     <div class="facet-filter-by-rating">
                         <h3 class="title-name">Rating</h3>
                         <div class="facet-form">
@@ -247,8 +168,6 @@
                             <!-- 1 & Up Stars /- -->
                         </div>
                     </div>
-                    <!-- Filter-Rating -->
-                    <!-- Filters /- -->
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div>

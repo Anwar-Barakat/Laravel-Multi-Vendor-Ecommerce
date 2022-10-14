@@ -31,4 +31,9 @@ class Filter extends Model
     {
         return $query->where(['status' => 1]);
     }
+
+    public function filterValues()
+    {
+        return $this->hasMany(FilterValue::class, 'filter_id');
+    }
 }
