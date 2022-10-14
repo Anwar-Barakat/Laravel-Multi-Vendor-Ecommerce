@@ -76,7 +76,7 @@
                                                 </a>
                                             </span>
                                         </td>
-                                        {{-- @include('admin.brands.edit') --}}
+                                        @include('admin.filters.edit')
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -45,7 +45,7 @@ class FilterController extends Controller
         try {
             if ($request->isMethod('post')) {
                 $data                   = $request->only(['category_ids', 'filter_name',  'status']);
-                $data['filter_column']  = Str::slug($data['filter_name']);
+                $data['filter_column']  = Str::slug($data['filter_name'], '_');
                 $data['category_ids']   = implode(',', $data['category_ids']);
 
                 Filter::create($data);
@@ -91,7 +91,19 @@ class FilterController extends Controller
      */
     public function update(UpdateFilterRequest $request, Filter $filter)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data                   = $request->only(['category_ids', 'status']);
+                $data['category_ids']   = implode(',', $data['category_ids']);
+
+                $filter->update($data);
+
+                toastr()->success('Filter Has Bee Updated Successfully');
+                return redirect()->route('admin.filters.index');
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**

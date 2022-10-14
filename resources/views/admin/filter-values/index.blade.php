@@ -43,19 +43,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($filter_values as $filter_value)
+                                @foreach ($filterValues as $filterValue)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $filter_value->filter->filter_name }}</td>
-                                        <td>{{ $filter_value->filter_value }}</td>
+                                        <td>{{ $filterValue->filter->filter_name }}</td>
+                                        <td>{{ $filterValue->filter_value }}</td>
                                         <td>
-                                            @livewire('admin.filter-value.update-status', ['status' => $filter_value->status, 'filter_value_id' => $filter_value->id])
+                                            @livewire('admin.filter-value.update-status', ['status' => $filterValue->status, 'filter_value_id' => $filterValue->id])
                                         </td>
-                                        <td>{{ $filter_value->created_at }}</td>
+                                        <td>{{ $filterValue->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
                                                 <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                    title="Update" data-target="#edit{{ $filter_value->id }}"
+                                                    title="Update" data-target="#edit{{ $filterValue->id }}"
                                                     style="color: white">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
@@ -63,6 +63,7 @@
                                             </span>
                                         </td>
                                     </tr>
+                                    @include('admin.filter-values.edit')
                                 @endforeach
                             </tbody>
                         </table>

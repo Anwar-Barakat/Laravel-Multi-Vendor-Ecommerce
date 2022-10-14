@@ -1,10 +1,10 @@
     {{-- Add New Filter Value Modal --}}
-    <div class="modal effect-rotate-left" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
-        aria-hidden="true">
+    <div class="modal effect-rotate-left" id="edit{{ $filterValue->id }}" tabindex="-1" role="dialog"
+        aria-labelledby="editLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Filter Value</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit The Filter Value</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -17,8 +17,9 @@
                             @endforeach
                         </ul>
                     @endif
-                    <form action="{{ route('admin.filters-values.store') }}" method="post">
+                    <form action="{{ route('admin.filters-values.update', $filterValue) }}" method="post">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label for="filter_id">Filters</label>
                             <select name="filter_id"
@@ -26,7 +27,8 @@
                                 <option value="" selected>Select...</option>
                                 @foreach ($filters as $filter)
                                     <option value="{{ $filter->id }}"
-                                        {{ old('filter_id') == $filter->id ? 'selected' : '' }}>
+                                        {{ old('filter_id') == $filter->id ? 'selected' : '' }}
+                                        {{ $filterValue->filter_id == $filter->id ? 'selected' : '' }}>
                                         {{ $filter->filter_name }}
                                     </option>
                                 @endforeach
@@ -40,8 +42,8 @@
                         <div class="form-group">
                             <label for="filter_value">Filter Value</label>
                             <input type="text" class="form-control  @error('filter_value') is-invalid @enderror"
-                                name="filter_value" placeholder="Filter Value" required
-                                value="{{ old('filter_value') }}">
+                                name="filter_value" placeholder="Filter Name" required
+                                value="{{ old('filter_value', $filterValue->filter_value) }}">
                             @error('filter_value')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -53,9 +55,11 @@
                             <select class="form-control @error('status') is-invalid @enderror" id="status"
                                 name="status" required>
                                 <option value="">Select...</option>
-                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                                <option value="1" {{ old('status') == '1' ? 'selected' : '' }}
+                                    {{ $filterValue->status == '1' ? 'selected' : '' }}>
                                     Active</option>
-                                <option value="0" {{ old('status') == '1' ? 'selected' : '' }}>
+                                <option value="0" {{ old('status') == '0' ? 'selected' : '' }}
+                                    {{ $filterValue->status == '0' ? 'selected' : '' }}>
                                     Inactive</option>
                             </select>
                             @error('status')
@@ -65,10 +69,10 @@
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary-gradient"
-                                data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary-gradient" data-dismiss="modal"> <i
+                                    class="fas fa-times"></i> Close</button>
                             <button type="submit" class="btn btn-primary-gradient">
-                                <i class="fas fa-plus"></i> Submit
+                                <i class="fas fa-edit"></i> Update
                             </button>
                         </div>
                     </form>

@@ -17,7 +17,7 @@ class FilterValueController extends Controller
      */
     public function index()
     {
-        $data['filter_values']  = FilterValue::active()->get();
+        $data['filterValues']   = FilterValue::active()->get();
         $data['filters']        = Filter::active()->get();
         return view('admin.filter-values.index', $data);
     }
@@ -84,7 +84,17 @@ class FilterValueController extends Controller
      */
     public function update(UpdateFilterValueRequest $request, FilterValue $filterValue)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data   = $request->only(['filter_id', 'filter_value', 'status']);
+                $filterValue->update($data);
+
+                toastr()->success('Filter Value Has Been Updated Successfully');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
+        }
     }
 
     /**
