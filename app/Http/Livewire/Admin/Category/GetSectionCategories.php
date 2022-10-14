@@ -9,13 +9,9 @@ use Illuminate\Support\Str;
 
 class GetSectionCategories extends Component
 {
-    public  $section,
-        $parent_id,
-        $categories;
+    public  $section, $parent_id, $categories;
 
-
-    public $name,
-        $url;
+    public $name, $url;
 
     public function generateURL()
     {

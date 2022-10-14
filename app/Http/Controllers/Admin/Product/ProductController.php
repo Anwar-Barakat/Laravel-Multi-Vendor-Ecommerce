@@ -31,8 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $sections = Section::with(['categories'])->get();
-        return view('admin.products.add', ['sections' => $sections]);
+
+        return view('admin.products.add');
     }
 
     /**
