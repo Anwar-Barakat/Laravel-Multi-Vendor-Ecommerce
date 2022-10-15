@@ -36,12 +36,12 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="form-group">
                         <label for="filters">Select {{ ucwords($filter->filter_name) }}</label>
-                        <select name="filters" class="form-control  @error('filters') is-invalid @enderror"
-                            wire:model="filter_id">
+                        <select name="{{ $filter->filter_column }}"
+                            class="form-control  @error('filters') is-invalid @enderror">
                             <option value="" selected>Select...</option>
                             @foreach ($filter->filterValues as $filterValue)
-                                <option value="{{ $filterValue->id }}"
-                                    {{ old('filters') == $filterValue->id ? 'selected' : '' }}>
+                                <option value="{{ $filterValue->filter_value }}"
+                                    {{ old('filters') == $filterValue->filter_value ? 'selected' : '' }}>
                                     {{ ucwords(str_replace('-', ' ', $filterValue->filter_value)) }}
                                 </option>
                             @endforeach

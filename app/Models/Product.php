@@ -16,12 +16,7 @@ class Product extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
-    protected $fillable = [
-        'section_id', 'category_id', 'brand_id', 'admin_id',
-        'name', 'code', 'color', 'price', 'discount', 'weight',
-        'description', 'meta_title', 'meta_description', 'meta_keywords',
-        'is_featured', 'is_best_seller', 'status',
-    ];
+    protected $guarded = [];
 
     const  COLORS = [
         'red', 'green', 'yellow', 'olive', 'orange', 'teal', 'blue', 'violet', 'purple', 'pink', 'white', 'gray', 'black'

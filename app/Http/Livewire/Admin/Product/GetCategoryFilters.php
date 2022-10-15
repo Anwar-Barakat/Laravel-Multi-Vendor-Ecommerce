@@ -12,7 +12,7 @@ class GetCategoryFilters extends Component
 
     public function updatedCategory($category_id)
     {
-        $this->allFilters           = Filter::with(['filterValues'])->get();
+        $this->allFilters           = Filter::with(['filterValues'])->active()->get();
         $this->selectedCategoryId   = $category_id;
     }
 
