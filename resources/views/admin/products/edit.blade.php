@@ -74,38 +74,21 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-6">
-                                <div class="form-group">
-                                    <label for="category_id">Categories</label>
-                                    <select name="category_id"
-                                        class="form-control  @error('category_id') is-invalid @enderror">
-                                        <option value="" selected>Select...</option>
-                                        @foreach ($sections as $section)
-                                            <optgroup label="{{ ucwords(str_replace('-', ' ', $section->name)) }}">
-                                            </optgroup>
-                                            @foreach ($section->categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ ucwords(str_replace('-', ' ', $category->name)) }}
-                                                </option>
-                                                @foreach ($category->subCategories as $subCategory)
-                                                    <option value="{{ $subCategory->id }}"
-                                                        {{ old('category_id', $product->category_id) == $subCategory->id ? 'selected' : '' }}>
-                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;&raquo;
-                                                        {{ ucwords(str_replace('-', ' ', $subCategory->name)) }}
-                                                    </option>
-                                                @endforeach
-                                            @endforeach
-                                        @endforeach
-                                    </select>
-                                    @error('category_id')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
                         </div>
+                        @foreach (App\Models\Filter::active()->get() as $filter)
+                            @if (in_array($product->category_id, explode(',', $filter->category_ids)))
+                                @php
+                                    $allFilters[] = $filter;
+                                @endphp
+                            @endif
+                        @endforeach
+
+                        @livewire('admin.product.get-category-filters', [
+                            'category' => $product->category_id,
+                            'allFilters' => $allFilters,
+                            'selectedCategoryId' => $product->category_id,
+                            'product' => $product,
+                        ])
                         <div class="row">
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
@@ -340,7 +323,8 @@
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="is_best_seller">is_best_seller</label>
-                                    <select name="is_best_seller" class="form-control  @error('is_best_seller') is-invalid @enderror">
+                                    <select name="is_best_seller"
+                                        class="form-control  @error('is_best_seller') is-invalid @enderror">
                                         <option value="" selected>Select...</option>
                                         <option value="0" {{ old('is_best_seller') == '0' ? 'selected' : '' }}
                                             {{ $product->is_best_seller == '0' ? 'selected' : '' }}>Inactive

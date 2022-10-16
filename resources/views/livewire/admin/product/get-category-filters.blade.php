@@ -30,26 +30,26 @@
         </div>
     </div>
 
-    @if ($allFilters)
-        @foreach ($allFilters as $filter)
-            @if (in_array($selectedCategoryId, explode(',', $filter->category_ids)))
-                <div class="col-md-12 col-lg-6">
-                    <div class="form-group">
-                        <label for="filters">Select {{ ucwords($filter->filter_name) }}</label>
-                        <select name="{{ $filter->filter_column }}"
-                            class="form-control  @error('filters') is-invalid @enderror">
-                            <option value="" selected>Select...</option>
-                            @foreach ($filter->filterValues as $filterValue)
-                                <option value="{{ $filterValue->filter_value }}"
-                                    {{ old('filters') == $filterValue->filter_value ? 'selected' : '' }}>
-                                    {{ ucwords(str_replace('-', ' ', $filterValue->filter_value)) }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
+    @foreach ($allFilters as $filter)
+        @if (in_array($selectedCategoryId, explode(',', $filter->category_ids)))
+            @dump($product[$filter->filter_column])
+            <div class="col-md-12 col-lg-6">
+                <div class="form-group">
+                    <label for="filters">Select {{ ucwords($filter->filter_name) }}</label>
+                    <select name="{{ $filter->filter_column }}"
+                        class="form-control  @error('filters') is-invalid @enderror">
+                        <option value="" selected>Select...</option>
+                        @foreach ($filter->filterValues as $filterValue)
+                            <option value="{{ $filterValue->filter_value }}"
+                                {{ old('filters') == $filterValue->filter_value ? 'selected' : '' }}
+                                {{ $product[$filter->filter_column] == $filterValue->filter_value ? 'selected' : '' }}>
+                                {{ ucwords(str_replace('-', ' ', $filterValue->filter_value)) }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
-            @endif
-        @endforeach
+            </div>
+        @endif
+    @endforeach
     @endif
-
 </div>

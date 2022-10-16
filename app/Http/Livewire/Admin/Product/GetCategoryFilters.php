@@ -10,6 +10,8 @@ class GetCategoryFilters extends Component
 {
     public $category, $selectedCategoryId, $allFilters, $filter_id;
 
+    public $product;
+
     public function updatedCategory($category_id)
     {
         $this->allFilters           = Filter::with(['filterValues'])->active()->get();
