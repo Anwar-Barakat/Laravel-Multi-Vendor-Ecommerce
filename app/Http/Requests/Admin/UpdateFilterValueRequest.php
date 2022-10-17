@@ -25,7 +25,7 @@ class UpdateFilterValueRequest extends FormRequest
     {
         return [
             'filter_id'     => ['required'],
-            'filter_value'  => ['required', 'min:3'],
+            'filter_value'  => ['required'],
             'status'        => ['required', 'in:0,1']
         ];
     }

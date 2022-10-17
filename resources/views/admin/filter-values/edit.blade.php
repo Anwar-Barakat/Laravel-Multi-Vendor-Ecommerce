@@ -17,9 +17,10 @@
                             @endforeach
                         </ul>
                     @endif
-                    <form action="{{ route('admin.filters-values.update', $filterValue) }}" method="post">
+                    <form action="{{ route('admin.filters-values.update', 'test') }}" method="post">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" name="id" value="{{ $filterValue->id }}">
                         <div class="form-group">
                             <label for="filter_id">Filters</label>
                             <select name="filter_id"

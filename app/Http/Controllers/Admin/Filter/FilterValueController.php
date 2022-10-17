@@ -86,8 +86,9 @@ class FilterValueController extends Controller
     {
         try {
             if ($request->isMethod('put')) {
-                $data   = $request->only(['filter_id', 'filter_value', 'status']);
-                $filterValue->update($data);
+                $data           = $request->only(['id', 'filter_id', 'filter_value', 'status']);
+                $filter_value   = FilterValue::findOrFail($data['id']);
+                $filter_value->update($data);
 
                 toastr()->success('Filter Value Has Been Updated Successfully');
                 return redirect()->back();

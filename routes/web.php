@@ -22,7 +22,6 @@ use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use App\Http\Livewire\Front\CategoryProducts;
 use App\Http\Livewire\Front\HomePage;
-use App\Http\Livewire\Front\ShopPage;
 use Illuminate\Support\Facades\Route;
 
 /*
