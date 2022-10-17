@@ -53,9 +53,19 @@ img {
 textarea {
     resize: none;
 }
+
 .select2-container {
     width: 100% !important;
 }
+
+.sw>.tab-content {
+    height: auto !important;
+}
+
+.sw-theme-basic {
+    border: none !important;
+}
+
 /* **************************************************************************** */
 /* **************** MultField Form Product Attributes  ************************ */
 
