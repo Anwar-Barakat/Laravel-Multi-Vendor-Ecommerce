@@ -32,12 +32,12 @@
 
     @foreach ($allFilters as $filter)
         @if (in_array($selectedCategoryId, explode(',', $filter->category_ids)))
-            @dump($product[$filter->filter_column])
             <div class="col-md-12 col-lg-6">
                 <div class="form-group">
                     <label for="filters">Select {{ ucwords($filter->filter_name) }}</label>
                     <select name="{{ $filter->filter_column }}"
-                        class="form-control  @error('filters') is-invalid @enderror">
+                        class="form-control  @error('filters') is-invalid @enderror"
+                        name="{{ $filter->filter_column }}">
                         <option value="" selected>Select...</option>
                         @foreach ($filter->filterValues as $filterValue)
                             <option value="{{ $filterValue->filter_value }}"
@@ -51,5 +51,4 @@
             </div>
         @endif
     @endforeach
-    @endif
 </div>

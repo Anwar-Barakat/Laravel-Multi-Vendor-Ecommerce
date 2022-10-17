@@ -109,10 +109,17 @@ class ProductController extends Controller
     {
         try {
             if ($request->isMethod('put')) {
-                $data                   = $request->only(['category_id', 'brand_id', 'admin_id', 'name', 'code', 'color', 'price', 'discount', 'weight', 'description', 'meta_title', 'meta_description', 'meta_keywords', 'is_featured', 'is_best_seller', 'status']);
+                $data                   = $request->except('image', 'video');
                 $category               = Category::findOrFail($data['category_id']);
                 $section_id             = Section::findOrFail($category->section_id)->id;
                 $data['section_id']     = $section_id;
+
+                $filters    = Filter::with(['filterValues'])->active()->get();
+                foreach ($filters as $filter) {
+                    if (in_array($category->id, explode(',', $filter->category_ids))) {
+                        $data[$filter->filter_column]   = $data[$filter->filter_column];
+                    }
+                }
 
                 $product->update($data);
 
