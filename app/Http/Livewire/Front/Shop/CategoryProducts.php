@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Shop;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Filter;
 use App\Models\Product;
@@ -18,6 +19,10 @@ class CategoryProducts extends Component
 
     public $url;
 
+    public $brandInputs  = [];
+
+    protected $queryString = ['brandInputs'];
+
     public function mount($url)
     {
         $this->url = $url;
@@ -30,16 +35,18 @@ class CategoryProducts extends Component
         $category > 0       ? $data['categoryDetails']  = Category::categoryDetails($this->url) : abort(404);
         $data['selectedCategory']   = $data['categoryDetails']['category'];
 
-        $data['products']   = Product::whereIn('category_id', $data['categoryDetails']['catIds'])
-            ->active()
-            ->search(trim($this->search))
-            ->orderBy($this->ordering, $this->sortBy)
-            ->paginate($this->perPage);
-
         $data['categories'] = Category::with(['subCategories'])->withCount('products')->parent()->get();
+
+        $data['brands']     = Brand::withCount('products')->active()->get();
 
         $data['filters']    = Filter::with(['filterValues'])->active()->get();
 
+        $data['products']   = Product::whereIn('category_id', $data['categoryDetails']['catIds'])
+            ->active()
+            ->when($this->brandInputs, fn ($q) => $q->whereIn('brand_id', $this->brandInputs))
+            ->search(trim($this->search))
+            ->orderBy($this->ordering, $this->sortBy)
+            ->paginate($this->perPage);
 
         return view('livewire.front.shop.category-products', $data)->layout('front.layouts.master');
     }
@@ -51,7 +58,10 @@ class CategoryProducts extends Component
 
     public function clearFiltering()
     {
-        $this->reset(['search', 'ordering', 'sortBy', 'perPage']);
+        $this->reset([
+            'search', 'ordering', 'sortBy', 'perPage',
+            'brandInputs'
+        ]);
         $this->clearFilter = false;
     }
 }

@@ -17,6 +17,11 @@
     margin-bottom: 1rem;
 }
 
+.list-style .item-description p {
+    min-width: 498px;
+    width: 100%;
+}
+
 @media screen and (max-width: 551px) {
     .full-layer-mid-header .logo {
         justify-content: center;

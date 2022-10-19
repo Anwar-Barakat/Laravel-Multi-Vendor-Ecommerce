@@ -44,26 +44,18 @@
                     </div>
                     <div class="facet-filter-associates img-thumbnail filtering-padding">
                         <h3 class="title-name">Brand</h3>
-                        <form class="facet-form" action="#" method="post">
-                            <div class="associate-wrapper">
-                                <input type="checkbox" class="check-box" id="cbs-21">
-                                <label class="label-text" for="cbs-21">Calvin Klein
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-22">
-                                <label class="label-text" for="cbs-22">Diesel
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-23">
-                                <label class="label-text" for="cbs-23">Polo
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                                <input type="checkbox" class="check-box" id="cbs-24">
-                                <label class="label-text" for="cbs-24">Tommy Hilfiger
-                                    <span class="total-fetch-items">(0)</span>
-                                </label>
-                            </div>
-                        </form>
+
+                        <div class="associate-wrapper">
+                            @foreach ($brands as $brand)
+                                @if ($brand->products_count > 0)
+                                    <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
+                                        value="{{ $brand->id }}" wire:model="brandInputs">
+                                    <label class="label-text" for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
+                                        <span class="total-fetch-items">({{ $brand->products_count }})</span>
+                                    </label>
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
                     @if ($filters)
                         @foreach ($filters as $filter)
