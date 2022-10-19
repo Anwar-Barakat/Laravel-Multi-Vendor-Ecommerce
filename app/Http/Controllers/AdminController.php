@@ -13,11 +13,11 @@ class AdminController extends Controller
      */
     public function index($id)
     {
-        if ($id) {
-            return view('admin.' . $id);
-        } else {
-            return view('admin.404');
-        }
+        // if ($id) {
+        //     return view('admin.' . $id);
+        // } else {
+        //     return view('admin.404');
+        // }
 
         //   return view($id);
     }

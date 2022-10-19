@@ -8,9 +8,7 @@
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
-                    @php
-                        echo $categoryDetails['breadcrumb'];
-                    @endphp
+                    All Products
                 </ul>
             </div>
         </div>
@@ -44,35 +42,33 @@
                     </div>
                     <div class="facet-filter-associates img-thumbnail filtering-padding">
                         <h3 class="title-name">Brand</h3>
+
                         <div class="associate-wrapper">
                             @foreach ($brands as $brand)
-                                <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
-                                    value="{{ $brand->id }}" wire:model="brandInputs">
-                                <label class="label-text" for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
-                                    <span class="total-fetch-items"></span>
-                                </label>
+                                @if ($brand->products_count > 0)
+                                    <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
+                                        value="{{ $brand->id }}" wire:model="brandInputs">
+                                    <label class="label-text" for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
+                                        <span class="total-fetch-items">({{ $brand->products_count }})</span>
+                                    </label>
+                                @endif
                             @endforeach
                         </div>
                     </div>
                     @if ($filters)
                         @foreach ($filters as $filter)
-                            @php
-                                $available = App\Models\Filter::where('id', $filter->id)->first();
-                            @endphp
-                            @if (in_array($selectedCategory->id, explode(',', $available->category_ids)))
-                                <div class="facet-filter-associates img-thumbnail filtering-padding">
-                                    <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
-                                    <div class="associate-wrapper">
-                                        @foreach ($filter->filterValues as $filterValue)
-                                            <input type="checkbox" class="check-box" id="filter{{ $filterValue->id }}"
-                                                value="{{ $filterValue->id }}">
-                                            <label class="label-text" for="filter{{ $filterValue->id }}">
-                                                {{ $filterValue->filter_value }}
-                                            </label>
-                                        @endforeach
-                                    </div>
+                            <div class="facet-filter-associates img-thumbnail filtering-padding">
+                                <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
+                                <div class="associate-wrapper">
+                                    @foreach ($filter->filterValues as $filterValue)
+                                        <input type="checkbox" class="check-box" id="filter{{ $filterValue->id }}"
+                                            value="{{ $filterValue->id }}">
+                                        <label class="label-text" for="filter{{ $filterValue->id }}">
+                                            {{ $filterValue->filter_value }}
+                                        </label>
+                                    @endforeach
                                 </div>
-                            @endif
+                            </div>
                         @endforeach
                     @endif
 
@@ -160,20 +156,12 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div>
-                        @if ($selectedCategory->getFirstMediaUrl('categories', 'thumb'))
-                            <img src="{{ $selectedCategory->getFirstMediaUrl('categories', 'thumb') }}"
-                                alt="{{ $selectedCategory->name }}" class="img img-thumbnail category-shadow"
-                                height="300">
-                        @else
-                            <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
-                                class="img img-thumbnail category-shadow" height="300">
-                        @endif
+                        <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
+                            class="img img-thumbnail category-shadow" height="300">
                     </div>
                     <div class="shop-intro">
                         <ul class="bread-crumb">
-                            @php
-                                echo $categoryDetails['breadcrumb'];
-                            @endphp
+                            All Products
                         </ul>
                         <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
                         @if ($clearFilter)
@@ -310,37 +298,6 @@
                     </div>
                     {{ $products->links() }}
                 </div>
-                {{-- <div class="pagination-area">
-                    <div class="pagination-number">
-                        <ul>
-                            <li style="display: none">
-                                <a href="" title="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="">1</a>
-                            </li>
-                            <li>
-                                <a href="">2</a>
-                            </li>
-                            <li>
-                                <a href="">3</a>
-                            </li>
-                            <li>
-                                <a href="">...</a>
-                            </li>
-                            <li>
-                                <a href="">10</a>
-                            </li>
-                            <li>
-                                <a href="" title="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
