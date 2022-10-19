@@ -18,9 +18,10 @@ class ShopPage extends Component
     public $url;
     public $brandInputs  = [];
     protected $queryString = [
-        'brandInputs' => ['except' => '', 'as' => 'brand']
+        'brandInputs'   => ['except' => '', 'as' => 'brand'],
+        'color'         => ['except' => '', 'as' => 'color'],
     ];
-    public $min_price = 1, $max_price = 1000;
+    public $min_price = 1, $max_price = 1000, $color = '';
 
 
     public function showClearFilters()
@@ -47,6 +48,7 @@ class ShopPage extends Component
 
         $data['products']   = Product::with('brand')->active()
             ->when($this->brandInputs, fn ($q) => $q->whereIn('brand_id', $this->brandInputs))
+            ->when($this->color, fn ($q) => $q->where('color', $this->color))
             ->whereBetween('price', [$this->min_price, $this->max_price])
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)

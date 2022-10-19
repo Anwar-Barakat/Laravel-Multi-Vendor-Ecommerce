@@ -18,9 +18,10 @@ class CategoryProducts extends Component
     public $url;
     public $brandInputs  = [];
     protected $queryString = [
-        'brandInputs' => ['except' => '', 'as' => 'brand']
+        'brandInputs'   => ['except' => '', 'as' => 'brand'],
+        'color'         => ['except' => '', 'as' => 'color'],
     ];
-    public $min_price = 1, $max_price = 1000;
+    public $min_price = 1, $max_price = 1000, $color = '';
 
     public function mount($url)
     {
@@ -53,6 +54,7 @@ class CategoryProducts extends Component
 
         $data['products']   = Product::with('brand')
             ->whereIn('category_id', $data['categoryDetails']['catIds'])
+            ->when($this->color, fn ($q) => $q->where('color', $this->color))
             ->whereBetween('price', [$this->min_price, $this->max_price])
             ->active()
             ->when($this->brandInputs, fn ($q) => $q->whereIn('brand_id', $this->brandInputs))

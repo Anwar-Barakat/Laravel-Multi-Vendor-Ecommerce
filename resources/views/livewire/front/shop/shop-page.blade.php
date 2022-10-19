@@ -1,6 +1,8 @@
 @push('styles')
     <!-- noUiSlider  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
+    <!-- custome colors -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 @endpush
 <div>
     <div class="page-style-a">
@@ -46,20 +48,30 @@
                     </div>
                     <div class="facet-filter-associates img-thumbnail filtering-padding">
                         <h3 class="title-name">Brand</h3>
-
                         <div class="associate-wrapper">
                             @foreach ($brands as $brand)
                                 @if ($brand->products_count > 0)
                                     <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
                                         value="{{ $brand->id }}" wire:model="brandInputs">
-                                    <label class="label-text" for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
+                                    <label class="label-text"
+                                        for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
                                         <span class="total-fetch-items">({{ $brand->products_count }})</span>
                                     </label>
                                 @endif
                             @endforeach
                         </div>
                     </div>
-                    <div class="facet-filter-by-price">
+                    <div class="facet-filter-associates img-thumbnail filtering-padding">
+                        <h3 class="title-name">Colors</h3>
+                        <div class="associate-wrapper colors">
+                            @foreach (App\Models\Product::COLORS as $item)
+                                <input type="radio" name="color" id="{{ $item }}"
+                                    value="{{ $item }}" wire:model="color" />
+                                <label for="{{ $item }}"><span class="{{ $item }}"></span></label>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="facet-filter-by-price p-2">
                         <h3 class="title-name">
                             Price : &nbsp;
                             <span class="text-blue-600">

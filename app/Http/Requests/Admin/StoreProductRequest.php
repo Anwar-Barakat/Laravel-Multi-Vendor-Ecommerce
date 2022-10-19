@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
             'category_id'       => ['required'],
             'brand_id'          => ['required'],
             'admin_id'          => ['required'],
-            'name'              => ['required', 'min:3', 'unique:products,name', 'regex:/^[\pL\s\-]+$/u'],
+            'name'              => ['required', 'min:3', 'unique:products,name'],
             'code'              => ['required'],
             'color'             => ['required'],
             'price'             => ['required', 'numeric'],

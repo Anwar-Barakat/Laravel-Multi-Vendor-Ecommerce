@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             'category_id'       => ['required'],
             'brand_id'          => ['required'],
             'admin_id'          => ['required'],
-            'name'              => ['required', 'min:3', 'regex:/^[\pL\s\-]+$/u', 'unique:products,name,' . $this->product->id],
+            'name'              => ['required', 'min:3', 'unique:products,name,' . $this->product->id],
             'code'              => ['required'],
             'color'             => ['required'],
             'price'             => ['required', 'numeric'],

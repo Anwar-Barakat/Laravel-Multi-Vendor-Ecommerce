@@ -116,7 +116,7 @@
 
                             @livewire('admin.product.get-category-filters', [
                                 'category' => $product->category_id,
-                                'allFilters' => $allFilters,
+                                'allFilters' => $allFilters ?? '',
                                 'selectedCategoryId' => $product->category_id,
                                 'product' => $product,
                             ])

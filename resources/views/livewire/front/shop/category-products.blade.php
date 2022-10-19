@@ -1,6 +1,9 @@
 @push('styles')
     <!-- noUiSlider  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
+
+    <!-- custome colors -->
+    <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 @endpush
 
 <div>
@@ -59,7 +62,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="facet-filter-by-price">
+                    <div class="facet-filter-by-price p-2">
                         <h3 class="title-name">
                             Price : &nbsp;
                             <span class="text-blue-600">
@@ -70,6 +73,16 @@
                         </div>
                     </div>
                     <br>
+                    <div class="facet-filter-associates img-thumbnail filtering-padding">
+                        <h3 class="title-name">Colors</h3>
+                        <div class="associate-wrapper colors">
+                            @foreach (App\Models\Product::COLORS as $item)
+                                <input type="radio" name="color" id="{{ $item }}"
+                                    value="{{ $item }}" wire:model="color" />
+                                <label for="{{ $item }}"><span class="{{ $item }}"></span></label>
+                            @endforeach
+                        </div>
+                    </div>
                     @if ($filters)
                         @foreach ($filters as $filter)
                             @php
@@ -91,7 +104,6 @@
                             @endif
                         @endforeach
                     @endif
-
                     <div class="facet-filter-by-shipping">
                         <h3 class="title-name">Shipping</h3>
                         <form class="facet-form" action="#" method="post">
@@ -307,37 +319,6 @@
                     </div>
                     {{ $products->links() }}
                 </div>
-                {{-- <div class="pagination-area">
-                    <div class="pagination-number">
-                        <ul>
-                            <li style="display: none">
-                                <a href="" title="Previous">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="">1</a>
-                            </li>
-                            <li>
-                                <a href="">2</a>
-                            </li>
-                            <li>
-                                <a href="">3</a>
-                            </li>
-                            <li>
-                                <a href="">...</a>
-                            </li>
-                            <li>
-                                <a href="">10</a>
-                            </li>
-                            <li>
-                                <a href="" title="Next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
