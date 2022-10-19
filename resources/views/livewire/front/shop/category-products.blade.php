@@ -188,10 +188,10 @@
                         </ul>
                         <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
                         @if ($clearFilter)
-                            <p wire:click="clearFiltering"
-                                class=" text-danger px-2 py-1 rounded shadow-md inline-block text-xs cursor-pointer">
+                            <button wire:click="clearFiltering"
+                                class="text-sm bg-red-700 text-white px-4 py-1 rounded shadow-md focus:border-none focus:outline-none">
                                 Clear
-                                Filters</p>
+                                Filters</button>
                         @endif
                     </div>
                     <div class="page-bar clearfix">

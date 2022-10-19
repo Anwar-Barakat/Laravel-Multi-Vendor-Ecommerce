@@ -20,8 +20,8 @@ use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
-use App\Http\Livewire\Front\CategoryProducts;
-use App\Http\Livewire\Front\HomePage;
+use App\Http\Livewire\Front\Home\HomePage;
+use App\Http\Livewire\Front\Shop\CategoryProducts;
 use Illuminate\Support\Facades\Route;
 
 /*

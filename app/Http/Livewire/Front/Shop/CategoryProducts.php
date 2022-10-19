@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Front;
+namespace App\Http\Livewire\Front\Shop;
 
 use App\Models\Category;
 use App\Models\Filter;
 use App\Models\Product;
-use Illuminate\Pagination\Paginator;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -24,6 +23,7 @@ class CategoryProducts extends Component
         $this->url = $url;
     }
 
+
     public function render()
     {
         $category           = Category::where(['url'    => $this->url])->active()->count();
@@ -40,7 +40,8 @@ class CategoryProducts extends Component
 
         $data['filters']    = Filter::with(['filterValues'])->active()->get();
 
-        return view('livewire.front.category-products', $data)->layout('front.layouts.master');
+
+        return view('livewire.front.shop.category-products', $data)->layout('front.layouts.master');
     }
 
     public function showClearFilters()

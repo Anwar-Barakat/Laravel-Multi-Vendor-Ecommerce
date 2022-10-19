@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Front;
+namespace App\Http\Livewire\Front\Home;
 
 use App\Models\Banner;
 use App\Models\Product;
-use App\Models\Section;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -20,6 +19,7 @@ class HomePage extends Component
         $data['discounted']     = Product::where('status', 1)->where('discount', '>', '0')->limit(5)->get();
         $data['featured']       = Product::where(['status' => 1, 'is_featured' => 1])->limit(5)->get();
 
-        return view('livewire.front.home-page', $data)->layout('front.layouts.master');
+
+        return view('livewire.front.home.home-page', $data)->layout('front.layouts.master');
     }
 }
