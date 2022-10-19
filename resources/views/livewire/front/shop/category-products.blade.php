@@ -1,3 +1,8 @@
+@push('styles')
+    <!-- noUiSlider  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
+@endpush
+
 <div>
     <div class="page-style-a">
         <div class="container">
@@ -54,6 +59,17 @@
                             @endforeach
                         </div>
                     </div>
+                    <div class="facet-filter-by-price">
+                        <h3 class="title-name">
+                            Price : &nbsp;
+                            <span class="text-blue-600">
+                                ${{ $min_price }} - ${{ $max_price }}</span>
+                        </h3>
+                        <div id="slider" wire:ignore>
+
+                        </div>
+                    </div>
+                    <br>
                     @if ($filters)
                         @foreach ($filters as $filter)
                             @php
@@ -76,25 +92,6 @@
                         @endforeach
                     @endif
 
-                    <div class="facet-filter-by-price">
-                        <h3 class="title-name">Price</h3>
-                        <form class="facet-form" action="#" method="post">
-                            <!-- Final-Result -->
-                            <div class="amount-result clearfix">
-                                <div class="price-from">$0</div>
-                                <div class="price-to">$3000</div>
-                            </div>
-                            <!-- Final-Result /- -->
-                            <!-- Range-Slider  -->
-                            <div class="price-filter"></div>
-                            <!-- Range-Slider /- -->
-                            <!-- Range-Manipulator -->
-                            <div class="price-slider-range" data-min="0" data-max="5000" data-default-low="0"
-                                data-default-high="3000" data-currency="$"></div>
-                            <!-- Range-Manipulator /- -->
-                            <button type="submit" class="button button-primary">Filter</button>
-                        </form>
-                    </div>
                     <div class="facet-filter-by-shipping">
                         <h3 class="title-name">Shipping</h3>
                         <form class="facet-form" action="#" method="post">
@@ -345,3 +342,29 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <!-- noUiSlider -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.js"></script>
+
+    <script>
+        var slider = document.getElementById('slider')
+        noUiSlider.create(slider, {
+            start: [1, 1000],
+            connect: true,
+            range: {
+                'min': 1,
+                'max': 1000
+            },
+            pips: {
+                mode: 'steps',
+                stepped: true,
+                density: 4
+            }
+        });
+        slider.noUiSlider.on('update', function(value) {
+            @this.set('min_price', value[0]);
+            @this.set('max_price', value[1]);
+        });
+    </script>
+@endpush

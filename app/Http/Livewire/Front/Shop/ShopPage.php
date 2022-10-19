@@ -14,14 +14,13 @@ class ShopPage extends Component
     use WithPagination;
 
     public $clearFilter = false;
-
     public $perPage = 3, $ordering = 'name', $sortBy = 'asc', $search;
-
     public $url;
-
     public $brandInputs  = [];
-
-    protected $queryString = ['brandInputs'];
+    protected $queryString = [
+        'brandInputs' => ['except' => '', 'as' => 'brand']
+    ];
+    public $min_price = 1, $max_price = 1000;
 
 
     public function showClearFilters()
@@ -48,6 +47,7 @@ class ShopPage extends Component
 
         $data['products']   = Product::with('brand')->active()
             ->when($this->brandInputs, fn ($q) => $q->whereIn('brand_id', $this->brandInputs))
+            ->whereBetween('price', [$this->min_price, $this->max_price])
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);
