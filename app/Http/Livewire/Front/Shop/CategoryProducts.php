@@ -60,8 +60,9 @@ class CategoryProducts extends Component
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);
 
-        $data['brands'] = [];
-        foreach ($data['products'] as $product) {
+        $data['brands']     = [];
+        $categoryProducts   = Product::whereIn('category_id', $data['categoryDetails']['catIds'])->get();
+        foreach ($categoryProducts as $product) {
             if (!in_array($product->brand, $data['brands'])) {
                 $data['brands'][] = $product->brand;
             }
