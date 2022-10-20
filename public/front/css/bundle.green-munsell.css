@@ -1697,7 +1697,7 @@ body {
 .form-searchbox {
   width: 100%;
   position: relative;
-  overflow: hidden; }
+}
   .form-searchbox .text-field {
     padding: 0 0 0 15px;
     border-color: #04A777; }

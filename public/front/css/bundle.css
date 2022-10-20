@@ -2267,7 +2267,6 @@ body {
 .form-searchbox {
     width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 .form-searchbox .text-field {
@@ -2301,6 +2300,12 @@ body {
     top: 50%;
     padding: 0;
     transform: translateY(-50%);
+}
+
+.search-dropdown {
+    border: 1px solid var(--main-color);
+    border-top: none;
+    z-index: 101;
 }
 
 /**

@@ -96,24 +96,45 @@
                         </div>
                     </div>
                     <div class="col-lg-6 u-d-none-lg">
-                        <form class="form-searchbox">
-                            <label class="sr-only" for="search-landscape">Search</label>
-                            <input id="search-landscape" type="text" class="text-field"
-                                placeholder="Search everything">
-                            <div class="select-box-position">
-                                <div class="select-box-wrapper select-hide">
-                                    <label class="sr-only" for="select-category">Choose category for search</label>
-                                    <select class="select-box" id="select-category">
-                                        <option selected="selected" value="">
-                                            All
-                                        </option>
-                                        @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}">{{ ucwords($section->name) }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <form class="form-searchbox relative" x-data="{ isOpen: false }" @click.away="isOpen=false">
+                            <input type="text" class="text-field" placeholder="Press / To Search .."
+                                wire:model.debounce.350ms="search" @focus="isOpen=true"
+                                @keydown.escape.window="isOpen=false" @keydown.shift.tap="isOpen=false" x-ref="search"
+                                @keydown.tab="isOpen=false"
+                                @keydown.window="
+                                if(event.keyCode == 191){
+                                    event.preventDefault();
+                                    $refs.search.focus();
+                                }
+                            ">
+                            <div class="spinner absolute top-0 right-0 mt-3 mr-2" wire:loading></div>
+                            <div class="absolute   w-full search-dropdown" x-show.transition.opacity="isOpen">
+                                @if (isset($searchResults) && $searchResults != '')
+                                    <ul class="mb-0">
+                                        @forelse ($searchResults as $product)
+                                            <li
+                                                class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2">
+                                                <a href="" class=" flex items-center gap-4">
+                                                    @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
+                                                        <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
+                                                            alt="{{ ucwords($product->name) }}" class="w-8">
+                                                    @else
+                                                        <img src="{{ asset('assets/img/6.jpg') }}"
+                                                            alt="{{ ucwords($product->name) }}" class="w-8">
+                                                    @endif
+                                                    <span>{{ ucwords($product->name) }}</span>
+                                                </a>
+                                            </li>
+                                        @empty
+                                            <li class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2"
+                                                <a href="javascript:void(0);" class=" flex items-center justify-center">
+                                                <span>No Results Found</span>
+                                                </a>
+                                            </li>
+                                        @endforelse
+                                    </ul>
+                                @endif
                             </div>
-                            <button id="btn-search" type="submit" class="button button-primary fas fa-search"></button>
                         </form>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6">
