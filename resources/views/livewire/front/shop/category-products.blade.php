@@ -250,7 +250,8 @@
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                 <div class="item main-shadow">
                                     <div class="image-container">
-                                        <a class="item-img-wrapper-link" href="single-product.html">
+                                        <a class="item-img-wrapper-link"
+                                            href="{{ route('front.product.detail', $product->id) }}">
                                             <img class="img-fluid"
                                                 src="{{ $product->getFirstMediaUrl('main_img_of_product') }}"
                                                 alt="{{ ucwords($product->name) }}">
@@ -272,7 +273,8 @@
                                             </ul>
                                             <h6 class="text-gray-500 text-xs">{{ $product->created_at }}</h6>
                                             <h6 class="item-title">
-                                                <a href="single-product.html">{{ ucwords($product->name) }}</a>
+                                                <a
+                                                    href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                             </h6>
                                             <div class="item-description">
                                                 <p>{{ $product->description }} </p>

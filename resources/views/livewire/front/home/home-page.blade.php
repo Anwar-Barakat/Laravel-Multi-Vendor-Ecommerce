@@ -70,7 +70,8 @@
                                     @foreach ($new_arrivals as $product)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('front.product.detail', $product->id) }}">
                                                     <img class="img-fluid"
                                                         src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                         alt="{{ ucwords($product->name) }}">
@@ -95,7 +96,8 @@
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">
-                                                        <a href="single-product.html">{{ ucwords($product->name) }}</a>
+                                                        <a
+                                                            href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star' title="4.5 out of 5 - based on 23 Reviews">
@@ -136,7 +138,8 @@
                                     @foreach ($best_sellers as $product)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('front.product.detail', $product->id) }}">
                                                     <img class="img-fluid"
                                                         src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                         alt="{{ ucwords($product->name) }}">
@@ -162,7 +165,7 @@
                                                     </ul>
                                                     <h6 class="item-title">
                                                         <a
-                                                            href="single-product.html">{{ ucwords($product->name) }}</a>
+                                                            href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star'
@@ -204,7 +207,8 @@
                                     @foreach ($discounted as $product)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('front.product.detail', $product->id) }}">
                                                     <img class="img-fluid"
                                                         src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                         alt="{{ ucwords($product->name) }}">
@@ -230,7 +234,7 @@
                                                     </ul>
                                                     <h6 class="item-title">
                                                         <a
-                                                            href="single-product.html">{{ ucwords($product->name) }}</a>
+                                                            href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star'
@@ -272,7 +276,8 @@
                                     @foreach ($featured as $product)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="single-product.html">
+                                                <a class="item-img-wrapper-link"
+                                                    href="{{ route('front.product.detail', $product->id) }}">
                                                     <img class="img-fluid"
                                                         src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                         alt="{{ ucwords($product->name) }}">
@@ -298,7 +303,7 @@
                                                     </ul>
                                                     <h6 class="item-title">
                                                         <a
-                                                            href="single-product.html">{{ ucwords($product->name) }}</a>
+                                                            href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star'

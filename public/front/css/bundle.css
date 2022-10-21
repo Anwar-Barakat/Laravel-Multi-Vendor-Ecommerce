@@ -860,6 +860,10 @@ body {
         height: 0px !important;
     }
 
+    .banner-layer {
+        display: none;
+    }
+
     .full-layer-bottom-header {
         padding-bottom: 10px !important;
     }

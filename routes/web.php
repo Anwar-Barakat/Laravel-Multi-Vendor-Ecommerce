@@ -20,6 +20,7 @@ use App\Http\Controllers\AdminController as AdminAdminController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
+use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
@@ -134,9 +135,11 @@ Route::name('front.')->group(function () {
 
     Route::get('/',                             HomePage::class)->name('home');
 
-    Route::get('/shop',                   ShopPage::class);
+    Route::get('/shop',                         ShopPage::class);
 
     Route::get('/shop/{url}',                   CategoryProducts::class)->name('shop.category.products');
+
+    Route::get('/product/{productId}',          ProductDetailPage::class)->name('product.detail');
 });
 
 // Route::get('/{page}', [AdminAdminController::class, 'index']);

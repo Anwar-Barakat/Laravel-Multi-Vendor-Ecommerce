@@ -95,7 +95,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-6 u-d-none-lg">
+                    <div class="col-lg-6 col-md-12 mb-4 mt-4">
                         <form class="form-searchbox relative" x-data="{ isOpen: false }" @click.away="isOpen=false">
                             <input type="text" class="text-field" placeholder="Press / To Search .."
                                 wire:model.debounce.350ms="search" @focus="isOpen=true"
@@ -107,8 +107,7 @@
                                     $refs.search.focus();
                                 }
                             ">
-                            <div class="spinner absolute top-0 right-0 mt-3 mr-2" wire:loading></div>
-                            <div class="absolute   w-full search-dropdown" x-show.transition.opacity="isOpen">
+                            <div class="absolute  w-full search-dropdown" x-show.transition.opacity="isOpen">
                                 @if (isset($searchResults) && $searchResults != '')
                                     <ul class="mb-0">
                                         @forelse ($searchResults as $product)
