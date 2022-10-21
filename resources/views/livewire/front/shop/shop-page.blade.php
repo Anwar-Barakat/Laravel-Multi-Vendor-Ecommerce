@@ -23,7 +23,6 @@
         <div class="container">
             <div class="row ">
                 <div class="col-lg-3 col-md-3 col-sm-12 shop-filter-menu">
-                    <button class="fas fa-times  shop-filter-menu-close"></button>
                     <div class="fetch-categories img-thumbnail filtering-padding">
                         <h3 class="title-name">Browse Categories</h3>
                         @foreach ($categories as $category)
@@ -53,7 +52,8 @@
                             @foreach ($brands as $brand)
                                 @if ($brand->products_count > 0)
                                     <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
-                                        value="{{ $brand->id }}" wire:model="brandInputs">
+                                        value="{{ $brand->id }}" wire:model="brandInputs"
+                                        wire:change="showClearFilters">
                                     <label class="label-text"
                                         for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
                                         <span class="total-fetch-items">({{ $brand->products_count }})</span>
@@ -67,7 +67,7 @@
                         <div class="associate-wrapper colors">
                             @foreach (App\Models\Product::COLORS as $item)
                                 <input type="radio" name="color" id="{{ $item }}"
-                                    value="{{ $item }}" wire:model="color" />
+                                    value="{{ $item }}" wire:model="color" wire:change="showClearFilters" />
                                 <label for="{{ $item }}"><span class="{{ $item }}"></span></label>
                             @endforeach
                         </div>
@@ -78,7 +78,7 @@
                             <span class="text-blue-600">
                                 ${{ $min_price }} - ${{ $max_price }}</span>
                         </h3>
-                        <div id="slider" wire:ignore>
+                        <div id="slider" wire:ignore wire:change="showClearFilters">
 
                         </div>
                     </div>
@@ -89,8 +89,10 @@
                                 <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
                                 <div class="associate-wrapper">
                                     @foreach ($filter->filterValues as $filterValue)
-                                        <input type="checkbox" class="check-box" id="filter{{ $filterValue->id }}"
-                                            value="{{ $filterValue->id }}">
+                                        <input type="radio" name="{{ $filter->filter_column }}" class="check-box"
+                                            id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}"
+                                            wire:click="filtering('{{ $filter->filter_column }}','{{ $filterValue->filter_value }}')"
+                                            wire:change="showClearFilters">
                                         <label class="label-text" for="filter{{ $filterValue->id }}">
                                             {{ $filterValue->filter_value }}
                                         </label>
@@ -176,9 +178,8 @@
                         <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
                         @if ($clearFilter)
                             <button wire:click="clearFiltering"
-                                class="text-sm bg-red-700 text-white px-4 py-1 rounded shadow-md focus:border-none focus:outline-none">
-                                Clear
-                                Filters</button>
+                                class="clear-filters text-sm bg-red-700 text-white px-4 py-1 rounded shadow-md focus:border-none focus:outline-none">
+                                Clear Filters</button>
                         @endif
                     </div>
                     <div class="page-bar clearfix">

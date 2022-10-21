@@ -695,17 +695,20 @@ select {
 .left-0 {
   left: 0px;
 }
-.top-5 {
-  top: 1.25rem;
+.top-4 {
+  top: 1rem;
 }
-.top-1\/2 {
-  top: 50%;
+.left-4 {
+  left: 1rem;
 }
 .z-50 {
   z-index: 50;
 }
 .z-0 {
   z-index: 0;
+}
+.z-10 {
+  z-index: 10;
 }
 .col-auto {
   grid-column: auto;
@@ -727,9 +730,6 @@ select {
 }
 .m-auto {
   margin: auto;
-}
-.m-3\.5 {
-  margin: 0.875rem;
 }
 .mx-auto {
   margin-left: auto;
@@ -835,12 +835,6 @@ select {
 }
 .mb-8 {
   margin-bottom: 2rem;
-}
-.mt-3\.5 {
-  margin-top: 0.875rem;
-}
-.mr-3\.5 {
-  margin-right: 0.875rem;
 }
 .block {
   display: block;
@@ -1797,18 +1791,6 @@ select {
 
 @media (min-width: 768px) {
 
-  .md\:absolute {
-    position: absolute;
-  }
-
-  .md\:left-0 {
-    left: 0px;
-  }
-
-  .md\:top-1\/4 {
-    top: 25%;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1823,10 +1805,6 @@ select {
 }
 
 @media (min-width: 1024px) {
-
-  .lg\:hidden {
-    display: none;
-  }
 
   .lg\:justify-end {
     justify-content: flex-end;

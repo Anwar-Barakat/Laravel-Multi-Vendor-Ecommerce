@@ -28,3 +28,21 @@
         margin-bottom: 2rem;
     }
 }
+
+.clear-filters {
+    position: fixed;
+    z-index: 1000;
+    top: 1rem;
+    left: 1rem;
+    animation: fadeInOut 1s linear infinite;
+}
+
+@keyframes fadeInOut {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
