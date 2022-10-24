@@ -1094,7 +1094,7 @@ body {
 }
 
 .button-primary:hover {
-    background: #cf0427;
+    background: #0162e8;
 }
 
 .button-outline-secondary {
@@ -4025,7 +4025,7 @@ body {
 }
 
 .coupon-continue-checkout .button-area .checkout:hover {
-    background: #cf0427;
+    background: #0162e8;
 }
 
 /* Cart-Empty-Styles & Wishlist Page */

@@ -24,6 +24,7 @@ use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
+use App\Http\Livewire\Front\Vendor\RegisterPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -124,22 +125,31 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::resource('banners',                                  BannerController::class);
     });
 });
+
 Route::prefix('vendor/')->name('vendor.')->group(function () {
-    Route::view('profile',                              'admin.vendors.profile')->name('profile');
-    Route::put('update-details',                       UpdateVendorDetailController::class)->name('peronsal-info.update');
-    Route::put('update-business',                      UpdateVendorBusinessController::class)->name('business-info.update');
-    Route::put('update-bank',                          UpdateVendorBankController::class)->name('bank-info.update');
+
+    Route::get('register',                                  RegisterPage::class)->name('register');
+
+    Route::view('profile',                                  'admin.vendors.profile')->name('profile');
+
+    Route::put('update-details',                            UpdateVendorDetailController::class)->name('peronsal-info.update');
+
+    Route::put('update-business',                           UpdateVendorBusinessController::class)->name('business-info.update');
+
+    Route::put('update-bank',                               UpdateVendorBankController::class)->name('bank-info.update');
 });
 
 Route::name('front.')->group(function () {
 
-    Route::get('/',                             HomePage::class)->name('home');
+    Route::get('/',                                         HomePage::class)->name('home');
 
-    Route::get('/shop',                         ShopPage::class);
+    Route::get('/shop',                                     ShopPage::class);
 
-    Route::get('/shop/{url}',                   CategoryProducts::class)->name('shop.category.products');
+    Route::get('/shop/{url}',                               CategoryProducts::class)->name('shop.category.products');
 
-    Route::get('/product/{productId}',          ProductDetailPage::class)->name('product.detail');
+    Route::get('/product/{productId}',                      ProductDetailPage::class)->name('product.detail');
 });
+
+
 
 // Route::get('/{page}', [AdminAdminController::class, 'index']);

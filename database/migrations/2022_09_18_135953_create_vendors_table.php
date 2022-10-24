@@ -16,13 +16,13 @@ class CreateVendorsTable extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('address');
-            $table->string('city');
-            $table->string('state');
-            $table->foreignId('country_id')->constrained('countries')->cascadeOnUpdate();
-            $table->string('pincode');
-            $table->string('mobile');
-            $table->string('email')->unique();
+            $table->text('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnUpdate();
+            $table->string('pincode')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
         });

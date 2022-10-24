@@ -63,11 +63,11 @@ class CategoryProducts extends Component
 
         $data['products']           = Product::with('brand')
             ->whereIn('category_id', $data['categoryDetails']['catIds'])
-            ->when($this->color, fn ($q) => $q->where('color', $this->color))
-            ->when($this->filter_column, fn ($q)    => $q->where($this->filter_column, $this->filter_value))
+            ->when($this->color, fn ($q)                    => $q->where('color', $this->color))
+            ->when($this->filter_column, fn ($q)            => $q->where($this->filter_column, $this->filter_value))
             ->whereBetween('price', [$this->min_price, $this->max_price])
             ->active()
-            ->when($this->brandInputs, fn ($q) => $q->whereIn('brand_id', $this->brandInputs))
+            ->when($this->brandInputs, fn ($q)              => $q->whereIn('brand_id', $this->brandInputs))
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);

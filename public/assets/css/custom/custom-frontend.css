@@ -46,3 +46,15 @@
         transform: scale(1.1);
     }
 }
+
+.invalid-feedback {
+    display: block;
+}
+
+.is-invalid {
+    border: 1px solid #ff0000;
+}
+
+.text-field.is-invalid:focus {
+    border-color: #ff0000;
+}
