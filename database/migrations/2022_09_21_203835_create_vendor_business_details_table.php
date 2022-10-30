@@ -16,19 +16,19 @@ class CreateVendorBusinessDetailsTable extends Migration
         Schema::create('vendor_business_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vendor_id')->constrained('vendors')->cascadeOnUpdate();
-            $table->string('shop_name');
-            $table->string('shop_address');
-            $table->string('shop_city');
-            $table->string('shop_state');
-            $table->string('shop_country_id');
-            $table->string('shop_pincode');
-            $table->string('shop_mobile');
-            $table->string('shop_website');
-            $table->string('shop_email')->unique();
-            $table->string('address_proof');
-            $table->string('business_license_number');
-            $table->string('gst_number');
-            $table->string('pan_number');
+            $table->string('shop_name')->nullable();
+            $table->string('shop_address')->nullable();
+            $table->string('shop_city')->nullable();
+            $table->string('shop_state')->nullable();
+            $table->string('shop_country_id')->nullable();
+            $table->string('shop_pincode')->nullable();
+            $table->string('shop_mobile')->nullable();
+            $table->string('shop_website')->nullable();
+            $table->string('shop_email')->unique()->nullable();
+            $table->string('address_proof')->nullable();
+            $table->string('business_license_number')->nullable();
+            $table->string('gst_number')->nullable();
+            $table->string('pan_number')->nullable();
             $table->timestamps();
         });
     }

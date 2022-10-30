@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Front\Vendor;
 use App\Events\VendorRegistered;
 use App\Models\Admin;
 use App\Models\Vendor;
+use App\Models\VendorBankDetail;
+use App\Models\VendorBusinessDetail;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
@@ -38,6 +40,9 @@ class RegisterPage extends Component
                 'email'     => $this->email,
                 'status'    => false,
             ]);
+
+            $vendor_id = DB::table('vendors')->orderByDesc('id')->first()->id;
+
             Admin::create([
                 'name'      => $this->name,
                 'type'      => 'vendor',
@@ -45,8 +50,11 @@ class RegisterPage extends Component
                 'email'     => $this->email,
                 'password'  => bcrypt($this->password),
                 'status'    => false,
-                'vendor_id' => DB::getPdo()->lastInsertId(),
+                'vendor_id' => $vendor_id,
             ]);
+
+            VendorBankDetail::create(['vendor_id' => $vendor_id]);
+            VendorBusinessDetail::create(['vendor_id' => $vendor_id]);
             DB::commit();
 
             event(new VendorRegistered($vendor));

@@ -231,7 +231,8 @@
                                             <option value="" selected>Select...</option>
                                             @foreach (App\Models\Country::where('status', 1)->get() as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ old('country_id', $auth->vendor->country->id) == $country->id ? 'selected' : '' }}>
+                                                    {{ old('country_id') == $country->id ? 'selected' : '' }}
+                                                    @if ($auth->vendor != '' && !is_null($auth->vendor->country)) {{ $auth->vendor->country->id == $country->id ? 'selected' : '' }} @endif>
                                                     {{ $country->name }}</option>
                                             @endforeach
                                         </select>
