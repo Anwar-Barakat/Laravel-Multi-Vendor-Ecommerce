@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivateVendorAccountController;
 use App\Http\Controllers\Admin\AdminSetting\AdminLoginController;
 use App\Http\Controllers\Admin\AdminSetting\CheckPasswordController;
 use App\Http\Controllers\Admin\AdminSetting\UpdateDetailController;
@@ -129,6 +130,8 @@ Route::prefix('admin/')->name('admin.')->group(function () {
 Route::prefix('vendor/')->name('vendor.')->group(function () {
 
     Route::get('register',                                  RegisterPage::class)->name('register');
+
+    Route::get('activate-account/{code}',                   ActivateVendorAccountController::class)->name('activate.account');
 
     Route::view('profile',                                  'admin.vendors.profile')->name('profile');
 

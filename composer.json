@@ -14,6 +14,8 @@
         "livewire/livewire": "^2.10",
         "spatie/laravel-medialibrary": "*",
         "spatie/laravel-query-builder": "*",
+        "symfony/http-client": "^6.0",
+        "symfony/mailgun-mailer": "^6.0",
         "yoeunes/toastr": "^2.0"
     },
     "require-dev": {

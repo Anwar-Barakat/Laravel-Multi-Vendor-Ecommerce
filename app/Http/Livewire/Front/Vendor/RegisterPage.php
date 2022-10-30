@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Vendor;
 
+use App\Events\VendorRegistered;
 use App\Models\Admin;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\DB;
@@ -26,11 +27,12 @@ class RegisterPage extends Component
 
     public function storeVendor()
     {
+
+        // $this->validate();
         try {
-            $this->validate($this->rules);
             DB::beginTransaction();
 
-            Vendor::create([
+            $vendor = Vendor::create([
                 'name'      => $this->name,
                 'mobile'    => $this->mobile,
                 'email'     => $this->email,
@@ -47,10 +49,12 @@ class RegisterPage extends Component
             ]);
             DB::commit();
 
+            event(new VendorRegistered($vendor));
+
             toastr()->success('Thanks for registering as a vendor, We will comfirm by email once your account is approved');
-            return redirect()->back();
         } catch (\Throwable $th) {
             DB::rollBack();
+            return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
     }
 
