@@ -60,6 +60,7 @@ class RegisterPage extends Component
 
     public function render()
     {
+
         return view('livewire.front.vendor.register-page')->layout('front.layouts.master');
     }
 }

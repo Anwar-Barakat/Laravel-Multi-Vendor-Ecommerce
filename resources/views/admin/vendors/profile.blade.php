@@ -8,8 +8,12 @@
     Profile
 @endsection
 
+@php
+    $auth = Auth::guard('admin')->user();
+@endphp
+
 @section('breadcamb')
-    {{ Auth::guard('admin')->user()->type }} Profile
+    {{ $auth->type }} Profile
 @endsection
 
 @section('content')
@@ -21,22 +25,22 @@
                     <div class="pl-0">
                         <div class="main-profile-overview">
                             <div class="main-img-user profile-user">
-                                @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
-                                    <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                                @if ($auth->getFirstMediaUrl('avatars', 'thumb'))
+                                    <img src="{{ $auth->getFirstMediaUrl('avatars', 'thumb') }}">
                                 @else
                                     <img src="{{ asset('assets/img/faces/6.jpg') }}">
                                 @endif
                             </div>
                             <div class="d-flex justify-content-between mg-b-20">
                                 <div>
-                                    <h5 class="main-profile-name">{{ Auth::guard('admin')->user()->name }}</h5>
-                                    <p class="main-profile-name-text">{{ Auth::guard('admin')->user()->email }}</p>
+                                    <h5 class="main-profile-name">{{ $auth->name }}</h5>
+                                    <p class="main-profile-name-text">{{ $auth->email }}</p>
                                 </div>
                             </div>
-                            @if (!empty(Auth::guard('admin')->user()->about_me))
+                            @if (!empty($auth->about_me))
                                 <h6>Bio</h6>
                                 <div class="main-profile-bio">
-                                    {{ Auth::guard('admin')->user()->about_me }}
+                                    {{ $auth->about_me }}
                                 </div>
                             @endif
                             <hr class="mg-y-30">
@@ -91,7 +95,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Orders</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">1,587</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">1,587</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -108,7 +112,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Revenue</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">46,782</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">46,782</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -125,7 +129,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Product sold</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">1,890</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">1,890</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -171,9 +175,6 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                @php
-                                    $auth = Auth::guard('admin')->user();
-                                @endphp
                                 <div class="row">
                                     <div class="form-group col-sm-12">
                                         <label for="Email">Email</label>
@@ -296,27 +297,34 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                @php
-                                    $vendorBusiness = Auth::guard('admin')->user()->vendor->businessInfo;
-                                @endphp
+                                @if (!is_null($auth->vendor->businessInfo))
+                                    {{ $vendorBusiness = $auth->vendor->businessInfo }}
+                                @else
+                                    {{ $vendorBusiness = '' }}
+                                @endif
                                 <div class="row">
                                     <div class="form-group col-sm-12">
-                                        @if ($vendorBusiness->getFirstMediaUrl('vendor_address_proof_images'))
+                                        @if (!empty($vendorBusiness) || $vendorBusiness != null)
                                             <img src="{{ $vendorBusiness->getFirstMediaUrl('vendor_address_proof_images') }}"
-                                                alt="">
+                                                alt="" height="200px">
                                             <hr>
+                                        @else
+                                            <img src="{{ asset('assets/img/media/banner-default.jpg') }}" alt=""
+                                                style="height: 200px">
                                         @endif
                                     </div>
                                 </div>
+                                @dump($auth->vendor->businessInfo)
                                 <div class="row">
                                     <div class="form-group col-sm-12">
                                         <label for="Email">Email</label>
-                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
-                                            id="Email" class="form-control " disabled readonly>
+                                        <input type="email" value="{{ $auth->email }}" id="Email"
+                                            class="form-control " disabled readonly>
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_name">Shop name</label>
-                                        <input type="text" value="{{ old('shop_name', $vendorBusiness->shop_name) }}"
+                                        <input type="text"
+                                            value="{{ old('shop_name', $vendorBusiness->shop_name ?? '') }}"
                                             name="shop_name" id="shop_name"
                                             class="form-control @error('shop_name') is-invalid @enderror">
                                         @error('shop_name')
@@ -328,7 +336,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_address">Shop address</label>
                                         <input type="text"
-                                            value="{{ old('shop_address', $vendorBusiness->shop_address) }}"
+                                            value="{{ old('shop_address', $vendorBusiness->shop_address ?? '') }}"
                                             name="shop_address" id="shop_address"
                                             class="form-control @error('shop_address') is-invalid @enderror">
                                         @error('shop_address')
@@ -339,7 +347,8 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_city">Shop city</label>
-                                        <input type="text" value="{{ old('shop_city', $vendorBusiness->shop_city) }}"
+                                        <input type="text"
+                                            value="{{ old('shop_city', $vendorBusiness->shop_city ?? '') }}"
                                             name="shop_city" id="shop_city"
                                             class="form-control @error('shop_city') is-invalid @enderror">
                                         @error('shop_city')
@@ -351,7 +360,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_state">Shop state</label>
                                         <input type="text"
-                                            value="{{ old('shop_state', $vendorBusiness->shop_state) }}"
+                                            value="{{ old('shop_state', $vendorBusiness->shop_state ?? '') }}"
                                             name="shop_state" id="shop_state"
                                             class="form-control @error('shop_state') is-invalid @enderror">
                                         @error('shop_state')
@@ -367,7 +376,8 @@
                                             <option value="" selected>Select</option>
                                             @foreach (App\Models\Country::where('status', 1)->get() as $country)
                                                 <option value="{{ $country->id }}"
-                                                    {{ old('shop_country_id', $vendorBusiness->shop_country_id) == $country->id ? 'selected' : '' }}>
+                                                    {{ old('shop_country_id') == $country->id ? 'selected' : '' }}
+                                                    @if (!empty($vendorBusiness)) {{ $vendorBusiness->shop_country_id == $country->id ? 'selected' : '' }} @endif>
                                                     {{ $country->name }}</option>
                                             @endforeach
                                         </select>
@@ -380,7 +390,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_pincode">Shop pincode</label>
                                         <input type="text" name="shop_pincode"
-                                            value="{{ old('shop_pincode', $vendorBusiness->shop_pincode) }}"
+                                            value="{{ old('shop_pincode', $vendorBusiness->shop_pincode ?? '') }}"
                                             id="shop_pincode"
                                             class="form-control @error('shop_pincode') is-invalid @enderror">
                                         @error('shop_pincode')
@@ -392,7 +402,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_mobile">Shop mobile</label>
                                         <input type="tel" name="shop_mobile"
-                                            value="{{ old('shop_mobile', $vendorBusiness->shop_mobile) }}"
+                                            value="{{ old('shop_mobile', $vendorBusiness->shop_mobile ?? '') }}"
                                             id="shop_mobile"
                                             class="form-control @error('shop_mobile') is-invalid @enderror">
                                         @error('shop_mobile')
@@ -404,7 +414,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_email">Shop Email</label>
                                         <input type="email" name="shop_email"
-                                            value="{{ old('shop_email', $vendorBusiness->shop_email) }}" id="shop_email"
+                                            value="{{ old('shop_email', $vendorBusiness->shop_email ?? '') }}"
+                                            id="shop_email"
                                             class="form-control @error('shop_email') is-invalid @enderror">
                                         @error('shop_email')
                                             <span class="invalid-feedback" role="alert">
@@ -415,7 +426,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="shop_website">Shop website</label>
                                         <input type="text" name="shop_website"
-                                            value="{{ old('shop_website', $vendorBusiness->shop_website) }}"
+                                            value="{{ old('shop_website', $vendorBusiness->shop_website ?? '') }}"
                                             id="shop_website"
                                             class="form-control @error('shop_website') is-invalid @enderror">
                                         @error('shop_website')
@@ -431,7 +442,7 @@
                                             <option value="" selected>Select...</option>
                                             @foreach (App\Models\Vendor::ADDRESSPROOF as $key => $address)
                                                 <option value="{{ $key }}"
-                                                    {{ $vendorBusiness->address_proof == $key ? 'selected' : '' }}>
+                                                    @if (!empty($vendorBusiness)) {{ $vendorBusiness->address_proof == $key ? 'selected' : '' }} @endif>
                                                     {{ strtoupper(str_replace('_', ' ', $address)) }}</option>
                                             @endforeach
                                         </select>
@@ -444,7 +455,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="business_license_number">Business license number</label>
                                         <input type="text" name="business_license_number"
-                                            value="{{ old('business_license_number', $vendorBusiness->business_license_number) }}"
+                                            value="{{ old('business_license_number', $vendorBusiness->business_license_number ?? '') }}"
                                             id="business_license_number"
                                             class="form-control @error('business_license_number') is-invalid @enderror">
                                         @error('business_license_number')
@@ -456,7 +467,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="gst_number">GST number</label>
                                         <input type="text" name="gst_number"
-                                            value="{{ old('gst_number', $vendorBusiness->gst_number) }}" id="gst_number"
+                                            value="{{ old('gst_number', $vendorBusiness->gst_number ?? '') }}"
+                                            id="gst_number"
                                             class="form-control @error('gst_number') is-invalid @enderror">
                                         @error('gst_number')
                                             <span class="invalid-feedback" role="alert">
@@ -467,7 +479,8 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="pan_number">PAN number</label>
                                         <input type="text" name="pan_number"
-                                            value="{{ old('pan_number', $vendorBusiness->pan_number) }}" id="pan_number"
+                                            value="{{ old('pan_number', $vendorBusiness->pan_number ?? '') }}"
+                                            id="pan_number"
                                             class="form-control @error('pan_number') is-invalid @enderror">
                                         @error('pan_number')
                                             <span class="invalid-feedback" role="alert">
@@ -495,19 +508,21 @@
                             <form role="form" action="{{ route('vendor.bank-info.update') }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                @php
-                                    $vendorBank = Auth::guard('admin')->user()->vendor->bankInfo;
-                                @endphp
+                                @if (!is_null($auth->vendor->bankInfo))
+                                    {{ $vendorBank = $auth->vendor->bankInfo }}
+                                @else
+                                    {{ $vendorBank = '' }}
+                                @endif
                                 <div class="row">
                                     <div class="form-group col-sm-12">
                                         <label for="Email">Email</label>
-                                        <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
-                                            id="Email" class="form-control " disabled readonly>
+                                        <input type="email" value="{{ $auth->email }}" id="Email"
+                                            class="form-control " disabled readonly>
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="account_holder_name">Account holder name</label>
                                         <input type="text"
-                                            value="{{ old('account_holder_name', $vendorBank->account_holder_name) }}"
+                                            value="{{ old('account_holder_name', $vendorBank->account_holder_name ?? '') }}"
                                             name="account_holder_name" id="account_holder_name"
                                             class="form-control @error('name') is-invalid @enderror">
                                         @error('account_holder_name')
@@ -518,9 +533,9 @@
                                     </div>
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="bank_name">Bank name</label>
-                                        <input type="text" value="{{ old('bank_name', $vendorBank->bank_name) }}"
-                                            name="bank_name" id="bank_name"
-                                            class="form-control @error('name') is-invalid @enderror">
+                                        <input type="text"
+                                            value="{{ old('bank_name', $vendorBank->bank_name ?? '') }}" name="bank_name"
+                                            id="bank_name" class="form-control @error('name') is-invalid @enderror">
                                         @error('bank_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -530,7 +545,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="account_number">Account number</label>
                                         <input type="number"
-                                            value="{{ old('account_number', $vendorBank->account_number) }}"
+                                            value="{{ old('account_number', $vendorBank->account_number ?? '') }}"
                                             name="account_number" id="account_number"
                                             class="form-control @error('name') is-invalid @enderror">
                                         @error('account_number')
@@ -542,7 +557,7 @@
                                     <div class="form-group col-sm-12 col-lg-6">
                                         <label for="bank_ifsc_code">Bank IFSC code</label>
                                         <input type="text"
-                                            value="{{ old('bank_ifsc_code', $vendorBank->bank_ifsc_code) }}"
+                                            value="{{ old('bank_ifsc_code', $vendorBank->bank_ifsc_code ?? '') }}"
                                             name="bank_ifsc_code" id="bank_ifsc_code"
                                             class="form-control @error('name') is-invalid @enderror">
                                         @error('bank_ifsc_code')

@@ -29,13 +29,28 @@ class AdminLoginController extends Controller
                 'password'  => 'required|min:8'
             ]);
 
-            if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
-                toastr()->success("Welcome Back !! ");
-                return redirect()->route('admin.dashboard');
-            } else {
+            if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']])) :
+
+                if (Auth::guard('admin')->user()->type == 'vendor') :
+
+                    if (Auth::guard('admin')->user()->status == 0) :
+                        toastr()->warning("Your Vendor Account Must Be Active To Login, Please Check Your Email");
+                        return redirect()->back();
+                    else :
+                        toastr()->success("Welcome Back in Vendor Dashboard");
+                        return redirect()->route('admin.dashboard');
+                    endif;
+
+                elseif (Auth::guard('admin')->user()->type == 'admin' || Auth::guard('admin')->user()->type == 'super-admin') :
+                    toastr()->success("Welcome Back in Admin Dashboard");
+                    return redirect()->route('admin.dashboard');
+                else :
+                    return redirect()->back();
+                endif;
+            else :
                 toastr()->error('Email or Password is Invalid');
                 return redirect()->back();
-            }
+            endif;
         }
     }
 

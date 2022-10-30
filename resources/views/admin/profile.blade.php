@@ -8,12 +8,17 @@
     Profile
 @endsection
 
+@php
+    $auth = Auth::guard('admin')->user();
+@endphp
+
 @section('breadcamb')
-    {{ ucwords(Auth::guard('admin')->user()->type) }} Profile
+    {{ ucwords($auth->type) }} Profile
 @endsection
 
 @section('content')
     <!-- row -->
+
     <div class="row row-sm">
         <div class="col-lg-4">
             <div class="card mg-b-20">
@@ -21,22 +26,22 @@
                     <div class="pl-0">
                         <div class="main-profile-overview">
                             <div class="main-img-user profile-user">
-                                @if (Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb'))
-                                    <img src="{{ Auth::guard('admin')->user()->getFirstMediaUrl('avatars', 'thumb') }}">
+                                @if ($auth->getFirstMediaUrl('avatars', 'thumb'))
+                                    <img src="{{ $auth->getFirstMediaUrl('avatars', 'thumb') }}">
                                 @else
                                     <img src="{{ asset('assets/img/faces/6.jpg') }}">
                                 @endif
                             </div>
                             <div class="d-flex justify-content-between mg-b-20">
                                 <div>
-                                    <h5 class="main-profile-name">{{ Auth::guard('admin')->user()->name }}</h5>
-                                    <p class="main-profile-name-text">{{ Auth::guard('admin')->user()->email }}</p>
+                                    <h5 class="main-profile-name">{{ $auth->name }}</h5>
+                                    <p class="main-profile-name-text">{{ $auth->email }}</p>
                                 </div>
                             </div>
-                            @if (!empty(Auth::guard('admin')->user()->about_me))
+                            @if (!empty($auth->about_me))
                                 <h6>Bio</h6>
                                 <div class="main-profile-bio">
-                                    {{ Auth::guard('admin')->user()->about_me }}
+                                    {{ $auth->about_me }}
                                 </div>
                             @endif
                             <hr class="mg-y-30">
@@ -91,7 +96,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Orders</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">1,587</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">1,587</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -108,7 +113,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Revenue</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">46,782</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">46,782</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -125,7 +130,7 @@
                                 </div>
                                 <div class="mr-auto">
                                     <h5 class="tx-13">Product sold</h5>
-                                    <h2 class="mb-0 tx-22 mb-1 mt-1">1,890</h2>
+                                    <h2 class="tx-22 mb-1 mt-1">1,890</h2>
                                     <p class="text-muted mb-0 tx-11"><i
                                             class="si si-arrow-up-circle text-success mr-1"></i>increase</p>
                                 </div>
@@ -168,7 +173,7 @@
                     <div class="tab-content border-left border-bottom border-right border-top-0 p-4">
                         <div class="tab-pane active" id="home">
                             <h4 class="tx-15 text-uppercase mb-3">BIOdata</h4>
-                            <p class="m-b-5">{{ Auth::guard('admin')->user()->about_me }}</p>
+                            <p class="m-b-5">{{ $auth->about_me }}</p>
                         </div>
                         <div class="tab-pane" id="update_password">
                             <form role="form" action="{{ route('admin.update_password') }}" method="POST">
@@ -219,19 +224,18 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="Email">Email</label>
-                                    <input type="email" value="{{ Auth::guard('admin')->user()->email }}"
-                                        id="Email" class="form-control " disabled readonly>
+                                    <input type="email" value="{{ $auth->email }}" id="Email"
+                                        class="form-control " disabled readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="type">Admin Type</label>
-                                    <input type="text" value="{{ Auth::guard('admin')->user()->type }}"
-                                        id="type" class="form-control " disabled readonly>
+                                    <input type="text" value="{{ $auth->type }}" id="type"
+                                        class="form-control " disabled readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="FullName">Full Name</label>
-                                    <input type="text" value="{{ old('name', Auth::guard('admin')->user()->name) }}"
-                                        id="FullName" class="form-control @error('name') is-invalid @enderror"
-                                        name="name">
+                                    <input type="text" value="{{ old('name', $auth->name) }}" id="FullName"
+                                        class="form-control @error('name') is-invalid @enderror" name="name">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -240,9 +244,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="mobile">Mobile</label>
-                                    <input type="tel" name="mobile"
-                                        value="{{ old('mobile', Auth::guard('admin')->user()->mobile) }}" id="mobile"
-                                        class="form-control @error('mobile') is-invalid @enderror">
+                                    <input type="tel" name="mobile" value="{{ old('mobile', $auth->mobile) }}"
+                                        id="mobile" class="form-control @error('mobile') is-invalid @enderror">
                                     @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -252,7 +255,7 @@
                                 <div class="form-group">
                                     <label for="AboutMe">About Me</label>
                                     <textarea id="AboutMe" class="form-control @error('about_me') is-invalid @enderror" name="about_me"
-                                        rows="4">{{ old('about_me', Auth::guard('admin')->user()->about_me) }}
+                                        rows="4">{{ old('about_me', $auth->about_me) }}
                                     </textarea>
                                     @error('about_me')
                                         <span class="invalid-feedback" role="alert">

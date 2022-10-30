@@ -28,7 +28,7 @@ class UpdateVendorDetailRequest extends FormRequest
             'address'       => 'required|min:3',
             'city'          => 'required|min:3',
             'state'         => 'required|min:3',
-            'country_id'    => 'required|min:3',
+            'country_id'    => 'required',
             'pincode'       => 'required|min:3',
             'mobile'        => 'required|min:10|max:10',
             'avatar'        => 'required|mimes:png,jpg,jpeg|image|max:2048',

@@ -13,15 +13,7 @@ class Vendor extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'name',
-        'address',
-        'city',
-        'state',
-        'country_id',
-        'pincode',
-        'mobile',
-        'email',
-        'status',
+        'name', 'address', 'city', 'state', 'country_id', 'pincode', 'mobile', 'email', 'status',
     ];
 
     const ADDRESSPROOF = [
