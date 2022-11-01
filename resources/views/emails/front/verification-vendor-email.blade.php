@@ -6,7 +6,7 @@
 
 Welcome {{ ucwords($vendor->name) }}<br>
 your email is {{ $vendor->email }} <br>
-Please, confirm your email to activate your vendor account
+Please, confirm your email to activate your vendor account.
 @component('mail::button', ['url' => route('vendor.activate.account', $code)])
     Click here
 @endcomponent

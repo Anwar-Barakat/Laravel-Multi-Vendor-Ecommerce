@@ -23,7 +23,7 @@
                         <h4 class="card-title mg-b-0">Admins TABLE</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 tx-gray-500 mb-2">List Of Admins, Sub-Admins, Vendors &</p>
+                    <p class="tx-12 tx-gray-500 mb-2">List Of Admins, Sub-Admins, Vendors</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
