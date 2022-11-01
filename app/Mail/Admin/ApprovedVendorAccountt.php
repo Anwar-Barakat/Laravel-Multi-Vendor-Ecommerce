@@ -2,6 +2,7 @@
 
 namespace App\Mail\Admin;
 
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -29,6 +30,7 @@ class ApprovedVendorAccountt extends Mailable
      */
     public function build()
     {
+
         return $this->markdown('emails.admin.approve-vendor', ['vendor' => $this->vendor]);
     }
 }

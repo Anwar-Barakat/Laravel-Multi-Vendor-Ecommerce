@@ -299,6 +299,10 @@
                                             <div class="tag discount">
                                                 <span>-%{{ $product->discount > 0 ? $product->discount : $product->category->discount }}</span>
                                             </div>
+                                        @elseif ($product->created_at > date('Y-m-d', strtotime('-8 days')) && $product->created_at < date('Y-m-d'))
+                                            <div class="tag new">
+                                                <span>New</span>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
