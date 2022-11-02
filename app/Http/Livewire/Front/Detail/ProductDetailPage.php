@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Detail;
 
+use App\Models\Attribute;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -16,7 +17,13 @@ class ProductDetailPage extends Component
 
     public function render()
     {
-        $product    = Product::with(['category'])->findOrFail($this->productId);
-        return view('livewire.front.detail.product-detail-page', ['product' => $product])->layout('front.layouts.master');
+        $product    = Product::with(['section', 'category', 'attributes', 'brand'])->findOrFail($this->productId);
+        $totalStock = Attribute::where('product_id', $product->id)->sum('stock');
+
+
+        return view('livewire.front.detail.product-detail-page', [
+            'product'       => $product,
+            'totalStock'    => $totalStock
+        ])->layout('front.layouts.master');
     }
 }

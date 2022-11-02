@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-    --main-color: #0162e8;
+    --main-color: #3fb8af;
 }
 
 /**
@@ -53,10 +53,12 @@ a:not([href]):not([tabindex]):hover,
 a:not([href]):not([tabindex]):focus {
     color: var(--main-color);
 }
+
 .main-shadow {
     box-shadow: rgb(0 0 0 / 24%) 0px 2px 4px, rgb(0 0 0 / 18%) 0px 7px 13px -3px,
         rgb(0 0 0 / 20%) 0px -3px 0px inset;
 }
+
 .category-shadow {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
@@ -3209,21 +3211,21 @@ body {
     font-size: 14px;
 }
 
-.section-2-short-description {
-    border-bottom: 1px solid #f8f9f5;
-}
-
 .section-2-short-description > p {
     font-size: 13px;
     margin: 0;
 }
 
+.section-5-product-variants,
+.section-4-sku-information,
+.section-2-short-description,
+.section-1-title-breadcrumb-rating,
 .section-3-price-original-discount {
     border-bottom: 1px solid #f8f9f5;
 }
 
 .section-3-price-original-discount > .price > h4 {
-    color: #292929;
+    color: var(--main-color);
     font-weight: 600;
     margin-bottom: 6px;
     font-size: 28px;
@@ -3239,10 +3241,6 @@ body {
     text-decoration: line-through;
 }
 
-.section-4-sku-information {
-    border-bottom: 1px solid #f8f9f5;
-}
-
 .section-4-sku-information > .availability,
 .section-4-sku-information .left {
     font-size: 13px;
@@ -3250,15 +3248,10 @@ body {
 
 .section-4-sku-information > .availability span + span {
     margin-left: 2px;
-    color: #28a745;
 }
 
 .section-4-sku-information .left span + span {
     margin-left: 2px;
-}
-
-.section-5-product-variants {
-    border-bottom: 1px solid #f8f9f5;
 }
 
 .section-5-product-variants > .color,

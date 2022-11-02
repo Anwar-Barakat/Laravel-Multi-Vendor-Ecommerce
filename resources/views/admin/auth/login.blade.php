@@ -21,8 +21,8 @@
                             <div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
                                 <div class="card-sigin">
                                     <div class="main-signup-header">
-                                        <h2>Multi Vendor Store</h2>
-                                        <h5 class="font-weight-semibold mb-4">Admin Login</h5>
+                                        <h2 class="mb-4">Multi Vendor Store</h2>
+
                                         <form method="POST" action="{{ route('admin.login') }}">
                                             @csrf
                                             <div class="form-group">
