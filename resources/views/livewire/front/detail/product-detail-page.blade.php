@@ -96,28 +96,21 @@
                             </div>
                         </div>
                         <div class="section-3-price-original-discount u-s-p-y-14">
-                            @php
-                                $final_price = App\Models\Product::applyDiscount($product->id);
-                            @endphp
-                            @if ($final_price > 0)
-                                <div class="price">
-                                    <h4>${{ number_format($final_price, 2) }}</h4>
-                                </div>
+                            <div class="price">
+                                <h4>${{ $final_price }}</h4>
+                            </div>
+                            @if ($discount > 0)
                                 <div class="original-price">
                                     <span>Original Price:</span>
-                                    <span>${{ number_format($product->price, 2) }}</span>
+                                    <span>${{ $original_price }}</span>
                                 </div>
                                 <div class="discount-price">
                                     <span>Discount:</span>
-                                    <span>{{ $product->discount > 0 ? $product->discount : $product->category->discount }}%</span>
+                                    <span>{{ $discount }}%</span>
                                 </div>
                                 <div class="total-save">
                                     <span>Save:</span>
-                                    <span>${{ $product->price - $final_price }}</span>
-                                </div>
-                            @else
-                                <div class="price">
-                                    <h4>${{ number_format($product->price, 2) }}</h4>
+                                    <span>${{ $original_price - $final_price }}</span>
                                 </div>
                             @endif
                         </div>
@@ -200,9 +193,9 @@
                                 <div class="quantity-wrapper u-s-m-b-22">
                                     <span>Quantity:</span>
                                     <div class="quantity">
-                                        <input type="text" class="quantity-text-field" value="1">
-                                        <a class="plus-a" data-max="1000">&#43;</a>
-                                        <a class="minus-a" data-min="1">&#45;</a>
+                                        <input type="number" class="quantity-text-field" min="1" max="1000"
+                                            wire:model="quantity">
+
                                     </div>
                                 </div>
                                 <div>
@@ -243,7 +236,7 @@
                                         {{ $product->description }}
                                     </p>
                                     @if ($product->getFirstMediaUrl('main_video_of_product'))
-                                        <video width="200" class="img img-thumbnail mb-4 admin-image" controls>
+                                        <video width="700" class="img img-thumbnail mb-4 admin-image" controls>
                                             <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}"
                                                 type="video/mp4" class="img img-thumbnail img-activity">
                                             <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}"
