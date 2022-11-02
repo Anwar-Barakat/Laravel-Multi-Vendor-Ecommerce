@@ -201,27 +201,6 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-6">
-                                    <div class="form-group">
-                                        <label for="admin_id">Admin or Vendor</label>
-                                        <select name="admin_id"
-                                            class="form-control  @error('admin_id') is-invalid @enderror">
-                                            <option value="" selected>Select...</option>
-                                            @foreach (App\Models\Admin::all() as $admin)
-                                                <option value="{{ $admin->id }}"
-                                                    {{ old('admin_id', $product->admin_id) == $admin->id ? 'selected' : '' }}>
-                                                    {{ ucwords($admin->name) }}
-                                                    ({{ ucwords(str_replace('-', ' ', $admin->type)) }})
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        @error('admin_id')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 col-lg-6">

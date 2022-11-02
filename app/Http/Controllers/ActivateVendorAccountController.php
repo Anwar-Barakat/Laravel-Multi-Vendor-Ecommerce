@@ -25,12 +25,12 @@ class ActivateVendorAccountController extends Controller
 
             if ($vendorDetails->status == '1') {
                 toastr()->info('Your Vendor Account Is Already Activated Before, You Can Login');
-                return redirect()->route('admin.login.form');
+                return redirect()->route('vendor.login.form');
             } else {
                 $vendorDetails->update(['status' => '1']);
                 Admin::where('email', $email)->update(['status' => '1']);
                 toastr()->success('Your Vendor Account Is Activated, You Can Login Now.');
-                return redirect()->route('admin.login.form');
+                return redirect()->route('vendor.login.form');
             }
         else :
             abort('404');

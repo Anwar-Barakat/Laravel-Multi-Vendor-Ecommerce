@@ -46,6 +46,23 @@
             </li>
 
             @if (Auth::guard('admin')->user()->type == 'vendor')
+                <li class="side-item side-item-category">General</li>
+                {{-- Products --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:void(0);">
+                        <i class="fas fa-tags side-menu__icon"></i>
+                        <span class="side-menu__label">Products</span>
+                        <i class="angle fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.products.index') }}" class="slide-item">Products List</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.products.create') }}" class="slide-item">Add Product</a>
+                        </li>
+                    </ul>
+                </li>
             @else
                 {{-- Admins --}}
                 <li class="slide">

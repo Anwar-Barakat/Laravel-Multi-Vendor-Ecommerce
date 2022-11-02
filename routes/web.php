@@ -133,6 +133,8 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
 
     Route::get('activate-account/{code}',                   ActivateVendorAccountController::class)->name('activate.account');
 
+    Route::get('login-form',                                [AdminLoginController::class, 'loginForm'])->name('login.form');
+
     Route::view('profile',                                  'admin.vendors.profile')->name('profile');
 
     Route::put('update-details',                            UpdateVendorDetailController::class)->name('peronsal-info.update');

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Filter;
 use App\Models\Section;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
@@ -47,6 +48,7 @@ class ProductController extends Controller
         try {
             if ($request->isMethod('post')) {
                 $data                   = $request->except('image', 'video');
+                $data['admin_id']       = Auth::guard('admin')->id();
                 $category               = Category::findOrFail($data['category_id']);
                 $section_id             = Section::findOrFail($category->section_id)->id;
                 $data['section_id']     = $section_id;
@@ -110,6 +112,7 @@ class ProductController extends Controller
         try {
             if ($request->isMethod('put')) {
                 $data                   = $request->except('image', 'video');
+                $data['admin_id']       = Auth::guard('admin')->id();
                 $category               = Category::findOrFail($data['category_id']);
                 $section_id             = Section::findOrFail($category->section_id)->id;
                 $data['section_id']     = $section_id;
