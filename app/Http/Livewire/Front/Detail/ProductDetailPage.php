@@ -19,13 +19,12 @@ class ProductDetailPage extends Component
         $product                    = Product::findOrFail($this->productId);
         $this->original_price       = $product->price;
 
-        if ($product->discount > 0) :
-            $this->final_price      = $product->price - ($product->price * $product->discount / 100);
-        elseif ($product->category->discount > 0) :
-            $this->final_price      = $product->price - ($product->price * $product->category->discount / 100);
-        else :
+        if ($product->discount > 0)
+            $this->final_price      = Product::discountingPrice($product->price, $product->discount);
+        elseif ($product->category->discount > 0)
+            $this->final_price      =  Product::discountingPrice($product->price, $product->category->discount);
+        else
             $this->final_price      = $product->price;
-        endif;
 
         $this->original_price       = $product->price;
         $this->discount             = Product::applyDiscount($this->productId);
@@ -42,11 +41,10 @@ class ProductDetailPage extends Component
         $proAttr                    = Attribute::where(['product_id' => $this->productId, 'size' => $this->size])->first();
 
         if ($product->discount > 0) :
-            $final_price            = $proAttr->price - ($proAttr->price * $product->discount / 100);
+            $final_price            = Product::discountingPrice($proAttr->price, $product->discount);
             $this->discount         = $product->discount;
-
         elseif ($product->category->discount > 0) :
-            $final_price            = $proAttr->price - ($proAttr->price * $product->category->discount / 100);
+            $final_price            = Product::discountingPrice($proAttr->price, $product->category->discount);
             $this->discount         = $product->category->discount;
         else :
             $final_price            = $proAttr->price;

@@ -51,20 +51,25 @@ class Product extends Model implements HasMedia
         return $query->where(['status' => 1]);
     }
 
-    public static function applyDiscount($product_id)
+    public static function applyDiscount($prod_id)
     {
-        $product    = Product::select('category_id', 'price', 'discount')->where('id', $product_id)->first();
-        $category   = Category::select('discount')->where('id', $product->category_id)->first();
+        $prod               = Product::select('category_id', 'price', 'discount')->where('id', $prod_id)->first();
+        $category           = Category::select('discount')->where('id', $prod->category_id)->first();
 
-        if ($product->discount > 0) :
-            $final_price = $product->price - ($product->price * $product->discount / 100);
+        if ($prod->discount > 0) :
+            $final_price    = Product::discountingPrice($prod->price, $prod->discount);
         elseif ($category->discount > 0) :
-            $final_price = $product->price - ($product->price * $category->discount / 100);
+            $final_price    = Product::discountingPrice($prod->price, $prod->category->discount);
         else :
-            $final_price = 0;
+            $final_price    = 0;
         endif;
 
         return $final_price;
+    }
+
+    public static function discountingPrice($price, $discount)
+    {
+        return $price - ($price * $discount / 100);
     }
 
     public function scopeSearch($query, $term)

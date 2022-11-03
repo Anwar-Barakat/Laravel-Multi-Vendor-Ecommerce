@@ -113,11 +113,12 @@
                                     <i class="ion ion-md-star-half text-warning"></i>
                                     <i class="ion ion-md-star-outline text-warning"></i>
                                 </span>
-                                <div class="d-flex justify-content-between align-items-center h-100 mt-2">
+                                <div class="grid gap-4 h-100 mt-2">
                                     @php
                                         $final_price = App\Models\Product::applyDiscount($product->id);
                                     @endphp
-                                    <h4 class="h5 mb-0 mt-2 text-center font-weight-bold text-danger">
+                                    <h4
+                                        class="h5 mb-0 mt-2 text-center font-weight-bold text-danger flex justify-between">
                                         @if ($final_price > 0)
                                             ${{ $product->price }}
                                             <span
