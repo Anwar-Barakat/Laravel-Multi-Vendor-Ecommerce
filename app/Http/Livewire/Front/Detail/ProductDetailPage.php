@@ -18,12 +18,17 @@ class ProductDetailPage extends Component
 
         $product                    = Product::findOrFail($this->productId);
         $this->original_price       = $product->price;
-        $this->final_price          = Product::applyDiscount($this->productId);
-        $product->discount > 0
-            ? $this->discount = $product->discount
-            : ($product->category->discount > 0
-                ? $this->discount = $product->category->discount
-                : $this->discount = 0.0);
+
+        if ($product->discount > 0) :
+            $this->final_price      = $product->price - ($product->price * $product->discount / 100);
+        elseif ($product->category->discount > 0) :
+            $this->final_price      = $product->price - ($product->price * $product->category->discount / 100);
+        else :
+            $this->final_price      = $product->price;
+        endif;
+
+        $this->original_price       = $product->price;
+        $this->discount             = Product::applyDiscount($this->productId);
     }
 
     public function updatedQuantity()
