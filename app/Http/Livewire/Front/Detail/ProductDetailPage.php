@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Detail;
 
 use App\Models\Attribute;
+use App\Models\Filter;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -26,7 +27,6 @@ class ProductDetailPage extends Component
         else
             $this->final_price      = $product->price;
 
-        $this->original_price       = $product->price;
         $this->discount             = Product::applyDiscount($this->productId);
     }
 
@@ -41,18 +41,17 @@ class ProductDetailPage extends Component
         $proAttr                    = Attribute::where(['product_id' => $this->productId, 'size' => $this->size])->first();
 
         if ($product->discount > 0) :
-            $final_price            = Product::discountingPrice($proAttr->price, $product->discount);
+            $this->final_price      = Product::discountingPrice($proAttr->price, $product->discount);
             $this->discount         = $product->discount;
         elseif ($product->category->discount > 0) :
-            $final_price            = Product::discountingPrice($proAttr->price, $product->category->discount);
+            $this->final_price      = Product::discountingPrice($proAttr->price, $product->category->discount);
             $this->discount         = $product->category->discount;
         else :
-            $final_price            = $proAttr->price;
+            $this->final_price      = $proAttr->price;
             $this->discount         = 0.00;
         endif;
 
         $this->original_price       = $proAttr->price;
-        $this->final_price          = $final_price;
     }
 
 
@@ -63,11 +62,11 @@ class ProductDetailPage extends Component
             'attributes' => fn ($q) => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
-        $totalStock = Attribute::where(['product_id' => $product->id, 'status' => '1'])->sum('stock');
 
         return view('livewire.front.detail.product-detail-page', [
             'product'       => $product,
-            'totalStock'    => $totalStock
+            'totalStock'    => Attribute::where(['product_id' => $product->id, 'status' => '1'])->sum('stock'),
+            'filters'       => Filter::with(['filterValues'])->active()->get(),
         ])->layout('front.layouts.master');
     }
 }
