@@ -130,6 +130,15 @@
                                     <span>{{ $totalStock }} left</span>
                                 </div>
                             @endif
+                            @if (!is_null($product->admin->vendor))
+                                <p class="text-xs mt-3 text-capitalize">
+                                    sold by :
+                                    <a href="{{ route('vendor.products', $product->admin->id) }}"
+                                        class="underline hover:underline hover:font-bold transition ">
+                                        {{ $product->admin->vendor->businessInfo->shop_name }}
+                                    </a>
+                                </p>
+                            @endif
                         </div>
                         <div class="section-5-product-variants u-s-p-y-14">
                             <h6 class="information-heading u-s-m-b-8">Product Variants:</h6>
@@ -193,8 +202,8 @@
                                 <div class="quantity-wrapper u-s-m-b-22">
                                     <span>Quantity:</span>
                                     <div class="quantity">
-                                        <input type="number" class="quantity-text-field" min="1" max="1000"
-                                            wire:model="quantity">
+                                        <input type="number" class="quantity-text-field" min="1"
+                                            max="1000" wire:model="quantity">
 
                                     </div>
                                 </div>

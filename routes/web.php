@@ -26,6 +26,7 @@ use App\Http\Livewire\Front\Home\HomePage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
 use App\Http\Livewire\Front\Vendor\RegisterPage;
+use App\Http\Livewire\Front\Vendor\VendorProducts;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -142,6 +143,8 @@ Route::prefix('vendor/')->name('vendor.')->group(function () {
     Route::put('update-business',                           UpdateVendorBusinessController::class)->name('business-info.update');
 
     Route::put('update-bank',                               UpdateVendorBankController::class)->name('bank-info.update');
+
+    Route::get('/{vendor_id}/products',                     VendorProducts::class)->name('products');
 });
 
 Route::name('front.')->group(function () {

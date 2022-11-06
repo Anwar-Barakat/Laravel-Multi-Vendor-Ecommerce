@@ -58,7 +58,7 @@ class ProductDetailPage extends Component
     public function render()
     {
         $product    = Product::with([
-            'section', 'category', 'brand',
+            'section', 'category', 'brand', 'admin',
             'attributes' => fn ($q) => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 

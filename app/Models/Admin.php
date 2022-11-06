@@ -55,6 +55,6 @@ class Admin extends Authenticatable implements HasMedia
 
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'vendor_id');
+        return $this->belongsTo(Vendor::class, 'vendor_id')->with('businessInfo');
     }
 }
