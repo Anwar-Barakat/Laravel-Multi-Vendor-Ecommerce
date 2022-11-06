@@ -20,8 +20,8 @@ class VendorProducts extends Component
 
     public function render()
     {
-        $vendor     = Vendor::findOrFail($this->vendor_id);
-        $products   = Product::where('admin_id', $vendor->id)->paginate(9);
+        $vendor             = Vendor::with('businessInfo')->findOrFail($this->vendor_id);
+        $products           = Product::with(['brand', 'category'])->where('admin_id', $vendor->id)->paginate(9);
 
         return view('livewire.front.vendor.vendor-products', [
             'vendor'        => $vendor,

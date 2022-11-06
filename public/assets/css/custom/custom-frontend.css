@@ -58,3 +58,7 @@
 .text-field.is-invalid:focus {
     border-color: #ff0000;
 }
+
+.list-style .item {
+    width: 100%;
+}

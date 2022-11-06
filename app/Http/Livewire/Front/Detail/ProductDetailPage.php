@@ -57,16 +57,16 @@ class ProductDetailPage extends Component
 
     public function render()
     {
-        $product    = Product::with([
+        $data['product']            = Product::with([
             'section', 'category', 'brand', 'admin',
             'attributes' => fn ($q) => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
+        $data['totalStock']         = Attribute::where(['product_id' => $data['product']->id, 'status' => '1'])->sum('stock');
+        $data['similar_products']   = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->inRandomOrder()->limit(5)->get();
+        $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
-        return view('livewire.front.detail.product-detail-page', [
-            'product'       => $product,
-            'totalStock'    => Attribute::where(['product_id' => $product->id, 'status' => '1'])->sum('stock'),
-            'filters'       => Filter::with(['filterValues'])->active()->get(),
-        ])->layout('front.layouts.master');
+
+        return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }
 }
