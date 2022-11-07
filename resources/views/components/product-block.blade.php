@@ -57,7 +57,7 @@
         <div class="tag hot">
             <span>HOT</span>
         </div>
-    @elseif ($type == 'discount' || $product->discount > 0 || $product->category->discount)
+    @elseif ($type == 'discount' || $product->discount > 0 || $product->category->discount > 0)
         <div class="tag discount">
             <span>-%{{ $product->discount > 0 ? $product->discount : $product->category->discount }}</span>
         </div>

@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Front\Detail;
 use App\Models\Attribute;
 use App\Models\Filter;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class ProductDetailPage extends Component
@@ -59,13 +61,27 @@ class ProductDetailPage extends Component
     {
         $data['product']            = Product::with([
             'section', 'category', 'brand', 'admin',
-            'attributes' => fn ($q) => $q->where('stock', '>', 0)->where('status', '1')
+            'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
         $data['totalStock']         = Attribute::where(['product_id' => $data['product']->id, 'status' => '1'])->sum('stock');
         $data['similar_products']   = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->inRandomOrder()->limit(5)->get();
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
+        if (empty(Session::get('session_id')))
+            $session_id             = md5(uniqid(rand(), true));
+        else
+            $session_id             = Session::get('session_id');
+
+        $data['ProductViewers']     = DB::table('product_views')->where(['product_id' => $data['product']->id, 'session_id' => $session_id])->count();
+        if ($data['ProductViewers'] == 0)
+            DB::table('product_views')->insert(['product_id' => $data['product']->id, 'session_id' => $session_id]);
+
+        Session::put('session_id', $session_id);
+
+        $viewedProductsIds          =  DB::table('product_views')->where('product_id', '!=', $data['product']->id)->where('session_id', $session_id)->inRandomOrder()->take(5)->pluck('product_id');
+        if ($viewedProductsIds->count() > 0)
+            $data['viewProducts']       = Product::whereIn('id', $viewedProductsIds)->get();
 
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }
