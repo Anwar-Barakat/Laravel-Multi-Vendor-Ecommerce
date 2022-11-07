@@ -68,6 +68,7 @@ class ProductDetailPage extends Component
         $data['similar_products']   = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->inRandomOrder()->limit(5)->get();
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
+        // get recently viewed products:
         if (empty(Session::get('session_id')))
             $session_id             = md5(uniqid(rand(), true));
         else
@@ -82,6 +83,10 @@ class ProductDetailPage extends Component
         $viewedProductsIds          =  DB::table('product_views')->where('product_id', '!=', $data['product']->id)->where('session_id', $session_id)->inRandomOrder()->take(5)->pluck('product_id');
         if ($viewedProductsIds->count() > 0)
             $data['viewProducts']       = Product::whereIn('id', $viewedProductsIds)->get();
+
+        // get group products :
+        if ($data['product']->group_code != '')
+            $data['groupProducts']      = Product::where('group_code', $data['product']->group_code)->where('id', '!=', $data['product']->id)->active()->inRandomOrder()->take(3)->get();
 
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }

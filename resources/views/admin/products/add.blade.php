@@ -178,6 +178,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-6">
+                                    <div class="form-group">
+                                        <label for="group_code">Group Code</label>
+                                        <input type="text"
+                                            class="form-control  @error('group_code') is-invalid @enderror"
+                                            name="group_code" required value="{{ old('group_code') }}">
+                                        @error('group_code')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-6">
                                     <label for="color">Color</label>
                                     <div class="form-group colors custom-flex">
                                         @foreach (App\Models\Product::COLORS as $item)

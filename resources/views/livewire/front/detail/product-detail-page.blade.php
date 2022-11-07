@@ -143,13 +143,15 @@
                         <div class="section-5-product-variants u-s-p-y-14">
                             <h6 class="information-heading u-s-m-b-8">Product Variants:</h6>
                             <div class="color u-s-m-b-11">
-                                <span>Available Color:</span>
-                                <div class="color-variant select-box-wrapper">
-                                    <select class="select-box product-color">
-                                        <option value="1">Heather Grey</option>
-                                        <option value="3">Black</option>
-                                        <option value="5">White</option>
-                                    </select>
+                                <p>Available Color:</p>
+                                <div class="flex gap-2">
+                                    @foreach ($groupProducts as $product)
+                                        <a href="{{ route('front.product.detail', $product->id) }}">
+                                            <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
+                                                alt="{{ $product->name }}" width="80"
+                                                class="img img-thumbnail shadow-sm">
+                                        </a>
+                                    @endforeach
                                 </div>
                             </div>
                             @if (count($product->attributes) > 0)
@@ -547,7 +549,7 @@
                 </section>
                 <!-- Similar-Products /- -->
                 <!-- Recently-View-Products  -->
-                @if (count($viewProducts) > 0)
+                @isset($viewProducts)
                     <section class="section-maker">
                         <div class="container">
                             <div class="sec-maker-header text-center">
@@ -562,7 +564,7 @@
                             </div>
                         </div>
                     </section>
-                @endif
+                @endisset
                 <!-- Recently-View-Products /- -->
             </div>
             <!-- Different-Product-Section /- -->

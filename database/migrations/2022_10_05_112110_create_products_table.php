@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
 
             $table->string('name')->unique();
             $table->string('code')->unique();
+            $table->string('group_code')->nullable();
             $table->string('color');
             $table->float('price');
             $table->float('discount');

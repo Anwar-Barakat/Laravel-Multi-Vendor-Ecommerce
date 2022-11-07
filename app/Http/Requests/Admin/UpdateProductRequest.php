@@ -28,6 +28,7 @@ class UpdateProductRequest extends FormRequest
             'brand_id'          => ['required'],
             'name'              => ['required', 'min:3', 'unique:products,name,' . $this->product->id],
             'code'              => ['required'],
+            'group_code'        => ['required'],
             'color'             => ['required'],
             'price'             => ['required', 'numeric'],
             'discount'          => ['required', 'numeric'],
