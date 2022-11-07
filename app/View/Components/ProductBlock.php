@@ -6,15 +6,16 @@ use Illuminate\View\Component;
 
 class ProductBlock extends Component
 {
-    public $product;
+    public $product, $type;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($product)
+    public function __construct($product, $type)
     {
-        $this->product = $product;
+        $this->product  = $product;
+        $this->type     = $type;
     }
 
     /**

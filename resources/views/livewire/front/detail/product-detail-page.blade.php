@@ -539,7 +539,7 @@
                         <div class="slider-fouc">
                             <div class="products-slider owl-carousel" data-item="4">
                                 @foreach ($similar_products as $product)
-                                    <x-product-block :product="$product" />
+                                    <x-product-block :product="$product" type="similar" />
                                 @endforeach
                             </div>
                         </div>

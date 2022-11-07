@@ -49,7 +49,22 @@
             @endif
         </div>
     </div>
-    <div class="tag new">
-        <span>NEW</span>
-    </div>
+    @if ($type == 'best_sale')
+        <div class="tag sale">
+            <span>SALE</span>
+        </div>
+    @elseif($type == 'featured')
+        <div class="tag hot">
+            <span>HOT</span>
+        </div>
+    @elseif ($type == 'discount' || $product->discount > 0 || $product->category->discount)
+        <div class="tag discount">
+            <span>-%{{ $product->discount > 0 ? $product->discount : $product->category->discount }}</span>
+        </div>
+    @elseif ($type == 'latest' ||
+        ($product->created_at > date('Y-m-d', strtotime('-8 days')) && $product->created_at < date('Y-m-d')))
+        <div class="tag new">
+            <span>New</span>
+        </div>
+    @endif
 </div>
