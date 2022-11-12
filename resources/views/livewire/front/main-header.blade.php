@@ -152,8 +152,8 @@
                                 <li>
                                     <a id="mini-cart-trigger" href="{{ route('front.shopping.cart') }}">
                                         <i class="ion ion-md-basket"></i>
-                                        <span class="item-counter">{{ Cart::count() ?? 0 }}</span>
-                                        <span class="item-price">${{ number_format(Cart::total(), 2) ?? 0.0 }}</span>
+                                        <span class="item-counter">{{ $card_amount ?? 0 }}</span>
+                                        <span class="item-price">${{ number_format($total_price, 2) ?? 0.0 }}</span>
                                     </a>
                                 </li>
                             </ul>

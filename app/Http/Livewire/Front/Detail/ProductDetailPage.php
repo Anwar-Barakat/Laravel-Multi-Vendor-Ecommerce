@@ -54,7 +54,10 @@ class ProductDetailPage extends Component
 
     public function addToCart($id, $name, $qty, $price, $product_size)
     {
+        Cart::destroy();
         Cart::add($id, $name, $qty, $price,  ['size' => $product_size])->associate('App\Models\Product');
+        $this->emit('updateCardAmount', Cart::count());
+        $this->emit('updateCardTotal', Cart::total());
         toastr()->success('Product Has Been Added Successfully to Cart');
     }
 
