@@ -140,22 +140,24 @@
                                 </p>
                             @endif
                         </div>
+
                         <div class="section-5-product-variants u-s-p-y-14">
                             <h6 class="information-heading u-s-m-b-8">Product Variants:</h6>
                             <div class="color u-s-m-b-11">
-                                <p>Available Color:</p>
-                                <div class="flex gap-2">
-                                    @foreach ($groupProducts as $product)
-                                        <a href="{{ route('front.product.detail', $product->id) }}">
-                                            <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                alt="{{ $product->name }}" width="80"
-                                                class="img img-thumbnail shadow-sm">
-                                        </a>
-                                    @endforeach
-                                </div>
+                                @isset($groupProducts)
+                                    <p>Available Color:</p>
+                                    <div class="flex gap-2">
+                                        @foreach ($groupProducts as $product)
+                                            <a href="{{ route('front.product.detail', $product->id) }}">
+                                                <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
+                                                    alt="{{ $product->name }}" width="80"
+                                                    class="img img-thumbnail shadow-sm">
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                @endisset
                             </div>
                             @if (count($product->attributes) > 0)
-
                                 <div class="sizes u-s-m-b-11">
                                     <span>Available Size:</span>
                                     <div class="size-variant select-box-wrapper">
@@ -170,7 +172,7 @@
                             @endif
                         </div>
                         <div class="section-6-social-media-quantity-actions u-s-p-y-14">
-                            <form action="#" class="post-form">
+                            <form class="post-form">
                                 <div class="quick-social-media-wrapper u-s-m-b-22">
                                     <span>Share:</span>
                                     <ul class="social-media-list">
@@ -205,13 +207,15 @@
                                     <span>Quantity:</span>
                                     <div class="quantity">
                                         <input type="number" class="quantity-text-field" min="1"
-                                            max="1000" wire:model="quantity">
+                                            max="1000" wire:model="qty">
 
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="button button-outline-secondary" type="submit">Add to
-                                        cart</button>
+                                    <button class="button button-outline-secondary"
+                                        wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $product->price }},'{{ $size }}')">
+                                        Add to cart
+                                    </button>
                                     <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
                                     <button class="button button-outline-secondary far fa-envelope u-s-m-l-6"></button>
                                 </div>

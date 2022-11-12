@@ -8,12 +8,13 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Cart;
 
 class ProductDetailPage extends Component
 {
     public $productId;
 
-    public $size, $quantity = 1, $discount, $final_price, $original_price;
+    public $size = 'small', $qty = 1, $discount, $final_price, $original_price;
 
     public function mount($productId)
     {
@@ -30,11 +31,6 @@ class ProductDetailPage extends Component
             $this->final_price      = $product->price;
 
         $this->discount             = Product::applyDiscount($this->productId);
-    }
-
-    public function updatedQuantity()
-    {
-        dd($this->quantity);
     }
 
     public function updatedSize()
@@ -56,6 +52,12 @@ class ProductDetailPage extends Component
         $this->original_price       = $proAttr->price;
     }
 
+    public function addToCart($product_id, $product_name, $product_qty, $product_price, $product_size)
+    {
+        dd(Cart::content());
+        // Cart::instance('shopping')->add(['id' => $product_id, 'name' => $product_name, 'qty' => $product_qty, 'price' => $product_price, 'options' => ['size' => $product_size]])->associate('App\Models\Product');
+        toastr()->success('Product Has Been Added Successfully to Cart');
+    }
 
     public function render()
     {
