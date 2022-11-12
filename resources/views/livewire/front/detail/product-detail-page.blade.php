@@ -213,7 +213,7 @@
                                 </div>
                                 <div>
                                     <button class="button button-outline-secondary"
-                                        wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $product->price }},'{{ $size }}')">
+                                        wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $final_price }},'{{ $size }}')">
                                         Add to cart
                                     </button>
                                     <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
