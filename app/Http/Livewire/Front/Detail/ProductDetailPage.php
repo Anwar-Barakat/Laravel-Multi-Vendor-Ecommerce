@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
-use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class ProductDetailPage extends Component
 {
