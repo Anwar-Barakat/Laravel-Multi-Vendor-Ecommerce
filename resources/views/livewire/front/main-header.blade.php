@@ -113,7 +113,8 @@
                                         @forelse ($searchResults as $product)
                                             <li
                                                 class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2">
-                                                <a href="" class=" flex items-center gap-4">
+                                                <a href="{{ route('front.product.detail', $product->id) }}"
+                                                    class=" flex items-center gap-4">
                                                     @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
                                                         <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                             alt="{{ ucwords($product->name) }}" class="w-8">
@@ -140,7 +141,7 @@
                         <nav>
                             <ul class="mid-nav g-nav">
                                 <li class="u-d-none-lg">
-                                    <a href="index.html">
+                                    <a href="{{ route('front.home') }}">
                                         <i class="ion ion-md-home u-c-brand"></i>
                                     </a>
                                 </li>
@@ -153,7 +154,7 @@
                                     <a id="mini-cart-trigger" href="{{ route('front.shopping.cart') }}">
                                         <i class="ion ion-md-basket"></i>
                                         <span class="item-counter">{{ $card_amount ?? 0 }}</span>
-                                        <span class="item-price">${{ number_format($total_price, 2) ?? 0.0 }}</span>
+                                        <span class="item-price">${{ $total_price ?? 0.0 }}</span>
                                     </a>
                                 </li>
                             </ul>

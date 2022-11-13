@@ -54,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <div class="cart-price">
-                                                    ${{ number_format($item->model->price, 2) }}
+                                                    ${{ $item->model->price }}
                                                 </div>
                                             </td>
                                             <td>
@@ -73,8 +73,8 @@
                                                 <div class="action-wrapper">
                                                     <button
                                                         class="button button-outline-secondary fas fa-sync"></button>
-                                                    <button
-                                                        class="button button-outline-secondary fas fa-trash text-red-600"></button>
+                                                    <button class="button button-outline-secondary fas fa-trash"
+                                                        wire:click.prevent="deleteItem('{{ $item->rowId }}')"></button>
                                                 </div>
                                             </td>
 
@@ -121,7 +121,7 @@
                                             <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ number_format(Cart::subtotal(), 2) }}</span>
+                                            <span class="calc-text">${{ Cart::subtotal() }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -191,7 +191,7 @@
                                             <span> (estimated for your country)</span>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ number_format(Cart::tax(), 2) }}</span>
+                                            <span class="calc-text">${{ Cart::tax() }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -199,7 +199,7 @@
                                             <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ number_format(Cart::total(), 2) }}</span>
+                                            <span class="calc-text">${{ Cart::total() }}</span>
                                         </td>
                                     </tr>
                                 </tbody>

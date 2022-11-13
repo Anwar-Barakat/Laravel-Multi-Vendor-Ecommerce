@@ -5,43 +5,18 @@
                 <div class="bg-image">
                     <div class="slide-content">
                         <h1><img src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}"></h1>
-                        <h2>{{ ucwords($banner->title) }}</h2>
                     </div>
                 </div>
             @empty
                 <div class="bg-image">
                     <div class="slide-content">
                         <h1><img src="{{ asset('assets/img/media/banner-default.jpg') }}"></h1>
-                        <h2>{{ ucwords($banner->title) }}</h2>
                     </div>
                 </div>
             @endforelse
         </div>
     </div>
-    <div class="banner-layer">
-        <div class="container">
-            <div class="image-banner">
-                @php
-                    $randomBanner = App\Models\Banner::where('status', 1)
-                        ->inRandomOrder()
-                        ->first();
-                @endphp
-                @if ($randomBanner)
-                    <a target="_blank" rel="nofollow" href="{{ $randomBanner->link }}"
-                        class="mx-auto banner-hover effect-dark-opacity">
-                        <img class="img-fluid" src="{{ $randomBanner->getFirstMediaUrl('banners', 'slider') }}"
-                            alt="{{ $randomBanner->title }}">
-                    </a>
-                @else
-                    <a target="_blank" rel="nofollow" href="javascript:void(0);"
-                        class="mx-auto banner-hover effect-dark-opacity">
-                        <img class="img-fluid" src="{{ asset('assets/img/media/banner-default.jpg') }}" alt="">
-                    </a>
-                @endif
-            </div>
-        </div>
-    </div>
-    <section class="section-maker">
+    <section class="section-maker mt-8">
         <div class="container">
             <div class="sec-maker-header text-center">
                 <h3 class="sec-maker-h3">TOP COLLECTION</h3>
