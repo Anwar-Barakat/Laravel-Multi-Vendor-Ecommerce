@@ -65,6 +65,22 @@ class ProductDetailPage extends Component
         $this->emit('updateCardTotal', Cart::total());
     }
 
+    public function getTotalStock($product)
+    {
+        return Attribute::where(['product_id' => $product->id, 'status' => '1'])->sum('stock');
+    }
+
+    public function getSimilarProducts($product)
+    {
+        return Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->inRandomOrder()->limit(5)->get();
+    }
+
+    public function getProductGroup($product)
+    {
+        if ($product->group_code != '')
+            return Product::where('group_code', $product->group_code)->where('id', '!=', $product->id)->active()->inRandomOrder()->take(3)->get();
+    }
+
     public function render()
     {
         $data['product']            = Product::with([
@@ -72,15 +88,12 @@ class ProductDetailPage extends Component
             'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
-        $data['totalStock']         = Attribute::where(['product_id' => $data['product']->id, 'status' => '1'])->sum('stock');
-        $data['similar_products']   = Product::where('category_id', $data['product']->category_id)->where('id', '!=', $data['product']->id)->inRandomOrder()->limit(5)->get();
+        $data['totalStock']         = $this->getTotalStock($data['product']);
+        $data['similar_products']   = $this->getSimilarProducts($data['product']);
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
         // get recently viewed products:
-        if (empty(Session::get('session_id')))
-            $session_id             = md5(uniqid(rand(), true));
-        else
-            $session_id             = Session::get('session_id');
+        $session_id = empty(Session::get('session_id')) ? md5(uniqid(rand(), true)) : Session::get('session_id');
 
         $data['ProductViewers']     = DB::table('product_views')->where(['product_id' => $data['product']->id, 'session_id' => $session_id])->count();
         if ($data['ProductViewers'] == 0)
@@ -92,9 +105,8 @@ class ProductDetailPage extends Component
         if ($viewedProductsIds->count() > 0)
             $data['viewProducts']       = Product::whereIn('id', $viewedProductsIds)->get();
 
-        // get group products :
-        if ($data['product']->group_code != '')
-            $data['groupProducts']      = Product::where('group_code', $data['product']->group_code)->where('id', '!=', $data['product']->id)->active()->inRandomOrder()->take(3)->get();
+
+        $data['groupProducts']      = $this->getProductGroup($data['product']);
 
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }

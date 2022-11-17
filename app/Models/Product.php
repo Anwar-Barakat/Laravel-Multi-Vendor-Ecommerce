@@ -59,7 +59,7 @@ class Product extends Model implements HasMedia
         if ($prod->discount > 0) :
             $final_price    = Product::discountingPrice($prod->price, $prod->discount);
         elseif ($category->discount > 0) :
-            $final_price    = Product::discountingPrice($prod->price, $prod->category->discount);
+            $final_price    = self::discountingPrice($prod->price, $prod->category->discount);
         else :
             $final_price    = 0;
         endif;

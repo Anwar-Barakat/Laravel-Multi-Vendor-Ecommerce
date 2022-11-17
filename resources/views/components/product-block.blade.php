@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item main-shadow">
     <div class="image-container">
         <a class="item-img-wrapper-link" href="{{ route('front.product.detail', $product->id) }}">
             <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
