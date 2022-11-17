@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Filter;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -51,6 +52,7 @@ class CategoryProducts extends Component
         $this->filter_value     = $filter_value;
     }
 
+
     public function render()
     {
         $category                   = Category::where(['url'    => $this->url])->active()->count();
@@ -81,5 +83,12 @@ class CategoryProducts extends Component
         }
 
         return view('livewire.front.shop.category-products', $data)->layout('front.layouts.master');
+    }
+
+    public function addToWishList($id, $name, $qty, $price)
+    {
+        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
+        $this->emit('updateWishListTotal', Cart::total());
+        toastr()->success('Product Has Been Added Successfully to Cart');
     }
 }

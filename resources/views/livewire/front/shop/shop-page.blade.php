@@ -236,7 +236,15 @@
                         </div>
                     </div>
                     <div class="row product-container list-style">
+                        @php
+                            $wishItems = Cart::instance('wishlist')
+                                ->content()
+                                ->pluck('id');
+                        @endphp
                         @forelse ($products as $product)
+                            @php
+                                $final_price = App\Models\Product::applyDiscount($product->id);
+                            @endphp
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                 <div class="item main-shadow">
                                     <div class="image-container">
@@ -250,7 +258,16 @@
                                             <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
                                                 Look</a>
                                             <a class="item-mail" href="javascript:void(0)">Mail</a>
-                                            <a class="item-addwishlist" href="javascript:void(0)">Add to Wishlist</a>
+                                            @if ($wishItems->contains($product->id))
+                                                <a class="item-addwishlist active" href="javascript:void(0)">
+                                                    Add to
+                                                    Wishlist</a>
+                                            @else
+                                                <a class="item-addwishlist" href="#"
+                                                    wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $final_price }})">Add
+                                                    to
+                                                    Wishlist</a>
+                                            @endif
                                             <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
                                         </div>
                                     </div>
@@ -277,9 +294,6 @@
                                             </div>
                                         </div>
                                         <div class="price-template">
-                                            @php
-                                                $final_price = App\Models\Product::applyDiscount($product->id);
-                                            @endphp
                                             @if ($final_price > 0)
                                                 <div class="item-new-price">
                                                     ${{ $final_price }}

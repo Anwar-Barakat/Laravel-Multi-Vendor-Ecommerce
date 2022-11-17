@@ -27,6 +27,7 @@ use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
 use App\Http\Livewire\Front\Vendor\RegisterPage;
 use App\Http\Livewire\Front\Vendor\VendorProducts;
+use App\Http\Livewire\Front\Wishlist\WishlistPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -151,13 +152,15 @@ Route::name('front.')->group(function () {
 
     Route::get('/',                                         HomePage::class)->name('home');
 
-    Route::get('/shop',                                     ShopPage::class);
+    Route::get('/shop',                                     ShopPage::class)->name('shopping.store');
 
     Route::get('/shop/{url}',                               CategoryProducts::class)->name('shop.category.products');
 
     Route::get('/product/{productId}',                      ProductDetailPage::class)->name('product.detail');
 
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
+
+    Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 });
 
 

@@ -146,12 +146,14 @@
                                     </a>
                                 </li>
                                 <li class="u-d-none-lg">
-                                    <a href="wishlist.html">
+                                    <a href="{{ route('front.wishlist') }}">
                                         <i class="far fa-heart"></i>
+                                        <span class="item-counter" style="left: -22px;">
+                                            {{ $wishlistCount ?? 0 }}</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a id="mini-cart-trigger" href="{{ route('front.shopping.cart') }}">
+                                    <a id="mini-cart-trigger" href="javascript:;">
                                         <i class="ion ion-md-basket"></i>
                                         <span class="item-counter">{{ $card_amount ?? 0 }}</span>
                                         <span class="item-price">${{ $total_price ?? 0.0 }}</span>
@@ -181,45 +183,28 @@
                     <button type="button" class="button ion ion-md-close" id="mini-cart-close"></button>
                 </div>
                 <ul class="mini-cart-list">
-                    <li class="clearfix">
-                        <a href="single-product.html">
-                            <img src="{{ asset('front/images/product/product@1x.jpg') }}" alt="Product">
-                            <span class="mini-item-name">Product name</span>
-                            <span class="mini-item-price">$100.00</span>
-                            <span class="mini-item-quantity"> x 1 </span>
-                        </a>
-                    </li>
-                    <li class="clearfix">
-                        <a href="single-product.html">
-                            <img src="{{ asset('front/images/product/product@1x.jpg') }}" alt="Product">
-                            <span class="mini-item-name">Product name</span>
-                            <span class="mini-item-price">$100.00</span>
-                            <span class="mini-item-quantity"> x 1 </span>
-                        </a>
-                    </li>
-                    <li class="clearfix">
-                        <a href="single-product.html">
-                            <img src="{{ asset('front/images/product/product@1x.jpg') }}" alt="Product">
-                            <span class="mini-item-name">Product name</span>
-                            <span class="mini-item-price">$100.00</span>
-                            <span class="mini-item-quantity"> x 1 </span>
-                        </a>
-                    </li>
-                    <li class="clearfix">
-                        <a href="single-product.html">
-                            <img src="{{ asset('front/images/product/product@1x.jpg') }}" alt="Product">
-                            <span class="mini-item-name">Product name</span>
-                            <span class="mini-item-price">$100.00</span>
-                            <span class="mini-item-quantity"> x 1 </span>
-                        </a>
-                    </li>
+                    @forelse (Cart::instance('cart')->content() as $item)
+                        <li class="clearfix">
+                            <a href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
+                                <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
+                                    loading="lazy" alt="{{ $item->model->name }}">
+                                <span class="mini-item-name">{{ ucwords($item->model->name) }}</span>
+                                <span class="mini-item-price">${{ $item->price }}</span>
+                                <span class="mini-item-quantity"> x {{ $item->model->qty }} </span>
+                            </a>
+                        </li>
+                    @empty
+                        <li class="clearfix">
+                            No Product Yet
+                        </li>
+                    @endforelse
                 </ul>
                 <div class="mini-shop-total clearfix">
                     <span class="mini-total-heading float-left">Total:</span>
-                    <span class="mini-total-price float-right">$400.00</span>
+                    <span class="mini-total-price float-right">${{ Cart::total() }}</span>
                 </div>
                 <div class="mini-action-anchors">
-                    <a href="cart.html" class="cart-anchor">View Cart</a>
+                    <a href="{{ route('front.shopping.cart') }}" class="cart-anchor">View Cart</a>
                     <a href="checkout.html" class="checkout-anchor">Checkout</a>
                 </div>
             </div>
@@ -326,15 +311,15 @@
                                         </li>
                                     </ul>
                                     <ul>
-                                        <li class="menu-title">COLLECTION</li>
+                                        <li class="menu-title">Pages</li>
                                         <li>
-                                            <a href="cart.html">Men Clothing</a>
+                                            <a href="{{ route('front.shopping.store') }}">Shopping Store</a>
                                         </li>
                                         <li>
-                                            <a href="checkout.html">Women Clothing</a>
+                                            <a href="{{ route('front.shopping.cart') }}">Shopping Cart</a>
                                         </li>
                                         <li>
-                                            <a href="account.html">Kids Clothing</a>
+                                            <a href="{{ route('front.wishlist') }}">My Wishlist</a>
                                         </li>
                                     </ul>
                                     <ul>

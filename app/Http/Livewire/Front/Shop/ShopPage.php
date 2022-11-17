@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Filter;
 use App\Models\FilterValue;
 use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -48,14 +49,29 @@ class ShopPage extends Component
         $this->filter_value     = $filter_value;
     }
 
+    public function getCategories()
+    {
+        return Category::with(['subCategories'])->withCount('products')->parent()->get();
+    }
+
+    public function getBrands()
+    {
+        return Brand::withCount('products')->active()->get();
+    }
+
+    public function getFilters()
+    {
+        return Filter::with(['filterValues'])->active()->get();
+    }
+
     public function render()
     {
 
-        $data['categories'] = Category::with(['subCategories'])->withCount('products')->parent()->get();
+        $data['categories'] = $this->getCategories();
 
-        $data['brands']     = Brand::withCount('products')->active()->get();
+        $data['brands']     = $this->getBrands();
 
-        $data['filters']    = Filter::with(['filterValues'])->active()->get();
+        $data['filters']    = $this->getFilters();
 
         $data['products']   = Product::with('brand')->active()
             ->when($this->brandInputs, fn ($q)      => $q->whereIn('brand_id', $this->brandInputs))
@@ -67,5 +83,13 @@ class ShopPage extends Component
             ->paginate($this->perPage);
 
         return view('livewire.front.shop.shop-page', $data)->layout('front.layouts.master');
+    }
+
+    public function addToWishList($id, $name, $qty = 1, $price)
+    {
+
+        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
+        $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
+        toastr()->success('Product Has Been Added Successfully to Cart');
     }
 }

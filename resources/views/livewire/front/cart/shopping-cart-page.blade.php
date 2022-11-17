@@ -35,14 +35,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse (Cart::content() as $item)
+                                    @forelse (Cart::instance('cart')->content() as $item)
                                         <tr>
                                             <td>
                                                 <div class="cart-anchor-image">
                                                     <a
                                                         href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
                                                         <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                            alt="{{ $item->model->name }}">
+                                                            alt="{{ $item->model->name }}" loading="lazy">
                                                         <h6>{{ ucwords($item->model->name) }}</h6>
                                                     </a>
                                                 </div>
@@ -54,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <div class="cart-price">
-                                                    ${{ $item->model->price }}
+                                                    ${{ $item->price }}
                                                 </div>
                                             </td>
                                             <td>
@@ -121,7 +121,7 @@
                                             <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ Cart::subtotal() }}</span>
+                                            <span class="calc-text">${{ Cart::instance('cart')->subtotal() }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -191,7 +191,7 @@
                                             <span> (estimated for your country)</span>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ Cart::tax() }}</span>
+                                            <span class="calc-text">${{ Cart::instance('cart')->tax() }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -199,7 +199,7 @@
                                             <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                         </td>
                                         <td>
-                                            <span class="calc-text">${{ Cart::total() }}</span>
+                                            <span class="calc-text">${{ Cart::instance('cart')->total() }}</span>
                                         </td>
                                     </tr>
                                 </tbody>

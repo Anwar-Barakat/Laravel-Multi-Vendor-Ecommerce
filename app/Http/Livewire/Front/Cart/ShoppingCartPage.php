@@ -10,31 +10,31 @@ class ShoppingCartPage extends Component
 
     public function increaseQty($rowId)
     {
-        $product    = Cart::get($rowId);
+        $product    = Cart::instance('cart')->get($rowId);
         $qty        = $product->qty + 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->updateHeader();
     }
 
     public function decreaseQty($rowId)
     {
-        $product    = Cart::get($rowId);
+        $product    = Cart::instance('cart')->get($rowId);
         $qty        = $product->qty - 1;
-        Cart::update($rowId, $qty);
+        Cart::instance('cart')->update($rowId, $qty);
         $this->updateHeader();
     }
 
     public function deleteItem($rowId)
     {
-        Cart::remove($rowId);
+        Cart::instance('cart')->remove($rowId);
         $this->updateHeader();
         toastr()->info('Item Has Been Deleted Successfully');
     }
 
     public function updateHeader()
     {
-        $this->emit('updateCardAmount', Cart::count());
-        $this->emit('updateCardTotal', Cart::total());
+        $this->emit('updateCardAmount', Cart::instance('cart')->count());
+        $this->emit('updateCardTotal', Cart::instance('cart')->total());
     }
 
     public function render()

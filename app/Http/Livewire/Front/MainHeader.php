@@ -4,29 +4,35 @@ namespace App\Http\Livewire\Front;
 
 use App\Models\Product;
 use App\Models\Section;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
-use Cart;
 
 class MainHeader extends Component
 {
-    public $search = '', $card_amount, $total_price;
+    public $search = '', $card_amount, $total_price, $wishlistCount;
 
-    protected $listeners    = ['updateCardAmount' => 'updateCardAmount', 'updateCardTotal' => 'updateCardTotal'];
+    protected $listeners    = ['updateCardAmount' => 'updateCardAmount', 'updateCardTotal' => 'updateCardTotal', 'updateWishListCount' => 'updateWishListCount'];
 
     public function mount()
     {
-        $this->card_amount  = Cart::count();
-        $this->total_price  = Cart::total();
+        $this->card_amount      = Cart::instance('cart')->count();
+        $this->wishlistCount    = Cart::instance('wishlist')->count();
+        $this->total_price      = Cart::instance('cart')->total();
     }
 
     public function updateCardAmount($count)
     {
-        $this->card_amount  = $count;
+        $this->card_amount      = $count;
     }
 
     public function updateCardTotal($total)
     {
-        $this->total_price  = $total;
+        $this->total_price      = $total;
+    }
+
+    public function updateWishListCount($count)
+    {
+        $this->wishlistCount    = $count;
     }
 
     public function render()

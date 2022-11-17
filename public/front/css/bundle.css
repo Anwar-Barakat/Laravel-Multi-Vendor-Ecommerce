@@ -1606,6 +1606,7 @@ body {
 .item-quick-look:hover,
 .item-mail:hover,
 .item-addwishlist:hover,
+.item-addwishlist.active,
 .item-addCart:hover {
     color: #ffffff;
     background-color: var(--main-color);
@@ -4534,6 +4535,7 @@ body {
 .list-style .item-quick-look:hover,
 .list-style .item-mail:hover,
 .list-style .item-addwishlist:hover,
+.list-style .item-addwishlist.active,
 .list-style .item-addCart:hover {
     border-color: var(--main-color);
 }

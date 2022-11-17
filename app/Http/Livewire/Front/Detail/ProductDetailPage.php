@@ -54,15 +54,15 @@ class ProductDetailPage extends Component
 
     public function addToCart($id, $name, $qty, $price, $product_size)
     {
-        Cart::add($id, $name, $qty, $price,  ['size' => $product_size])->associate('App\Models\Product');
+        Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $product_size])->associate('App\Models\Product');
         $this->updateHeader();
         toastr()->success('Product Has Been Added Successfully to Cart');
     }
 
     public function updateHeader()
     {
-        $this->emit('updateCardAmount', Cart::count());
-        $this->emit('updateCardTotal', Cart::total());
+        $this->emit('updateCardAmount', Cart::instance('cart')->count());
+        $this->emit('updateCardTotal', Cart::instance('cart')->total());
     }
 
     public function getTotalStock($product)
