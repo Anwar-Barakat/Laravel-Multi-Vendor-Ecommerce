@@ -85,9 +85,8 @@ class ShopPage extends Component
         return view('livewire.front.shop.shop-page', $data)->layout('front.layouts.master');
     }
 
-    public function addToWishList($id, $name, $qty = 1, $price)
+    public function addToWishList($id, $name, $qty, $price)
     {
-
         Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
         $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
         toastr()->success('Product Has Been Added Successfully to Cart');
