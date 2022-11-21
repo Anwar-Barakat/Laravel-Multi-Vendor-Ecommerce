@@ -14,7 +14,7 @@ class ProductDetailPage extends Component
 {
     public $productId;
 
-    public $size = 'small', $qty = 1, $discount, $final_price, $original_price;
+    public $size = 'small', $qty = 1, $discount, $final_price, $original_price, $totalStock;
 
     public function mount($productId)
     {
@@ -31,6 +31,7 @@ class ProductDetailPage extends Component
             $this->final_price      = $product->price;
 
         $this->discount             = Product::applyDiscount($this->productId);
+        $this->totalStock           = $this->getTotalStock($product);
     }
 
     public function updatedSize()
@@ -54,9 +55,19 @@ class ProductDetailPage extends Component
 
     public function addToCart($id, $name, $qty, $price, $size, $code, $color)
     {
-        Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
-        $this->updateHeader();
-        toastr()->success('Product Has Been Added Successfully to Cart');
+        $proAttr        = Attribute::where(['product_id' => $id, 'size' => $size])->first();
+        $proAttrStock   = $proAttr->stock;
+
+        if ($proAttrStock > $qty) {
+            $proAttrStock       -= $qty;
+            $this->totalStock   -= $qty;
+            $proAttr->update(['stock' => $proAttrStock]);
+            Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
+            $this->updateHeader();
+            toastr()->success('Product Has Been Added Successfully to Cart');
+        } else {
+            toastr()->info('Product Quntity is out of Stock');
+        }
     }
 
     public function updateHeader()
@@ -88,7 +99,7 @@ class ProductDetailPage extends Component
             'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
-        $data['totalStock']         = $this->getTotalStock($data['product']);
+
         $data['similar_products']   = $this->getSimilarProducts($data['product']);
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
