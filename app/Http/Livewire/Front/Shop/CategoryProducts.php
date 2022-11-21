@@ -88,7 +88,19 @@ class CategoryProducts extends Component
     public function addToWishList($id, $name, $qty = 1, $price)
     {
         Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
-        $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
+        $this->updateWishlistCount();
         toastr()->success('Product Has Been Added Successfully to Cart');
+    }
+
+    public function removeFromWishList($id)
+    {
+        dd(Cart::instance('wishlist')->get($id));
+        $this->updateWishlistCount();
+        toastr()->info('Item Has Been Deleted');
+    }
+
+    public function updateWishlistCount()
+    {
+        return $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
     }
 }

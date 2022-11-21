@@ -28,7 +28,7 @@ class ShoppingCartPage extends Component
     {
         Cart::instance('cart')->remove($rowId);
         $this->updateHeader();
-        toastr()->info('Item Has Been Deleted Successfully');
+        toastr()->info('Item Has Been Deleted');
     }
 
     public function updateHeader()

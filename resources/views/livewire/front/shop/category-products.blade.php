@@ -270,7 +270,8 @@
                                                 Look</a>
                                             <a class="item-mail" href="javascript:void(0)">Mail</a>
                                             @if ($wishItems->contains($product->id))
-                                                <a class="item-addwishlist active" href="javascript:void(0)">
+                                                <a class="item-addwishlist active"
+                                                    href="{{ route('front.wishlist') }}">
                                                     Add to
                                                     Wishlist</a>
                                             @else
