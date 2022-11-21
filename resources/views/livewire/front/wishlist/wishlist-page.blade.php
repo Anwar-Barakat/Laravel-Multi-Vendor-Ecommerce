@@ -39,8 +39,10 @@
                                                 <a
                                                     href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
                                                     <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                        alt="{{ $item->model->name }}" loading="lazy">
-                                                    <h6>{{ ucwords($item->model->name) }}</h6>
+                                                        alt="{{ $item->model->name }}" loading="lazy"
+                                                        class="img img-thumbnail" />
+                                                    <h6>{{ ucwords($item->model->name) }}
+                                                    </h6>
                                                 </a>
                                             </div>
                                         </td>

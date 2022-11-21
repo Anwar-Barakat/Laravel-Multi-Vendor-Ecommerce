@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Cart;
 
+use App\Models\Attribute;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
@@ -11,16 +12,25 @@ class ShoppingCartPage extends Component
     public function increaseQty($rowId)
     {
         $product    = Cart::instance('cart')->get($rowId);
-        $qty        = $product->qty + 1;
-        Cart::instance('cart')->update($rowId, $qty);
-        $this->updateHeader();
+        $prodAttr   = Attribute::where(['product_id' => $product->id, 'size' => $product->options->size])->first();
+
+        if ($prodAttr->stock > 0) {
+            $qty        = $product->qty + 1;
+            Cart::instance('cart')->update($rowId, $qty);
+            $prodAttr->update(['stock' => $prodAttr->stock - 1]);
+            $this->updateHeader();
+        } else {
+            toastr()->info('Product Quntity is out of Stock');
+        }
     }
 
     public function decreaseQty($rowId)
     {
         $product    = Cart::instance('cart')->get($rowId);
+        $prodAttr   = Attribute::where(['product_id' => $product->id, 'size' => $product->options->size])->first();
         $qty        = $product->qty - 1;
         Cart::instance('cart')->update($rowId, $qty);
+        $prodAttr->update(['stock' => $prodAttr->stock + 1]);
         $this->updateHeader();
     }
 

@@ -42,7 +42,8 @@
                                                     <a class="d-flex align-items-center gap-2"
                                                         href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
                                                         <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                            alt="{{ $item->model->name }}" loading="lazy">
+                                                            alt="{{ $item->model->name }}" loading="lazy"
+                                                            class="img img-thumbnail" />
                                                         <h6 class="grid">
                                                             <span>{{ ucwords($item->model->name) }}</span>
                                                             <span>{{ $item->model->code }} -

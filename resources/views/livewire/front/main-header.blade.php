@@ -30,7 +30,7 @@
                                         My Cart</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('front.wishlist') }}}}">
+                                    <a href="{{ route('front.wishlist') }}">
                                         <i class="far fa-heart u-s-m-r-9"></i>
                                         My Wishlist</a>
                                 </li>
