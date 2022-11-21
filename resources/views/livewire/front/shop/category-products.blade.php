@@ -280,7 +280,9 @@
                                                     to
                                                     Wishlist</a>
                                             @endif
-                                            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+                                            <a class="item-addCart"
+                                                href="{{ route('front.product.detail', ['productId' => $product->id]) }}">Add
+                                                to Cart</a>
                                         </div>
                                     </div>
                                     <div class="item-content">

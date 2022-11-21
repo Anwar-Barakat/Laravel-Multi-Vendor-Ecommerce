@@ -33,7 +33,7 @@
                             </thead>
                             <tbody>
                                 @forelse (Cart::instance('wishlist')->content() as $item)
-                                    <tr>
+                                    <tr class="hover:shadow-lg transition">
                                         <td>
                                             <div class="cart-anchor-image">
                                                 <a

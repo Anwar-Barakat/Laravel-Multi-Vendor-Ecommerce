@@ -25,12 +25,12 @@
                             </a>
                             <ul class="g-dropdown" style="width:200px">
                                 <li>
-                                    <a href="cart.html">
+                                    <a href="{{ route('front.shopping.cart') }}">
                                         <i class="fas fa-cog u-s-m-r-9"></i>
                                         My Cart</a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.html">
+                                    <a href="{{ route('front.wishlist') }}}}">
                                         <i class="far fa-heart u-s-m-r-9"></i>
                                         My Wishlist</a>
                                 </li>
@@ -45,7 +45,7 @@
                                         Customer Login</a>
                                 </li>
                                 <li>
-                                    <a href="account.html">
+                                    <a href="{{ route('vendor.login.form') }}">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
                                         Vendor Login</a>
                                 </li>
@@ -190,7 +190,7 @@
                                     loading="lazy" alt="{{ $item->model->name }}">
                                 <span class="mini-item-name">{{ ucwords($item->model->name) }}</span>
                                 <span class="mini-item-price">${{ $item->price }}</span>
-                                <span class="mini-item-quantity"> x {{ $item->model->qty }} </span>
+                                <span class="mini-item-quantity"> x {{ $item->qty }} </span>
                             </a>
                         </li>
                     @empty

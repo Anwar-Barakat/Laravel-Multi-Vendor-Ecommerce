@@ -52,9 +52,9 @@ class ProductDetailPage extends Component
         $this->original_price       = $proAttr->price;
     }
 
-    public function addToCart($id, $name, $qty, $price, $product_size)
+    public function addToCart($id, $name, $qty, $price, $size, $code, $color)
     {
-        Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $product_size])->associate('App\Models\Product');
+        Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
         $this->updateHeader();
         toastr()->success('Product Has Been Added Successfully to Cart');
     }

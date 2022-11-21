@@ -31,19 +31,24 @@
                                         <th>Size</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th>Subtotal</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse (Cart::instance('cart')->content() as $item)
-                                        <tr>
+                                        <tr class="hover:shadow-lg transition">
                                             <td>
                                                 <div class="cart-anchor-image">
-                                                    <a
+                                                    <a class="d-flex align-items-center gap-2"
                                                         href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
                                                         <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
                                                             alt="{{ $item->model->name }}" loading="lazy">
-                                                        <h6>{{ ucwords($item->model->name) }}</h6>
+                                                        <h6 class="grid">
+                                                            <span>{{ ucwords($item->model->name) }}</span>
+                                                            <span>{{ $item->model->code }} -
+                                                                {{ $item->model->color }}
+                                                            </span>
+                                                        </h6>
                                                     </a>
                                                 </div>
                                             </td>
@@ -101,7 +106,7 @@
                                 </div>
                             </div>
                             <div class="button-area">
-                                <a href="shop-v1-root-category.html" class="continue">Continue Shopping</a>
+                                <a href="{{ route('front.shopping.store') }}" class="continue">Continue Shopping</a>
                                 <a href="checkout.html" class="checkout">Proceed to Checkout</a>
                             </div>
                         </div>

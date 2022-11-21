@@ -53,6 +53,13 @@ class CategoryProducts extends Component
     }
 
 
+    public function addToWishList($id, $name, $qty = 1, $price)
+    {
+        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
+        $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
+        toastr()->success('Product Has Been Added Successfully to Cart');
+    }
+
     public function render()
     {
         $category                   = Category::where(['url'    => $this->url])->active()->count();
@@ -83,24 +90,5 @@ class CategoryProducts extends Component
         }
 
         return view('livewire.front.shop.category-products', $data)->layout('front.layouts.master');
-    }
-
-    public function addToWishList($id, $name, $qty = 1, $price)
-    {
-        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
-        $this->updateWishlistCount();
-        toastr()->success('Product Has Been Added Successfully to Cart');
-    }
-
-    public function removeFromWishList($id)
-    {
-        dd(Cart::instance('wishlist')->get($id));
-        $this->updateWishlistCount();
-        toastr()->info('Item Has Been Deleted');
-    }
-
-    public function updateWishlistCount()
-    {
-        return $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
     }
 }

@@ -3939,7 +3939,6 @@ body {
 }
 
 .cart-anchor-image > a > h6 {
-    display: inline-block;
     margin: 0;
     font-size: 13px;
 }
