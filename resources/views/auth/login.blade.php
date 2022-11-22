@@ -2,14 +2,14 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Registering</h2>
+                <h2>Login</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascrip:void(0);">Logging</a>
+                        <a href="javascrip:void(0);">Customer Login</a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-2">
                     <div class="reg-wrapper item main-shadow p-4">
-                        <h2 class="account-h2 u-s-m-b-20">User Logging</h2>
+                        <h2 class="account-h2 u-s-m-b-20">Customer Login</h2>
 
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -65,7 +65,7 @@
                                     </a>
                                 @endif
 
-                                <x-button class="ml-3">
+                                <x-button class="ml-3 button button-primary">
                                     {{ __('Log in') }}
                                 </x-button>
                             </div>

@@ -4296,6 +4296,10 @@ body {
     margin: auto;
 }
 
+.reg-wrapper.wide {
+    max-width: 100%;
+}
+
 .login-wrapper:after {
     content: "";
     position: absolute;

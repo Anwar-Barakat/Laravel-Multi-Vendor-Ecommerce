@@ -2,7 +2,7 @@
 
 @if ($errors->any())
     <div {{ $attributes }}>
-        <div class="font-medium text-red-600">
+        <div class="font-medium text-red-600 alert alert-danger">
             {{ __('Whoops! Something went wrong.') }}
         </div>
 

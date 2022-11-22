@@ -2,14 +2,14 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Registering</h2>
+                <h2>Register</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascrip:void(0);">Register</a>
+                        <a href="javascrip:void(0);">Vendor Register</a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-2">
                     <div class="reg-wrapper item main-shadow p-4">
-                        <h2 class="account-h2 u-s-m-b-20">Vendor Registering</h2>
+                        <h2 class="account-h2 u-s-m-b-20">Vendor Register</h2>
                         <form wire:submit.prevent="storeVendor" method="POST">
                             @csrf
                             <div class="u-s-m-b-30">

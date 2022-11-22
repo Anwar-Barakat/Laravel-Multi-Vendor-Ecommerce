@@ -39,16 +39,36 @@
                                         <i class="far fa-check-circle u-s-m-r-9"></i>
                                         Checkout</a>
                                 </li>
-                                <li>
-                                    <a href="account.html">
-                                        <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                        Customer Register</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('vendor.register') }}">
-                                        <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                        Vendor Register</a>
-                                </li>
+                                @guest
+                                    <li>
+                                        <a href="{{ route('register') }}">
+                                            <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
+                                            Customer Register</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('vendor.register') }}">
+                                            <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
+                                            Vendor Register</a>
+                                    </li>
+                                @endguest
+                                @auth
+                                    <li>
+                                        <a href="{{ route('vendor.register') }}">
+                                            <i class="fas fa-user-circle u-s-m-r-9"></i>
+                                            My Account</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a :href="route('logout')" class="text-sm"
+                                                onclick="event.preventDefault();
+                                                        this.closest('form').submit();">
+                                                <i class="fas fa-sign-out-alt u-s-m-r-9"></i>
+                                                Logout
+                                            </a>
+                                        </form>
+                                    </li>
+                                @endauth
                             </ul>
                         </li>
                         <li>

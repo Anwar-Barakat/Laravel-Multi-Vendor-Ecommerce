@@ -2,14 +2,14 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Registering</h2>
+                <h2>Register</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascrip:void(0);">Register</a>
+                        <a href="javascrip:void(0);">Customer Register</a>
                     </li>
                 </ul>
             </div>
@@ -18,16 +18,15 @@
     <div class="page-account u-s-p-t-80">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 offset-2">
-                    <div class="reg-wrapper item main-shadow p-4">
-                        <h2 class="account-h2 u-s-m-b-20">User Registering</h2>
+                <div class="col-sm-8 offset-2">
+                    <div class="reg-wrapper item main-shadow p-4 ">
+                        <h2 class="account-h2 u-s-m-b-20">Customer Register</h2>
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
-                            <!-- Name -->
                             <div>
                                 <x-label for="name" :value="__('Name')" />
 
@@ -35,7 +34,6 @@
                                     :value="old('name')" required autofocus />
                             </div>
 
-                            <!-- Email Address -->
                             <div class="mt-4">
                                 <x-label for="email" :value="__('Email')" />
 
@@ -43,7 +41,6 @@
                                     :value="old('email')" required />
                             </div>
 
-                            <!-- Password -->
                             <div class="mt-4">
                                 <x-label for="password" :value="__('Password')" />
 
@@ -51,7 +48,6 @@
                                     required autocomplete="new-password" />
                             </div>
 
-                            <!-- Confirm Password -->
                             <div class="mt-4">
                                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
 
@@ -65,7 +61,7 @@
                                     {{ __('Already registered?') }}
                                 </a>
 
-                                <x-button class="ml-4">
+                                <x-button class="ml-4 button button-primary">
                                     {{ __('Register') }}
                                 </x-button>
                             </div>
