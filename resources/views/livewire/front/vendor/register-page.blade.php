@@ -20,9 +20,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-2">
                     <div class="reg-wrapper item main-shadow p-4">
-                        <h2 class="account-h2 u-s-m-b-20">Register</h2>
-                        <h6 class="account-h6 u-s-m-b-30">Registering for this site allows you to access your order
-                            status and history.</h6>
+                        <h2 class="account-h2 u-s-m-b-20">Vendor Registering</h2>
                         <form wire:submit.prevent="storeVendor" method="POST">
                             @csrf
                             <div class="u-s-m-b-30">

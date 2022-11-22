@@ -42,12 +42,12 @@
                                 <li>
                                     <a href="account.html">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                        Customer Login</a>
+                                        Customer Register</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('vendor.login.form') }}">
+                                    <a href="{{ route('vendor.register') }}">
                                         <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                        Vendor Login</a>
+                                        Vendor Register</a>
                                 </li>
                             </ul>
                         </li>

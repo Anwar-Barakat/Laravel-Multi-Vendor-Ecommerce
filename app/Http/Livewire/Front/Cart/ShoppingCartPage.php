@@ -36,7 +36,10 @@ class ShoppingCartPage extends Component
 
     public function deleteItem($rowId)
     {
+        $product    = Cart::instance('cart')->get($rowId);
+        $prodAttr   = Attribute::where(['product_id' => $product->id, 'size' => $product->options->size])->first();
         Cart::instance('cart')->remove($rowId);
+        $prodAttr->update(['stock' => $prodAttr->stock + $product->qty]);
         $this->updateHeader();
         toastr()->info('Item Has Been Deleted');
     }
