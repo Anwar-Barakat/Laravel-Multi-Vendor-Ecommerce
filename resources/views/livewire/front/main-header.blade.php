@@ -121,8 +121,7 @@
                                 if(event.keyCode == 191){
                                     event.preventDefault();
                                     $refs.search.focus();
-                                }
-                            ">
+                                }">
                             <div class="absolute  w-full search-dropdown" x-show.transition.opacity="isOpen">
                                 @if (isset($searchResults) && $searchResults != '')
                                     <ul class="mb-0">

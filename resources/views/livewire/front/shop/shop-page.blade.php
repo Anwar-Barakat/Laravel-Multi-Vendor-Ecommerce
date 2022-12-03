@@ -51,11 +51,8 @@
                         <div class="associate-wrapper">
                             @foreach ($brands as $brand)
                                 @if ($brand->products_count > 0)
-                                    <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}"
-                                        value="{{ $brand->id }}" wire:model="brandInputs"
-                                        wire:change="showClearFilters">
-                                    <label class="label-text"
-                                        for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
+                                    <input type="checkbox" class="check-box" id="cbs-{{ $brand->id }}" value="{{ $brand->id }}" wire:model="brandInputs" wire:change="showClearFilters">
+                                    <label class="label-text" for="cbs-{{ $brand->id }}">{{ ucwords($brand->name) }}
                                         <span class="total-fetch-items">({{ $brand->products_count }})</span>
                                     </label>
                                 @endif
@@ -66,8 +63,7 @@
                         <h3 class="title-name">Colors</h3>
                         <div class="associate-wrapper colors">
                             @foreach (App\Models\Product::COLORS as $item)
-                                <input type="radio" name="color" id="{{ $item }}"
-                                    value="{{ $item }}" wire:model="color" wire:change="showClearFilters" />
+                                <input type="radio" name="color" id="{{ $item }}" value="{{ $item }}" wire:model="color" wire:change="showClearFilters" />
                                 <label for="{{ $item }}"><span class="{{ $item }}"></span></label>
                             @endforeach
                         </div>
@@ -89,10 +85,7 @@
                                 <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
                                 <div class="associate-wrapper">
                                     @foreach ($filter->filterValues as $filterValue)
-                                        <input type="radio" name="{{ $filter->filter_column }}" class="check-box"
-                                            id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}"
-                                            wire:click="filtering('{{ $filter->filter_column }}','{{ $filterValue->filter_value }}')"
-                                            wire:change="showClearFilters">
+                                        <input type="radio" name="{{ $filter->filter_column }}" class="check-box" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:click="filtering('{{ $filter->filter_column }}','{{ $filterValue->filter_value }}')" wire:change="showClearFilters">
                                         <label class="label-text" for="filter{{ $filterValue->id }}">
                                             {{ $filterValue->filter_value }}
                                         </label>
@@ -168,8 +161,7 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div>
-                        <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt=""
-                            class="img img-thumbnail category-shadow" height="300">
+                        <img src="{{ asset('assets/img/banners/banner-default.jpg') }}" alt="" class="img img-thumbnail category-shadow" height="300">
                     </div>
                     <div class="shop-intro">
                         <ul class="bread-crumb">
@@ -177,8 +169,7 @@
                         </ul>
                         <p class="text-xs color-gray-400 mt-1">{{ $category->description }}</p>
                         @if ($clearFilter)
-                            <button wire:click="clearFiltering"
-                                class="clear-filters text-sm bg-red-700 text-white px-4 py-1 rounded shadow-md focus:border-none focus:outline-none">
+                            <button wire:click="clearFiltering" class="clear-filters text-sm bg-red-700 text-white px-4 py-1 rounded shadow-md focus:border-none focus:outline-none">
                                 Clear Filters</button>
                         @endif
                     </div>
@@ -195,8 +186,7 @@
                             <div class="toolbar-sorter">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="sort-by">Order By</label>
-                                    <select class="select-box" id="sort-by" wire:model="ordering"
-                                        wire:change="showClearFilters">
+                                    <select class="select-box" id="sort-by" wire:model="ordering" wire:change="showClearFilters">
                                         <option value="name" selected>Order By : Name</option>
                                         <option value="price">Order By : Price</option>
                                         <option value="is_best_seller">Order By : Is Best Saller</option>
@@ -207,8 +197,7 @@
                             <div class="toolbar-sorter-2">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Show Records Per Page</label>
-                                    <select class="select-box" id="show-records" wire:model="perPage"
-                                        wire:change="showClearFilters">
+                                    <select class="select-box" id="show-records" wire:model="perPage" wire:change="showClearFilters">
                                         <option value="3" selected>Show: 9</option>
                                         <option value="12">Show: 12</option>
                                         <option value="16">Show: 16</option>
@@ -219,15 +208,13 @@
                             <div class="toolbar-sorter-2">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Search</label>
-                                    <input type="search" class="select-box" placeholder="Search..."
-                                        wire:model.debounce.350ms="search" wire:keyup="showClearFilters">
+                                    <input type="search" class="select-box" placeholder="Search..." wire:model.debounce.350ms="search" wire:keyup="showClearFilters">
                                 </div>
                             </div>
                             <div class="toolbar-sorter-2">
                                 <div class="select-box-wrapper">
                                     <label class="sr-only" for="show-records">Sort By</label>
-                                    <select class="select-box" id="show-records" wire:model="sortBy"
-                                        wire:change="showClearFilters">
+                                    <select class="select-box" id="show-records" wire:model="sortBy" wire:change="showClearFilters">
                                         <option value="asc" selected>Sort By: ASC</option>
                                         <option value="desc">Sort By: DESC</option>
                                     </select>
@@ -248,29 +235,23 @@
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                 <div class="item main-shadow">
                                     <div class="image-container">
-                                        <a class="item-img-wrapper-link"
-                                            href="{{ route('front.product.detail', $product->id) }}">
-                                            <img class="img-fluid"
-                                                src="{{ $product->getFirstMediaUrl('main_img_of_product') }}"
-                                                alt="{{ ucwords($product->name) }}">
+                                        <a class="item-img-wrapper-link" href="{{ route('front.product.detail', $product->id) }}">
+                                            <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product') }}" alt="{{ ucwords($product->name) }}">
                                         </a>
                                         <div class="item-action-behaviors">
                                             <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
                                                 Look</a>
                                             <a class="item-mail" href="javascript:void(0)">Mail</a>
                                             @if ($wishItems->contains($product->id))
-                                                <a class="item-addwishlist active"
-                                                    href="{{ route('front.wishlist') }}">
+                                                <a class="item-addwishlist active" href="{{ route('front.wishlist') }}">
                                                     Add to
                                                     Wishlist</a>
                                             @else
-                                                <a class="item-addwishlist" href="#"
-                                                    wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $final_price }})">Add
+                                                <a class="item-addwishlist" href="#" wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $final_price }})">Add
                                                     to
                                                     Wishlist</a>
                                             @endif
-                                            <a class="item-addCart"
-                                                href="{{ route('front.product.detail', ['productId' => $product->id]) }}">Add
+                                            <a class="item-addCart" href="{{ route('front.product.detail', ['productId' => $product->id]) }}">Add
                                                 to Cart</a>
                                         </div>
                                     </div>
@@ -283,8 +264,7 @@
                                             </ul>
                                             <h6 class="text-gray-500 text-xs">{{ $product->created_at }}</h6>
                                             <h6 class="item-title">
-                                                <a
-                                                    href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
+                                                <a href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
                                             </h6>
                                             <div class="item-description">
                                                 <p>{{ $product->description }} </p>
@@ -312,7 +292,15 @@
                                         </div>
                                     </div>
                                     <div>
-                                        @if ($product->discount > 0 || $product->category->discount)
+                                        @if ($product->is_best_seller)
+                                            <div class="tag sale">
+                                                <span>SALE</span>
+                                            </div>
+                                        @elseif($product->is_featured)
+                                            <div class="tag hot">
+                                                <span>HOT</span>
+                                            </div>
+                                        @elseif ($product->discount > 0 && $product->category->discount > 0)
                                             <div class="tag discount">
                                                 <span>-%{{ $product->discount > 0 ? $product->discount : $product->category->discount }}</span>
                                             </div>
@@ -320,6 +308,7 @@
                                             <div class="tag new">
                                                 <span>New</span>
                                             </div>
+                                        @else
                                         @endif
                                     </div>
                                 </div>

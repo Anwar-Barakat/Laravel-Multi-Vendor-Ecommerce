@@ -27,12 +27,10 @@
             <div class="mb-3 mb-xl-0">
                 <div class="btn-group dropdown">
                     <button type="button" class="btn btn-primary">14 Aug 2019</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                        id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate"
-                        data-x-placement="bottom-end">
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate" data-x-placement="bottom-end">
                         <a class="dropdown-item" href="#">2015</a>
                         <a class="dropdown-item" href="#">2016</a>
                         <a class="dropdown-item" href="#">2017</a>
@@ -53,33 +51,21 @@
                     <div class="row row-sm ">
                         <div class=" col-xl-5 col-lg-12 col-md-12">
                             <div class="preview-pic tab-content">
-                                <div class="tab-pane active" id="pic-1"><img
-                                        src="{{ URL::asset('assets/img/ecommerce/shirt-5.png') }}" alt="image" /></div>
-                                <div class="tab-pane" id="pic-2"><img
-                                        src="{{ URL::asset('assets/img/ecommerce/shirt-2.png') }}" alt="image" /></div>
-                                <div class="tab-pane" id="pic-3"><img
-                                        src="{{ URL::asset('assets/img/ecommerce/shirt-3.png') }}" alt="image" /></div>
-                                <div class="tab-pane" id="pic-4"><img
-                                        src="{{ URL::asset('assets/img/ecommerce/shirt-4.png') }}" alt="image" /></div>
-                                <div class="tab-pane" id="pic-5"><img
-                                        src="{{ URL::asset('assets/img/ecommerce/shirt-1.png') }}" alt="image" /></div>
+                                <div class="tab-pane active" id="pic-1"><img src="{{ URL::asset('assets/img/ecommerce/shirt-5.png') }}" alt="image" /></div>
+                                <div class="tab-pane" id="pic-2"><img src="{{ URL::asset('assets/img/ecommerce/shirt-2.png') }}" alt="image" /></div>
+                                <div class="tab-pane" id="pic-3"><img src="{{ URL::asset('assets/img/ecommerce/shirt-3.png') }}" alt="image" /></div>
+                                <div class="tab-pane" id="pic-4"><img src="{{ URL::asset('assets/img/ecommerce/shirt-4.png') }}" alt="image" /></div>
+                                <div class="tab-pane" id="pic-5"><img src="{{ URL::asset('assets/img/ecommerce/shirt-1.png') }}" alt="image" /></div>
                             </div>
                             <ul class="preview-thumbnail nav nav-tabs">
-                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img
-                                            src="{{ URL::asset('assets/img/ecommerce/shirt-5.png') }}" alt="image" /></a>
+                                <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="{{ URL::asset('assets/img/ecommerce/shirt-5.png') }}" alt="image" /></a>
                                 </li>
-                                <li><a data-target="#pic-2" data-toggle="tab"><img
-                                            src="{{ URL::asset('assets/img/ecommerce/shirt-2.png') }}" alt="image" /></a>
+                                <li><a data-target="#pic-2" data-toggle="tab"><img src="{{ URL::asset('assets/img/ecommerce/shirt-2.png') }}" alt="image" /></a>
                                 </li>
-                                <li><a data-target="#pic-3" data-toggle="tab"><img
-                                            src="{{ URL::asset('assets/img/ecommerce/shirt-3.png') }}" alt="image" /></a>
+                                <li><a data-target="#pic-3" data-toggle="tab"><img src="{{ URL::asset('assets/img/ecommerce/shirt-3.png') }}" alt="image" /></a>
                                 </li>
-                                <li><a data-target="#pic-4" data-toggle="tab"><img
-                                            src="{{ URL::asset('assets/img/ecommerce/shirt-4.png') }}"
-                                            alt="image" /></a></li>
-                                <li><a data-target="#pic-5" data-toggle="tab"><img
-                                            src="{{ URL::asset('assets/img/ecommerce/shirt-1.png') }}"
-                                            alt="image" /></a></li>
+                                <li><a data-target="#pic-4" data-toggle="tab"><img src="{{ URL::asset('assets/img/ecommerce/shirt-4.png') }}" alt="image" /></a></li>
+                                <li><a data-target="#pic-5" data-toggle="tab"><img src="{{ URL::asset('assets/img/ecommerce/shirt-1.png') }}" alt="image" /></a></li>
                             </ul>
                         </div>
                         <div class="details col-xl-7 col-lg-12 col-md-12 mt-4 mt-xl-0">
@@ -101,17 +87,12 @@
                             <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87
                                     votes)</strong></p>
                             <div class="sizes d-flex">sizes:
-                                <span class="size d-flex" data-toggle="tooltip" title="small"><label
-                                        class="rdiobox mb-0"><input checked="" name="rdio" type="radio"> <span
-                                            class="font-weight-bold">s</span></label></span>
-                                <span class="size d-flex" data-toggle="tooltip" title="medium"><label
-                                        class="rdiobox mb-0"><input name="rdio" type="radio">
+                                <span class="size d-flex" data-toggle="tooltip" title="small"><label class="rdiobox mb-0"><input checked="" name="rdio" type="radio"> <span class="font-weight-bold">s</span></label></span>
+                                <span class="size d-flex" data-toggle="tooltip" title="medium"><label class="rdiobox mb-0"><input name="rdio" type="radio">
                                         <span>m</span></label></span>
-                                <span class="size d-flex" data-toggle="tooltip" title="large"><label
-                                        class="rdiobox mb-0"><input name="rdio" type="radio">
+                                <span class="size d-flex" data-toggle="tooltip" title="large"><label class="rdiobox mb-0"><input name="rdio" type="radio">
                                         <span>l</span></label></span>
-                                <span class="size d-flex" data-toggle="tooltip" title="extra-large"><label
-                                        class="rdiobox mb-0"><input name="rdio" type="radio">
+                                <span class="size d-flex" data-toggle="tooltip" title="extra-large"><label class="rdiobox mb-0"><input name="rdio" type="radio">
                                         <span>xl</span></label></span>
                             </div>
                             <div class="colors d-flex mr-3 mt-2">
@@ -119,29 +100,25 @@
                                 <div class="row gutters-xs mr-4">
                                     <div class="mr-2">
                                         <label class="colorinput">
-                                            <input name="color" type="radio" value="azure" class="colorinput-input"
-                                                checked="">
+                                            <input name="color" type="radio" value="azure" class="colorinput-input" checked="">
                                             <span class="colorinput-color bg-danger"></span>
                                         </label>
                                     </div>
                                     <div class="mr-2">
                                         <label class="colorinput">
-                                            <input name="color" type="radio" value="indigo"
-                                                class="colorinput-input">
+                                            <input name="color" type="radio" value="indigo" class="colorinput-input">
                                             <span class="colorinput-color bg-secondary"></span>
                                         </label>
                                     </div>
                                     <div class="mr-2">
                                         <label class="colorinput">
-                                            <input name="color" type="radio" value="purple"
-                                                class="colorinput-input">
+                                            <input name="color" type="radio" value="purple" class="colorinput-input">
                                             <span class="colorinput-color bg-dark"></span>
                                         </label>
                                     </div>
                                     <div class="mr-2">
                                         <label class="colorinput">
-                                            <input name="color" type="radio" value="pink"
-                                                class="colorinput-input">
+                                            <input name="color" type="radio" value="pink" class="colorinput-input">
                                             <span class="colorinput-color bg-pink"></span>
                                         </label>
                                     </div>
@@ -153,8 +130,7 @@
                                     <ul class=" mb-0 qunatity-list">
                                         <li>
                                             <div class="form-group">
-                                                <select name="quantity" id="select-countries17"
-                                                    class="form-control nice-select wd-100">
+                                                <select name="quantity" id="select-countries17" class="form-control nice-select wd-100">
                                                     <option value="1" selected="">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>

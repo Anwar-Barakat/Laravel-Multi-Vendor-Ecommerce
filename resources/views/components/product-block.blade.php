@@ -1,8 +1,7 @@
 <div class="item main-shadow">
     <div class="image-container">
         <a class="item-img-wrapper-link" href="{{ route('front.product.detail', $product->id) }}">
-            <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                alt="{{ ucwords($product->name) }}">
+            <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ ucwords($product->name) }}">
         </a>
         <div class="item-action-behaviors">
             <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
@@ -29,6 +28,7 @@
                     <span style='width:67px'></span>
                 </div>
                 <span>(23)</span>
+                <span class="block text-xm mt-1">{{ $product->created_at }}</span>
             </div>
         </div>
         <div class="price-template">
@@ -57,14 +57,14 @@
         <div class="tag hot">
             <span>HOT</span>
         </div>
-    @elseif ($type == 'discount' || $product->discount > 0 || $product->category->discount > 0)
+    @elseif ($type == 'discount' && $product->discount > 0 && $product->category->discount > 0)
         <div class="tag discount">
             <span>-%{{ $product->discount > 0 ? $product->discount : $product->category->discount }}</span>
         </div>
-    @elseif ($type == 'latest' ||
-        ($product->created_at > date('Y-m-d', strtotime('-8 days')) && $product->created_at < date('Y-m-d')))
+    @elseif ($type == 'latest' && $product->created_at > date('Y-m-d', strtotime('-8 days')) && $product->created_at < date('Y-m-d'))
         <div class="tag new">
             <span>New</span>
         </div>
+    @else
     @endif
 </div>
