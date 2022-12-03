@@ -55,13 +55,13 @@
                                     <li>
                                         <a href="{{ route('vendor.register') }}">
                                             <i class="fas fa-user-circle u-s-m-r-9"></i>
-                                            My Account</a>
+                                            My Account
+                                        </a>
                                     </li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <a :href="route('logout')" class="text-sm"
-                                                onclick="event.preventDefault();
+                                            <a :href="route('logout')" class="text-sm" onclick="event.preventDefault();
                                                         this.closest('form').submit();">
                                                 <i class="fas fa-sign-out-alt u-s-m-r-9"></i>
                                                 Logout
@@ -106,8 +106,7 @@
                     <div class="col-lg-3 col-md-9 col-sm-6">
                         <div class="brand-logo text-lg-center">
                             <a href="{{ route('front.home') }}" class="logo d-flex align-items-center " target="_blank">
-                                <img src="https://i.postimg.cc/QCyRWB1P/IMG-20220826-172957-743-removebg-preview.png"
-                                    alt="IMG-20220826-172957-743-removebg-preview" class="app-brand-logo" />
+                                <img src="https://i.postimg.cc/QCyRWB1P/IMG-20220826-172957-743-removebg-preview.png" alt="IMG-20220826-172957-743-removebg-preview" class="app-brand-logo" />
                                 <p>
                                     <span>Multi Vendor</span>
                                     <span>Store</span>
@@ -117,10 +116,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 mb-4 mt-4">
                         <form class="form-searchbox relative" x-data="{ isOpen: false }" @click.away="isOpen=false">
-                            <input type="text" class="text-field" placeholder="Press / To Search .."
-                                wire:model.debounce.350ms="search" @focus="isOpen=true"
-                                @keydown.escape.window="isOpen=false" @keydown.shift.tap="isOpen=false" x-ref="search"
-                                @keydown.tab="isOpen=false"
+                            <input type="text" class="text-field" placeholder="Press / To Search .." wire:model.debounce.350ms="search" @focus="isOpen=true" @keydown.escape.window="isOpen=false" @keydown.shift.tap="isOpen=false" x-ref="search" @keydown.tab="isOpen=false"
                                 @keydown.window="
                                 if(event.keyCode == 191){
                                     event.preventDefault();
@@ -131,23 +127,18 @@
                                 @if (isset($searchResults) && $searchResults != '')
                                     <ul class="mb-0">
                                         @forelse ($searchResults as $product)
-                                            <li
-                                                class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2">
-                                                <a href="{{ route('front.product.detail', $product->id) }}"
-                                                    class=" flex items-center gap-4">
+                                            <li class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2">
+                                                <a href="{{ route('front.product.detail', $product->id) }}" class=" flex items-center gap-4">
                                                     @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
-                                                        <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                            alt="{{ ucwords($product->name) }}" class="w-8">
+                                                        <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ ucwords($product->name) }}" class="w-8">
                                                     @else
-                                                        <img src="{{ asset('assets/img/6.jpg') }}"
-                                                            alt="{{ ucwords($product->name) }}" class="w-8">
+                                                        <img src="{{ asset('assets/img/6.jpg') }}" alt="{{ ucwords($product->name) }}" class="w-8">
                                                     @endif
                                                     <span>{{ ucwords($product->name) }}</span>
                                                 </a>
                                             </li>
                                         @empty
-                                            <li class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2"
-                                                <a href="javascript:void(0);" class=" flex items-center justify-center">
+                                            <li class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2" <a href="javascript:void(0);" class=" flex items-center justify-center">
                                                 <span>No Results Found</span>
                                                 </a>
                                             </li>
@@ -206,8 +197,7 @@
                     @forelse (Cart::instance('cart')->content() as $item)
                         <li class="clearfix">
                             <a href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
-                                <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                    loading="lazy" alt="{{ $item->model->name }}">
+                                <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}" loading="lazy" alt="{{ $item->model->name }}">
                                 <span class="mini-item-name">{{ ucwords($item->model->name) }}</span>
                                 <span class="mini-item-price">${{ $item->price }}</span>
                                 <span class="mini-item-quantity"> x {{ $item->qty }} </span>
@@ -259,14 +249,12 @@
                                                                 <div class="col-lg-4">
                                                                     <ul class="v-level-2">
                                                                         <li>
-                                                                            <a
-                                                                                href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">
+                                                                            <a href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">
                                                                                 {{ ucwords(str_replace('-', ' ', $category->name)) }}</a>
                                                                             <ul>
                                                                                 @foreach ($category->subCategories as $sub)
                                                                                     <li>
-                                                                                        <a
-                                                                                            href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
+                                                                                        <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
                                                                                             {{ ucwords(str_replace('-', ' ', $sub->name)) }}
                                                                                         </a>
                                                                                     </li>

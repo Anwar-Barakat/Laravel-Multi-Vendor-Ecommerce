@@ -20,32 +20,22 @@
                     <!-- Product-zoom-area -->
                     <div class="zoom-area">
                         @if ($product->getFirstMediaUrl('main_img_of_product', 'midium'))
-                            <img id="zoom-pro" class="img-fluid"
-                                src="{{ $product->getFirstMediaUrl('main_img_of_product', 'midium') }}"
-                                data-zoom-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}"
-                                alt="{{ ucwords($product->name) }}">
+                            <img id="zoom-pro" class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'midium') }}" data-zoom-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}" alt="{{ ucwords($product->name) }}">
 
                             <div id="gallery" class="u-s-m-t-10">
-                                <a class=""
-                                    data-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}"
-                                    data-zoom-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}">
-                                    <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'midium') }}"
-                                        alt="{{ ucwords($product->name) }}">
+                                <a class="" data-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}" data-zoom-image="{{ $product->getFirstMediaUrl('main_img_of_product', 'large') }}">
+                                    <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'midium') }}" alt="{{ ucwords($product->name) }}">
                                 </a>
                                 @if ($product->getMedia('product_attachments'))
                                     @foreach ($product->getMedia('product_attachments') as $image)
-                                        <a class="" data-image="{{ $image->getUrl('large') }}"
-                                            data-zoom-image="{{ $image->getUrl('large') }}">
+                                        <a class="" data-image="{{ $image->getUrl('large') }}" data-zoom-image="{{ $image->getUrl('large') }}">
                                             <img src="{{ $image->getUrl('midium') }}" alt="Product">
                                         </a>
                                     @endforeach
                                 @endif
                             </div>
                         @else
-                            <img id="zoom-pro" class="img-fluid"
-                                src="{{ asset('front/images/product/product@4x.jpg') }}"
-                                data-zoom-image="{{ asset('front/images/product/product@4x.jpg') }}"
-                                alt="{{ ucwords($product->name) }}">
+                            <img id="zoom-pro" class="img-fluid" src="{{ asset('front/images/product/product@4x.jpg') }}" data-zoom-image="{{ asset('front/images/product/product@4x.jpg') }}" alt="{{ ucwords($product->name) }}">
                         @endif
                     </div>
                     <!-- Product-zoom-area /- -->
@@ -133,8 +123,7 @@
                             @if (!is_null($product->admin->vendor))
                                 <p class="text-xs mt-3 text-capitalize">
                                     sold by :
-                                    <a href="{{ route('vendor.products', $product->admin->id) }}"
-                                        class="underline hover:underline hover:font-bold transition ">
+                                    <a href="{{ route('vendor.products', $product->admin->id) }}" class="underline hover:underline hover:font-bold transition ">
                                         {{ $product->admin->vendor->businessInfo->shop_name }}
                                     </a>
                                 </p>
@@ -149,9 +138,7 @@
                                     <div class="flex gap-2">
                                         @foreach ($groupProducts as $product)
                                             <a href="{{ route('front.product.detail', $product->id) }}">
-                                                <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                    alt="{{ $product->name }}" width="80"
-                                                    class="img img-thumbnail shadow-sm">
+                                                <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ $product->name }}" width="80" class="img img-thumbnail shadow-sm">
                                             </a>
                                         @endforeach
                                     </div>
@@ -169,6 +156,12 @@
                                         </select>
                                     </div>
                                 </div>
+                            @endif
+                            @if (Cart::instance('cart')->content()->where('id', $product->id)->count() > 0)
+                                <span class="text-lg">
+                                    Exists
+                                    <span class="text-green-600 font-bold">In Cart</span>
+                                </span>
                             @endif
                         </div>
                         <div class="section-6-social-media-quantity-actions u-s-p-y-14">
@@ -206,14 +199,12 @@
                                 <div class="quantity-wrapper u-s-m-b-22">
                                     <span>Quantity:</span>
                                     <div class="quantity">
-                                        <input type="number" class="quantity-text-field" min="1"
-                                            max="1000" wire:model="qty">
+                                        <input type="number" class="quantity-text-field" min="1" max="1000" wire:model="qty">
 
                                     </div>
                                 </div>
                                 <div>
-                                    <button class="button button-outline-secondary"
-                                        wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $final_price }},'{{ $size }}','{{ $product->code }}','{{ $product->color }}')">
+                                    <button class="button button-outline-secondary" wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $final_price }},'{{ $size }}','{{ $product->code }}','{{ $product->color }}')">
                                         Add to cart
                                     </button>
                                     <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
@@ -252,10 +243,8 @@
                                     </p>
                                     @if ($product->getFirstMediaUrl('main_video_of_product'))
                                         <video width="700" class="img img-thumbnail mb-4 admin-image" controls>
-                                            <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}"
-                                                type="video/mp4" class="img img-thumbnail img-activity">
-                                            <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}"
-                                                type="video/ogg" class="img img-thumbnail img-activity">
+                                            <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}" type="video/mp4" class="img img-thumbnail img-activity">
+                                            <source src="{{ $product->getFirstMediaUrl('main_video_of_product') }}" type="video/ogg" class="img img-thumbnail img-activity">
                                             {{ __('msgs.browser_error') }}
                                         </video>
                                     @endif
@@ -352,26 +341,22 @@
                                                         <span id="your-stars" style='width:0'></span>
                                                     </div>
                                                     <label for="your-rating-value"></label>
-                                                    <input id="your-rating-value" type="text" class="text-field"
-                                                        placeholder="0.0">
+                                                    <input id="your-rating-value" type="text" class="text-field" placeholder="0.0">
                                                     <span id="star-comment"></span>
                                                 </div>
                                                 <form>
                                                     <label for="your-name">Name
                                                         <span class="astk"> *</span>
                                                     </label>
-                                                    <input id="your-name" type="text" class="text-field"
-                                                        placeholder="Your Name">
+                                                    <input id="your-name" type="text" class="text-field" placeholder="Your Name">
                                                     <label for="your-email">Email
                                                         <span class="astk"> *</span>
                                                     </label>
-                                                    <input id="your-email" type="text" class="text-field"
-                                                        placeholder="Your Email">
+                                                    <input id="your-email" type="text" class="text-field" placeholder="Your Email">
                                                     <label for="review-title">Review Title
                                                         <span class="astk"> *</span>
                                                     </label>
-                                                    <input id="review-title" type="text" class="text-field"
-                                                        placeholder="Review Title">
+                                                    <input id="review-title" type="text" class="text-field" placeholder="Review Title">
                                                     <label for="review-text-area">Review
                                                         <span class="astk"> *</span>
                                                     </label>
