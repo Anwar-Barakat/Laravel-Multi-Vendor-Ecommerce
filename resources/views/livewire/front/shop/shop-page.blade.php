@@ -85,7 +85,7 @@
                                 <h3 class="title-name">{{ ucwords($filter->filter_name) }}</h3>
                                 <div class="associate-wrapper">
                                     @foreach ($filter->filterValues as $filterValue)
-                                        <input type="radio" name="{{ $filter->filter_column }}" class="check-box" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:click="filtering('{{ $filter->filter_column }}','{{ $filterValue->filter_value }}')" wire:change="showClearFilters">
+                                        <input type="radio" class="check-box" id="filter{{ $filterValue->id }}" value="{{ $filterValue->id }}" wire:click="filtering('{{ $filter->filter_column }}','{{ $filterValue->filter_value }}')" wire:change="showClearFilters">
                                         <label class="label-text" for="filter{{ $filterValue->id }}">
                                             {{ $filterValue->filter_value }}
                                         </label>

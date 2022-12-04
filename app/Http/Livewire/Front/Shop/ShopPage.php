@@ -15,17 +15,25 @@ class ShopPage extends Component
 {
     use WithPagination;
 
-    public $clearFilter = false;
-    public $perPage = 9, $ordering = 'name', $sortBy = 'asc', $search;
+    public $clearFilter     = false;
+    public $perPage         = 9,
+        $ordering           = 'name',
+        $sortBy             = 'asc',
+        $search;
     public $url;
-    public $brandInputs  = [];
+    public $brandInputs     = [];
+    public $min_price       = 1,
+        $max_price          = 1000,
+        $color              = '';
+    public $filter_column,
+        $filter_value;
+
     protected $queryString = [
         'brandInputs'   => ['except' => '', 'as' => 'brand'],
         'color'         => ['except' => '', 'as' => 'color'],
-        'filter_column' => ['except' => '', 'as' => 'filter']
+        'filter_column' => ['except' => '', 'as' => 'filter'],
+        'filter_value'  => ['except' => '', 'as' => 'value'],
     ];
-    public $min_price = 1, $max_price = 1000, $color = '';
-    public $filter_column, $filter_value;
 
 
     public function showClearFilters()
