@@ -23,12 +23,12 @@
                     <div class="reg-wrapper item main-shadow p-4 ">
                         <h2 class="account-h2 u-s-m-b-20 md:text-sm">Email Verification</h2>
 
-                        <div class="mb-4 text-sm text-gray-600 mt-4">
+                        <div class="mb-4 text-sm text-gray-600 mt-4 alert alert-success">
                             {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
                         </div>
 
                         @if (session('status') == 'verification-link-sent')
-                            <div class="mb-4 font-medium text-sm text-green-600">
+                            <div class="mb-4 font-medium text-sm text-green-600 alert alert-success">
                                 {{ __('A new verification link has been sent to the email address you provided during registration.') }}
                             </div>
                         @endif

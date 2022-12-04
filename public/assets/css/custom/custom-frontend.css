@@ -1,64 +1,68 @@
 .full-layer-mid-header .logo {
-    gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .full-layer-mid-header .logo img {
-    max-width: 50px;
+  max-width: 50px;
 }
 
 .full-layer-mid-header .logo p {
-    font-size: 1rem;
-    display: grid;
-    margin: 0;
+  font-size: 1rem;
+  display: grid;
+  margin: 0;
 }
 
 .filtering-padding {
-    padding: 25px 15px;
-    margin-bottom: 1rem;
+  padding: 25px 15px;
+  margin-bottom: 1rem;
 }
 
 .list-style .item-description p {
-    min-width: 498px;
-    width: 100%;
+  min-width: 498px;
+  width: 100%;
 }
 
 @media screen and (max-width: 551px) {
-    .full-layer-mid-header .logo {
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
+  .full-layer-mid-header .logo {
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
 }
 
 .clear-filters {
-    position: fixed;
-    z-index: 1000;
-    top: 1rem;
-    left: 1rem;
-    animation: fadeInOut 1s linear infinite;
+  position: fixed;
+  z-index: 1000;
+  top: 1rem;
+  left: 1rem;
+  animation: fadeInOut 1s linear infinite;
 }
 
 @keyframes fadeInOut {
-    from {
-        transform: scale(1);
-    }
+  from {
+    transform: scale(1);
+  }
 
-    to {
-        transform: scale(1.1);
-    }
+  to {
+    transform: scale(1.1);
+  }
 }
 
 .invalid-feedback {
-    display: block;
+  display: block;
 }
 
 .is-invalid {
-    border: 1px solid #ff0000;
+  border: 1px solid #ff0000;
 }
 
 .text-field.is-invalid:focus {
-    border-color: #ff0000;
+  border-color: #ff0000;
 }
 
 .list-style .item {
-    width: 100%;
+  width: 100%;
+}
+
+input {
+  border-radius: 0 !important;
 }

@@ -147,15 +147,15 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
                         <nav>
-                            <ul class="mid-nav g-nav">
-                                <li class="u-d-none-lg">
+                            <ul class="mid-nav g-nav md:flex md:justify-between">
+                                <li>
                                     <a href="{{ route('front.home') }}">
                                         <i class="ion ion-md-home u-c-brand"></i>
                                     </a>
                                 </li>
-                                <li class="u-d-none-lg">
+                                <li>
                                     <a href="{{ route('front.wishlist') }}">
                                         <i class="far fa-heart"></i>
                                         <span class="item-counter" style="left: -22px;">
