@@ -21,6 +21,7 @@ use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use App\Http\Livewire\Front\Cart\ShoppingCartPage;
+use App\Http\Livewire\Front\Customer\ProfilePage;
 use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
@@ -161,6 +162,8 @@ Route::name('front.')->group(function () {
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
+
+    Route::get('/profile',                                  ProfilePage::class)->name('profile');
 });
 
 

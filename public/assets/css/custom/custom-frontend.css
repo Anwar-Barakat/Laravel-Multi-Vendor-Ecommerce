@@ -66,3 +66,8 @@
 input {
   border-radius: 0 !important;
 }
+
+.reg-wrapper.wide {
+  max-width: 100%;
+}
+

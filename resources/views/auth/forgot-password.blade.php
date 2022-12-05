@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="reg-wrapper item main-shadow p-4 ">
-                        <h2 class="account-h2 u-s-m-b-20 md:text-sm">Forget Password</h2>
+                        <h2 class="account-h2 u-s-m-b-20 main-title md:text-sm">Forget Password</h2>
 
                         <div class="mb-4 text-sm text-gray-600">
                             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}

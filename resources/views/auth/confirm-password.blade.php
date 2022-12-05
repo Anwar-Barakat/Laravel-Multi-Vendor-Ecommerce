@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="reg-wrapper item main-shadow p-4 ">
-                        <h2 class="account-h2 u-s-m-b-20 md:text-sm">Confirm Your Password</h2>
+                        <h2 class="account-h2 u-s-m-b-20 main-title md:text-sm">Confirm Your Password</h2>
 
                         <div class="mb-4 text-sm text-gray-600">
                             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}

@@ -41,9 +41,9 @@
                                 </li>
                                 @guest
                                     <li>
-                                        <a href="{{ route('register') }}">
+                                        <a href="{{ route('login') }}">
                                             <i class="fas fa-sign-in-alt u-s-m-r-9"></i>
-                                            Customer Register</a>
+                                            Customer login</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('vendor.register') }}">
@@ -53,7 +53,7 @@
                                 @endguest
                                 @auth
                                     <li>
-                                        <a href="{{ route('vendor.register') }}">
+                                        <a href="{{ route('front.profile') }}">
                                             <i class="fas fa-user-circle u-s-m-r-9"></i>
                                             My Account
                                         </a>
@@ -335,7 +335,7 @@
                                             <a href="#">My Account</a>
                                         </li>
                                         <li>
-                                            <a href="#">My Profile</a>
+                                            <a href="{{ route('front.profile') }}">My Profile</a>
                                         </li>
                                         <li>
                                             <a href="listing.html">My Orders</a>
