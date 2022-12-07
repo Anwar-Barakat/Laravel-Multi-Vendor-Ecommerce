@@ -25,52 +25,87 @@
                             <div class="row mt-4">
                                 <div class="form-group col-lg-6 col-md-12">
                                     <x-label for="name" :value="__('Name')" />
-                                    <x-input id="name" class="text-field mt-1 w-full" type="text" :value="old('name', Auth::user()->name)" required autofocus />
+                                    <input id="name" wire:model="name" class="text-field mt-1 w-full" type="text" required autofocus />
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-6 col-md-12">
                                     <x-label for="email" :value="__('Email')" />
-                                    <x-input class="text-field mt-1 w-full" type="email" name="email" :value="Auth::user()->email" disabled />
+                                    <input id="email" wire:model="email" class="text-field mt-1 w-full" type="email" name="email" disabled />
                                 </div>
                             </div>
                             <div class="row mt-4">
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="address" :value="__('Address')" />
-                                    <x-input id="address" class="text-field mt-1 w-full" type="text" :value="old('address', Auth::user()->address)" required autofocus />
+                                    <input id="address" wire:model="address" class="text-field mt-1 w-full" type="text" required />
+                                    @error('adress')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="mobile" :value="__('Mobile')" />
-                                    <x-input id="mobile" class="text-field mt-1 w-full" type="text" :value="old('mobile', Auth::user()->mobile)" required autofocus />
+                                    <input id="mobile" wire:model="mobile" class="text-field mt-1 w-full" type="tel" required />
+                                    @error('mobile')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="city" :value="__('City')" />
-                                    <x-input id="city" class="text-field mt-1 w-full" type="text" :value="old('city', Auth::user()->city)" required autofocus />
+                                    <input id="city" wire:model="city" class="text-field mt-1 w-full" type="text" required />
+                                    @error('city')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row mt-4">
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="state" :value="__('State')" />
-                                    <x-input id="state" class="text-field mt-1 w-full" type="text" :value="old('state', Auth::user()->state)" required autofocus />
+                                    <input id="state" wire:model="state" class="text-field mt-1 w-full" type="text" required />
+                                    @error('state')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-4 col-md-12">
-                                    <x-label for="country" :value="__('Coutry')" />
-                                    <select id="country" class="text-field mt-1 w-full">
+                                    <x-label for="country_id" :value="__('Coutry')" />
+                                    <select id="country_id" class="text-field mt-1 w-full" wire:model="country_id">
                                         <option value="" selected>Select...</option>
                                         @foreach (App\Models\Country::active()->get() as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('country_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="pincode" :value="__('Pincode')" />
-                                    <x-input id="pincode" class="text-field mt-1 w-full" type="text" :value="old('pincode', Auth::user()->pincode)" required autofocus />
+                                    <input id="pincode" wire:model="pincode" class="text-field mt-1 w-full" type="text" required />
+                                    @error('pincode')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <x-button class="ml-4 button button-primary">
-                                    {{ __('Register') }}
-                                </x-button>
+                                <button class="ml-4 button button-primary" wire:click.prevent="storeCustomer">
+                                    {{ __('Update Profile') }}
+                                </button>
                             </div>
                         </form>
                     </div>

@@ -2,14 +2,14 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Forget Password</h2>
+                <h2>Lost Password</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascrip:void(0);">Forget Password</a>
+                        <a href="javascrip:void(0);">Lost Password</a>
                     </li>
                 </ul>
             </div>

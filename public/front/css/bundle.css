@@ -4313,7 +4313,7 @@ body {
 .main-title {
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .main-title::before {
   position: absolute;

@@ -21,6 +21,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'address',
+        'mobile',
+        'city',
+        'state',
+        'country_id',
+        'pincode',
     ];
 
     /**
@@ -41,4 +47,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }
