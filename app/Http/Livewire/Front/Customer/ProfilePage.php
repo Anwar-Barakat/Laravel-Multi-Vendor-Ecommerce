@@ -17,6 +17,21 @@ class ProfilePage extends Component
         $country_id,
         $pincode;
 
+    protected $rules =  [
+        'name'          => ['required', 'string', 'min:3', 'max:30'],
+        'address'       => ['required', 'min:3', 'max:30'],
+        'mobile'        => ['required', 'min:3', 'max:30'],
+        'city'          => ['required', 'min:3', 'max:30'],
+        'state'         => ['required', 'min:3', 'max:30'],
+        'country_id'    => ['required'],
+        'pincode'       => ['required', 'min:6'],
+    ];
+
+    public function updated($fields)
+    {
+        $this->validateOnly($fields);
+    }
+
     public function mount()
     {
         $this->name         = Auth::user()->name;
@@ -32,6 +47,7 @@ class ProfilePage extends Component
 
     public function storeCustomer()
     {
+        $this->validate();
         try {
             $customer = User::findOrFail(Auth::user()->id);
             $customer->update([
