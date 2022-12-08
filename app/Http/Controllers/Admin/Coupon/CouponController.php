@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Coupon;
 
 use App\Http\Requests\Admin\StoreCouponRequest;
 use App\Http\Requests\Admin\UpdateCouponRequest;
 use App\Models\Coupon;
+use App\Http\Controllers\Controller;
 
 class CouponController extends Controller
 {
@@ -15,7 +16,8 @@ class CouponController extends Controller
      */
     public function index()
     {
-        //
+        $coupons    = Coupon::latest()->get();
+        return view('admin.coupons.index', ['coupons' => $coupons]);
     }
 
     /**

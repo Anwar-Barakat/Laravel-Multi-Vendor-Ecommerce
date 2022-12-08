@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Product\Attribute\AttributeController;
 use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
+use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
@@ -127,6 +128,12 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Banners
         //?_________________________
         Route::resource('banners',                                  BannerController::class);
+
+
+        //?_________________________
+        //? Coupons
+        //?_________________________
+        Route::resource('coupons',                                  CouponController::class);
     });
 });
 
