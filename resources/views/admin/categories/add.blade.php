@@ -21,8 +21,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}"
-                        enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.categories.store') }}" enctype="multipart/form-data">
                         @csrf
                         @livewire('admin.category.get-section-categories')
                         <div class="row">
@@ -33,9 +32,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">%</span>
                                         </div>
-                                        <input aria-label="Amount (to the nearest dollar)"
-                                            class="form-control  @error('discount') is-invalid @enderror" type="number"
-                                            value="{{ old('discount') }}" name="discount">
+                                        <input aria-label="Amount (to the nearest dollar)" class="form-control  @error('discount') is-invalid @enderror" type="number" value="{{ old('discount') }}" name="discount">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -49,7 +46,7 @@
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <div class="form-group has-success mg-b-0">
-                                        <textarea class="form-control @error('description') is-invalid @enderror"="" rows="3" name="description">{{ old('description') }}</textarea>
+                                        <textarea class="form-control @error('description') is-invalid @enderror" rows="3" name="description">{{ old('description') }}</textarea>
                                         @error('description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -79,8 +76,7 @@
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="meta_title">Meta title</label>
-                                    <input type="text" class="form-control  @error('meta_title') is-invalid @enderror"
-                                        id="meta_title" name="meta_title" value="{{ old('meta_title') }}">
+                                    <input type="text" class="form-control  @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title') }}">
                                     @error('meta_title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -91,10 +87,7 @@
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="meta_description">Meta description</label>
-                                    <input type="text"
-                                        class="form-control  @error('meta_description') is-invalid @enderror"
-                                        id="meta_description" name="meta_description"
-                                        value="{{ old('meta_description') }}">
+                                    <input type="text" class="form-control  @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" value="{{ old('meta_description') }}">
                                     @error('meta_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -105,8 +98,7 @@
                             <div class="col-md-12 col-lg-4">
                                 <div class="form-group">
                                     <label for="meta_keywords">Meta keywords</label>
-                                    <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror"
-                                        id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}">
+                                    <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror" id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}">
                                     @error('meta_keywords')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -31,12 +31,10 @@
             <div class="mb-3 mb-xl-0">
                 <div class="btn-group dropdown">
                     <button type="button" class="btn btn-primary">14 Aug 2019</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                        id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate"
-                        data-x-placement="bottom-end">
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate" data-x-placement="bottom-end">
                         <a class="dropdown-item" href="#">2015</a>
                         <a class="dropdown-item" href="#">2016</a>
                         <a class="dropdown-item" href="#">2017</a>
@@ -71,8 +69,7 @@
                         <div class="form-group mb-0 justify-content-end">
                             <div class="checkbox">
                                 <div class="custom-checkbox custom-control">
-                                    <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                                        id="checkbox-2">
+                                    <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-2">
                                     <label for="checkbox-2" class="custom-control-label mt-1">Check me Out</label>
                                 </div>
                             </div>
@@ -98,18 +95,15 @@
                         <div class="">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    placeholder="Enter email">
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
-                                    placeholder="Password">
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                             </div>
                             <div class="checkbox">
                                 <div class="custom-checkbox custom-control">
-                                    <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
-                                        id="checkbox-1">
+                                    <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
                                     <label for="checkbox-1" class="custom-control-label mt-1">Check me Out</label>
                                 </div>
                             </div>
@@ -169,8 +163,7 @@
                     <p class="mg-b-20">It is Very Easy to Customize and it uses in your website apllication.</p>
                     <div class="row row-sm">
                         <div class="col-lg">
-                            <input class="form-control form-control-sm mg-b-20" placeholder="Input sm box"
-                                type="text">
+                            <input class="form-control form-control-sm mg-b-20" placeholder="Input sm box" type="text">
                             <input class="form-control mg-b-20" placeholder="Input box" type="text">
                             <input class="form-control form-control-lg" placeholder="Input lg box" type="text">
                         </div>
@@ -191,15 +184,13 @@
                         <div class="row row-sm">
                             <div class="col-lg-6">
                                 <div class="form-group has-success mg-b-0">
-                                    <input class="form-control" placeholder="Input box (success state)" required=""
-                                        type="text" value="This is input">
+                                    <input class="form-control" placeholder="Input box (success state)" required="" type="text" value="This is input">
                                     <textarea class="form-control mg-t-20" placeholder="Textarea (success state)" required="" rows="3">This is textarea</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-6 mg-t-20 mg-lg-t-0">
                                 <div class="form-group has-danger mg-b-0">
-                                    <input class="form-control" placeholder="Input box (invalid state)" required=""
-                                        type="text">
+                                    <input class="form-control" placeholder="Input box (invalid state)" required="" type="text">
                                     <textarea class="form-control mg-t-20" placeholder="Textarea (invalid state)" required="" rows="3"></textarea>
                                 </div>
                             </div>
@@ -259,8 +250,7 @@
                     <div class="row row-sm">
                         <div class="col-sm-7 col-md-6 col-lg-4">
                             <div class="custom-file">
-                                <input class="custom-file-input" id="customFile" type="file"> <label
-                                    class="custom-file-label" for="customFile">Choose file</label>
+                                <input class="custom-file-input" id="customFile" type="file"> <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                         </div>
                     </div>
@@ -323,14 +313,12 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">@</span>
-                                </div><input aria-describedby="basic-addon1" aria-label="Username" class="form-control"
-                                    placeholder="Username" type="text">
+                                </div><input aria-describedby="basic-addon1" aria-label="Username" class="form-control" placeholder="Username" type="text">
                             </div><!-- input-group -->
                         </div>
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
-                                <input aria-describedby="basic-addon2" aria-label="Recipient's username"
-                                    class="form-control" placeholder="Recipient's username" type="text">
+                                <input aria-describedby="basic-addon2" aria-label="Recipient's username" class="form-control" placeholder="Recipient's username" type="text">
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon2">@example.com</span>
                                 </div>
@@ -340,8 +328,7 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">$</span>
-                                </div><input aria-label="Amount (to the nearest dollar)" class="form-control"
-                                    type="text">
+                                </div><input aria-label="Amount (to the nearest dollar)" class="form-control" type="text">
                                 <div class="input-group-append">
                                     <span class="input-group-text">.00</span>
                                 </div>
@@ -353,8 +340,7 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <label class="ckbox wd-16 mg-b-0"><input class="mg-0"
-                                                type="checkbox"><span></span></label>
+                                        <label class="ckbox wd-16 mg-b-0"><input class="mg-0" type="checkbox"><span></span></label>
                                     </div>
                                 </div><input class="form-control" placeholder="Text input with checkbox" type="text">
                             </div><!-- input-group -->
@@ -370,9 +356,7 @@
                         </div><!-- col-4 -->
                         <div class="col-lg-4 mg-t-20 mg-lg-t-0">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Search for..." type="text"> <span
-                                    class="input-group-btn"><button class="btn btn-primary" type="button"><span
-                                            class="input-group-btn"><i class="fa fa-search"></i></span></button></span>
+                                <input class="form-control" placeholder="Search for..." type="text"> <span class="input-group-btn"><button class="btn btn-primary" type="button"><span class="input-group-btn"><i class="fa fa-search"></i></span></button></span>
                             </div><!-- input-group -->
                         </div><!-- col-4 -->
                     </div>
@@ -396,8 +380,7 @@
                                     <div class="input-group-text">
                                         Date:
                                     </div>
-                                </div><input class="form-control" id="dateMask" placeholder="MM/DD/YYYY"
-                                    type="text">
+                                </div><input class="form-control" id="dateMask" placeholder="MM/DD/YYYY" type="text">
                             </div><!-- input-group -->
                         </div><!-- col-4 -->
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
@@ -417,8 +400,7 @@
                                         Phone + Ext.:
                                     </div>
                                 </div><!-- input-group-prepend -->
-                                <input class="form-control" id="phoneExtMask" placeholder="(000) 000-0000 ext 0000"
-                                    type="text">
+                                <input class="form-control" id="phoneExtMask" placeholder="(000) 000-0000 ext 0000" type="text">
                             </div><!-- input-group -->
                         </div>
                         <div class="col-lg-2 mg-t-20 mg-lg-t-0">
@@ -477,7 +459,8 @@
                                 <div class="input-group-text">
                                     <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
                                 </div>
-                            </div><input class="form-control fc-datepicker" placeholder="MM/DD/YYYY" type="text">
+                            </div>
+                            <input class="form-control fc-datepicker" placeholder="MM/DD/YYYY" type="text">
                         </div>
                     </div><!-- wd-200 -->
                     <p class="mg-b-5">Set the numberOfMonths option to an integer of 2 or more to show multiple months in a
@@ -488,8 +471,7 @@
                                 <div class="input-group-text">
                                     <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
                                 </div>
-                            </div><input class="form-control" id="datepickerNoOfMonths" placeholder="MM/DD/YYYY"
-                                type="text">
+                            </div><input class="form-control" id="datepickerNoOfMonths" placeholder="MM/DD/YYYY" type="text">
                         </div>
                     </div><!-- wd-200 -->
                     <p class="mg-b-5">Display the datepicker embedded in the page instead of in an overlay.</p>
@@ -505,8 +487,7 @@
                                 <div class="input-group-text">
                                     <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
                                 </div>
-                            </div><input class="form-control" id="datetimepicker" type="text"
-                                value="2018-12-20 21:05">
+                            </div><input class="form-control" id="datetimepicker" type="text" value="2018-12-20 21:05">
                         </div>
                     </div>
                 </div>
@@ -528,8 +509,7 @@
                                 <div class="input-group-text">
                                     <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
                                 </div>
-                            </div><input class="form-control" id="datetimepicker2" type="text"
-                                value="2018-12-20 21:05">
+                            </div><input class="form-control" id="datetimepicker2" type="text" value="2018-12-20 21:05">
                         </div>
                     </div>
                 </div>
@@ -553,8 +533,7 @@
                                         <i class="typcn typcn-calendar-outline tx-24 lh--9 op-6"></i>
                                     </div>
                                 </div>
-                                <input type="text" value="January 20, 2019 09:00" id="datetimepicker3"
-                                    class="form-control">
+                                <input type="text" value="January 20, 2019 09:00" id="datetimepicker3" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -638,8 +617,7 @@
                     </div>
                     <div class="row row-sm">
                         <div class="col-lg-4 mg-b-20 mg-lg-b-0">
-                            <p class="mg-b-10">Multiple Select</p><select class="form-control select2"
-                                multiple="multiple">
+                            <p class="mg-b-10">Multiple Select</p><select class="form-control select2" multiple="multiple">
                                 <option value="Firefox">
                                     Firefox
                                 </option>
@@ -658,8 +636,7 @@
                             </select>
                         </div>
                         <div class="col-lg-4 mg-b-20 mg-lg-b-0">
-                            <p class="mg-b-10">Multiple Select with Pre-Filled Input</p><select
-                                class="form-control select2" multiple="multiple">
+                            <p class="mg-b-10">Multiple Select with Pre-Filled Input</p><select class="form-control select2" multiple="multiple">
                                 <option selected value="Firefox">
                                     Firefox
                                 </option>
@@ -678,8 +655,7 @@
                             </select>
                         </div>
                         <div class="col-lg-4">
-                            <p class="mg-b-10">Multiple Select (Disabled)</p><select
-                                class="form-control select2-no-search" disabled multiple="multiple">
+                            <p class="mg-b-10">Multiple Select (Disabled)</p><select class="form-control select2-no-search" disabled multiple="multiple">
                                 <option selected value="Firefox">
                                     Firefox
                                 </option>

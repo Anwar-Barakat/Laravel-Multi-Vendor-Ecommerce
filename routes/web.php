@@ -175,4 +175,4 @@ Route::name('front.')->group(function () {
 
 
 
-// Route::get('/{page}', [AdminAdminController::class, 'index']);
+Route::get('/{page}', [App\Http\Controllers\AdminController::class, 'index']);

@@ -48,7 +48,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $coupon->coupon_code }}</td>
                                         <td>{{ $coupon->coupon_type }}</td>
-                                        <td>{{ number_format($coupon->amount, 2) }}</td>
+                                        <td>
+                                            {{ $coupon->amount_type == 'Percentage' ? '%' : '$' }}
+                                            {{ number_format($coupon->amount, 2) }}</td>
                                         <td>
                                             {{-- @livewire('admin.category.update-status', ['status' => $coupon->status, 'category_id' => $coupon->id]) --}}
                                         </td>

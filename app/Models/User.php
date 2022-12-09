@@ -48,6 +48,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

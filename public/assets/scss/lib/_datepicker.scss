@@ -27,28 +27,32 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
-    .ui-datepicker-next, .ui-datepicker-prev {
+    .ui-datepicker-next,
+    .ui-datepicker-prev {
       text-indent: -99999px;
       color: $gray-600;
       top: 3px;
     }
 
-    .ui-datepicker-next::before, .ui-datepicker-prev::before {
+    .ui-datepicker-next::before,
+    .ui-datepicker-prev::before {
       font-size: 16px;
-      font-family: 'Ionicons';
+      font-family: "Ionicons";
       position: absolute;
       top: -2px;
       text-indent: 0;
     }
 
     .ui-datepicker-next {
-      &:hover::before, &:focus::before {
+      &:hover::before,
+      &:focus::before {
         color: $gray-800;
       }
     }
 
     .ui-datepicker-prev {
-      &:hover::before, &:focus::before {
+      &:hover::before,
+      &:focus::before {
         color: $gray-800;
       }
     }
@@ -58,16 +62,17 @@
 
       &:before {
         right: 5px;
-        content: '\f3d1';
+        content: "\f3d1";
       }
     }
 
     .ui-datepicker-prev:before {
       left: 5px;
-      content: '\f3cf';
+      content: "\f3cf";
     }
 
-    .ui-datepicker-next-hover, .ui-datepicker-prev-hover {
+    .ui-datepicker-next-hover,
+    .ui-datepicker-prev-hover {
       color: $gray-700;
       cursor: pointer;
       top: 1px;
