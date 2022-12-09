@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" method="POST" action="{{ route('admin.coupons.store') }}" enctype="multipart/form-data">
+                <form class="form-horizontal" wire:click.prevent="store">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
@@ -30,7 +30,7 @@
                             <div class="col-md-12 col-lg-6">
                                 <div class="form-group">
                                     <label for="coupon_code">Coupon Code</label>
-                                    <input type="text" class="form-control  @error('coupon_code') is-invalid @enderror" id="coupon_code">
+                                    <input type="text" class="form-control  @error('coupon_code') is-invalid @enderror" id="coupon_code" wire:model="coupon_code">
                                     @error('coupon_code')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -71,15 +71,11 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="form-group">
                                 <label for="users">Users</label>
-                                <select wire:model="users" class=" @error('users') is-invalid @enderror form-control select2" multiple="multiple">
-                                    @foreach ($sections as $section)
-                                        <optgroup label="{{ ucwords(str_replace('-', ' ', $section->name)) }}">
-                                        </optgroup>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">
-                                                {{ ucwords(str_replace('-', ' ', $user->name)) }}
-                                            </option>
-                                        @endforeach
+                                <select wire:model="users[]" class=" @error('users') is-invalid @enderror form-control select2" multiple="multiple">
+                                    @foreach ($activeUsers as $user)
+                                        <option value="{{ $user->id }}">
+                                            {{ $user->email }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('users')
@@ -100,17 +96,6 @@
                                     <option value="multiple">Multiple Time</option>
                                 </select>
                                 @error('coupon_type')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-6">
-                            <div class="form-group">
-                                <label for="coupon_code">Coupon Code</label>
-                                <input type="text" class="form-control  @error('coupon_code') is-invalid @enderror" id="coupon_code">
-                                @error('coupon_code')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -157,14 +142,20 @@
                             <div class="input-group-prepend">
                                 <label for="">Expiry Date</label>
                             </div>
-                            <input class="form-control fc-datepicker" placeholder="MM/DD/YYYY" type="text">
+                            <input class="form-control fc-datepicker @error('expiry_date') is-invalid @enderror" placeholder="MM/DD/YYYY" type="date" wire:model="expiry_date">
+                            @error('expiry_date')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <hr>
                     <div class="form-group mb-0 mt-3 justify-content-end">
                         <div>
-                            <button type="submit" class="btn btn-primary-gradient"><i class="fas fa-plus"></i>
-                                Add</button>
+                            <button type="submit" class="btn btn-primary-gradient">
+                                <i class="fas fa-plus"></i>Add
+                            </button>
                         </div>
                     </div>
                 </form>
