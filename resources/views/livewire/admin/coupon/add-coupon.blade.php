@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" wire:click.prevent="store">
+                <form class="form-horizontal">
                     @csrf
                     <div class="row">
                         <div class="col-md-12 col-lg-6">
@@ -44,7 +44,7 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="form-group">
                                 <label for="categories">Categories</label>
-                                <select wire:model="categories" class=" @error('categories') is-invalid @enderror form-control select2" multiple="multiple">
+                                <select wire:model="categories" class=" @error('categories') is-invalid @enderror form-control select" multiple>
                                     @foreach ($sections as $section)
                                         <optgroup label="{{ ucwords(str_replace('-', ' ', $section->name)) }}">
                                         </optgroup>
@@ -71,7 +71,7 @@
                         <div class="col-md-12 col-lg-6">
                             <div class="form-group">
                                 <label for="users">Users</label>
-                                <select wire:model="users[]" class=" @error('users') is-invalid @enderror form-control select2" multiple="multiple">
+                                <select wire:model="users" class=" @error('users') is-invalid @enderror form-control select" multiple>
                                     @foreach ($activeUsers as $user)
                                         <option value="{{ $user->id }}">
                                             {{ $user->email }}
@@ -153,8 +153,8 @@
                     <hr>
                     <div class="form-group mb-0 mt-3 justify-content-end">
                         <div>
-                            <button type="submit" class="btn btn-primary-gradient">
-                                <i class="fas fa-plus"></i>Add
+                            <button type="submit" wire:click.prevent="store" class="btn btn-primary-gradient">
+                                <i class="fas fa-plus"></i> Add
                             </button>
                         </div>
                     </div>

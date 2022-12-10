@@ -13,6 +13,9 @@
 <!-- Sidemenu css -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/sidemenu.css') }}">
 
+<!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
+
 @yield('css')
 <!--- Style css -->
 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">

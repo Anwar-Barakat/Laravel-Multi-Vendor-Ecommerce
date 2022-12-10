@@ -11,6 +11,9 @@
 <!-- Moment js -->
 <script src="{{ URL::asset('assets/plugins/moment/moment.js') }}"></script>
 
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
+
 <!-- Rating js-->
 <script src="{{ URL::asset('assets/plugins/rating/jquery.rating-stars.js') }}"></script>
 <script src="{{ URL::asset('assets/plugins/rating/jquery.barrating.js') }}"></script>

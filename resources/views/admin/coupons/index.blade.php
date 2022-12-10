@@ -37,12 +37,14 @@
                                     <th class="border-bottom-0">Coupon Code</th>
                                     <th class="border-bottom-0">Coupon Type</th>
                                     <th class="border-bottom-0">Amount</th>
+                                    <th class="border-bottom-0">Status</th>
                                     <th class="border-bottom-0">Expiry Date</th>
                                     <th class="border-bottom-0">Created At</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @forelse ($coupons as $coupon)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
