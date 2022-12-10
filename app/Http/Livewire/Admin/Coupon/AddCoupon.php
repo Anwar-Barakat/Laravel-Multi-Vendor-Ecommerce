@@ -42,7 +42,6 @@ class AddCoupon extends Component
         $this->validateOnly($fields);
     }
 
-
     public function store()
     {
         $this->validate();

@@ -54,7 +54,7 @@
                                             {{ $coupon->amount_type == 'Percentage' ? '%' : '$' }}
                                             {{ number_format($coupon->amount, 2) }}</td>
                                         <td>
-                                            {{-- @livewire('admin.category.update-status', ['status' => $coupon->status, 'category_id' => $coupon->id]) --}}
+                                            @livewire('admin.coupon.update-status', ['status' => $coupon->status, 'coupon_id' => $coupon->id])
                                         </td>
                                         <td>{{ $coupon->expiry_date }}</td>
                                         <td>{{ $coupon->created_at }}</td>
@@ -79,7 +79,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <x-delete-modal :id="$coupon->id" :title="'Delete The Category'" :action="route('admin.coupons.destroy', $coupon)" />
+                                        <x-delete-modal :id="$coupon->id" :title="'Delete The Coupon'" :action="route('admin.coupons.destroy', $coupon)" />
                                     </tr>
                                 @empty
                                     <tr class="text-center">

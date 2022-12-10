@@ -83,6 +83,12 @@ class CouponController extends Controller
      */
     public function destroy(Coupon $coupon)
     {
-        //
+        try {
+            $coupon->delete();
+            toastr()->info('Coupon Has Been Deleted Successfully');
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 }
