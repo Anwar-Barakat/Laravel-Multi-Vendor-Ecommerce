@@ -60,7 +60,7 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        //
+        return view('admin.coupons.edit', ['coupon' => $coupon]);
     }
 
     /**

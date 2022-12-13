@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">Add Coupon</h4>
+                    <h4 class="card-title mg-b-0">Edit Coupon</h4>
                     <i class="mdi mdi-dots-horizontal text-gray"></i>
                 </div>
             </div>
@@ -152,8 +152,8 @@
                     <hr>
                     <div class="form-group mb-0 mt-3 justify-content-end">
                         <div>
-                            <button type="submit" wire:click.prevent="store" class="btn btn-primary-gradient">
-                                <i class="fas fa-plus"></i> Add
+                            <button type="submit" wire:click.prevent="update" class="btn btn-primary-gradient">
+                                <i class="fas fa-edit"></i> Update
                             </button>
                         </div>
                     </div>
