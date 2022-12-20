@@ -537,8 +537,7 @@
                         </div>
                     </section>
                 @endif
-
-                @if (count($viewProducts) > 0)
+                @if ($viewProducts)
                     <section class="section-maker">
                         <div class="container">
                             <div class="sec-maker-header text-center">

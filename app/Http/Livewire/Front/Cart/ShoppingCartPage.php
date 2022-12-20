@@ -3,11 +3,13 @@
 namespace App\Http\Livewire\Front\Cart;
 
 use App\Models\Attribute;
+use App\Models\Coupon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 
 class ShoppingCartPage extends Component
 {
+    public $couponCode, $discount, $subTotalAfterDiscount, $taxAfterDiscount, $totalAfterDiscount;
 
     public function increaseQty($rowId)
     {
@@ -50,8 +52,43 @@ class ShoppingCartPage extends Component
         $this->emit('updateCardTotal', Cart::instance('cart')->total());
     }
 
+    public function applyCouponCode()
+    {
+        $coupon = Coupon::where('coupon_code', $this->couponCode)->first();
+        if (!$coupon)
+            toastr()->error('This Coupon Code is not valid');
+        else {
+            if (session()->has('coupon'))
+                $this->calcDiscount();
+            else
+                session()->put('coupon', [
+                    'coupon_option'     => $coupon->coupon_option,
+                    'coupon_code'       => $coupon->coupon_code,
+                    'coupon_type'       => $coupon->coupon_type,
+                    'amount_type'       => $coupon->amount_type,
+                    'amount'            => $coupon->amount
+                ]);
+        }
+    }
+
+    public function calcDiscount()
+    {
+        if (session()->get('coupon')['coupon_type'] == 'fixed')
+            $this->discount     = session()->get('coupon')['amount'];
+        else
+            $this->discount     = (Cart::instance('cart')->subtotal()  * session()->get('coupon')['amount']) / 100;
+
+
+        $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
+        $this->taxAfterDiscount         = ($this->subTotalAfterDiscount * config('cart.tax')) / 100;
+        $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->taxAfterDiscount;
+    }
+
     public function render()
     {
+        if (session()->has('coupon'))
+            $this->calcDiscount();
+
         return view('livewire.front.cart.shopping-cart-page')->layout('front.layouts.master');
     }
 }
