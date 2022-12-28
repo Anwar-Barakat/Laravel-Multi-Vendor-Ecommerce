@@ -32,7 +32,7 @@
                         @foreach ($categories as $category)
                             <h3 class="fetch-mark-category">
                                 <a href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">{{ ucwords($category->name) }}
-                                    <span class="total-fetch-items">({{ $category->products_count }})</span>
+                                    <span class="total-fetch-items"></span>
                                 </a>
                             </h3>
                             <ul>
@@ -101,14 +101,7 @@
                             @endif
                         @endforeach
                     @endif
-                    <div class="facet-filter-by-shipping">
-                        <h3 class="title-name">Shipping</h3>
-                        <form class="facet-form" action="#" method="post">
-                            <input type="checkbox" class="check-box" id="cb-free-ship">
-                            <label class="label-text" for="cb-free-ship">Free Shipping</label>
-                        </form>
-                    </div>
-                    <div class="facet-filter-by-rating">
+                    {{-- <div class="facet-filter-by-rating">
                         <h3 class="title-name">Rating</h3>
                         <div class="facet-form">
                             <!-- 5 Stars -->
@@ -162,7 +155,7 @@
                             </div>
                             <!-- 1 & Up Stars /- -->
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div>

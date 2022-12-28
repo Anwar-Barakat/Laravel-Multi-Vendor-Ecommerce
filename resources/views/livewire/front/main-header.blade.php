@@ -148,8 +148,8 @@
                         </form>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <nav>
-                            <ul class="mid-nav g-nav md:flex md:justify-between">
+                        <nav class="lg:flex lg:justify-end">
+                            <ul class="mid-nav g-nav sm:flex sm:justify-between">
                                 <li>
                                     <a href="{{ route('front.home') }}">
                                         <i class="ion ion-md-home u-c-brand"></i>

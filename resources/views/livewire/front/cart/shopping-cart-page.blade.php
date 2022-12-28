@@ -63,7 +63,7 @@
                                             <td>
                                                 <div class="cart-quantity">
                                                     <div class="quantity">
-                                                        <input type="number" class="quantity-text-field" value="{{ $item->qty }}">
+                                                        <input type="text" class="quantity-text-field" value="{{ $item->qty }}">
                                                         <a href="#" class="plus-a" data-max="1000" wire:click.prevent="increaseQty('{{ $item->rowId }}')">&#43;</a>
                                                         <a href="#" class="minus-a" data-min="1" wire:click.prevent="decreaseQty('{{ $item->rowId }}')">&#45;</a>
                                                     </div>

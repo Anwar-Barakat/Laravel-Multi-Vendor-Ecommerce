@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front\Cart;
 use App\Models\Attribute;
 use App\Models\Coupon;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ShoppingCartPage extends Component
@@ -54,20 +55,24 @@ class ShoppingCartPage extends Component
 
     public function applyCouponCode()
     {
-        $coupon = Coupon::where('coupon_code', $this->couponCode)->first();
-        if (!$coupon)
-            toastr()->error('This Coupon Code is not valid');
-        else {
-            if (session()->has('coupon'))
-                $this->calcDiscount();
-            else
-                session()->put('coupon', [
-                    'coupon_option'     => $coupon->coupon_option,
-                    'coupon_code'       => $coupon->coupon_code,
-                    'coupon_type'       => $coupon->coupon_type,
-                    'amount_type'       => $coupon->amount_type,
-                    'amount'            => $coupon->amount
-                ]);
+        if (Auth::check()) {
+            $coupon = Coupon::where('coupon_code', $this->couponCode)->first();
+            if (!$coupon)
+                toastr()->error('This Coupon Code is not valid');
+            else {
+                if (session()->has('coupon'))
+                    $this->calcDiscount();
+                else
+                    session()->put('coupon', [
+                        'coupon_option'     => $coupon->coupon_option,
+                        'coupon_code'       => $coupon->coupon_code,
+                        'coupon_type'       => $coupon->coupon_type,
+                        'amount_type'       => $coupon->amount_type,
+                        'amount'            => $coupon->amount
+                    ]);
+            }
+        } else {
+            toastr()->info('You Have to Loing to Apply Coupon Code, Thanks');
         }
     }
 
@@ -86,7 +91,7 @@ class ShoppingCartPage extends Component
 
     public function render()
     {
-        if (session()->has('coupon'))
+        if (session()->has('coupon') && Auth::check())
             $this->calcDiscount();
 
         return view('livewire.front.cart.shopping-cart-page')->layout('front.layouts.master');

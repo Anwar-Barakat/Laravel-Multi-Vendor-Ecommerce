@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Home;
 
+use App\Models\Admin;
 use App\Models\Banner;
 use App\Models\Product;
 use Livewire\Component;
