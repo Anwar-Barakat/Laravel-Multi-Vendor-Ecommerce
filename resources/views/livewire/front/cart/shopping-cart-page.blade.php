@@ -71,8 +71,7 @@
                                             </td>
                                             <td>
                                                 <div class="action-wrapper">
-                                                    <button class="button button-outline-secondary fas fa-sync"></button>
-                                                    <button class="button button-outline-secondary fas fa-trash" wire:click.prevent="deleteItem('{{ $item->rowId }}')"></button>
+                                                    <button class=" button button-outline-secondary fas fa-trash   hover:text-red-600 border-red-600" wire:click.prevent="deleteItem('{{ $item->rowId }}')"></button>
                                                 </div>
                                             </td>
 

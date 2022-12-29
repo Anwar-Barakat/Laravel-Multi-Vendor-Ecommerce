@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Front\Cart;
 
 use App\Models\Attribute;
 use App\Models\Coupon;
+use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -55,11 +56,36 @@ class ShoppingCartPage extends Component
 
     public function applyCouponCode()
     {
+
         if (Auth::check()) {
             $coupon = Coupon::where('coupon_code', $this->couponCode)->first();
             if (!$coupon)
-                toastr()->error('This Coupon Code is not valid');
+                toastr()->info('This Coupon Code is not Valid !');
             else {
+
+                $catArr     = explode(',', $coupon->categories);
+                $usersArr   = explode(',', $coupon->users);
+
+
+                if ($coupon->status == 0) :
+                    toastr()->info('This Coupon Code is not Active !');
+                elseif (date('Y-m-d') > $coupon->expiry_date) :
+                    toastr()->info(date('Y-m-d'), $coupon->expiry_date);
+                endif;
+
+
+                foreach (Cart::instance('cart')->content() as  $item) {
+                    $product        = Product::select('category_id')->findOrFail($item->id);
+                    if (!in_array($product->category_id, $catArr)) {
+                        toastr()->info('This Coupon Code is not for one of the selected products !');
+                    }
+                }
+
+                if (!in_array(Auth::user()->id, $usersArr)) {
+                    toastr()->info('This Coupon Code is not for you!');
+                }
+
+
                 if (session()->has('coupon'))
                     $this->calcDiscount();
                 else
