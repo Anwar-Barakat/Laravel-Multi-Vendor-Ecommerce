@@ -26,27 +26,30 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Delivery Addresses</th>
+                                        <th class="flex justify-between align-items-center">
+                                            <span>Delivery Addresses</span>
+                                            <a href="{{ route('front.delivery.addresses.add') }}" class="delivery-address-add">Add</a>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse (Auth::user()->deliveryAddresses as $address)
-                                        <tr class="hover:shadow-lg transition">
-                                            <td>
-                                                <h6 class="text-sm flex align-items-center gap-2">
-                                                    <input type="radio">
-                                                    {{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}
+                                    <tr class="hover:shadow-lg transition">
+                                        <td>
+                                            @forelse (Auth::user()->deliveryAddresses as $address)
+                                                <h6 class="text-xs flex align-items-center gap-2 mb-3">
+                                                    <input type="radio" id="address" wire:click="getDeliveryAddressId({{ $address->id }})">
+                                                    <label for="address" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
                                                 </h6>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr class="text-center">
-                                            <td colspan="1">
-                                                <div class="cart-price">
-                                                    <a href="">Click Here to Add a New Delivery Address !!</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                            @empty
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <td colspan="1">
+                                            <div class="cart-price">
+                                                <a href="">Click Here to Add a New Delivery Address !!</a>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     @endforelse
                                 </tbody>
                             </table>
@@ -60,7 +63,6 @@
                                         <th>Size</th>
                                         <th>Price</th>
                                         <th>Quantity</th>
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,12 +98,6 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <div class="action-wrapper">
-                                                    <button class=" button button-outline-secondary fas fa-trash hover:text-red-600 border-red-600" wire:click.prevent="deleteItem('{{ $item->rowId }}')"></button>
-                                                </div>
-                                            </td>
-
                                         </tr>
                                     @empty
                                         <tr class="text-center">
@@ -184,6 +180,15 @@
 
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+
+                        <!-- Billing /- -->
+
+                        <div class="coupon-continue-checkout u-s-m-b-60">
+                            <div class="button-area">
+                                <a href="{{ route('front.shopping.store') }}" class="continue">Back to Cart</a>
+                                <a href="" class="checkout">Place to Order</a>
                             </div>
                         </div>
                     </form>

@@ -4315,7 +4315,9 @@ body {
   position: relative;
   display: inline-block;
   margin-bottom: 2rem;
+  padding-top: 1rem;
 }
+
 .main-title::before {
   position: absolute;
   content: "";
@@ -4335,6 +4337,7 @@ body {
 
 .page-track-order .track-order-h2 {
   font-size: 35px;
+  padding-top: 1rem;
 }
 
 .page-track-order .track-order-h6 {

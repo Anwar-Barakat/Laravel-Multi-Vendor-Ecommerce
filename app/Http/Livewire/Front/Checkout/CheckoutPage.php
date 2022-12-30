@@ -25,7 +25,11 @@ class CheckoutPage extends Component
         $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->taxAfterDiscount;
     }
 
-
+    public function getDeliveryAddressId($id)
+    {
+        $this->deliveryAddress = $id;
+        dd($this->deliveryAddress);
+    }
 
     public function render()
     {

@@ -22,6 +22,7 @@ use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use App\Http\Livewire\Front\Cart\ShoppingCartPage;
+use App\Http\Livewire\Front\Checkout\AddDelieveryAddress;
 use App\Http\Livewire\Front\Checkout\CheckoutPage;
 use App\Http\Livewire\Front\Customer\ProfilePage;
 use App\Http\Livewire\Front\Detail\ProductDetailPage;
@@ -170,6 +171,7 @@ Route::name('front.')->group(function () {
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
 
     Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
+    Route::get('/delivery-addresses/add',                   AddDelieveryAddress::class)->name('delivery.addresses.add');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 

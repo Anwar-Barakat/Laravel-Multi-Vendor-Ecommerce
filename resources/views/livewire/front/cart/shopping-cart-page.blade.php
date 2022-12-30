@@ -229,7 +229,7 @@
                             </div>
                             <div class="button-area">
                                 <a href="{{ route('front.shopping.store') }}" class="continue">Continue Shopping</a>
-                                <a href="{{ route('front.checkout') }}" class="checkout">Proceed to Checkout</a>
+                                <a href="javascript:;" class="checkout" wire:click="proccedToCheckout">Proceed to Checkout</a>
                             </div>
                         </div>
                     </form>

@@ -71,3 +71,13 @@ input {
   max-width: 100%;
 }
 
+.delivery-address-add {
+  border-bottom: 1px solid var(--main-color);
+  background: var(--main-color);
+  border-radius: 10px;
+  color: white;
+  padding: 5px 10px;
+}
+.delivery-address-add:hover {
+  color: white;
+}

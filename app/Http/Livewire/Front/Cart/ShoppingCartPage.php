@@ -100,7 +100,7 @@ class ShoppingCartPage extends Component
                 endif;
             }
         } else {
-            toastr()->info('You Have to Loing to Apply Coupon Code, Thanks');
+            toastr()->info('You Have to Login to Apply Coupon Code, Thanks');
         }
     }
 
@@ -115,6 +115,17 @@ class ShoppingCartPage extends Component
         $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
         $this->taxAfterDiscount         = ($this->subTotalAfterDiscount * config('cart.tax')) / 100;
         $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->taxAfterDiscount;
+    }
+
+    public function proccedToCheckout()
+    {
+        // if (Cart::instance('cart')->content()->count() == 0) :
+        //     toastr()->info("You Don't have any Item yet in The Cart");
+        // elseif (!Auth::check()) :
+        //     toastr()->info('You Have to Login to Move to Checkout Page, Thanks');
+        // else :
+        //     return redirect()->route('front.checkout');
+        // endif;
     }
 
     public function render()
