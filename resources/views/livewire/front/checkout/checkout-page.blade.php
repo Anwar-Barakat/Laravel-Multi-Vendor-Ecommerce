@@ -183,7 +183,25 @@
                                                 </td>
                                             </tr>
                                         @endif
-
+                                        <tr>
+                                            <td class="flex">
+                                                <h3 class="calc-h3 u-s-m-b-0">Payment Methods</h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text">
+                                                    <label for="cod" class="flex align-items-center gap-2">
+                                                        <input type="radio" wire:model="payment_method" id="cod">
+                                                        <img src="{{ asset('front/images/payment_methods/cod.png') }}" alt="" width="100">
+                                                    </label>
+                                                </span>
+                                                <span class="calc-text">
+                                                    <label for="cod" class="flex align-items-center gap-2">
+                                                        <input type="radio" wire:model="payment_method" id="cod">
+                                                        <img src="{{ asset('front/images/payment_methods/paypal.png') }}" alt="" width="100">
+                                                    </label>
+                                                </span>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
