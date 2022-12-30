@@ -163,7 +163,8 @@ body {
 
 /* Page introduction style a */
 .page-style-a {
-  background: url(../images/pattern/pattern-a.png) repeat center center;
+  background: url(../../assets/img/backgrounds/bg1.jpg) center center;
+  background-size: cover;
 }
 
 .page-style-a:after {

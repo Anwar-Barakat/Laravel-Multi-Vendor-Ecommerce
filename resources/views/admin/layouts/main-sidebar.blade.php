@@ -66,7 +66,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="side-item side-item-category">General</li>
+
 
                 {{-- Sections --}}
                 <li class="slide">

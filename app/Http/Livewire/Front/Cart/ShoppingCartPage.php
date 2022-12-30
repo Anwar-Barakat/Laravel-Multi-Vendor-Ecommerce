@@ -86,9 +86,9 @@ class ShoppingCartPage extends Component
                 }
 
 
-                if (session()->has('coupon'))
+                if (session()->has('coupon')) :
                     $this->calcDiscount();
-                else
+                else :
                     session()->put('coupon', [
                         'coupon_option'     => $coupon->coupon_option,
                         'coupon_code'       => $coupon->coupon_code,
@@ -96,6 +96,8 @@ class ShoppingCartPage extends Component
                         'amount_type'       => $coupon->amount_type,
                         'amount'            => $coupon->amount
                     ]);
+                    toastr()->info('This Coupon Code has been applied successfully');
+                endif;
             }
         } else {
             toastr()->info('You Have to Loing to Apply Coupon Code, Thanks');
