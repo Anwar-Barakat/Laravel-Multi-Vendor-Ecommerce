@@ -96,7 +96,7 @@ class ShoppingCartPage extends Component
                         'amount_type'       => $coupon->amount_type,
                         'amount'            => $coupon->amount
                     ]);
-                    toastr()->info('This Coupon Code has been applied successfully');
+                    toastr()->success('This Coupon Code has been applied successfully');
                 endif;
             }
         } else {

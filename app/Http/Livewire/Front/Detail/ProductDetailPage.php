@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class ProductDetailPage extends Component
 {
@@ -59,18 +60,22 @@ class ProductDetailPage extends Component
 
     public function addToCart($id, $name, $qty, $price, $size, $code, $color)
     {
-        $proAttr        = Attribute::where(['product_id' => $id, 'size' => $size])->first();
-        $proAttrStock   = $proAttr->stock;
-
-        if ($proAttrStock > $qty) {
-            $proAttrStock       -= $qty;
-            $this->totalStock   -= $qty;
-            $proAttr->update(['stock' => $proAttrStock]);
-            Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
-            $this->updateHeader();
-            toastr()->success('Product Has Been Added Successfully to Cart');
+        if (!Auth::check()) {
+            toastr()->info('Please Login to add Item to Your card');
         } else {
-            toastr()->info('Product Quntity is out of Stock');
+            $proAttr        = Attribute::where(['product_id' => $id, 'size' => $size])->first();
+            $proAttrStock   = $proAttr->stock;
+
+            if ($proAttrStock > $qty) {
+                $proAttrStock       -= $qty;
+                $this->totalStock   -= $qty;
+                $proAttr->update(['stock' => $proAttrStock]);
+                Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
+                $this->updateHeader();
+                toastr()->success('Product Has Been Added Successfully to Cart');
+            } else {
+                toastr()->info('Product Quntity is out of Stock');
+            }
         }
     }
 

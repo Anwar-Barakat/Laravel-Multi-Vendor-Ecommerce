@@ -20,4 +20,14 @@ class DeliveryAddress extends Model
         'pincode',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(country::class, 'country_id');
+    }
 }

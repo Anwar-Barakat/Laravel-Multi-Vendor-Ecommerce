@@ -2,14 +2,14 @@
     <div class="page-style-a">
         <div class="container">
             <div class="page-intro">
-                <h2>Cart</h2>
+                <h2>Checkout</h2>
                 <ul class="bread-crumb">
                     <li class="has-separator">
                         <i class="ion ion-md-home"></i>
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascriot:;">Shopping Cart</a>
+                        <a href="javascriot:;">Checkout</a>
                     </li>
                 </ul>
             </div>
@@ -21,6 +21,36 @@
             <div class="row">
                 <div class="col-lg-12">
                     <form>
+                        <!-- Delivery Addresses -->
+                        <div class="table-wrapper u-s-m-b-60">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Delivery Addresses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse (Auth::user()->deliveryAddresses as $address)
+                                        <tr class="hover:shadow-lg transition">
+                                            <td>
+                                                <h6 class="text-sm flex align-items-center gap-2">
+                                                    <input type="radio">
+                                                    {{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}
+                                                </h6>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr class="text-center">
+                                            <td colspan="1">
+                                                <div class="cart-price">
+                                                    <a href="">Click Here to Add a New Delivery Address !!</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                         <!-- Products-List-Wrapper -->
                         <div class="table-wrapper u-s-m-b-60">
                             <table>
@@ -62,9 +92,7 @@
                                             <td>
                                                 <div class="cart-quantity">
                                                     <div class="quantity">
-                                                        <input type="text" class="quantity-text-field" value="{{ $item->qty }}">
-                                                        <a href="#" class="plus-a" data-max="1000" wire:click.prevent="increaseQty('{{ $item->rowId }}')">&#43;</a>
-                                                        <a href="#" class="minus-a" data-min="1" wire:click.prevent="decreaseQty('{{ $item->rowId }}')">&#45;</a>
+                                                        <input type="text" class="quantity-text-field" value="{{ $item->qty }}" readonly>
                                                     </div>
                                                 </div>
                                             </td>
@@ -137,64 +165,6 @@
                                         @else
                                             <tr>
                                                 <td>
-                                                    <h3 class="calc-h3 u-s-m-b-8">Shipping</h3>
-                                                    <div class="calc-choice-text u-s-m-b-4">Flat Rate: Not Available</div>
-                                                    <div class="calc-choice-text u-s-m-b-4">Free Shipping: Not Available</div>
-                                                    <a data-toggle="collapse" href="#shipping-calculation" class="calc-anchor u-s-m-b-4">Calculate Shipping
-                                                    </a>
-                                                    <div class="collapse" id="shipping-calculation">
-                                                        <form>
-                                                            <div class="select-country-wrapper u-s-m-b-8">
-                                                                <div class="select-box-wrapper">
-                                                                    <label class="sr-only" for="select-country">Choose your
-                                                                        country
-                                                                    </label>
-                                                                    <select class="select-box" id="select-country">
-                                                                        <option selected="selected" value="">Choose your
-                                                                            country...
-                                                                        </option>
-                                                                        <option value="">United Kingdom (UK)</option>
-                                                                        <option value="">United States (US)</option>
-                                                                        <option value="">United Arab Emirates (UAE)
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="select-state-wrapper u-s-m-b-8">
-                                                                <div class="select-box-wrapper">
-                                                                    <label class="sr-only" for="select-state">Choose your
-                                                                        state
-                                                                    </label>
-                                                                    <select class="select-box" id="select-state">
-                                                                        <option selected="selected" value="">Choose your
-                                                                            state...
-                                                                        </option>
-                                                                        <option value="">Alabama</option>
-                                                                        <option value="">Alaska</option>
-                                                                        <option value="">Arizona</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="town-city-div u-s-m-b-8">
-                                                                <label class="sr-only" for="town-city"></label>
-                                                                <input type="text" id="town-city" class="text-field" placeholder="Town / City">
-                                                            </div>
-                                                            <div class="postal-code-div u-s-m-b-8">
-                                                                <label class="sr-only" for="postal-code"></label>
-                                                                <input type="text" id="postal-code" class="text-field" placeholder="Postcode / Zip">
-                                                            </div>
-                                                            <div class="update-totals-div u-s-m-b-8">
-                                                                <button class="button button-outline-platinum">Update
-                                                                    Totals</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
                                                     <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
                                                     <span></span>
                                                 </td>
@@ -214,22 +184,6 @@
 
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                        <!-- Billing /- -->
-
-                        <div class="coupon-continue-checkout u-s-m-b-60">
-                            <div class="coupon-area">
-                                <h6>Enter your coupon code if you have one.</h6>
-                                <div class="coupon-field">
-                                    <label class="sr-only" for="coupon-code">Apply Coupon</label>
-                                    <input id="coupon-code" type="text" class="text-field" placeholder="Coupon Code" wire:model="couponCode">
-                                    <button type="submit" class="button" wire:click.prevent="applyCouponCode">Apply Coupon</button>
-                                </div>
-                            </div>
-                            <div class="button-area">
-                                <a href="{{ route('front.shopping.store') }}" class="continue">Continue Shopping</a>
-                                <a href="{{ route('front.checkout') }}" class="checkout">Proceed to Checkout</a>
                             </div>
                         </div>
                     </form>
