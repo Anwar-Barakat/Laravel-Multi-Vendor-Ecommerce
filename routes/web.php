@@ -24,6 +24,7 @@ use App\Http\Controllers\Vendor\UpdateVendorDetailController;
 use App\Http\Livewire\Front\Cart\ShoppingCartPage;
 use App\Http\Livewire\Front\Checkout\AddDelieveryAddress;
 use App\Http\Livewire\Front\Checkout\CheckoutPage;
+use App\Http\Livewire\Front\Checkout\EditDelieveryAddress;
 use App\Http\Livewire\Front\Customer\ProfilePage;
 use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
@@ -172,6 +173,7 @@ Route::name('front.')->group(function () {
 
     Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
     Route::get('/delivery-addresses/add',                   AddDelieveryAddress::class)->name('delivery.addresses.add');
+    Route::get('/delivery-addresses/edit/{id}',             EditDelieveryAddress::class)->name('delivery.addresses.edit');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 

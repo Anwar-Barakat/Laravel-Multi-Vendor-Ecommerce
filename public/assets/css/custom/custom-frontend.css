@@ -78,6 +78,13 @@ input {
   color: white;
   padding: 5px 10px;
 }
+
 .delivery-address-add:hover {
   color: white;
+}
+
+.total-amount {
+  background: var(--main-color);
+  color: white;
+  font-weight: bold;
 }

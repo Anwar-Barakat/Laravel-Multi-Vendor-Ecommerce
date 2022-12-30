@@ -28,29 +28,35 @@
                                     <tr>
                                         <th class="flex justify-between align-items-center">
                                             <span>Delivery Addresses</span>
-                                            <a href="{{ route('front.delivery.addresses.add') }}" class="delivery-address-add">Add</a>
+                                            <a href="{{ route('front.delivery.addresses.add') }}" class="custom-btn">Add</a>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="hover:shadow-lg transition">
-                                        <td>
-                                            @forelse (Auth::user()->deliveryAddresses as $address)
-                                                <h6 class="text-xs flex align-items-center gap-2 mb-3">
-                                                    <input type="radio" id="address" wire:click="getDeliveryAddressId({{ $address->id }})">
-                                                    <label for="address" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
-                                                </h6>
-                                            @empty
-                                        </td>
-                                    </tr>
-                                    <tr class="text-center">
-                                        <td colspan="1">
-                                            <div class="cart-price">
-                                                <a href="">Click Here to Add a New Delivery Address !!</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforelse
+                                    @if (isset(Auth::user()->deliveryAddresses))
+                                        @forelse (Auth::user()->deliveryAddresses as $address)
+                                            <tr>
+                                                <td>
+                                                    <h6 class="text-xs flex align-items-center gap-2 mb-3">
+                                                        <input type="radio" id="address" wire:click="getDeliveryAddressId({{ $address->id }})">
+                                                        <label for="address" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('front.delivery.addresses.edit', ['id' => $address->id]) }}" class=" button button-outline-secondary fas fa-edit hover:text-green-600 border-green-600"></a>
+                                                    <button class=" button button-outline-secondary fas fa-trash hover:text-red-600 border-red-600" wire:click.prevent="deleteDeliveryAddress({{ $address->id }})"></button>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr class="text-center">
+                                                <td colspan="1">
+                                                    <div class="cart-price">
+                                                        <a href="">Click Here to Add a New Delivery Address !!</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -154,7 +160,7 @@
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
-                                                <td>
+                                                <td class="total-amount">
                                                     <span class="calc-text">${{ $totalAfterDiscount }}</span>
                                                 </td>
                                             </tr>
@@ -172,7 +178,7 @@
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
-                                                <td>
+                                                <td class="total-amount">
                                                     <span class="calc-text">${{ Cart::instance('cart')->total() }}</span>
                                                 </td>
                                             </tr>

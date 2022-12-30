@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Checkout;
 
+use App\Models\DeliveryAddress;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -29,6 +30,12 @@ class CheckoutPage extends Component
     {
         $this->deliveryAddress = $id;
         dd($this->deliveryAddress);
+    }
+
+    public function deleteDeliveryAddress($id)
+    {
+        DeliveryAddress::findOrFail($id)->delete();
+        toastr()->info('Delivery Address Has Been Deleted');
     }
 
     public function render()

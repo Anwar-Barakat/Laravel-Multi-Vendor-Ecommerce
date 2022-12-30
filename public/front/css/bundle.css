@@ -157,10 +157,6 @@ body {
   color: #ffffff;
 }
 
-[class*="page-style-"] .page-intro > .bread-crumb > li.is-marked > a {
-  color: var(--main-color);
-}
-
 /* Page introduction style a */
 .page-style-a {
   background: url(../../assets/img/backgrounds/bg1.jpg) center center;
@@ -3998,7 +3994,8 @@ body {
 }
 
 .coupon-continue-checkout .button-area .continue,
-.coupon-continue-checkout .button-area .checkout {
+.coupon-continue-checkout .button-area .checkout,
+.custom-btn {
   display: inline-block;
   font-size: 13px;
   font-weight: 700;
@@ -4011,14 +4008,16 @@ body {
   border: 2px solid #292929;
 }
 
-.coupon-continue-checkout .button-area .checkout {
+.coupon-continue-checkout .button-area .checkout,
+.custom-btn {
   margin-left: 6px;
   transition: all 0.4s;
   background: var(--main-color);
   color: #ffffff;
 }
 
-.coupon-continue-checkout .button-area .checkout:hover {
+.coupon-continue-checkout .button-area .checkout:hover,
+..custom-btn:hover {
   background: #0162e8;
 }
 
@@ -4848,7 +4847,8 @@ body {
     text-align: center;
   }
 
-  .coupon-continue-checkout .button-area .checkout {
+  .coupon-continue-checkout .button-area .checkout,
+  .custom-btn {
     margin: 6px 0 0 0;
   }
 

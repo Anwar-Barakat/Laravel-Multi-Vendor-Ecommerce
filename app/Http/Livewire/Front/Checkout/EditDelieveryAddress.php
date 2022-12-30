@@ -6,7 +6,7 @@ use App\Models\DeliveryAddress;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class AddDelieveryAddress extends Component
+class EditDelieveryAddress extends Component
 {
     public $name,
         $address,
@@ -14,7 +14,8 @@ class AddDelieveryAddress extends Component
         $city,
         $state,
         $country_id,
-        $pincode;
+        $pincode,
+        $deliveryAddressId;
 
     protected $rules =  [
         'name'          => ['required', 'string', 'min:3', 'max:30'],
@@ -26,17 +27,26 @@ class AddDelieveryAddress extends Component
         'pincode'       => ['required', 'min:6'],
     ];
 
-
-    public function updated($fields)
+    public function mount($id)
     {
-        $this->validateOnly($fields);
+        $this->deliveryAddressId    = $id;
+        $deliveryAddress    = DeliveryAddress::findOrFail($id);
+        $this->name         =  $deliveryAddress->name;
+        $this->email        =  $deliveryAddress->email;
+        $this->address      =  $deliveryAddress->address;
+        $this->mobile       =  $deliveryAddress->mobile;
+        $this->city         =  $deliveryAddress->city;
+        $this->state        =  $deliveryAddress->state;
+        $this->country_id   =  $deliveryAddress->country->id;
+        $this->pincode      =  $deliveryAddress->pincode;
     }
 
-    public function storeDeliveryAddress()
+    public function updateDeliveryAddress()
     {
         $this->validate();
         try {
-            DeliveryAddress::create([
+            $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
+            $deliveryAddress->update([
                 'user_id'       => Auth::user()->id,
                 'name'          => $this->name,
                 'address'       => $this->address,
@@ -47,8 +57,7 @@ class AddDelieveryAddress extends Component
                 'pincode'       => $this->pincode,
             ]);
 
-            toastr()->success('Delivery Address Has Been Added Successfully');
-            $this->reset();
+            toastr()->success('Delivery Address Has Been Updated Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
@@ -56,6 +65,6 @@ class AddDelieveryAddress extends Component
 
     public function render()
     {
-        return view('livewire.front.checkout.add-delievery-address')->layout('front.layouts.master');
+        return view('livewire.front.checkout.edit-delievery-address')->layout('front.layouts.master');
     }
 }

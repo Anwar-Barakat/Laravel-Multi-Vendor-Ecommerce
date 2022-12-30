@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
-                    <div class="reg-wrapper item main-shadow p-4">
+                    <div class="reg-wrapper item p-4">
                         <h2 class="account-h2 u-s-m-b-20 main-title md:text-sm">Customer Login</h2>
 
                         <!-- Session Status -->

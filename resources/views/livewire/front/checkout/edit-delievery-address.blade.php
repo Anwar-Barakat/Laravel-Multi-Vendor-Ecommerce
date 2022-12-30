@@ -9,7 +9,7 @@
                         <a href="{{ route('front.home') }}">Home</a>
                     </li>
                     <li class="is-marked">
-                        <a href="javascrip:void(0);">Add Delivery Address</a>
+                        <a href="javascrip:void(0);">Edit Delivery Address</a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="reg-wrapper wide item p-4">
-                        <h2 class="account-h2 u-s-m-b-20 md:text-sm main-title">Add Delivery Address</h2>
+                        <h2 class="account-h2 u-s-m-b-20 md:text-sm main-title">Edit Delivery Address</h2>
                         <form>
                             <div class="row mt-4">
                                 <div class="form-group col-lg-6 col-md-12">
@@ -103,8 +103,8 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <button class="ml-4 button button-primary" wire:click.prevent="storeDeliveryAddress">
-                                    <i class="fas fa-save"></i>&nbsp; {{ __('Submit') }}
+                                <button class="ml-4 button button-primary" wire:click.prevent="updateDeliveryAddress">
+                                    <i class="fas fa-edit"></i> &nbsp;{{ __('Update') }}
                                 </button>
                             </div>
                         </form>

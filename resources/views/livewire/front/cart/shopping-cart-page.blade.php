@@ -130,12 +130,12 @@
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
-                                                <td>
+                                                <td class="total-amount">
                                                     <span class="calc-text">${{ $totalAfterDiscount }}</span>
                                                 </td>
                                             </tr>
                                         @else
-                                            <tr>
+                                            {{-- <tr>
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-8">Shipping</h3>
                                                     <div class="calc-choice-text u-s-m-b-4">Flat Rate: Not Available</div>
@@ -192,7 +192,7 @@
                                                 </td>
                                                 <td>
                                                 </td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
@@ -206,7 +206,7 @@
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
-                                                <td>
+                                                <td class="total-amount">
                                                     <span class="calc-text">${{ Cart::instance('cart')->total() }}</span>
                                                 </td>
                                             </tr>
