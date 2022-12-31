@@ -30,6 +30,7 @@ use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
+use App\Http\Livewire\Front\Thanks\ThanksPage;
 use App\Http\Livewire\Front\Vendor\RegisterPage;
 use App\Http\Livewire\Front\Vendor\VendorProducts;
 use App\Http\Livewire\Front\Wishlist\WishlistPage;
@@ -174,6 +175,8 @@ Route::name('front.')->group(function () {
     Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
     Route::get('/delivery-addresses/add',                   AddDelieveryAddress::class)->name('delivery.addresses.add');
     Route::get('/delivery-addresses/edit/{id}',             EditDelieveryAddress::class)->name('delivery.addresses.edit');
+
+    Route::get('/thanks',                                   ThanksPage::class)->name('thanks');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 
