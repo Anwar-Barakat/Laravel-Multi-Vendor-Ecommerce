@@ -23,13 +23,13 @@ class CreateOrdersTable extends Migration
             $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
             $table->string('email');
             $table->string('mobile');
-            $table->string('shipping_charges');
+            $table->string('shipping_charges')->default(0);
             $table->string('coupon_code')->nullable();
             $table->float('coupon_amount')->nullable();
             $table->string('order_status');
             $table->string('paymeny_method');
             $table->string('paymeny_gateway');
-            $table->float('grand_total');
+            $table->string('final_price');
             $table->timestamps();
         });
     }

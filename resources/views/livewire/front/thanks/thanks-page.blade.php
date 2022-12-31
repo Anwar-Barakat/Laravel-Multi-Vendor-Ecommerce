@@ -23,7 +23,7 @@
                 <h2 class="track-order-h2 u-s-m-b-20 ">Your Order Has been Placed Successfully</h2>
                 <h5 class="text-lg-center">
                     Your order number is <span class="font-bold text-green-600">{{ session()->get('orderId') }}</span>
-                    and Grand Total is <span class="font-bold text-green-600">${{ session()->get('grandTotal') }}</span>
+                    and Grand Total is <span class="font-bold text-green-600">${{ session()->get('finalPrice') }}</span>
                 </h5>
                 <a href="{{ route('front.shopping.store') }}" class="custom-btn mt-3">Continue Shopping</a>
             </div>
@@ -33,6 +33,6 @@
 
 @php
     session()->forget('orderId');
-    session()->forget('grandTotal');
+    session()->forget('finalPrice');
     session()->forget('coupon');
 @endphp

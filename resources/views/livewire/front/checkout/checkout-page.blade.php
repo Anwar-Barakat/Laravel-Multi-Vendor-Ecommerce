@@ -230,7 +230,7 @@
                         <div class="coupon-continue-checkout u-s-m-b-60">
                             <div class="button-area">
                                 <a href="{{ route('front.shopping.store') }}" class="continue">Back to Cart</a>
-                                <a href="javascript:;" class="checkout" wire:click.prevent="placeToOrder">Place to Order</a>
+                                <a href="" class="checkout" wire:click.prevent="placeToOrder">Place to Order</a>
                             </div>
                         </div>
                     </form>

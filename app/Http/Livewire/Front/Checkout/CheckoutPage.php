@@ -50,10 +50,9 @@ class CheckoutPage extends Component
         $this->validate();
         try {
             $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
-
             DB::beginTransaction();
 
-            Order::create([
+            $order =  Order::create([
                 'user_id'               => Auth::user()->id,
                 'name'                  => $deliveryAddress->name,
                 'address'               => $deliveryAddress->address,
@@ -62,18 +61,16 @@ class CheckoutPage extends Component
                 'country_id'            => $deliveryAddress->country_id,
                 'email'                 => Auth::user()->email,
                 'mobile'                => $deliveryAddress->mobile,
-                'shipping_charges'      => 0,
                 'coupon_code'           => session()->get('coupon')['coupon_code'] ?? null,
                 'coupon_amount'         => session()->get('coupon')['coupon_amount'] ?? null,
                 'order_status'          => "New",
                 'paymeny_method'        => $this->payment_gateway,
                 'paymeny_gateway'       => $this->payment_gateway == 'COD' ? 'COD' : 'Prepaid',
-                'grand_total'           => Cart::instance('cart')->total(),
+                'final_price'           => Cart::instance('cart')->total(),
             ]);
+
             $orderId            = DB::getPdo()->lastInsertId();
-
-
-
+           
 
             foreach (Cart::instance('cart')->content() as $item) {
                 $product    = Product::findOrFail($item->id);
@@ -91,7 +88,7 @@ class CheckoutPage extends Component
             }
 
             session()->put('orderId', $orderId);
-            session()->put('grandTotal', Cart::instance('cart')->total());
+            session()->put('finalPrice', Cart::instance('cart')->total());
 
             DB::commit();
             toastr()->success('Order Has Been Placed Successfully');

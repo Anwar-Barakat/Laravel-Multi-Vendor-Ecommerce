@@ -28,6 +28,7 @@ use App\Http\Livewire\Front\Checkout\EditDelieveryAddress;
 use App\Http\Livewire\Front\Customer\ProfilePage;
 use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
+use App\Http\Livewire\Front\Order\OrderPage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
 use App\Http\Livewire\Front\Thanks\ThanksPage;
@@ -177,6 +178,8 @@ Route::name('front.')->group(function () {
     Route::get('/delivery-addresses/edit/{id}',             EditDelieveryAddress::class)->name('delivery.addresses.edit');
 
     Route::get('/thanks',                                   ThanksPage::class)->name('thanks');
+
+    Route::get('/orders',                                   OrderPage::class)->name('orders');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 

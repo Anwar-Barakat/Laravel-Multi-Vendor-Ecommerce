@@ -20,4 +20,9 @@ class OrderProduct extends Model
         'product_price',
         'product_qty',
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'order_id');
+    }
 }
