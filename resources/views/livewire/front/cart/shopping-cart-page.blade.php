@@ -35,7 +35,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse (Cart::instance('cart')->content() as $item)
-                                        <tr class="hover:shadow-lg transition">
+                                        <tr>
                                             <td>
                                                 <div class="cart-anchor-image">
                                                     <a class="d-flex align-items-center gap-2" href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">

@@ -338,7 +338,7 @@
                                             <a href="{{ route('front.profile') }}">My Profile</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('front.orders') }}">My Orders</a>
+                                            <a href="{{ route('front.orders.index') }}">My Orders</a>
                                         </li>
                                     </ul>
                                 </div>

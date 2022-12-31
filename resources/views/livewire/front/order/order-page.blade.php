@@ -33,7 +33,7 @@
                             </thead>
                             <tbody>
                                 @forelse ($orders as $order)
-                                    <tr class="hover:shadow-lg transition">
+                                    <tr>
                                         <td>
                                             <div class="cart-price">
                                                 {{ $order->id }}
@@ -52,8 +52,8 @@
                                             </div>
                                         </td>
                                         <td class="bg-green-600 ">
-                                            <div class="cart-price font-bold text-white">
-                                                ${{ $order->final_price }}
+                                            <div class="cart-price text-white">
+                                                <span class="font-bold">${{ $order->final_price }}</span>
                                             </div>
                                         </td>
                                         <td>
@@ -63,7 +63,7 @@
                                         </td>
                                         <td>
                                             <div class="action-wrapper">
-                                                <a class=" button button-outline-secondary fas fa-eye hover:text-yellow-500 border-yellow-500"></a>
+                                                <a href="{{ route('front.orders.show', ['id' => $order->id]) }}" class=" button button-outline-secondary fas fa-eye hover:text-yellow-500"></a>
                                             </div>
                                         </td>
 

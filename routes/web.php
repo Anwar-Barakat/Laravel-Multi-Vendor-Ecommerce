@@ -28,6 +28,7 @@ use App\Http\Livewire\Front\Checkout\EditDelieveryAddress;
 use App\Http\Livewire\Front\Customer\ProfilePage;
 use App\Http\Livewire\Front\Detail\ProductDetailPage;
 use App\Http\Livewire\Front\Home\HomePage;
+use App\Http\Livewire\Front\Order\OrderDetailPage;
 use App\Http\Livewire\Front\Order\OrderPage;
 use App\Http\Livewire\Front\Shop\CategoryProducts;
 use App\Http\Livewire\Front\Shop\ShopPage;
@@ -173,17 +174,24 @@ Route::name('front.')->group(function () {
 
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
 
-    Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
-    Route::get('/delivery-addresses/add',                   AddDelieveryAddress::class)->name('delivery.addresses.add');
-    Route::get('/delivery-addresses/edit/{id}',             EditDelieveryAddress::class)->name('delivery.addresses.edit');
+    Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/thanks',                                   ThanksPage::class)->name('thanks');
+        Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
 
-    Route::get('/orders',                                   OrderPage::class)->name('orders');
+        Route::get('/delivery-addresses/add',                   AddDelieveryAddress::class)->name('delivery.addresses.add');
+
+        Route::get('/delivery-addresses/edit/{id}',             EditDelieveryAddress::class)->name('delivery.addresses.edit');
+
+        Route::get('/thanks',                                   ThanksPage::class)->name('thanks');
+
+        Route::get('/orders/index',                             OrderPage::class)->name('orders.index');
+
+        Route::get('/orders/{id}/show',                         OrderDetailPage::class)->name('orders.show');
+
+        Route::get('/profile',                                  ProfilePage::class)->name('profile');
+    });
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
-
-    Route::get('/profile',                                  ProfilePage::class)->name('profile');
 });
 
 

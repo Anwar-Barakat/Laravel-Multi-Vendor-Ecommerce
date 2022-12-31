@@ -33,14 +33,11 @@
                             </thead>
                             <tbody>
                                 @forelse (Cart::instance('wishlist')->content() as $item)
-                                    <tr class="hover:shadow-lg transition">
+                                    <tr>
                                         <td>
                                             <div class="cart-anchor-image">
-                                                <a
-                                                    href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
-                                                    <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                                        alt="{{ $item->model->name }}" loading="lazy"
-                                                        class="img img-thumbnail" />
+                                                <a href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
+                                                    <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ $item->model->name }}" loading="lazy" class="img img-thumbnail" />
                                                     <h6>{{ ucwords($item->model->name) }}
                                                     </h6>
                                                 </a>
@@ -53,8 +50,7 @@
                                         </td>
                                         <td>
                                             <div class="action-wrapper">
-                                                <button class="button button-outline-secondary fas fa-trash"
-                                                    wire:click.prevent="remove('{{ $item->rowId }}')"></button>
+                                                <button class="button button-outline-secondary fas fa-trash" wire:click.prevent="remove('{{ $item->rowId }}')"></button>
                                             </div>
                                         </td>
                                     </tr>

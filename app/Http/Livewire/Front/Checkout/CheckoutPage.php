@@ -70,7 +70,7 @@ class CheckoutPage extends Component
             ]);
 
             $orderId            = DB::getPdo()->lastInsertId();
-           
+
 
             foreach (Cart::instance('cart')->content() as $item) {
                 $product    = Product::findOrFail($item->id);
@@ -81,7 +81,7 @@ class CheckoutPage extends Component
                     'product_code'      => $item->model->code,
                     'product_name'      => $item->model->name,
                     'product_color'     => $product->color,
-                    'product_size'      => $item->model->code,
+                    'product_size'      => $item->model->size,
                     'product_price'     => Product::applyDiscount($item->model->id),
                     'product_qty'       => $item->qty,
                 ]);

@@ -38,6 +38,11 @@ class Order extends Model
         );
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
+
     public function orderProducts()
     {
         return $this->hasMany(OrderProduct::class);
