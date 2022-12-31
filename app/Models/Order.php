@@ -14,7 +14,7 @@ class Order extends Model
         'name',
         'address',
         'city',
-        'statue',
+        'state',
         'country_id',
         'email',
         'mobile',
@@ -25,6 +25,5 @@ class Order extends Model
         'paymeny_method',
         'paymeny_gateway',
         'grand_total',
-
     ];
 }

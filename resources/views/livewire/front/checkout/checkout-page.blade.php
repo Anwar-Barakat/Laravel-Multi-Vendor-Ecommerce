@@ -38,15 +38,25 @@
                                             <tr>
                                                 <td>
                                                     <h6 class="text-xs flex align-items-center gap-2 mb-3">
-                                                        <input type="radio" id="address" wire:click="getDeliveryAddressId({{ $address->id }})">
+                                                        <input type="radio" id="address" wire:model="deliveryAddressId" value="{{ $address->id }}">
                                                         <label for="address" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
                                                     </h6>
+
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('front.delivery.addresses.edit', ['id' => $address->id]) }}" class=" button button-outline-secondary fas fa-edit hover:text-green-600 border-green-600"></a>
                                                     <button class=" button button-outline-secondary fas fa-trash hover:text-red-600 border-red-600" wire:click.prevent="deleteDeliveryAddress({{ $address->id }})"></button>
                                                 </td>
                                             </tr>
+                                            @error('deliveryAddressId')
+                                                <tr class="border-top-0">
+                                                    <td class="text-left">
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @enderror
                                         @empty
                                             <tr class="text-center">
                                                 <td colspan="1">
@@ -190,29 +200,37 @@
                                             <td>
                                                 <span class="calc-text">
                                                     <label for="cod" class="flex align-items-center gap-2">
-                                                        <input type="radio" wire:model="payment_method" id="cod">
+                                                        <input type="radio" wire:model="payment_gateway" name="payment_gateway" id="cod" value="COD">
                                                         <img src="{{ asset('front/images/payment_methods/cod.png') }}" alt="" width="100">
                                                     </label>
                                                 </span>
                                                 <span class="calc-text">
-                                                    <label for="cod" class="flex align-items-center gap-2">
-                                                        <input type="radio" wire:model="payment_method" id="cod">
+                                                    <label for="paypal" class="flex align-items-center gap-2">
+                                                        <input type="radio" wire:model="payment_gateway" name="payment_gateway" id="paypal" value="PAYPAL">
                                                         <img src="{{ asset('front/images/payment_methods/paypal.png') }}" alt="" width="100">
                                                     </label>
                                                 </span>
                                             </td>
                                         </tr>
+                                        @error('payment_gateway')
+                                            <tr class="border-top-0">
+                                                <td class="text-left">
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        @enderror
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
                         <!-- Billing /- -->
 
                         <div class="coupon-continue-checkout u-s-m-b-60">
                             <div class="button-area">
                                 <a href="{{ route('front.shopping.store') }}" class="continue">Back to Cart</a>
-                                <a href="" class="checkout">Place to Order</a>
+                                <a href="javascript:;" class="checkout" wire:click.prevent="placeToOrder">Place to Order</a>
                             </div>
                         </div>
                     </form>

@@ -19,13 +19,13 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('city');
-            $table->string('statue');
+            $table->string('state');
             $table->foreignId('country_id')->constrained()->cascadeOnUpdate();
             $table->string('email');
             $table->string('mobile');
             $table->string('shipping_charges');
-            $table->string('coupon_code');
-            $table->float('coupon_amount');
+            $table->string('coupon_code')->nullable();
+            $table->float('coupon_amount')->nullable();
             $table->string('order_status');
             $table->string('paymeny_method');
             $table->string('paymeny_gateway');

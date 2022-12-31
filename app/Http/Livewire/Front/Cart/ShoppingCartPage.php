@@ -119,13 +119,13 @@ class ShoppingCartPage extends Component
 
     public function proccedToCheckout()
     {
-        // if (Cart::instance('cart')->content()->count() == 0) :
-        //     toastr()->info("You Don't have any Item yet in The Cart");
-        // elseif (!Auth::check()) :
-        //     toastr()->info('You Have to Login to Move to Checkout Page, Thanks');
-        // else :
-        //     return redirect()->route('front.checkout');
-        // endif;
+        if (Cart::instance('cart')->count() == 0) :
+            toastr()->info("You Don't have any Item yet in The Cart");
+        elseif (!Auth::check()) :
+            toastr()->info('You Have to Login to Move to Checkout Page, Thanks');
+        else :
+            return redirect()->route('front.checkout');
+        endif;
     }
 
     public function render()
