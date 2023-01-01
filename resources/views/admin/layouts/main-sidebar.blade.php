@@ -67,7 +67,7 @@
                     </ul>
                 </li>
 
-
+                <li class="side-item side-item-category">General</li>
                 {{-- Sections --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:;">
@@ -163,8 +163,6 @@
                     </ul>
                 </li>
 
-
-
                 {{-- Coupons --}}
                 <li class="slide">
                     <a class="side-menu__item" data-toggle="slide" href="javascript:;">
@@ -175,6 +173,21 @@
                     <ul class="slide-menu">
                         <li>
                             <a href="{{ route('admin.coupons.index') }}" class="slide-item">Coupons List</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="side-item side-item-category">Orders</li>
+                {{-- Orders --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
+                        <i class="fas fa-shopping-bag side-menu__icon"></i>
+                        <span class="side-menu__label">Orders</span>
+                        <i class="angle fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.orders.index') }}" class="slide-item">Orders List</a>
                         </li>
                     </ul>
                 </li>

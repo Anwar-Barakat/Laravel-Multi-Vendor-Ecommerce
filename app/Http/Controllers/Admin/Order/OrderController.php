@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Order;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreOrderRequest;
+use App\Http\Requests\Admin\UpdateOrderRequest;
 
 class OrderController extends Controller
 {
@@ -15,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with(['country', 'orderProducts'])->latest()->get();
+        return view('admin.orders.index', ['orders' => $orders]);
     }
 
     /**
