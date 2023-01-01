@@ -19,7 +19,8 @@ class Product extends Model implements HasMedia
     protected $guarded = [];
 
     const  COLORS = [
-        'red', 'green', 'yellow', 'olive', 'orange', 'teal', 'blue', 'violet', 'purple', 'pink', 'white', 'gray', 'black'
+        'red', 'green', 'yellow', 'olive', 'orange',
+        'teal', 'blue', 'violet', 'purple', 'pink', 'white', 'gray', 'black'
     ];
 
     public function createdAt(): CastsAttribute

@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreOrderRequest;
 use App\Http\Requests\Admin\UpdateOrderRequest;
+use App\Models\OrderStatus;
+use App\Models\User;
 
 class OrderController extends Controller
 {
@@ -49,7 +51,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $order  = Order::with(['orderProducts'])->where('id', $order->id)->first();
+        $order          = Order::with(['orderProducts', 'country', 'user'])->where('id', $order->id)->first();
         return view('admin.orders.show', ['order' => $order]);
     }
 

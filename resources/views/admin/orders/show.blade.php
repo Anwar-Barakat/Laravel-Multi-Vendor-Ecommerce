@@ -159,15 +159,74 @@
                                 </tr>
                                 <tr>
                                     <td>Coupon Code </td>
-                                    <td>{{ $order->coupon_code ?? '' }}</td>
+                                    <td>{{ $order->coupon_code ?? '-' }}</td>
                                 </tr>
                                 <tr>
                                     <td>Coupon Amount </td>
-                                    <td>{{ $order->coupon_amount ?? '' }}</td>
+                                    <td>{{ $order->coupon_amount ?? '-' }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div><!-- bd -->
+                </div><!-- bd -->
+            </div><!-- bd -->
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">Customer Details</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped mg-b-0 text-md-nowrap">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>{{ $order->user->name }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>{{ $order->user->email }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <th>{{ $order->user->address }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Mobile</th>
+                                    <th>{{ $order->user->mobile }}</th>
+                                </tr>
+                                <tr>
+                                    <th>City</th>
+                                    <th>{{ $order->user->city }}</th>
+                                </tr>
+                                <tr>
+                                    <th>State</th>
+                                    <th>{{ $order->user->state }}</th>
+                                </tr>
+                                <tr>
+                                    <th>Country</th>
+                                    <th>{{ $order->user->country->name }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- bd -->
+                </div><!-- bd -->
+            </div><!-- bd -->
+        </div>
+        <div class="col-xl-6">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <div class="d-flex justify-content-between">
+                        <h4 class="card-title mg-b-0">Update Order Status</h4>
+                        <i class="mdi mdi-dots-horizontal text-gray"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @livewire('admin.order.update-order-status', ['order_id' => $order->id])
                 </div><!-- bd -->
             </div><!-- bd -->
         </div>

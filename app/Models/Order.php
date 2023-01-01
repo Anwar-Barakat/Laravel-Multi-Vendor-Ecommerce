@@ -29,6 +29,11 @@ class Order extends Model
         'final_price',
     ];
 
+    const  STATUSES = [
+        'New', 'Pending', 'Hold', 'In Process', 'Paid', 'Shipped', 'Delivered', 'Cancelled'
+    ];
+
+
     public function createdAt(): Attribute
     {
         return new Attribute(
@@ -36,6 +41,11 @@ class Order extends Model
                 return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
             }
         );
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function country()
