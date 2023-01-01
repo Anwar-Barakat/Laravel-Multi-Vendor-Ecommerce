@@ -63,7 +63,27 @@
                                         </td>
                                         <td>${{ $order->final_price }}</td>
                                         <td>{{ $order->paymeny_method }}</td>
-                                        <td></td>
+                                        <td>
+                                            <div class="dropdown dropup">
+                                                <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-bars fa-1x"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <form action="{{ route('admin.categories.destroy', $order) }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a href="{{ route('admin.orders.show', $order) }}" class="dropdown-item" title="Details">
+                                                            <i class="fas fa-file-alt text-warning"></i>&nbsp;
+                                                            Details
+                                                        </a>
+                                                        <a href="javascript:void(0);" class="confirmationDelete dropdown-item" title="Delete" data-toggle="modal" data-target="#delete{{ $order->id }}">
+                                                            <i class="fas fa-trash text-danger"></i>&nbsp;
+                                                            Delete
+                                                        </a>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
