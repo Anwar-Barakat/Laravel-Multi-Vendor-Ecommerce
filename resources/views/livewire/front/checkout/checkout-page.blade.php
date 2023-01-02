@@ -83,7 +83,7 @@
                                 </thead>
                                 <tbody>
                                     @forelse (Cart::instance('cart')->content() as $item)
-                                        <tr >
+                                        <tr>
                                             <td>
                                                 <div class="cart-anchor-image">
                                                     <a class="d-flex align-items-center gap-2" href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
@@ -229,7 +229,7 @@
 
                         <div class="coupon-continue-checkout u-s-m-b-60">
                             <div class="button-area">
-                                <a href="{{ route('front.shopping.store') }}" class="continue">Back to Cart</a>
+                                <a href="{{ route('front.shopping.cart') }}" class="continue">Back to Cart</a>
                                 <a href="" class="checkout" wire:click.prevent="placeToOrder">Place to Order</a>
                             </div>
                         </div>

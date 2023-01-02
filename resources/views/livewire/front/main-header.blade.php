@@ -35,7 +35,7 @@
                                         My Wishlist</a>
                                 </li>
                                 <li>
-                                    <a href="checkout.html">
+                                    <a href="{{ route('front.checkout') }}">
                                         <i class="far fa-check-circle u-s-m-r-9"></i>
                                         Checkout</a>
                                 </li>
@@ -214,7 +214,7 @@
                 </div>
                 <div class="mini-action-anchors">
                     <a href="{{ route('front.shopping.cart') }}" class="cart-anchor">View Cart</a>
-                    <a href="checkout.html" class="checkout-anchor">Checkout</a>
+                    <a href="{{ route('front.checkout') }}" class="checkout-anchor">Checkout</a>
                 </div>
             </div>
         </div>

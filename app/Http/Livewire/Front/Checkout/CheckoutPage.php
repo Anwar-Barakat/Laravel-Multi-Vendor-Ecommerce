@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Checkout;
 
+use App\Events\CustomerOrderPlaced;
 use App\Models\DeliveryAddress;
 use App\Models\Order;
 use App\Models\OrderProduct;
@@ -72,31 +73,32 @@ class CheckoutPage extends Component
             $orderId            = DB::getPdo()->lastInsertId();
 
 
+
             foreach (Cart::instance('cart')->content() as $item) {
-                $product    = Product::findOrFail($item->id);
                 OrderProduct::create([
                     'order_id'          => $orderId,
                     'user_id'           => Auth::user()->id,
                     'product_id'        => $item->model->id,
                     'product_code'      => $item->model->code,
                     'product_name'      => $item->model->name,
-                    'product_color'     => $product->color,
-                    'product_size'      => $item->model->size,
+                    'product_color'     => $item->model->color,
+                    'product_size'      => $item->options->size,
                     'product_price'     => Product::applyDiscount($item->model->id),
                     'product_qty'       => $item->qty,
                 ]);
             }
-
             session()->put('orderId', $orderId);
             session()->put('finalPrice', Cart::instance('cart')->total());
 
             DB::commit();
+
             toastr()->success('Order Has Been Placed Successfully');
 
 
             if ($this->payment_gateway == 'COD') {
-                Cart::instance('cart')->destroy();
-                return redirect()->route('front.thanks');
+                event(new CustomerOrderPlaced($order));
+                // Cart::instance('cart')->destroy();
+                // return redirect()->route('front.thanks');
             } else
                 echo "Prepaid Method Coming Soon!, thanks";
         } catch (\Throwable $th) {
