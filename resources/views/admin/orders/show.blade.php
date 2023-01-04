@@ -227,6 +227,17 @@
                 </div>
                 <div class="card-body">
                     @livewire('admin.order.update-order-status', ['order_id' => $order->id])
+                    <hr>
+                    <h4 class="card-title mb-2">Order Logs</h4>
+                    <div class="list-group">
+                        @foreach ($orderlogs as $log)
+                            <a class="list-group-item list-group-item-action align-items-start" href="javascript:;">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-2 tx-14">{{ $log->status }}</h5><small>{{ $log->created_at }}</small>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div><!-- bd -->
             </div><!-- bd -->
         </div>

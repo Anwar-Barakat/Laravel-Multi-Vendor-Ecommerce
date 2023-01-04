@@ -25,12 +25,10 @@
             <div class="mb-3 mb-xl-0">
                 <div class="btn-group dropdown">
                     <button type="button" class="btn btn-primary">14 Aug 2019</button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                        id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuDate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate"
-                        data-x-placement="bottom-end">
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuDate" data-x-placement="bottom-end">
                         <a class="dropdown-item" href="#">2015</a>
                         <a class="dropdown-item" href="#">2016</a>
                         <a class="dropdown-item" href="#">2017</a>
@@ -73,9 +71,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code" data-toggle="tab" href="#html-code"
-                                    role="tab" aria-controls="html-code" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code" data-toggle="tab" href="#html-code" role="tab" aria-controls="html-code" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->
@@ -134,9 +130,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab"
-                                    href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->
@@ -177,15 +171,13 @@
                     <div class="text-wrap">
                         <div class="example">
                             <div class="list-group">
-                                <a class="list-group-item list-group-item-action flex-column align-items-start active"
-                                    href="#">
+                                <a class="list-group-item list-group-item-action flex-column align-items-start active" href="#">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-2 tx-14">List group item heading</h5><small>3 days ago</small>
                                     </div>
                                     <p class="mb-1 tx-13">Donec id elit non mi porta gravida at eget metus. Maecenas sed
                                         diam eget risus varius blandit.</p><small>Donec id elit non mi porta.</small>
-                                </a> <a class="list-group-item list-group-item-action flex-column align-items-start"
-                                    href="#">
+                                </a> <a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-2 tx-14">List group item heading</h5><small class="text-muted">3
                                             days ago</small>
@@ -193,8 +185,7 @@
                                     <p class="mb-1 tx-13">Donec id elit non mi porta gravida at eget metus. Maecenas sed
                                         diam eget risus varius blandit.</p><small class="text-muted">Donec id elit non mi
                                         porta.</small>
-                                </a> <a class="list-group-item list-group-item-action flex-column align-items-start"
-                                    href="#">
+                                </a> <a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-2 tx-14">List group item heading</h5><small class="text-muted">3
                                             days ago</small>
@@ -207,9 +198,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab"
-                                    href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->
@@ -250,11 +239,9 @@
                     <div class="text-wrap">
                         <div class="example">
                             <div class="list-group">
-                                <a class="list-group-item list-group-item-action flex-column align-items-start active"
-                                    href="#">
+                                <a class="list-group-item list-group-item-action flex-column align-items-start active" href="#">
                                     <span class="d-flex">
-                                        <img alt="" class="ml-3 rounded-circle avatar-md"
-                                            src="{{ URL::asset('assets/img/faces/3.jpg') }}">
+                                        <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/3.jpg') }}">
                                         <div class="">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 tx-14">List group item heading</h5><small>3 days
@@ -266,11 +253,9 @@
                                         </div>
                                     </span>
                                 </a>
-                                <a class="list-group-item list-group-item-action flex-column align-items-start"
-                                    href="#">
+                                <a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
                                     <span class="d-flex">
-                                        <img alt="" class="ml-3 rounded-circle avatar-md"
-                                            src="{{ URL::asset('assets/img/faces/8.jpg') }}">
+                                        <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/8.jpg') }}">
                                         <div class="">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 tx-14">List group item heading</h5><small>3 days
@@ -282,11 +267,9 @@
                                         </div>
                                     </span>
                                 </a>
-                                <a class="list-group-item list-group-item-action flex-column align-items-start"
-                                    href="#">
+                                <a class="list-group-item list-group-item-action flex-column align-items-start" href="#">
                                     <span class="d-flex">
-                                        <img alt="" class="ml-3 rounded-circle avatar-md"
-                                            src="{{ URL::asset('assets/img/faces/11.jpg') }}">
+                                        <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/11.jpg') }}">
                                         <div class="">
                                             <div class="d-flex w-100 justify-content-between">
                                                 <h5 class="mb-2 tx-14">List group item heading</h5><small>3 days
@@ -302,9 +285,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code2" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab"
-                                    href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code2" data-toggle="tab" href="#html-code2" role="tab" aria-controls="html-code2" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->
@@ -348,8 +329,7 @@
                                 <div class="list-group-item pd-y-20">
                                     <div class="media">
                                         <div class="d-flex mg-l-10 wd-50">
-                                            <img class="ml-4 rounded-circle avatar-md"
-                                                src="{{ URL::asset('assets/img/faces/17.jpg') }}" alt="avatar">
+                                            <img class="ml-4 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/17.jpg') }}" alt="avatar">
                                         </div>
                                         <div class="media-body">
                                             <div class="media-body d-flex">
@@ -365,8 +345,7 @@
                                 <div class="list-group-item pd-y-20">
                                     <div class="media">
                                         <div class="d-flex mg-l-10 wd-50">
-                                            <img class="ml-4 rounded-circle avatar-md"
-                                                src="{{ URL::asset('assets/img/faces/5.jpg') }}" alt="avatar">
+                                            <img class="ml-4 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/5.jpg') }}" alt="avatar">
                                         </div>
                                         <div class="media-body">
                                             <div class="media-body d-flex">
@@ -382,8 +361,7 @@
                                 <div class="list-group-item pd-y-20">
                                     <div class="media">
                                         <div class="d-flex mg-l-10 wd-50">
-                                            <img class="ml-4 rounded-circle avatar-md"
-                                                src="{{ URL::asset('assets/img/faces/12.jpg') }}" alt="avatar">
+                                            <img class="ml-4 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/12.jpg') }}" alt="avatar">
                                         </div>
                                         <div class="media-body">
                                             <div class="media-body d-flex">
@@ -400,9 +378,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code3" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code3" data-toggle="tab"
-                                    href="#html-code3" role="tab" aria-controls="html-code3" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code3" data-toggle="tab" href="#html-code3" role="tab" aria-controls="html-code3" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->
@@ -473,11 +449,9 @@
                         <div class="example">
                             <ul class="list-group wd-md-100p users-list-group">
                                 <li class="list-group-item d-flex align-items-center">
-                                    <img alt="" class="ml-3 rounded-circle avatar-md"
-                                        src="{{ URL::asset('assets/img/faces/5.jpg') }}">
+                                    <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/5.jpg') }}">
                                     <div>
-                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Adrian Monino</h6><span
-                                            class="d-block tx-13 text-muted">Premium Member</span>
+                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Adrian Monino</h6><span class="d-block tx-13 text-muted">Premium Member</span>
                                     </div>
                                     <div class="d-flex float-right mr-auto">
                                         <a href="#" class="btn btn-outline-light btn-icon ml-2">
@@ -489,11 +463,9 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <img alt="" class="ml-3 rounded-circle avatar-md"
-                                        src="{{ URL::asset('assets/img/faces/6.jpg') }}">
+                                    <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/6.jpg') }}">
                                     <div>
-                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Joel Mendez</h6><span
-                                            class="d-block tx-13 text-muted">Premium Member</span>
+                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Joel Mendez</h6><span class="d-block tx-13 text-muted">Premium Member</span>
                                     </div>
                                     <div class="d-flex float-right mr-auto">
                                         <a href="#" class="btn btn-outline-light btn-icon ml-2">
@@ -505,11 +477,9 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <img alt="" class="ml-3 rounded-circle avatar-md"
-                                        src="{{ URL::asset('assets/img/faces/15.jpg') }}">
+                                    <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/15.jpg') }}">
                                     <div>
-                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Joel Mendez</h6><span
-                                            class="d-block tx-13 text-muted">Premium Member</span>
+                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Joel Mendez</h6><span class="d-block tx-13 text-muted">Premium Member</span>
                                     </div>
                                     <div class="d-flex float-right mr-auto">
                                         <a href="#" class="btn btn-outline-light btn-icon ml-2">
@@ -521,11 +491,9 @@
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex align-items-center">
-                                    <img alt="" class="ml-3 rounded-circle avatar-md"
-                                        src="{{ URL::asset('assets/img/faces/12.jpg') }}">
+                                    <img alt="" class="ml-3 rounded-circle avatar-md" src="{{ URL::asset('assets/img/faces/12.jpg') }}">
                                     <div>
-                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Marianne Audrey</h6><span
-                                            class="d-block tx-13 text-muted">Premium Member</span>
+                                        <h6 class="tx-15 mb-1 tx-inverse tx-semibold mg-b-0">Marianne Audrey</h6><span class="d-block tx-13 text-muted">Premium Member</span>
                                     </div>
                                     <div class="d-flex float-right mr-auto">
                                         <a href="#" class="btn btn-outline-light btn-icon ml-2">
@@ -540,9 +508,7 @@
                         </div>
                         <ul class="nav nav-tabs html-source" id="html-source-code8" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active ml-1 html-code" id="html-code8" data-toggle="tab"
-                                    href="#html-code8" role="tab" aria-controls="html-code8" aria-selected="true"><i
-                                        class="fab fa-html5 text-orange ml-2"></i>HTML</a>
+                                <a class="nav-link active ml-1 html-code" id="html-code8" data-toggle="tab" href="#html-code8" role="tab" aria-controls="html-code8" aria-selected="true"><i class="fab fa-html5 text-orange ml-2"></i>HTML</a>
                             </li>
                         </ul>
                         <!---Prism Pre code-->

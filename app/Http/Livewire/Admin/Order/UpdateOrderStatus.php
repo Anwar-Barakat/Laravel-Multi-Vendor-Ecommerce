@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Admin\Order;
 
 use App\Events\UpdateOrderStatus as EventsUpdateOrderStatus;
 use App\Models\Order;
+use App\Models\OrderLog;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class UpdateOrderStatus extends Component
@@ -18,12 +20,19 @@ class UpdateOrderStatus extends Component
 
     public function updateStatus()
     {
-        $order  = Order::findOrFail($this->order_id);
-        $order->update(['order_status' => $this->status]);
-        toastr()->success('Order Status Has Been Updated');
+        try {
+            $order  = Order::findOrFail($this->order_id);
+            DB::beginTransaction();
 
+            $order->update(['order_status'  => $this->status]);
+            OrderLog::create(['order_id'    => $order->id, 'status' =>  $this->status,]);
 
-        event(new EventsUpdateOrderStatus($order));
+            DB::commit();
+
+            event(new EventsUpdateOrderStatus($order));
+            toastr()->success('Order Status Has Been Updated');
+        } catch (\Throwable $th) {
+        }
     }
 
     public function render()

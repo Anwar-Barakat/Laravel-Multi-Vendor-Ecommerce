@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Front\Checkout;
 use App\Events\CustomerOrderPlaced;
 use App\Models\DeliveryAddress;
 use App\Models\Order;
+use App\Models\OrderLog;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
