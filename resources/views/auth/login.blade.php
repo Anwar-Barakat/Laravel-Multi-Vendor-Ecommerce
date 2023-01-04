@@ -60,9 +60,9 @@
                                     </a>
                                 @endif
 
-                                <x-button class="ml-3 button button-primary">
+                                <button class="ml-4 button button-primary" type="submit">
                                     {{ __('Log in') }}
-                                </x-button>
+                                </button>
                             </div>
                         </form>
                     </div>
