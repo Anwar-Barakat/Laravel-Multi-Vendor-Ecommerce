@@ -12,24 +12,12 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'name',
-        'address',
-        'city',
-        'state',
-        'country_id',
-        'email',
-        'mobile',
-        'shipping_charges',
-        'coupon_code',
-        'coupon_amount',
-        'order_status',
-        'paymeny_method',
-        'paymeny_gateway',
-        'final_price',
+        'user_id', 'name', 'address', 'city', 'state', 'country_id', 'email', 'mobile',
+        'shipping_charges', 'coupon_code', 'coupon_amount',
+        'order_status', 'paymeny_method', 'paymeny_gateway', 'final_price', 'courier_name', 'tracking_number',
     ];
 
-    const  STATUSES = [
+    const STATUSES = [
         'New', 'Pending', 'Hold', 'In Process', 'Paid', 'Shipped', 'Delivered', 'Cancelled'
     ];
 

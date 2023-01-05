@@ -30,6 +30,8 @@ class CreateOrdersTable extends Migration
             $table->string('paymeny_method');
             $table->string('paymeny_gateway');
             $table->string('final_price');
+            $table->string('courier_name')->nullable();
+            $table->string('tracking_number')->nullable();
             $table->timestamps();
         });
     }

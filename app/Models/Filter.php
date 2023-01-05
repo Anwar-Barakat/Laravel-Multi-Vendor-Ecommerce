@@ -18,6 +18,12 @@ class Filter extends Model
         'status',
     ];
 
+    protected $casts = [
+        'categories_id' => 'array',
+    ];
+
+    protected $with = ['filterValues'];
+
     public function createdAt(): Attribute
     {
         return new Attribute(

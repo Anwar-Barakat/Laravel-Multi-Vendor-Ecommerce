@@ -21,6 +21,10 @@ class Category extends Model  implements HasMedia
         'status',
     ];
 
+    protected $casts = [
+        'created_at' => 'date:Y-m-d',
+    ];
+
     public function createdAt(): Attribute
     {
         return new Attribute(

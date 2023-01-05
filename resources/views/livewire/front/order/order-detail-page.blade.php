@@ -175,6 +175,24 @@
                                             <span class="calc-text">{{ $order->order_status }}</span>
                                         </td>
                                     </tr>
+                                    @if ($order->order_status == 'Shipped')
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0">Tracking Number </h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text">{{ $order->tracking_number }}</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0">Courier Name </h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text">{{ $order->courier_name }}</span>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td>
                                             <h3 class="calc-h3 u-s-m-b-0">Paymeny Method</h3>
@@ -220,71 +238,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="calculation u-s-m-b-60">
-                        <div class="table-wrapper-2">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">
-                                            <span>Update Order Status</span>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Status</h3>
-                                        </td>
-                                        <td>
-                                            <span class="calc-text">{{ $order->order_status }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Paymeny Method</h3>
-                                        </td>
-                                        <td>
-                                            <span class="calc-text">{{ $order->paymeny_method }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Payment Gateway</h3>
-                                        </td>
-                                        <td>
-                                            <span class="calc-text">{{ $order->paymeny_method }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Final Price</h3>
-                                        </td>
-                                        <td class="bg-green-700">
-                                            <span class="calc-text font-bold text-white">${{ $order->final_price }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Coupon Code</h3>
-                                        </td>
-                                        <td>
-                                            <span class="calc-text">{{ $order->coupon_code ?? '' }}</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h3 class="calc-h3 u-s-m-b-0">Coupon Amount</h3>
-                                        </td>
-                                        <td>
-                                            <span class="calc-text">{{ $order->coupon_amount ?? '' }}</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

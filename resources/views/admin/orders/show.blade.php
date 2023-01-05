@@ -145,6 +145,16 @@
                                     <td>Status </td>
                                     <td>{{ $order->order_status }}</td>
                                 </tr>
+                                @if ($order->order_status == 'Shipped')
+                                    <tr>
+                                        <td>Courier Name </td>
+                                        <td>{{ $order->courier_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tracking Number </td>
+                                        <td>{{ $order->tracking_number }}</td>
+                                    </tr>
+                                @endif
                                 <tr>
                                     <td>Paymeny Method </td>
                                     <td>{{ $order->paymeny_method }}</td>
