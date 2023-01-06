@@ -82,10 +82,6 @@
                                                                 Invoice
                                                             </a>
                                                         @endif
-                                                        <a href="javascript:void(0);" class="confirmationDelete dropdown-item" title="Delete" data-toggle="modal" data-target="#delete{{ $order->id }}">
-                                                            <i class="fas fa-trash text-danger"></i>&nbsp;
-                                                            Delete
-                                                        </a>
                                                     </form>
                                                 </div>
                                             </div>

@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Section\SectionController;
 use App\Http\Controllers\Admin\Supervisor\AdminController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Order\OrderInvoiceController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
@@ -147,7 +148,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Orders
         //?_________________________
         Route::resource('orders',                                   OrderController::class);
-        Route::get('orders/{id}/invoice',                           [OrderController::class, 'showInvoice'])->name('orders.invoice.show');
+        Route::get('orders/{order}/invoice',                        [OrderInvoiceController::class, 'showInvoice'])->name('orders.invoice.show');
     });
 });
 

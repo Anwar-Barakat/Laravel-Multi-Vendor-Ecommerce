@@ -91,9 +91,4 @@ class OrderController extends Controller
         //
     }
 
-    public function showInvoice(Order $order)
-    {
-        $order  = $order->with(['country', 'user'])->first();
-        return view('admin.orders.invoice', ['order' => $order]);
-    }
 }

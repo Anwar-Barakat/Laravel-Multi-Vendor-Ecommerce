@@ -25,9 +25,14 @@
                             <div class="billed-from">
                                 <h6>Shipped To</h6>
                                 <p>{{ $order->name }}</p>
-                                <p>{{ $order->address }}, {{ $order->city }}, {{ $order->state }}, {{ $order->country->name }}<br>
+                                <p class="mb-2">{{ $order->address }}, {{ $order->city }}, {{ $order->state }}, {{ $order->country->name }}<br>
                                     Tel No: {{ $order->mobile }}<br>
                                     Email: {{ $order->email }}</p>
+                                <p>
+                                    @php
+                                        echo DNS1D::getBarcodeHTML($order->id, 'C39E+');
+                                    @endphp
+                                </p>
                             </div><!-- billed-from -->
                         </div><!-- invoice-header -->
                         <div class="row mg-t-20">
@@ -72,6 +77,11 @@
                                                 <span class="block">Name: {{ $item->product_name }}</span>
                                                 <span class="block">Code: {{ $item->product_code }}</span>
                                                 <span class="block">Color: {{ $item->product_color }}</span>
+                                                <span class="block mt-2">
+                                                    @php
+                                                        echo DNS1D::getBarcodeHTML($order->id, 'C39E+');
+                                                    @endphp
+                                                </span>
                                             </td>
                                             <td class="tx-12">${{ number_format($item->product_price, 2) }}</td>
                                             <td class="tx-center">{{ $item->product_qty }}</td>
