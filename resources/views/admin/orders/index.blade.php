@@ -76,6 +76,12 @@
                                                             <i class="fas fa-file-alt text-warning"></i>&nbsp;
                                                             Details
                                                         </a>
+                                                        @if ($order->order_status == 'Delivered' || $order->order_status == 'Shipped')
+                                                            <a href="{{ route('admin.orders.invoice.show', $order) }}" class="dropdown-item" title="Invoice">
+                                                                <i class="fas fa-print text-success"></i>&nbsp;
+                                                                Invoice
+                                                            </a>
+                                                        @endif
                                                         <a href="javascript:void(0);" class="confirmationDelete dropdown-item" title="Delete" data-toggle="modal" data-target="#delete{{ $order->id }}">
                                                             <i class="fas fa-trash text-danger"></i>&nbsp;
                                                             Delete

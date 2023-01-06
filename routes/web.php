@@ -147,6 +147,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Orders
         //?_________________________
         Route::resource('orders',                                   OrderController::class);
+        Route::get('orders/{id}/invoice',                           [OrderController::class, 'showInvoice'])->name('orders.invoice.show');
     });
 });
 

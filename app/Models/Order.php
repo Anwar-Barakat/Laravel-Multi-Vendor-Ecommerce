@@ -17,19 +17,14 @@ class Order extends Model
         'order_status', 'paymeny_method', 'paymeny_gateway', 'final_price', 'courier_name', 'tracking_number',
     ];
 
+    protected $casts = [
+        'created_at' => 'date:Y-m-d',
+    ];
+
     const STATUSES = [
         'New', 'Pending', 'Hold', 'In Process', 'Paid', 'Shipped', 'Delivered', 'Cancelled'
     ];
 
-
-    public function createdAt(): Attribute
-    {
-        return new Attribute(
-            get: function ($value) {
-                return Carbon::parse($this->attributes['created_at'])->format('Y-m-d');
-            }
-        );
-    }
 
     public function user()
     {
