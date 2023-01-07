@@ -16,8 +16,8 @@ class ShippingChargesController extends Controller
      */
     public function index()
     {
-        $shippingCharges    =   ShippingCharges::with(['country'])->latest()->get();
-        return view('admin.shipping-charges.index', ['shippingCharges' => $shippingCharges]);
+        $chargers    =   ShippingCharges::with(['country'])->latest()->get();
+        return view('admin.shipping-charges.index', ['chargers' => $chargers]);
     }
 
     /**
@@ -70,10 +70,20 @@ class ShippingChargesController extends Controller
      * @param  \App\Models\ShippingCharges  $shippingCharges
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateShippingChargesRequest $request, ShippingCharges $shippingCharges)
+    public function update(UpdateShippingChargesRequest $request, ShippingCharges $shipping_charge)
     {
-        //
+        if ($request->isMethod('put')) {
+            try {
+                $data   = $request->only(['zero_500g', '_501_1000g', '_1001_2000g', '_2001_5000g', 'above_5000g']);
+                $shipping_charge->update($data);
+                toastr()->success('Shipping Charges Has Been Updated Successfully');
+                return back();
+            } catch (\Throwable $th) {
+                return redirect()->back()->withErrors(['error', $th->getMessage()]);
+            }
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

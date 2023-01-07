@@ -11,15 +11,7 @@ class ShippingCharges extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'country_id',
-        'zero_500g',
-        '_501_1000g',
-        '_1001_2000g',
-        '_2001_5000g',
-        'above_5000g',
-        'status',
-    ];
+    protected $fillable = ['country_id', 'zero_500g', '_501_1000g', '_1001_2000g', '_2001_5000g', 'above_5000g', 'status'];
 
 
     public function createdAt(): Attribute

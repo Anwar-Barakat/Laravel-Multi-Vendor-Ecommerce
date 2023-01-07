@@ -13,7 +13,7 @@ class UpdateShippingChargesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateShippingChargesRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'zero_500g'         => ['required', 'numeric'],
+            '_501_1000g'        => ['required', 'numeric'],
+            '_1001_2000g'       => ['required', 'numeric'],
+            '_2001_5000g'       => ['required', 'numeric'],
+            'above_5000g'       => ['required', 'numeric'],
         ];
     }
 }

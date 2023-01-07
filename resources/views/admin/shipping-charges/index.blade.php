@@ -24,6 +24,7 @@
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 tx-gray-500 mb-3">List of Shipping Charges</p>
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -42,19 +43,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($shippingCharges as $shippingCharge)
+                                @foreach ($chargers as $shippingCharges)
                                     <tr>
-                                        <td>{{ $shippingCharge->id }}</td>
-                                        <td>{{ $shippingCharge->country->name }}</td>
-                                        <td>${{ $shippingCharge->zero_500g }}</td>
-                                        <td>${{ $shippingCharge->_501_1000g }}</td>
-                                        <td>${{ $shippingCharge->_1001_2000g }}</td>
-                                        <td>${{ $shippingCharge->_2001_5000g }}</td>
-                                        <td>${{ $shippingCharge->above_5000g }}</td>
-                                        <td>{{ $shippingCharge->created_at }}</td>
+                                        <td>{{ $shippingCharges->id }}</td>
+                                        <td>{{ $shippingCharges->country->name }}</td>
+                                        <td>${{ $shippingCharges->zero_500g }}</td>
+                                        <td>${{ $shippingCharges->_501_1000g }}</td>
+                                        <td>${{ $shippingCharges->_1001_2000g }}</td>
+                                        <td>${{ $shippingCharges->_2001_5000g }}</td>
+                                        <td>${{ $shippingCharges->above_5000g }}</td>
+                                        <td>{{ $shippingCharges->created_at }}</td>
                                         <td>
-                                            
+                                            <div class="dropdown dropup">
+                                                <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-bars fa-1x"></i>
+                                                </button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <a href="javascript:void(0);" role="button" data-toggle="modal" title="Edit" data-target="#editshippingCharges{{ $shippingCharges->id }}" class="dropdown-item">
+                                                        <i class="fas fa-edit text-primary"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </td>
+                                        {{-- Edit Shipping Charges Modal --}}
+                                        @include('admin.shipping-charges.edit')
                                     </tr>
                                 @endforeach
                             </tbody>
