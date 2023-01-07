@@ -38,8 +38,8 @@
                                             <tr>
                                                 <td>
                                                     <h6 class="text-xs flex align-items-center gap-2 mb-3">
-                                                        <input type="radio" id="address" wire:model="deliveryAddressId" value="{{ $address->id }}">
-                                                        <label for="address" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
+                                                        <input type="radio" id="address{{ $address->id }}" name="deliveryAddress" wire:model="deliveryAddressId" value="{{ $address->id }}">
+                                                        <label for="address{{ $address->id }}" class="mb-0">{{ $address->name }}, {{ $address->address }} - {{ $address->city }}, {{ $address->state }}, {{ $address->country->name }}</label>
                                                     </h6>
 
                                                 </td>
@@ -48,15 +48,7 @@
                                                     <button class=" button button-outline-secondary fas fa-trash hover:text-red-600 border-red-600" wire:click.prevent="deleteDeliveryAddress({{ $address->id }})"></button>
                                                 </td>
                                             </tr>
-                                            @error('deliveryAddressId')
-                                                <tr class="border-top-0">
-                                                    <td class="text-left">
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            @enderror
+
                                         @empty
                                             <tr class="text-center">
                                                 <td colspan="1">
@@ -66,6 +58,15 @@
                                                 </td>
                                             </tr>
                                         @endforelse
+                                        @error('deliveryAddressId')
+                                            <tr class="border-top-0">
+                                                <td class="text-left">
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        @enderror
                                     @endif
                                 </tbody>
                             </table>
@@ -141,6 +142,14 @@
                                                 <span class="calc-text">${{ Cart::instance('cart')->subtotal() }}</span>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="calc-h3 u-s-m-b-0">Shipping Charges</h3>
+                                            </td>
+                                            <td>
+                                                <span class="calc-text">+ ${{ $shippingChargesValue }}</span>
+                                            </td>
+                                        </tr>
                                         @if (session()->has('coupon'))
                                             <tr>
                                                 <td>
@@ -155,7 +164,7 @@
                                                     <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">${{ $taxAfterDiscount }}</span>
+                                                    <span class="calc-text">+ ${{ $taxAfterDiscount }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -163,7 +172,7 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Subtotal With Discount</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">${{ $subTotalAfterDiscount }}</span>
+                                                    <span class="calc-text">- ${{ $subTotalAfterDiscount }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -181,7 +190,7 @@
                                                     <span></span>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">${{ Cart::instance('cart')->tax() }}</span>
+                                                    <span class="calc-text">+ ${{ Cart::instance('cart')->tax() }}</span>
                                                 </td>
                                             </tr>
                                             <tr>

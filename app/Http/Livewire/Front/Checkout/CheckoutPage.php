@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderLog;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\ShippingCharges;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,11 +20,24 @@ class CheckoutPage extends Component
 
     public $deliveryAddressId, $payment_gateway;
 
+    public $totalWeight, $shippingChargesValue = 0;
+
 
     protected $rules =  [
         'deliveryAddressId'     => ['required'],
         'payment_gateway'       => ['required'],
     ];
+
+    public function updatedDeliveryAddressId()
+    {
+        $deliveryAddress            = DeliveryAddress::findOrFail($this->deliveryAddressId);
+        $shippingCharges            = ShippingCharges::where('country_id', $deliveryAddress->country_id)->first();
+
+        foreach (Cart::instance('cart')->content() as $item)
+            $this->totalWeight += Product::findOrFail($item->id)->weight;
+
+        $this->shippingChargesValue =  $this->getShippingCharges($shippingCharges->id, $this->totalWeight);
+    }
 
 
 
@@ -76,6 +90,8 @@ class CheckoutPage extends Component
 
 
             foreach (Cart::instance('cart')->content() as $item) {
+                $this->totalWeight += Product::findOrFail($item->id)->weight;
+
                 OrderProduct::create([
                     'order_id'          => $orderId,
                     'user_id'           => Auth::user()->id,
@@ -88,6 +104,9 @@ class CheckoutPage extends Component
                     'product_qty'       => $item->qty,
                 ]);
             }
+
+
+
             session()->put('orderId', $orderId);
             session()->put('finalPrice', Cart::instance('cart')->total());
 
@@ -97,7 +116,7 @@ class CheckoutPage extends Component
 
 
             if ($this->payment_gateway == 'COD') {
-                event(new CustomerOrderPlaced($order));
+                // event(new CustomerOrderPlaced($order));
                 // Cart::instance('cart')->destroy();
                 // return redirect()->route('front.thanks');
             } else
@@ -105,6 +124,30 @@ class CheckoutPage extends Component
         } catch (\Throwable $th) {
             DB::rollBack();
         }
+    }
+
+    public function getShippingCharges($id, $w)
+    {
+        $s      = ShippingCharges::findOrFail($id);
+        $value  = 0;
+
+        if ($w > 0) :
+            if ($w > 0 && $w <= 500) :
+                $value  = $s['zero_500g'];
+            elseif ($w > 500 && $w <= 1000) :
+                $value  = $s['_501_1000g'];
+            elseif ($w > 1000 && $w <= 2000) :
+                $value  = $s['_1001_2000g'];
+            elseif ($w > 2000 && $w <= 5000) :
+                $value  = $s['_2001_5000g'];
+            elseif ($w > 5000) :
+                $value  = $s['above_5000g'];
+            endif;
+        else :
+            $value = 0;
+        endif;
+
+        return $value;
     }
 
     public function render()
