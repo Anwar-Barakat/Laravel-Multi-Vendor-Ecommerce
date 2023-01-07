@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
 
             ProductSeeder::class,
             AttributeSeeder::class,
+
+            ShippingChargesSeeder::class,
         ]);
     }
 }
