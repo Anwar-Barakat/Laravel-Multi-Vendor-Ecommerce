@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\ShippingCharges;
 
+use App\Http\Requests\Admin\StoreShippingChargesRequest;
+use App\Http\Requests\Admin\UpdateShippingChargesRequest;
 use App\Models\ShippingCharges;
-use App\Http\Requests\StoreShippingChargesRequest;
-use App\Http\Requests\UpdateShippingChargesRequest;
+use App\Http\Controllers\Controller;
 
 class ShippingChargesController extends Controller
 {
@@ -15,7 +16,8 @@ class ShippingChargesController extends Controller
      */
     public function index()
     {
-        //
+        $shippingCharges    =   ShippingCharges::with(['country'])->latest()->get();
+        return view('admin.shipping-charges.index', ['shippingCharges' => $shippingCharges]);
     }
 
     /**

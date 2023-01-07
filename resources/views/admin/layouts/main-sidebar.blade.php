@@ -190,6 +190,20 @@
                         </li>
                     </ul>
                 </li>
+
+                {{-- Shipping Charges --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
+                        <i class="fas fa-shipping-fast     side-menu__icon"></i>
+                        <span class="side-menu__label">Shipping Charges</span>
+                        <i class="angle fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.shipping-charges.index') }}" class="slide-item">Shipping Charges List</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}">

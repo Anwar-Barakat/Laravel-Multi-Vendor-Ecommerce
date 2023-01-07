@@ -26,8 +26,7 @@
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 tx-gray-500 mb-3">List of Banners</p>
-                    <button type="button" class="btn btn-primary-gradient  modal-effect" data-effect="effect-rotate-left"
-                        role="button" data-toggle="modal" data-target="#addNew">
+                    <button type="button" class="btn btn-primary-gradient  modal-effect" data-effect="effect-rotate-left" role="button" data-toggle="modal" data-target="#addNew">
                         <i class="fas fa-plus"></i> Add
                     </button>
                 </div>
@@ -50,11 +49,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             @if ($banner->getFirstMediaUrl('banners', 'slider'))
-                                                <img class="img img-thumbnail" width="300"
-                                                    src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}">
+                                                <img class="img img-thumbnail" width="300" src="{{ $banner->getFirstMediaUrl('banners', 'slider') }}">
                                             @else
-                                                <img class="img img-thumbnail" width="300"
-                                                    src="{{ asset('assets/img/banners/banner-default.jpg') }}">
+                                                <img class="img img-thumbnail" width="300" src="{{ asset('assets/img/banners/banner-default.jpg') }}">
                                             @endif
                                         </td>
                                         <td>{{ ucwords($banner->title) }}</td>
@@ -64,26 +61,18 @@
                                         <td>{{ $banner->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
-                                                <button
-                                                    class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm"
-                                                    type="button" id="triggerId" data-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
+                                                <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-bars fa-1x"></i>
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <form action="{{ route('admin.categories.destroy', $banner) }}"
-                                                        method="post">
+                                                    <form action="{{ route('admin.banners.destroy', $banner) }}" method="post">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <a href="javascript:void(0);" role="button" data-toggle="modal"
-                                                            class="dropdown-item" title="Update"
-                                                            data-target="#edit{{ $banner->id }}">
+                                                        <a href="javascript:void(0);" role="button" data-toggle="modal" class="dropdown-item" title="Update" data-target="#edit{{ $banner->id }}">
                                                             <i class="fas fa-edit text-primary"></i>&nbsp;
                                                             Edit
                                                         </a>
-                                                        <a href="javascript:void(0);"
-                                                            class="confirmationDelete dropdown-item" title="Delete"
-                                                            data-toggle="modal" data-target="#delete{{ $banner->id }}">
+                                                        <a href="javascript:void(0);" class="confirmationDelete dropdown-item" title="Delete" data-toggle="modal" data-target="#delete{{ $banner->id }}">
                                                             <i class="fas fa-trash text-danger"></i>&nbsp;
                                                             Delete
                                                         </a>

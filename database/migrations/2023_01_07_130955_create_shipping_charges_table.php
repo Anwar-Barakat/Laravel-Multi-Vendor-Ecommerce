@@ -21,7 +21,7 @@ class CreateShippingChargesTable extends Migration
             $table->float('_1001_2000g');
             $table->float('_2001_5000g');
             $table->float('above_5000g');
-            $table->tinyInteger('status');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

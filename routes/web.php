@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Supervisor\AdminController;
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Order\OrderInvoiceController;
+use App\Http\Controllers\Admin\ShippingCharges\ShippingChargesController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
@@ -150,6 +151,12 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::resource('orders',                                   OrderController::class);
         Route::get('orders/{order}/invoice',                        [OrderInvoiceController::class, 'showInvoice'])->name('orders.invoice.show');
         Route::get('orders/{order}/invoice-pdf',                    [OrderInvoiceController::class, 'invoicePDF'])->name('orders.invoice.pdf');
+
+
+        //?_________________________
+        //? Shipping Charges
+        //?_________________________
+        Route::resource('shipping-charges',                         ShippingChargesController::class);
     });
 });
 

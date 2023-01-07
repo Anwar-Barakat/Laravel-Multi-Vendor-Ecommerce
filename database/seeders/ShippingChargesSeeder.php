@@ -22,7 +22,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '2',
@@ -31,7 +30,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '3',
@@ -40,7 +38,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '4',
@@ -49,7 +46,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '5',
@@ -58,7 +54,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '6',
@@ -67,7 +62,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '7',
@@ -76,7 +70,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '8',
@@ -85,7 +78,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '9',
@@ -94,7 +86,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'       => 50,
-                'status'            => 1,
             ],
             [
                 'country_id'        => '10',
@@ -103,7 +94,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '11',
@@ -112,7 +102,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '12',
@@ -121,7 +110,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '13',
@@ -130,7 +118,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '14',
@@ -139,7 +126,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '15',
@@ -148,7 +134,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '16',
@@ -157,7 +142,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '17',
@@ -166,7 +150,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '18',
@@ -175,7 +158,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '19',
@@ -184,7 +166,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '20',
@@ -193,7 +174,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '21',
@@ -202,7 +182,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '22',
@@ -211,7 +190,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '23',
@@ -220,7 +198,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '24',
@@ -229,7 +206,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '25',
@@ -238,7 +214,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '26',
@@ -247,7 +222,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '27',
@@ -256,7 +230,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '28',
@@ -265,7 +238,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '29',
@@ -274,7 +246,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '30',
@@ -283,7 +254,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '31',
@@ -292,7 +262,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '32',
@@ -301,7 +270,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '33',
@@ -310,7 +278,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '34',
@@ -319,7 +286,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '35',
@@ -328,7 +294,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '36',
@@ -337,7 +302,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '37',
@@ -346,7 +310,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '38',
@@ -355,7 +318,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '39',
@@ -364,7 +326,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '40',
@@ -373,7 +334,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '41',
@@ -382,7 +342,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '42',
@@ -391,7 +350,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '43',
@@ -400,7 +358,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '44',
@@ -409,7 +366,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '45',
@@ -418,7 +374,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '46',
@@ -427,7 +382,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '47',
@@ -436,7 +390,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '48',
@@ -445,7 +398,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '49',
@@ -454,7 +406,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '50',
@@ -463,7 +414,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '51',
@@ -472,7 +422,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '52',
@@ -481,7 +430,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '53',
@@ -490,7 +438,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '54',
@@ -499,7 +446,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '55',
@@ -508,7 +454,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '56',
@@ -517,7 +462,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '57',
@@ -526,7 +470,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '58',
@@ -535,7 +478,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '59',
@@ -544,7 +486,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '60',
@@ -553,7 +494,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '61',
@@ -562,7 +502,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '62',
@@ -571,7 +510,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '63',
@@ -580,7 +518,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '64',
@@ -589,7 +526,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '65',
@@ -598,7 +534,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '66',
@@ -607,7 +542,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '67',
@@ -616,7 +550,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '68',
@@ -625,7 +558,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '69',
@@ -634,7 +566,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '70',
@@ -643,7 +574,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '71',
@@ -652,7 +582,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '72',
@@ -661,7 +590,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '73',
@@ -670,7 +598,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '74',
@@ -679,7 +606,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '75',
@@ -688,7 +614,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '76',
@@ -697,7 +622,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '77',
@@ -706,7 +630,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '78',
@@ -715,7 +638,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '79',
@@ -724,7 +646,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '80',
@@ -733,7 +654,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '81',
@@ -742,7 +662,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '82',
@@ -751,7 +670,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '83',
@@ -760,7 +678,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '84',
@@ -769,7 +686,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '85',
@@ -778,7 +694,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '86',
@@ -787,7 +702,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '87',
@@ -796,7 +710,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '88',
@@ -805,7 +718,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '89',
@@ -814,7 +726,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '90',
@@ -823,7 +734,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '91',
@@ -832,7 +742,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '92',
@@ -841,7 +750,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '93',
@@ -850,7 +758,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '94',
@@ -859,7 +766,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '95',
@@ -868,7 +774,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '96',
@@ -877,7 +782,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '97',
@@ -886,7 +790,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '98',
@@ -895,7 +798,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '99',
@@ -904,7 +806,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '100',
@@ -913,7 +814,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '101',
@@ -922,7 +822,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '102',
@@ -931,7 +830,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '103',
@@ -940,7 +838,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '104',
@@ -949,7 +846,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '105',
@@ -958,7 +854,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '106',
@@ -967,7 +862,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '107',
@@ -976,7 +870,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '108',
@@ -985,7 +878,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '109',
@@ -994,7 +886,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '110',
@@ -1003,7 +894,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '111',
@@ -1012,7 +902,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '112',
@@ -1021,7 +910,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '113',
@@ -1030,7 +918,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '114',
@@ -1039,7 +926,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '115',
@@ -1048,7 +934,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '116',
@@ -1057,7 +942,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '117',
@@ -1066,7 +950,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '118',
@@ -1075,7 +958,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '119',
@@ -1084,7 +966,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '120',
@@ -1093,7 +974,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '121',
@@ -1102,7 +982,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '122',
@@ -1111,7 +990,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '123',
@@ -1120,7 +998,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '124',
@@ -1129,7 +1006,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '125',
@@ -1138,7 +1014,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '126',
@@ -1147,7 +1022,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '127',
@@ -1156,7 +1030,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '128',
@@ -1165,7 +1038,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '129',
@@ -1174,7 +1046,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '130',
@@ -1183,7 +1054,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '131',
@@ -1192,7 +1062,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '132',
@@ -1201,7 +1070,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '133',
@@ -1210,7 +1078,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '134',
@@ -1219,7 +1086,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '135',
@@ -1228,7 +1094,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '136',
@@ -1237,7 +1102,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '137',
@@ -1246,7 +1110,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '138',
@@ -1255,7 +1118,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '139',
@@ -1264,7 +1126,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '140',
@@ -1273,7 +1134,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '141',
@@ -1282,7 +1142,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '142',
@@ -1291,7 +1150,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '143',
@@ -1300,7 +1158,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '144',
@@ -1309,7 +1166,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '145',
@@ -1318,7 +1174,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '146',
@@ -1327,7 +1182,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '147',
@@ -1336,7 +1190,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '148',
@@ -1345,7 +1198,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '149',
@@ -1354,7 +1206,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '150',
@@ -1363,7 +1214,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '151',
@@ -1372,7 +1222,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '152',
@@ -1381,7 +1230,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '153',
@@ -1390,7 +1238,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '154',
@@ -1399,7 +1246,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '155',
@@ -1408,7 +1254,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '156',
@@ -1417,7 +1262,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '157',
@@ -1426,7 +1270,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '158',
@@ -1435,7 +1278,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '159',
@@ -1444,7 +1286,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '160',
@@ -1453,7 +1294,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '161',
@@ -1462,7 +1302,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '162',
@@ -1471,7 +1310,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '163',
@@ -1480,7 +1318,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '164',
@@ -1489,7 +1326,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '165',
@@ -1498,7 +1334,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '166',
@@ -1507,7 +1342,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '167',
@@ -1516,7 +1350,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '168',
@@ -1525,7 +1358,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '169',
@@ -1534,7 +1366,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '170',
@@ -1543,7 +1374,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '171',
@@ -1552,7 +1382,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '172',
@@ -1561,7 +1390,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '173',
@@ -1570,7 +1398,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '174',
@@ -1579,7 +1406,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '175',
@@ -1588,7 +1414,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '176',
@@ -1597,7 +1422,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '177',
@@ -1606,7 +1430,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '178',
@@ -1615,7 +1438,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '179',
@@ -1624,7 +1446,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '180',
@@ -1633,7 +1454,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '181',
@@ -1642,7 +1462,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '182',
@@ -1651,7 +1470,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '183',
@@ -1660,7 +1478,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '184',
@@ -1669,7 +1486,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '185',
@@ -1678,7 +1494,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '186',
@@ -1687,7 +1502,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '187',
@@ -1696,7 +1510,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '188',
@@ -1705,7 +1518,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '189',
@@ -1714,7 +1526,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '190',
@@ -1723,7 +1534,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '191',
@@ -1732,7 +1542,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '192',
@@ -1741,7 +1550,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '193',
@@ -1750,7 +1558,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '194',
@@ -1759,7 +1566,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '195',
@@ -1768,7 +1574,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '196',
@@ -1777,7 +1582,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '197',
@@ -1786,7 +1590,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '198',
@@ -1795,7 +1598,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '199',
@@ -1804,7 +1606,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '200',
@@ -1813,7 +1614,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '201',
@@ -1822,7 +1622,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '202',
@@ -1831,7 +1630,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '203',
@@ -1840,7 +1638,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '204',
@@ -1849,7 +1646,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '205',
@@ -1858,7 +1654,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '206',
@@ -1867,7 +1662,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '207',
@@ -1876,7 +1670,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '208',
@@ -1885,7 +1678,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '209',
@@ -1894,7 +1686,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '210',
@@ -1903,7 +1694,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '211',
@@ -1912,7 +1702,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '212',
@@ -1921,7 +1710,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '213',
@@ -1930,7 +1718,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '214',
@@ -1939,7 +1726,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '215',
@@ -1948,7 +1734,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '216',
@@ -1957,7 +1742,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '217',
@@ -1966,7 +1750,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '218',
@@ -1975,7 +1758,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '219',
@@ -1984,7 +1766,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '220',
@@ -1993,7 +1774,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '221',
@@ -2002,7 +1782,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '222',
@@ -2011,7 +1790,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '223',
@@ -2020,7 +1798,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '224',
@@ -2029,7 +1806,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '225',
@@ -2038,7 +1814,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '226',
@@ -2047,7 +1822,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '227',
@@ -2056,7 +1830,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '228',
@@ -2065,7 +1838,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '229',
@@ -2074,7 +1846,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '230',
@@ -2083,7 +1854,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '231',
@@ -2092,7 +1862,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '232',
@@ -2101,7 +1870,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '233',
@@ -2110,7 +1878,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '234',
@@ -2119,7 +1886,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '235',
@@ -2128,7 +1894,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '236',
@@ -2137,7 +1902,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '237',
@@ -2146,7 +1910,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '238',
@@ -2155,7 +1918,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '239',
@@ -2164,7 +1926,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '240',
@@ -2173,7 +1934,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '241',
@@ -2182,7 +1942,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '242',
@@ -2191,7 +1950,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '243',
@@ -2200,7 +1958,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '244',
@@ -2209,7 +1966,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '245',
@@ -2218,7 +1974,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
             [
                 'country_id'        => '246',
@@ -2227,7 +1982,6 @@ class ShippingChargesSeeder extends Seeder
                 '_1001_2000g'       => 30,
                 '_2001_5000g'       => 40,
                 'above_5000g'      => 50,
-                'status'                => 1,
             ],
         );
 
