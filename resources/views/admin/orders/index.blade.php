@@ -81,6 +81,10 @@
                                                                 <i class="fas fa-print text-success"></i>&nbsp;
                                                                 Invoice
                                                             </a>
+                                                            <a href="{{ route('admin.orders.invoice.pdf', $order) }}" class="dropdown-item" title="Invoice">
+                                                                <i class="fas fa-file-pdf text-danger"></i>&nbsp;
+                                                                Download
+                                                            </a>
                                                         @endif
                                                     </form>
                                                 </div>

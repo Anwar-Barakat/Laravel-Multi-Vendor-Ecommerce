@@ -79,7 +79,7 @@
                                                 <span class="block">Color: {{ $item->product_color }}</span>
                                                 <span class="block mt-2">
                                                     @php
-                                                        echo DNS1D::getBarcodeHTML($order->id, 'C39E+');
+                                                        echo DNS1D::getBarcodeHTML($item->id, 'C39E+');
                                                     @endphp
                                                 </span>
                                             </td>

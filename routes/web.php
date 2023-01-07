@@ -149,6 +149,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //?_________________________
         Route::resource('orders',                                   OrderController::class);
         Route::get('orders/{order}/invoice',                        [OrderInvoiceController::class, 'showInvoice'])->name('orders.invoice.show');
+        Route::get('orders/{order}/invoice-pdf',                    [OrderInvoiceController::class, 'invoicePDF'])->name('orders.invoice.pdf');
     });
 });
 
