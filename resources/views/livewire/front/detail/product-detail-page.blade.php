@@ -134,7 +134,6 @@
                             <h6 class="information-heading u-s-m-b-8">Product Variants:</h6>
                             <div class="color u-s-m-b-11">
                                 @isset($groupProducts)
-                                    <p>Available Color:</p>
                                     <div class="flex gap-2">
                                         @foreach ($groupProducts as $product)
                                             <a href="{{ route('front.product.detail', $product->id) }}">
