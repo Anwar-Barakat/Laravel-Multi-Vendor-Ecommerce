@@ -68,6 +68,8 @@ class CheckoutPage extends Component
             $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
             DB::beginTransaction();
 
+            $final_price        = (float) str_replace(',', '', Cart::instance('cart')->total()) + $this->shippingChargesValue;
+
             $order =  Order::create([
                 'user_id'               => Auth::user()->id,
                 'name'                  => $deliveryAddress->name,
@@ -77,12 +79,13 @@ class CheckoutPage extends Component
                 'country_id'            => $deliveryAddress->country_id,
                 'email'                 => Auth::user()->email,
                 'mobile'                => $deliveryAddress->mobile,
+                'shipping_charges'      => $this->shippingChargesValue,
                 'coupon_code'           => session()->get('coupon')['coupon_code'] ?? null,
                 'coupon_amount'         => session()->get('coupon')['coupon_amount'] ?? null,
                 'order_status'          => "New",
                 'paymeny_method'        => $this->payment_gateway,
                 'paymeny_gateway'       => $this->payment_gateway == 'COD' ? 'COD' : 'Prepaid',
-                'final_price'           => Cart::instance('cart')->total(),
+                'final_price'           => $final_price,
             ]);
 
             $orderId            = DB::getPdo()->lastInsertId();
@@ -108,17 +111,17 @@ class CheckoutPage extends Component
 
 
             session()->put('orderId', $orderId);
-            session()->put('finalPrice', Cart::instance('cart')->total());
+            session()->put('finalPrice', $final_price);
 
             DB::commit();
 
-            toastr()->success('Order Has Been Placed Successfully');
 
 
             if ($this->payment_gateway == 'COD') {
-                // event(new CustomerOrderPlaced($order));
-                // Cart::instance('cart')->destroy();
-                // return redirect()->route('front.thanks');
+                event(new CustomerOrderPlaced($order));
+                Cart::instance('cart')->destroy();
+                toastr()->success('Order Has Been Placed Successfully');
+                return redirect()->route('front.thanks');
             } else
                 echo "Prepaid Method Coming Soon!, thanks";
         } catch (\Throwable $th) {

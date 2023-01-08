@@ -198,7 +198,9 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
                                                 <td class="total-amount">
-                                                    <span class="calc-text">${{ Cart::instance('cart')->total() }}</span>
+                                                    <span class="calc-text">
+                                                        ${{ (float) str_replace(',', '', Cart::instance('cart')->total()) + $shippingChargesValue }}
+                                                    </span>
                                                 </td>
                                             </tr>
                                         @endif
