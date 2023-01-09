@@ -21,7 +21,7 @@ use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Admin\Order\OrderInvoiceController;
 use App\Http\Controllers\Admin\ShippingCharges\ShippingChargesController;
-use App\Http\Controllers\CmsPage\CmsPageController;
+use App\Http\Controllers\Admin\CmsPage\CmsPageController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;

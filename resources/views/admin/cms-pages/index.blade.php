@@ -29,6 +29,7 @@
                     </button>
                 </div>
                 <div class="card-body">
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
                     <div class="table-responsive">
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
@@ -44,9 +45,8 @@
                                 @foreach ($cms_pages as $page)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $cms_page->title }}</td>
-                                        <td>{{ $cms_page->url }}</td>
-                                        <td>{{ $cms_page->created_at }}</td>
+                                        <td>{{ $page->title }}</td>
+                                        <td>{{ $page->url }}</td>
                                         <td>{{ $page->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
@@ -56,7 +56,6 @@
                                                 </a>
                                             </span>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -66,6 +65,7 @@
             </div>
         </div>
     </div>
+    @include('admin.cms-pages.add')
 @endsection
 @section('js')
     <!-- Internal Data tables -->

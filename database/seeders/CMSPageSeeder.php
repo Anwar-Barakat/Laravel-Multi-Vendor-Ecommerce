@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\CMSPage;
+use App\Models\CmsPage;
 use Illuminate\Database\Seeder;
 
 class CMSPageSeeder extends Seeder
@@ -34,8 +34,8 @@ class CMSPageSeeder extends Seeder
         ];
 
         foreach ($cmsRecords as $cms) {
-            if (is_null(CMSPage::where('title', $cms['title'])->first()))
-                CMSPage::create($cms);
+            if (is_null(CmsPage::where('title', $cms['title'])->first()))
+                CmsPage::create($cms);
         }
     }
 }

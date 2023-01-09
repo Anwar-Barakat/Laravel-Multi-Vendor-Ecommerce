@@ -1857,6 +1857,10 @@ select {
     display: flex;
   }
 
+  .lg\:max-w-xl {
+    max-width: 36rem;
+  }
+
   .lg\:justify-end {
     justify-content: flex-end;
   }

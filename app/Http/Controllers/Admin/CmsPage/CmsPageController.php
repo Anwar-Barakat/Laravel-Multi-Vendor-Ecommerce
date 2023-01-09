@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\CmsPage;
+namespace App\Http\Controllers\Admin\CmsPage;
 
 use App\Http\Requests\Admin\StoreCmsPageRequest;
 use App\Http\Requests\Admin\UpdateCmsPageRequest;
 use App\Models\CmsPage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class CmsPageController extends Controller
 {
@@ -38,7 +39,18 @@ class CmsPageController extends Controller
      */
     public function store(StoreCmsPageRequest $request)
     {
-        //
+        try {
+            if ($request->isMethod('post')) {
+                $data                   = $request->only(['title', 'description', 'meta_title', 'meta_description', 'meta_keywords']);
+                $data['url']            = Str::slug($data['title']);
+
+                CmsPage::create($data);
+                toastr()->success('CMS Page Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
