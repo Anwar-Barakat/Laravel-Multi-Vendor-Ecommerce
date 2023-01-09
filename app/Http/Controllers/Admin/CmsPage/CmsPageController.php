@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CmsPage;
 
-use App\Models\CMSPage;
-use App\Http\Requests\StoreCMSPageRequest;
-use App\Http\Requests\UpdateCMSPageRequest;
+use App\Http\Requests\Admin\StoreCmsPageRequest;
+use App\Http\Requests\Admin\UpdateCmsPageRequest;
+use App\Models\CmsPage;
+use App\Http\Controllers\Controller;
 
-class CMSPageController extends Controller
+class CmsPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,8 @@ class CMSPageController extends Controller
      */
     public function index()
     {
-        //
+        $cms_pages      = CmsPage::latest()->get();
+        return view('admin.cms-pages.index', ['cms_pages' => $cms_pages]);
     }
 
     /**
@@ -31,10 +33,10 @@ class CMSPageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCMSPageRequest  $request
+     * @param  \App\Http\Requests\StoreCmsPageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCMSPageRequest $request)
+    public function store(StoreCmsPageRequest $request)
     {
         //
     }
@@ -42,10 +44,10 @@ class CMSPageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\CMSPage  $cMSPage
+     * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function show(CMSPage $cMSPage)
+    public function show(CmsPage $cmsPage)
     {
         //
     }
@@ -53,10 +55,10 @@ class CMSPageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\CMSPage  $cMSPage
+     * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function edit(CMSPage $cMSPage)
+    public function edit(CmsPage $cmsPage)
     {
         //
     }
@@ -64,11 +66,11 @@ class CMSPageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCMSPageRequest  $request
-     * @param  \App\Models\CMSPage  $cMSPage
+     * @param  \App\Http\Requests\UpdateCmsPageRequest  $request
+     * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCMSPageRequest $request, CMSPage $cMSPage)
+    public function update(UpdateCmsPageRequest $request, CmsPage $cmsPage)
     {
         //
     }
@@ -76,10 +78,10 @@ class CMSPageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\CMSPage  $cMSPage
+     * @param  \App\Models\CmsPage  $cmsPage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CMSPage $cMSPage)
+    public function destroy(CmsPage $cmsPage)
     {
         //
     }

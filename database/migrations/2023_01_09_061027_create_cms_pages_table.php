@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCMSPagesTable extends Migration
+class CreateCmsPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCMSPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_m_s_pages', function (Blueprint $table) {
+        Schema::create('cms_pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('description');
@@ -33,6 +33,6 @@ class CreateCMSPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_m_s_pages');
+        Schema::dropIfExists('cms_pages');
     }
 }

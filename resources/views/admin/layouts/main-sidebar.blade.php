@@ -204,6 +204,20 @@
                         </li>
                     </ul>
                 </li>
+
+                {{-- CMS Pages --}}
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
+                        <i class="fas fa-files side-menu__icon"></i>
+                        <span class="side-menu__label">CMS Pages</span>
+                        <i class="angle fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li>
+                            <a href="{{ route('admin.cms-pages.index') }}" class="slide-item">CMS Pages List</a>
+                        </li>
+                    </ul>
+                </li>
             @endif
             <li class="slide">
                 <a class="side-menu__item" href="{{ url('/' . ($page = 'icons')) }}">
