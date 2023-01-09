@@ -42,20 +42,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($cms_pages as $page)
+                                @foreach ($cms_pages as $cms_page)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $page->title }}</td>
-                                        <td>{{ $page->url }}</td>
-                                        <td>{{ $page->created_at }}</td>
+                                        <td>{{ $cms_page->title }}</td>
+                                        <td>{{ $cms_page->url }}</td>
+                                        <td>{{ $cms_page->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">
-                                                <a href="javascript:void(0);" role="button" data-toggle="modal" title="Update" data-target="#edit{{ $page->id }}" style="color: white">
+                                                <a href="javascript:;" role="button" data-toggle="modal" title="Update" data-target="#edit{{ $cms_page->id }}" style="color: white">
                                                     <i class="fas fa-edit"></i>
                                                     Edit
                                                 </a>
                                             </span>
+                                            <span class="tag tag-danger">
+                                                <a href="javascript:;" role="button" data-toggle="modal" title="Delete" data-target="#delete{{ $cms_page->id }}" style="color: white">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </a>
+                                            </span>
                                         </td>
+                                        @include('admin.cms-pages.edit')
+                                        <x-delete-modal :id="$cms_page->id" :title="'Delete The CMS Page'" :action="route('admin.cms-pages.destroy', ['cms_page' => $cms_page])" />
                                     </tr>
                                 @endforeach
                             </tbody>

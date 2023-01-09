@@ -84,7 +84,18 @@ class CmsPageController extends Controller
      */
     public function update(UpdateCmsPageRequest $request, CmsPage $cmsPage)
     {
-        //
+        try {
+            if ($request->isMethod('PUT')) {
+                $data                   = $request->only(['title', 'description', 'meta_title', 'meta_description', 'meta_keywords']);
+                $data['url']            = Str::slug($data['title']);
+
+                $cmsPage->update($data);
+                toastr()->success('CMS Page Has Been Updated Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
@@ -95,6 +106,12 @@ class CmsPageController extends Controller
      */
     public function destroy(CmsPage $cmsPage)
     {
-        //
+        try {
+            $cmsPage->delete();
+            toastr()->info('CMS Page Has Been Deleted');
+            return back();
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 }

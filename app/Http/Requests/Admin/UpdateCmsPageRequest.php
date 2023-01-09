@@ -13,7 +13,7 @@ class UpdateCmsPageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class UpdateCmsPageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'             => ['required', 'min:3'],
+            'description'       => ['required', 'min:3'],
+            'meta_title'        => ['required', 'min:3'],
+            'meta_description'  => ['required', 'min:3'],
+            'meta_keywords'     => ['required', 'min:3'],
         ];
     }
 }
