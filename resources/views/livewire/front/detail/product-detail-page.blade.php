@@ -520,38 +520,8 @@
             <!-- Detail-Tabs /- -->
             <!-- Different-Product-Section -->
             <div class="detail-different-product-section u-s-p-t-80">
-                @if (count($similar_products) > 0)
-                    <section class="section-maker">
-                        <div class="container">
-                            <div class="sec-maker-header text-center">
-                                <h3 class="sec-maker-h3">Similar Products</h3>
-                            </div>
-                            <div class="slider-fouc">
-                                <div class="products-slider owl-carousel" data-item="4">
-                                    @foreach ($similar_products as $product)
-                                        <x-product-block :product="$product" type="similar" />
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                @endif
-                @if ($viewProducts)
-                    <section class="section-maker">
-                        <div class="container">
-                            <div class="sec-maker-header text-center">
-                                <h3 class="sec-maker-h3">Recently View</h3>
-                            </div>
-                            <div class="slider-fouc">
-                                <div class="products-slider owl-carousel" data-item="4">
-                                    @foreach ($viewProducts as $product)
-                                        <x-product-block :product="$product" type="discount" />
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                @endif
+                @livewire('front.detail.similar-product-section', ['product_id' => $product->id])
+                @livewire('front.detail.most-viewed-product-section', ['product_id' => $product->id])
             </div>
             <!-- Different-Product-Section /- -->
         </div>
