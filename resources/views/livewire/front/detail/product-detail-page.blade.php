@@ -104,6 +104,32 @@
                                 </div>
                             @endif
                         </div>
+                        <div class="section-3-price-original-discount u-s-p-y-14 table-wrapper ">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Exchange Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (App\Models\Currency::active()->get() as $currency)
+                                        <tr>
+                                            <td>
+                                                <div class="cart-price">
+                                                    {{ $currency->code }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="cart-price">
+                                                    ${{ round($final_price / $currency->exchange_rate, 2) }}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="section-4-sku-information u-s-p-y-14">
                             <h6 class="information-heading u-s-m-b-8">Sku Information:</h6>
                             <div class="availability">
@@ -149,7 +175,7 @@
                                     <div class="size-variant select-box-wrapper">
                                         <select class="select-box product-size" wire:model="size">
                                             @foreach ($product->attributes as $attr)
-                                                <option value="{{ $attr->size }}">{{ ucwords($attr->size) }}
+                                                <option value="{{ $attr->size }}">{{ ucwords($attr->size) }} ({{ $attr->stock }})
                                                 </option>
                                             @endforeach
                                         </select>

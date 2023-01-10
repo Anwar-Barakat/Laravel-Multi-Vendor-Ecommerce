@@ -13,4 +13,9 @@ class Currency extends Model
         'code',
         'exchange_rate'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 }

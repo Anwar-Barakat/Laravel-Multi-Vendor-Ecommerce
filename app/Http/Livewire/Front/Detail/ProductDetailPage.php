@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Detail;
 
 use App\Models\Attribute;
+use App\Models\Currency;
 use App\Models\Filter;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,8 @@ class ProductDetailPage extends Component
     public $productId;
 
     public $size = 'small', $qty = 1, $discount, $final_price, $original_price, $totalStock;
+
+    public $currencies;
 
 
     public function mount($productId)
@@ -102,11 +105,10 @@ class ProductDetailPage extends Component
             'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
-
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
         $data['groupProducts']      = $this->getProductGroup($data['product']);
-
+        
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }
 }
