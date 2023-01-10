@@ -1,6 +1,5 @@
     {{-- Edit Brand Modal --}}
-    <div class="modal fade" id="edit{{ $brand->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="edit{{ $brand->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+    <div class="modal fade" id="edit{{ $brand->id }}" tabindex="-1" role="dialog" aria-labelledby="edit{{ $brand->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,9 +14,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control  @error('name') is-invalid @enderror"
-                                id="name" name="name" value="{{ $brand->name }}" placeholder="Brand Name"
-                                required>
+                            <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" value="{{ $brand->name }}" placeholder="Brand Name" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -26,8 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select class="form-control @error('status') is-invalid @enderror" id="status"
-                                name="status" required>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" required>
                                 <option value=""> Select...</option>
                                 <option value="1" {{ old('status', $brand->status) == '1' ? 'selected' : '' }}>
                                     Active</option>
@@ -42,8 +38,7 @@
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary-gradient modal-effect"
-                                data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary-gradient modal-effect" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary-gradient">
                                 <i class="fas fa-edit"></i> Update
                             </button>

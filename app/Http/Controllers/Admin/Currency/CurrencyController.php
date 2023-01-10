@@ -6,6 +6,7 @@ use App\Models\Currency;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCurrencyRequest;
 use App\Http\Requests\Admin\UpdateCurrencyRequest;
+use Illuminate\Support\Str;
 
 class CurrencyController extends Controller
 {
@@ -16,7 +17,8 @@ class CurrencyController extends Controller
      */
     public function index()
     {
-        //
+        $currencies     = Currency::latest()->get();
+        return view('admin.currencies.index', ['currencies' => $currencies]);
     }
 
     /**
@@ -37,7 +39,17 @@ class CurrencyController extends Controller
      */
     public function store(StoreCurrencyRequest $request)
     {
-        //
+        try {
+            if ($request->isMethod('post')) {
+                $data                   = $request->only(['code', 'exchange_rate']);
+
+                Currency::create($data);
+                toastr()->success('Currency Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
@@ -71,7 +83,17 @@ class CurrencyController extends Controller
      */
     public function update(UpdateCurrencyRequest $request, Currency $currency)
     {
-        //
+        try {
+            if ($request->isMethod('put')) {
+                $data                   = $request->only(['code', 'exchange_rate']);
+
+                $currency->update($data);
+                toastr()->success('Currency Has Been Added Successfully');
+                return back();
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error', $th->getMessage()]);
+        }
     }
 
     /**
@@ -82,6 +104,8 @@ class CurrencyController extends Controller
      */
     public function destroy(Currency $currency)
     {
-        //
+        $currency->delete();
+        toastr()->info('Currency Has Been Deleted');
+        return redirect()->back();
     }
 }

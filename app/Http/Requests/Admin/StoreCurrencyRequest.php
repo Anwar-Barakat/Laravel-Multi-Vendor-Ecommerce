@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCurrencyRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreCurrencyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class StoreCurrencyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'          => ['required', 'unique:currencies'],
+            'exchange_rate' => ['required', 'numeric'],
         ];
     }
 }
