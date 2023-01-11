@@ -29,6 +29,7 @@ class RegisterPage extends Component
 
     public function storeVendor()
     {
+        $this->validate();
         try {
             DB::beginTransaction();
 

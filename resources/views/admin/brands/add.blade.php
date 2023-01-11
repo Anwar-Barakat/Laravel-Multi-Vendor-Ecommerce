@@ -1,6 +1,5 @@
     {{-- Add New Brand Modal --}}
-    <div class="modal effect-rotate-left" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
-        aria-hidden="true">
+    <div class="modal effect-rotate-left" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -14,8 +13,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control  @error('name') is-invalid @enderror"
-                                id="name" name="name" placeholder="Brand Name" required>
+                            <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" name="name" placeholder="Brand Name" required>
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -24,8 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label for="status">Status</label>
-                            <select class="form-control @error('status') is-invalid @enderror" id="status"
-                                name="status" required>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status" required>
                                 <option value="">Select...</option>
                                 <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
                                     Active</option>

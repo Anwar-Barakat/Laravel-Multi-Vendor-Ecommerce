@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('front/css/rating.css') }}">
 <div>
     <div class="page-style-a">
         <div class="container">
