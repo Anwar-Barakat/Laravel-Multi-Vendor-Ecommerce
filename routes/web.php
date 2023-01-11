@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Order\OrderInvoiceController;
 use App\Http\Controllers\Admin\ShippingCharges\ShippingChargesController;
 use App\Http\Controllers\Admin\CmsPage\CmsPageController;
 use App\Http\Controllers\Admin\Currency\CurrencyController;
+use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
@@ -171,6 +172,13 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         //? Currencies
         //?_________________________
         Route::resource('currencies',                               CurrencyController::class);
+
+
+
+        //?_________________________
+        //? Product Rating
+        //?_________________________
+        Route::resource('product-ratings',                          ProductRatingController::class)->only(['index', 'show']);
     });
 });
 
