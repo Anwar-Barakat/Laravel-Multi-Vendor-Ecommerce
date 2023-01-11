@@ -6,6 +6,7 @@ use App\Models\Attribute;
 use App\Models\Currency;
 use App\Models\Filter;
 use App\Models\Product;
+use App\Models\ProductRating;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -108,7 +109,14 @@ class ProductDetailPage extends Component
         $data['filters']            = Filter::with(['filterValues'])->active()->get();
 
         $data['groupProducts']      = $this->getProductGroup($data['product']);
-        
+
+        $data['rating_count']           = ProductRating::ratingProduct($data['product']->id)->count();
+        if ($data['rating_count'] > 0) {
+            $data['rating_sum']             = ProductRating::ratingProduct($data['product']->id)->sum('rating');
+            $data['average_rating']         = round($data['rating_sum'] / $data['rating_count'], 2);
+            $data['average_star_rating']    = round($data['rating_sum'] / $data['rating_count']);
+        }
+
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');
     }
 }

@@ -7,12 +7,11 @@
                     <div class="circle-wrapper">
                         <h1>{{ $average_rating }}</h1>
                     </div>
-                    <h6 class="review-h6">Based on {{ $reviews->count() }} Reviews</h6>
+                    <h6 class="review-h6">Based on {{ $rating_count ?? 0 }} Reviews</h6>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="total-star-meter">
-
                     @foreach ($reviews as $review)
                         <div class="star-wrapper">
                             <span class="inline-flex justify-content-start w-1/4">{{ $review->rating }} Stars</span>
@@ -118,7 +117,7 @@
                 </div>
                 <!-- All-Reviews /- -->
                 <!-- Pagination-Review -->
-                {{ $reviews->links() }}
+                {{-- {{ $reviews->links() }} --}}
                 <!-- Pagination-Review /- -->
             </div>
             <!-- Get-Reviews /- -->

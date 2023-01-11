@@ -11,8 +11,10 @@ class RatingProductSection extends Component
 {
     use WithPagination;
 
+
     public $product_id;
     public $name, $email, $rating, $review;
+    public $reviews;
 
 
     protected $rules = [
@@ -42,7 +44,7 @@ class RatingProductSection extends Component
                     'rating'        => $this->rating,
                 ]);
                 toastr()->success('Rating Has Been Added Successfully to This Product');
-                $this->reset();
+                $this->reset(['rating', 'review']);
             }
         } else {
             toastr()->info('Login First, Then Add Your Rating');
@@ -51,11 +53,16 @@ class RatingProductSection extends Component
 
     public function render()
     {
+        $data['rating_count']   = ProductRating::where('product_id', $this->product_id)->count();
 
-        $data['reviews']        = ProductRating::ratingProduct($this->product_id)->paginate(5);
-        $data['rating_sum']     = ProductRating::ratingProduct($this->product_id)->sum('rating');
-        $data['rating_count']   = ProductRating::ratingProduct($this->product_id)->count();
-        $data['average_rating'] = round($data['rating_sum'] / $data['rating_count'], 2);
+        if ($data['rating_count'] > 0) {
+            $data['rating_sum']     = ProductRating::ratingProduct($this->product_id)->sum('rating');
+            $data['average_rating'] = round($data['rating_sum'] / $data['rating_count'], 2);
+        } else {
+            $data['average_rating'] = 0;
+        }
+
+        $this->reviews  =   ProductRating::where('product_id', $this->product_id)->get();
 
         return view('livewire.front.detail.rating-product-section', $data);
     }

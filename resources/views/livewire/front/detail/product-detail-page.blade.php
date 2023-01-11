@@ -79,12 +79,23 @@
                                     </li>
                                 @endif
                             </ul>
-                            <div class="product-rating">
-                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                    <span style='width:67px'></span>
+                            @if ($rating_count > 0)
+                                <div class="product-rating">
+                                    <div class="inline-block" title="4.5 out of 5 - based on 23 Reviews">
+                                        @php
+                                            $star = 1;
+                                        @endphp
+                                        @while ($star <= $average_star_rating)
+                                            <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                                            @php
+                                                $star++;
+                                            @endphp
+                                        @endwhile
+                                    </div>
+                                    <span>({{ $average_rating }})</span>
                                 </div>
-                                <span>(23)</span>
-                            </div>
+                            @endif
+
                         </div>
                         <div class="section-3-price-original-discount u-s-p-y-14">
                             <div class="price">
