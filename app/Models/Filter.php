@@ -18,9 +18,7 @@ class Filter extends Model
         'status',
     ];
 
-    protected $casts = [
-        'categories_id' => 'array',
-    ];
+
 
     protected $with = ['filterValues'];
 

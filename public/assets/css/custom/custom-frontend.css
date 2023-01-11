@@ -92,3 +92,7 @@ input {
 table {
   border: 1px solid #dcdcdd;
 }
+
+.gold {
+  color: #ebb617;
+}

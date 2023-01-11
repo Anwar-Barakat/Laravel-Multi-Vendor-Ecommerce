@@ -5,48 +5,30 @@
                 <div class="total-score-wrapper">
                     <h6 class="review-h6">Average Rating</h6>
                     <div class="circle-wrapper">
-                        <h1>4.5</h1>
+                        <h1>{{ $average_rating }}</h1>
                     </div>
-                    <h6 class="review-h6">Based on 23 Reviews</h6>
+                    <h6 class="review-h6">Based on {{ $reviews->count() }} Reviews</h6>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="total-star-meter">
-                    <div class="star-wrapper">
-                        <span>5 Stars</span>
-                        <div class="star">
-                            <span style='width:0'></span>
+
+                    @foreach ($reviews as $review)
+                        <div class="star-wrapper">
+                            <span class="inline-flex justify-content-start w-1/4">{{ $review->rating }} Stars</span>
+                            <span class=" inline-flex justify-content-end w-1/4">
+                                @php
+                                    $count = 1;
+                                @endphp
+                                @while ($count <= $review->rating)
+                                    <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                                    @php
+                                        $count++;
+                                    @endphp
+                                @endwhile
+                            </span>
                         </div>
-                        <span>(0)</span>
-                    </div>
-                    <div class="star-wrapper">
-                        <span>4 Stars</span>
-                        <div class="star">
-                            <span style='width:67px'></span>
-                        </div>
-                        <span>(23)</span>
-                    </div>
-                    <div class="star-wrapper">
-                        <span>3 Stars</span>
-                        <div class="star">
-                            <span style='width:0'></span>
-                        </div>
-                        <span>(0)</span>
-                    </div>
-                    <div class="star-wrapper">
-                        <span>2 Stars</span>
-                        <div class="star">
-                            <span style='width:0'></span>
-                        </div>
-                        <span>(0)</span>
-                    </div>
-                    <div class="star-wrapper">
-                        <span>1 Star</span>
-                        <div class="star">
-                            <span style='width:0'></span>
-                        </div>
-                        <span>(0)</span>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -70,19 +52,13 @@
                                 <label class="star__item" for="star-4"><span class="visuhide">4 stars</span></label>
                                 <label class="star__item" for="star-5"><span class="visuhide">5 stars</span></label>
                             </span>
-                            @error('rating')
-                                <span class="error">{{ $message }}</span>
-                            @enderror
                         </div>
 
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <x-label for="review" :value="__('Review')" />
-                                <textarea id="review" class="text-field mb-2 shadow-none pt-2  @error('review') is-invalid @enderror" rows="5" required style="height: 130px;" wire:model="review"></textarea>
-                                @error('review')
-                                    <span class="error">{{ $message }}</span>
-                                @enderror
+                                <x-label for="email" :value="__('Review')" />
+                                <textarea id="email" class="text-field mb-2 shadow-none pt-2" rows="5" required style="height: 130px;" wire:model="review"></textarea>
                             </div>
                         </div>
 
@@ -93,149 +69,145 @@
                 </div>
             </div>
         </div>
-        <!-- Get-Reviews -->
-        <div class="get-reviews u-s-p-b-22">
-            <!-- Review-Options -->
-            <div class="review-options u-s-m-b-16">
-                <div class="review-option-heading">
-                    <h6>Reviews
-                        <span> (15) </span>
-                    </h6>
-                </div>
-                <div class="review-option-box">
-                    <div class="select-box-wrapper">
-                        <label class="sr-only" for="review-sort">Review Sorter</label>
-                        <select class="select-box" id="review-sort">
-                            <option value="">Sort by: Best Rating</option>
-                            <option value="">Sort by: Worst Rating</option>
-                        </select>
+        @if ($reviews->count() > 0 && isset($reviews))
+            <!-- Get-Reviews -->
+            <div class="get-reviews u-s-p-b-22">
+                <!-- Review-Options -->
+                <div class="review-options u-s-m-b-16">
+                    <div class="review-option-heading">
+                        <h6>Reviews
+                            <span> ({{ $reviews->count() }}) </span>
+                        </h6>
+                    </div>
+                    <div class="review-option-box">
+                        <div class="select-box-wrapper">
+                            <label class="sr-only" for="review-sort">Review Sorter</label>
+                            <select class="select-box" id="review-sort">
+                                <option value="">Sort by: Best Rating</option>
+                                <option value="">Sort by: Worst Rating</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+                <!-- Review-Options /- -->
+                <!-- All-Reviews -->
+                <div class="reviewers">
+                    @foreach ($reviews as $review)
+                        <div class="review-data pt-1">
+                            <div class="reviewer-name-and-date">
+                                <h6 class="reviewer-name">{{ $review->user->name }}</h6>
+                                <h6 class="review-posted-date">{{ $review->created_at }}</h6>
+                            </div>
+                            <div class="reviewer-stars-title-body">
+                                @php
+                                    $count = 1;
+                                @endphp
+                                @while ($count <= $review->rating)
+                                    <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                                    @php
+                                        $count++;
+                                    @endphp
+                                @endwhile
+                                <p class="review-body">
+                                    {{ $review->review }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+                <!-- All-Reviews /- -->
+                <!-- Pagination-Review -->
+                {{ $reviews->links() }}
+                <!-- Pagination-Review /- -->
             </div>
-            <!-- Review-Options /- -->
-            <!-- All-Reviews -->
-            <div class="reviewers">
-                <div class="review-data">
-                    <div class="reviewer-name-and-date">
-                        <h6 class="reviewer-name">John</h6>
-                        <h6 class="review-posted-date">10 May 2018</h6>
-                    </div>
-                    <div class="reviewer-stars-title-body">
-                        <div class="reviewer-stars">
-                            <div class="star">
-                                <span style='width:67px'></span>
-                            </div>
-                            <span class="review-title">Good!</span>
-                        </div>
-                        <p class="review-body">
-                            Good Quality...!
-                        </p>
-                    </div>
-                </div>
-                <div class="review-data">
-                    <div class="reviewer-name-and-date">
-                        <h6 class="reviewer-name">Doe</h6>
-                        <h6 class="review-posted-date">10 June 2018</h6>
-                    </div>
-                    <div class="reviewer-stars-title-body">
-                        <div class="reviewer-stars">
-                            <div class="star">
-                                <span style='width:67px'></span>
-                            </div>
-                            <span class="review-title">Well done!</span>
-                        </div>
-                        <p class="review-body">
-                            Cotton is good.
-                        </p>
-                    </div>
-                </div>
-                <div class="review-data">
-                    <div class="reviewer-name-and-date">
-                        <h6 class="reviewer-name">Tim</h6>
-                        <h6 class="review-posted-date">10 July 2018</h6>
-                    </div>
-                    <div class="reviewer-stars-title-body">
-                        <div class="reviewer-stars">
-                            <div class="star">
-                                <span style='width:67px'></span>
-                            </div>
-                            <span class="review-title">Well done!</span>
-                        </div>
-                        <p class="review-body">
-                            Excellent condition
-                        </p>
-                    </div>
-                </div>
-                <div class="review-data">
-                    <div class="reviewer-name-and-date">
-                        <h6 class="reviewer-name">Johnny</h6>
-                        <h6 class="review-posted-date">10 March 2018</h6>
-                    </div>
-                    <div class="reviewer-stars-title-body">
-                        <div class="reviewer-stars">
-                            <div class="star">
-                                <span style='width:67px'></span>
-                            </div>
-                            <span class="review-title">Bright!</span>
-                        </div>
-                        <p class="review-body">
-                            Cotton
-                        </p>
-                    </div>
-                </div>
-                <div class="review-data">
-                    <div class="reviewer-name-and-date">
-                        <h6 class="reviewer-name">Alexia C. Marshall</h6>
-                        <h6 class="review-posted-date">12 May 2018</h6>
-                    </div>
-                    <div class="reviewer-stars-title-body">
-                        <div class="reviewer-stars">
-                            <div class="star">
-                                <span style='width:67px'></span>
-                            </div>
-                            <span class="review-title">Well done!</span>
-                        </div>
-                        <p class="review-body">
-                            Good polyester Cotton
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- All-Reviews /- -->
-            <!-- Pagination-Review -->
-            <div class="pagination-review-area">
-                <div class="pagination-review-number">
-                    <ul>
-                        <li style="display: none">
-                            <a href="single-product.html" title="Previous">
-                                <i class="fas fa-angle-left"></i>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="single-product.html">1</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html">2</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html">3</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html">...</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html">10</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html" title="Next">
-                                <i class="fas fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Pagination-Review /- -->
-        </div>
-        <!-- Get-Reviews /- -->
+            <!-- Get-Reviews /- -->
+        @endif
     </div>
 </div>
+
+<style>
+    .visuhide {
+        position: absolute !important;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    .star__container:hover .star__item,
+    .star__radio:checked~.star__item {
+        filter: grayscale(0);
+    }
+
+    .star__item:hover~.star__item,
+    .star__item,
+    .star__container:not(:hover)>.star__radio:nth-of-type(5):checked~.star__item:nth-of-type(5)~.star__item,
+    .star__container:not(:hover)>.star__radio:nth-of-type(4):checked~.star__item:nth-of-type(4)~.star__item,
+    .star__container:not(:hover)>.star__radio:nth-of-type(3):checked~.star__item:nth-of-type(3)~.star__item,
+    .star__container:not(:hover)>.star__radio:nth-of-type(2):checked~.star__item:nth-of-type(2)~.star__item,
+    .star__container:not(:hover)>.star__radio:nth-of-type(1):checked~.star__item:nth-of-type(1)~.star__item {
+        filter: grayscale(1);
+    }
+
+    .star__radio:nth-of-type(1):checked~.star__item:nth-of-type(1)::before {
+        transform: scale(1.5);
+        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
+    }
+
+    .star__radio:nth-of-type(2):checked~.star__item:nth-of-type(2)::before {
+        transform: scale(1.5);
+        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
+    }
+
+    .star__radio:nth-of-type(3):checked~.star__item:nth-of-type(3)::before {
+        transform: scale(1.5);
+        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
+    }
+
+    .star__radio:nth-of-type(4):checked~.star__item:nth-of-type(4)::before {
+        transform: scale(1.5);
+        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
+    }
+
+    .star__radio:nth-of-type(5):checked~.star__item:nth-of-type(5)::before {
+        transform: scale(1.5);
+        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
+    }
+
+    .star__container {
+        display: flex;
+        border-radius: 0.25em;
+        background-color: #00a39b;
+        box-shadow: 0 0.25em 1em rgb(0 0 0 / 25%);
+        transition: box-shadow 0.3s ease;
+        justify-content: center;
+        margin: 1rem 0;
+    }
+
+    .star__container:focus-within {
+        box-shadow: 0 0.125em 0.5em rgba(0, 0, 0, 0.5);
+    }
+
+    .star__item {
+        display: inline-flex;
+        width: 1.25em;
+        height: 1.5em;
+    }
+
+    .star__item::before {
+        content: "⭐️";
+        display: inline-block;
+        margin: auto;
+        font-size: 0.75em;
+        vertical-align: top;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform-origin: 50% 33.3%;
+        transition: transform 0.3s ease-out;
+    }
+
+    #rating-form .star__container label {
+        font-size: 25px;
+    }
+</style>

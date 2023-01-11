@@ -58,7 +58,7 @@
 
                                 <button class="ml-4 button button-primary" type="submit">
                                     {{ __('Register') }}
-                                </x-button>
+                                </button>
                             </div>
                         </form>
                     </div>
