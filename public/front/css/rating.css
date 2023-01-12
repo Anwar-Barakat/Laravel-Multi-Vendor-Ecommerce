@@ -91,6 +91,7 @@
   backface-visibility: hidden;
   transform-origin: 50% 33.3%;
   transition: transform 0.3s ease-out;
+  cursor: pointer;
 }
 
 #rating-form .star__container label {

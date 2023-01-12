@@ -5,29 +5,57 @@
                 <div class="total-score-wrapper">
                     <h6 class="review-h6">Average Rating</h6>
                     <div class="circle-wrapper">
-                        <h1>{{ $average_rating }}</h1>
+                        <h1>{{ round($average_rating, 1) }}</h1>
                     </div>
                     <h6 class="review-h6">Based on {{ $rating_count ?? 0 }} Reviews</h6>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="total-star-meter">
-                    @foreach ($reviews as $review)
-                        <div class="star-wrapper">
-                            <span class="inline-flex justify-content-start w-1/4">{{ $review->rating }} Stars</span>
-                            <span class=" inline-flex justify-content-end w-1/4">
-                                @php
-                                    $count = 1;
-                                @endphp
-                                @while ($count <= $review->rating)
-                                    <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
-                                    @php
-                                        $count++;
-                                    @endphp
-                                @endwhile
+                    <div class="star-wrapper">
+                        <span class="flex justify-between w-1/3">
+                            <span>1 Stars</span>
+                            <i class="fas fa-star text-warning"></i>
+                        </span>
+
+                        <span class="flex justify-between w-1/3">
+                            <span>2 Stars</span>
+                            <span>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
                             </span>
-                        </div>
-                    @endforeach
+                        </span>
+
+                        <span class="flex justify-between w-1/3">
+                            <span>3 Stars</span>
+                            <span>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </span>
+                        </span>
+
+                        <span class="flex justify-between w-1/3">
+                            <span>4 Stars</span>
+                            <span>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </span>
+                        </span>
+
+                        <span class="flex justify-between w-1/3">
+                            <span>5 Stars</span>
+                            <span>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </span>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

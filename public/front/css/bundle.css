@@ -595,9 +595,8 @@ body {
 
 .modal-dialog {
   width: 100%;
-  max-width: 980px;
+  max-width: 600px !important;
 }
-
 .modal-content {
   display: block !important;
   border-radius: 0;
@@ -4575,7 +4574,7 @@ body {
 
 /* 23.5 Shop-Pagination */
 .pagination-area {
-  margin: 60px 0 0;
+  margin: 0 !important;
   padding: 18px 0;
   width: 100%;
   text-align: center;

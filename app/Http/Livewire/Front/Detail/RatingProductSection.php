@@ -15,12 +15,18 @@ class RatingProductSection extends Component
     public $product_id;
     public $name, $email, $rating, $review;
     public $reviews;
+    public $rating_count, $rating_sum, $average_rating;
 
 
     protected $rules = [
         'rating'    => 'required',
         'review'    => 'required|min:10',
     ];
+
+    public function mount()
+    {
+        $this->reviews  =   ProductRating::where('product_id', $this->product_id)->get();
+    }
 
     public function updated($propertyName)
     {
@@ -32,38 +38,42 @@ class RatingProductSection extends Component
         if (Auth::check()) {
             // $this->validate();
 
-            $ratingExists   = ProductRating::where(['user_id' => Auth::user()->id, 'product_id' => $this->product_id])->count();
-            if ($ratingExists > 0) {
-                toastr()->info('Your Rating Already Exists For This Product');
-                $this->reset();
-            } else {
-                ProductRating::create([
-                    'user_id'       => Auth::user()->id,
-                    'product_id'    => $this->product_id,
-                    'review'        => $this->review,
-                    'rating'        => $this->rating,
-                ]);
-                toastr()->success('Rating Has Been Added Successfully to This Product');
-                $this->reset(['rating', 'review']);
-            }
+            // $ratingExists   = ProductRating::where(['user_id' => Auth::user()->id, 'product_id' => $this->product_id])->count();
+            // if ($ratingExists > 0) {
+            //     toastr()->info('Your Rating Already Exists For This Product');
+            //     $this->reset();
+            // } else {
+            ProductRating::create([
+                'user_id'       => Auth::user()->id,
+                'product_id'    => $this->product_id,
+                'review'        => $this->review,
+                'rating'        => $this->rating,
+            ]);
+            toastr()->success('Rating Has Been Added Successfully to This Product');
+            $this->reset(['rating', 'review']);
+            // }
         } else {
             toastr()->info('Login First, Then Add Your Rating');
         }
+        $this->getReviews();
     }
 
     public function render()
     {
-        $data['rating_count']   = ProductRating::where('product_id', $this->product_id)->count();
+        $this->getReviews();
+        return view('livewire.front.detail.rating-product-section');
+    }
 
-        if ($data['rating_count'] > 0) {
-            $data['rating_sum']     = ProductRating::ratingProduct($this->product_id)->sum('rating');
-            $data['average_rating'] = round($data['rating_sum'] / $data['rating_count'], 2);
+    public function getReviews()
+    {
+        $this->reviews          =   ProductRating::where('product_id', $this->product_id)->get();
+        $this->rating_count     = ProductRating::where('product_id', $this->product_id)->count();
+
+        if ($this->rating_count > 0) {
+            $this->rating_sum   = ProductRating::ratingProduct($this->product_id)->sum('rating');
+            $this->average_rating   = round($this->rating_sum / $this->rating_count, 2);
         } else {
-            $data['average_rating'] = 0;
+            $this->average_rating   = 0;
         }
-
-        $this->reviews  =   ProductRating::where('product_id', $this->product_id)->get();
-
-        return view('livewire.front.detail.rating-product-section', $data);
     }
 }

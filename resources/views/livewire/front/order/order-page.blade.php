@@ -73,12 +73,16 @@
                                         <td colspan="5">
                                             <div class="cart-price">
                                                 No items yet !!
+                                                <a href="{{ route('front.shopping.store') }}" class="underline text-gray-600">Continue Shopping</a>
                                             </div>
                                         </td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="m-0 p-0">
+                            {{ $orders->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -53,12 +53,18 @@
                                 </label>
                             </div>
 
-                            <div class="flex items-center justify-end mt-4">
-                                @if (Route::has('password.request'))
-                                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                                        {{ __('Forgot your password?') }}
+                            <div class="flex items-center justify-between mt-4">
+                                <div>
+                                    @if (Route::has('password.request'))
+                                        <a class="block underline text-sm text-gray-600 hover:text-gray-900 mb-2" href="{{ route('password.request') }}">
+                                            {{ __('Forgot your password?') }}
+                                        </a>
+                                    @endif
+
+                                    <a class="block underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                                        {{ __('You don\'t have an account?') }}
                                     </a>
-                                @endif
+                                </div>
 
                                 <button class="ml-4 button button-primary" type="submit">
                                     {{ __('Log in') }}

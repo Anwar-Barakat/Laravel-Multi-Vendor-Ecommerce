@@ -31,7 +31,6 @@ class ProductRating extends Model
         return $query->where('product_id', $id)->active();
     }
 
-
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

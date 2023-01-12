@@ -96,3 +96,8 @@ table {
 .gold {
   color: #ebb617;
 }
+
+.modal-dialog {
+  width: 100%;
+  max-width: 600px !important;
+}
