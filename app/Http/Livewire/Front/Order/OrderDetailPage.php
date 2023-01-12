@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class OrderDetailPage extends Component
 {
-    public $orderId, $reason;
+    public $orderId, $reason, $product_info;
 
     protected $rules =  [
         'reason'    => ['required'],

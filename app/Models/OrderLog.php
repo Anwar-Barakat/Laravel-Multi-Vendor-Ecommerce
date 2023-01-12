@@ -18,12 +18,22 @@ class OrderLog extends Model
         'updated_by',
     ];
 
-    const REASONS = [
+    const CANCELLEDREASONS = [
         "Order Created By Mistake",
         "Item Not Arrive On Time",
         "Shipping Cost Too High",
         "Found Cheaper Somewhere Else",
         "Other",
+    ];
+
+    const RETURNREASONS = [
+        "performance or quality adequate",
+        "product damaged but shipping box ok",
+        "item arrived too late",
+        "wrong item was send",
+        "item defective or does not work",
+        "required smaller size",
+        "required larger size",
     ];
 
 

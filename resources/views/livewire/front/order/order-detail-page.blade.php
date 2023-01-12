@@ -22,12 +22,12 @@
                 <div class="col-lg-12">
                     @if ($order->order_status == 'New')
                         <div class="mb-3">
-                            <button role="button" data-toggle="modal" title="orderCancel" data-target="#orderCancel{{ $order->id }}" class="button button-primary">
+                            <button role="button" data-toggle="modal" title="cancelOrder" data-target="#cancelOrder{{ $order->id }}" class="button button-primary">
                                 <i class="fas fa-times"></i>
                                 Cancel Order
                             </button>
-                            <!-- Moda; -->
-                            <div wire:ignore class="modal fade" id="orderCancel{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="orderCancel{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+                            <!-- Modal -->
+                            <div wire:ignore.self class="modal fade" id="cancelOrder{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="cancelOrder{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
                                 <div class="modal-dialog order" role="document" style="max-width: 600px">
                                     <form>
                                         <div class="modal-content">
@@ -38,15 +38,85 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="form-group">
+                                                <div class="u-s-m-b-30">
                                                     <label for="reason">Reason For Cancellation</label>
-                                                    <select class="form-control @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
+                                                    <select class="text-field @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
                                                         <option value="">Select..</option>
-                                                        @foreach (App\Models\OrderLog::REASONS as $key => $reason)
+                                                        @foreach (App\Models\OrderLog::CANCELLEDREASONS as $key => $reason)
                                                             <option value="{{ $key }}">{{ $reason }}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('reason')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="button  button-primary" wire:click.prevent='orderCancel'>
+                                                    <i class="fas fa-times"></i> Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($order->order_status == 'Delivered')
+                        <div class="mb-3">
+                            <button role="button" data-toggle="modal" title="returnOrder" data-target="#returnOrder{{ $order->id }}" class="button button-primary">
+                                <i class="fas fa-critical-role"></i>
+                                Return Order
+                            </button>
+                            <!-- Modal -->
+                            <div wire:ignore.self class="modal fade" id="returnOrder{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="returnOrder{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+                                <div class="modal-dialog order" role="document" style="max-width: 600px">
+                                    <form>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Return This Order</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="u-s-m-b-30">
+                                                    <label for="product_info">Select Product</label>
+                                                    <select class="text-field" id="product_info" wire:model="product_info" required>
+                                                        <option value="">Select..</option>
+                                                        @foreach ($order->orderProducts as $item)
+                                                            <option value="{{ $item->product_code }} - {{ $item->product_size }}">
+                                                                {{ $item->product_name }} - {{ $item->product_code }} - {{ $item->product_size }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('product_info')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="u-s-m-b-30">
+                                                    <label for="reason">Select Reason</label>
+                                                    <select class="text-field @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
+                                                        <option value="">Select..</option>
+                                                        @foreach (App\Models\OrderLog::RETURNREASONS as $key => $reason)
+                                                            <option value="{{ $key }}">{{ $reason }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('reason')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                                <div class="u-s-m-b-30">
+                                                    <label for="comment">Comment</label>
+                                                    <textarea id="comment" cols="30" rows="4" class="text-field resize-none pt-2" required></textarea>
+                                                    @error('comment')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>

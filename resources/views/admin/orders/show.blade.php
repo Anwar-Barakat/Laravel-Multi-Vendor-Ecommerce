@@ -249,7 +249,7 @@
                                             <small>{{ $log->created_at }}</small>
                                             @if ($order->order_status == 'Cancelled')
                                                 <small> Reason:
-                                                    @foreach (App\Models\OrderLog::REASONS as $key => $reason)
+                                                    @foreach (App\Models\OrderLog::CANCELLEDREASONS as $key => $reason)
                                                         @if ($key == $log->reason)
                                                             {{ $reason }}
                                                         @endif
