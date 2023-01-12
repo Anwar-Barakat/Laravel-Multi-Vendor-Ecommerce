@@ -20,39 +20,51 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    @unless($order->order_status == 'Shipped' || $order->order_status == 'Delivered' || $order->order_status == 'In Process')
+                    @if ($order->order_status == 'New')
                         <div class="mb-3">
                             <button role="button" data-toggle="modal" title="orderCancel" data-target="#orderCancel{{ $order->id }}" class="button button-primary">
                                 <i class="fas fa-times"></i>
                                 Cancel Order
                             </button>
                             <!-- Moda; -->
-                            <div class="modal fade" id="orderCancel{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="orderCancel{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+                            <div wire:ignore class="modal fade" id="orderCancel{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="orderCancel{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
                                 <div class="modal-dialog order" role="document" style="max-width: 600px">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cancel This Order</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">
-                                                <h5 class="text-gray-600">You Want To Cancel This Order ?</h5>
+                                    <form>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Cancel This Order</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="reason">Reason For Cancellation</label>
+                                                    <select class="form-control @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
+                                                        <option value="">Select..</option>
+                                                        @foreach (App\Models\OrderLog::REASONS as $key => $reason)
+                                                            <option value="{{ $key }}">{{ $reason }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('reason')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="button  button-primary" wire:click.prevent='orderCancel'>
+                                                    <i class="fas fa-times"></i> Cancel
+                                                </button>
                                             </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="button  button-primary" wire:click.prevent='orderCancel'>
-                                                <i class="fas fa-times"></i> Cancel
-                                            </button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-
                         </div>
-                    @endunless
+                    @endif
                     <div class="table-wrapper u-s-m-b-60">
                         <table>
                             <thead>

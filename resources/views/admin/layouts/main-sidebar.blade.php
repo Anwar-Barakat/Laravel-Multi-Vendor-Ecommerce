@@ -186,7 +186,10 @@
                     </a>
                     <ul class="slide-menu">
                         <li>
-                            <a href="{{ route('admin.orders.index') }}" class="slide-item">Orders List</a>
+                            <a href="{{ route('admin.orders.index') }}" class="slide-item">All Orders</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.orders.cancelled') }}" class="slide-item">Cancelled Orders</a>
                         </li>
                     </ul>
                 </li>

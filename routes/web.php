@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\Order\OrderInvoiceController;
 use App\Http\Controllers\Admin\ShippingCharges\ShippingChargesController;
 use App\Http\Controllers\Admin\CmsPage\CmsPageController;
 use App\Http\Controllers\Admin\Currency\CurrencyController;
+use App\Http\Controllers\Admin\Order\CancelledOrderController;
 use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
@@ -154,7 +155,7 @@ Route::prefix('admin/')->name('admin.')->group(function () {
         Route::resource('orders',                                   OrderController::class);
         Route::get('orders/{order}/invoice',                        [OrderInvoiceController::class, 'showInvoice'])->name('orders.invoice.show');
         Route::get('orders/{order}/invoice-pdf',                    [OrderInvoiceController::class, 'invoicePDF'])->name('orders.invoice.pdf');
-
+        Route::get('cancelled-orders',                              CancelledOrderController::class)->name('orders.cancelled');
 
         //?_________________________
         //? Shipping Charges

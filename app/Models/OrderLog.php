@@ -14,6 +14,16 @@ class OrderLog extends Model
     protected $fillable = [
         'order_id',
         'status',
+        'reason',
+        'updated_by',
+    ];
+
+    const REASONS = [
+        "Order Created By Mistake",
+        "Item Not Arrive On Time",
+        "Shipping Cost Too High",
+        "Found Cheaper Somewhere Else",
+        "Other",
     ];
 
 

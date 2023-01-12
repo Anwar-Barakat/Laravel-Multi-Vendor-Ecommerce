@@ -27,6 +27,7 @@
                                     <th>Order Products</th>
                                     <th>Payment Method</th>
                                     <th>Final Price</th>
+                                    <th>Order Status</th>
                                     <th>Created at</th>
                                     <th></th>
                                 </tr>
@@ -39,6 +40,7 @@
                                                 {{ $order->id }}
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class="cart-anchor-image">
                                                 @foreach ($order->orderProducts as $item)
@@ -54,6 +56,11 @@
                                         <td class="bg-green-600 ">
                                             <div class="cart-price text-white">
                                                 <span class="font-bold">${{ $order->final_price }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-price">
+                                                {{ $order->order_status }}
                                             </div>
                                         </td>
                                         <td>

@@ -10,6 +10,7 @@ use Livewire\Component;
 class ProfilePage extends Component
 {
     public $name,
+        $email,
         $address,
         $mobile,
         $city,

@@ -244,7 +244,22 @@
                             @foreach ($orderlogs as $log)
                                 <a class="list-group-item list-group-item-action align-items-start" href="javascript:;">
                                     <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-2 tx-14">{{ $log->status }}</h5><small>{{ $log->created_at }}</small>
+                                        <h5 class="mb-2 tx-14">{{ $log->status }}</h5>
+                                        <span class="grid">
+                                            <small>{{ $log->created_at }}</small>
+                                            @if ($order->order_status == 'Cancelled')
+                                                <small> Reason:
+                                                    @foreach (App\Models\OrderLog::REASONS as $key => $reason)
+                                                        @if ($key == $log->reason)
+                                                            {{ $reason }}
+                                                        @endif
+                                                    @endforeach
+                                                </small>
+                                                <small>
+                                                    Canceller : {{ $log->updated_by }}
+                                                </small>
+                                            @endif
+                                        </span>
                                     </div>
                                 </a>
                             @endforeach

@@ -10,7 +10,16 @@ use Livewire\Component;
 
 class OrderDetailPage extends Component
 {
-    public $orderId;
+    public $orderId, $reason;
+
+    protected $rules =  [
+        'reason'    => ['required'],
+    ];
+
+    public function updated($fields)
+    {
+        $this->validateOnly($fields);
+    }
 
     public function mount($id)
     {
@@ -19,14 +28,18 @@ class OrderDetailPage extends Component
 
     public function orderCancel()
     {
+        $this->validate();
         try {
             DB::beginTransaction();
             $order  = Order::where(['id' => $this->orderId, 'user_id' => Auth::user()->id])->first();
+
             if ($order) {
                 $order->update(['order_status' => 'Cancelled']);
                 OrderLog::create([
-                    'order_id'  => $order->id,
-                    'status'    => 'Cancelled',
+                    'order_id'      => $order->id,
+                    'status'        => 'Cancelled',
+                    'reason'        => $this->reason,
+                    'updated_by'    => 'Customer'
                 ]);
             } else
                 abort(404);
