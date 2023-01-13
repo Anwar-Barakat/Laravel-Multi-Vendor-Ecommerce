@@ -17,8 +17,8 @@ class CreateReturnRequestsTable extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('product_size');
             $table->string('product_code');
+            $table->string('product_size');
             $table->string('reason');
             $table->enum('status', ['Pending', 'Approved', 'Rejected']);
             $table->text('comment');

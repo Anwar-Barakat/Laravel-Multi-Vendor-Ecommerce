@@ -34,6 +34,7 @@
                                     <th>Product Size</th>
                                     <th>Product Price</th>
                                     <th>Product Quantity</th>
+                                    <th>Product Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,6 +68,9 @@
                                         </td>
                                         <td>
                                             {{ $item->product_qty }}
+                                        </td>
+                                        <td>
+                                            {{ $item->product_status ?? '-' }}
                                         </td>
                                     </tr>
                                 @endforeach

@@ -88,9 +88,11 @@
                                                     <select class="text-field" id="product_info" wire:model="product_info" required>
                                                         <option value="">Select..</option>
                                                         @foreach ($order->orderProducts as $item)
-                                                            <option value="{{ $item->product_code }} - {{ $item->product_size }}">
-                                                                {{ $item->product_name }} - {{ $item->product_code }} - {{ $item->product_size }}
-                                                            </option>
+                                                            @if ($item->product_status != 'Return Initiated')
+                                                                <option value="{{ $item->product_code }}-{{ $item->product_size }}">
+                                                                    {{ $item->product_name }} - {{ $item->product_code }} - {{ $item->product_size }}
+                                                                </option>
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                     @error('product_info')
@@ -115,7 +117,7 @@
                                                 </div>
                                                 <div class="u-s-m-b-30">
                                                     <label for="comment">Comment</label>
-                                                    <textarea id="comment" cols="30" rows="4" class="text-field resize-none pt-2" required></textarea>
+                                                    <textarea id="comment" cols="30" rows="4" class="text-field resize-none pt-2" wire:model="comment" required></textarea>
                                                     @error('comment')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -125,8 +127,8 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="button  button-primary" wire:click.prevent='orderCancel'>
-                                                    <i class="fas fa-times"></i> Cancel
+                                                <button type="submit" class="button  button-primary" wire:click.prevent='orderReturn'>
+                                                    <i class="fas fa-times"></i> Return
                                                 </button>
                                             </div>
                                         </div>
@@ -143,6 +145,7 @@
                                     <th>Product Size</th>
                                     <th>Product Price</th>
                                     <th>Product Quantity</th>
+                                    <th>Product Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,6 +182,11 @@
                                                 <div class="quantity">
                                                     <input type="text" class="quantity-text-field" value="{{ $item->product_qty }}" readonly>
                                                 </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="cart-price">
+                                                {{ $item->product_status ?? '-' }}
                                             </div>
                                         </td>
                                     </tr>

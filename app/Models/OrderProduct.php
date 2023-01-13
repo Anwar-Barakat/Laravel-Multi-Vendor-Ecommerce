@@ -19,6 +19,7 @@ class OrderProduct extends Model
         'product_size',
         'product_price',
         'product_qty',
+        'product_status'
     ];
 
     public function order()
