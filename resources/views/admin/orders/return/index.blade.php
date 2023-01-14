@@ -43,28 +43,27 @@
                                 @foreach ($returns as $return)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('admin.orders.show', $return->order) }}" target="_blank" class="underline">{{ $return->id }}</a>
+                                            <a href="{{ route('admin.orders.show', $return->order) }}" target="_blank" class="underline">{{ $return->order->id }}</a>
                                         </td>
                                         <td>{{ ucwords($return->user->name) }}</td>
                                         <td>{{ $return->product_code }}</td>
                                         <td>{{ $return->product_size }}</td>
-                                        <td>{{ $return->status }}</td>
-                                        <td>{{ $return->created_at }}</td>
                                         <td>
+                                            @livewire('admin.order.return.update-request-status', ['request_id' => $return->id, 'product_code' => $return->product_code, 'product_size' => $return->product_size])
+                                        </td>
+                                        <td>{{ $return->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-bars fa-1x"></i>
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <a href="javascript:;" role="button" data-toggle="modal" title="Details" data-target="#details{{ $return->id }}" style="color: white">
+                                                    <a href="javascript:;" class="dropdown-item" role="button" data-toggle="modal" title="Details" data-target="#details{{ $return->id }}">
                                                         <i class="fas fa-eye"></i>
                                                         Details
                                                     </a>
                                                 </div>
                                             </div>
-                                        </td>
-
                                         </td>
                                         {{-- Show Details --}}
                                         <div class="modal fade" id="details{{ $return->id }}" tabindex="-1" role="dialog" aria-labelledby="details{{ $return->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
@@ -78,8 +77,18 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="form-group">
+                                                            @php
+                                                                $cause = '';
+                                                            @endphp
+                                                            @foreach (App\Models\ReturnRequest::RETURNREASONS as $key => $reason)
+                                                                @if ($key == $return->reason)
+                                                                    @php
+                                                                        $cause = $reason;
+                                                                    @endphp
+                                                                @endif
+                                                            @endforeach
                                                             <label for="reason">Return Reason</label>
-                                                            <input type="text" class="form-control" value="{{ $return->reason }}" id="reason" rows="6" readonly disabled />
+                                                            <input type="text" class="form-control" value="{{ $cause }}" id="reason" rows="6" readonly disabled />
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="comment">Return Comment</label>
@@ -92,7 +101,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </tr>
                                 @endforeach
                             </tbody>

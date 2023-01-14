@@ -105,7 +105,7 @@
                                                     <label for="reason">Select Reason</label>
                                                     <select class="text-field @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
                                                         <option value="">Select..</option>
-                                                        @foreach (App\Models\OrderLog::RETURNREASONS as $key => $reason)
+                                                        @foreach (App\Models\ReturnRequest::RETURNREASONS as $key => $reason)
                                                             <option value="{{ $key }}">{{ $reason }}</option>
                                                         @endforeach
                                                     </select>

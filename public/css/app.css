@@ -974,6 +974,9 @@ select {
      -moz-user-select: none;
           user-select: none;
 }
+.resize-none {
+  resize: none;
+}
 .resize {
   resize: both;
 }
