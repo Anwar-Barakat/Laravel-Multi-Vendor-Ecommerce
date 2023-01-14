@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Order;
+namespace App\Http\Controllers\Admin\Order\Cancelled;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;

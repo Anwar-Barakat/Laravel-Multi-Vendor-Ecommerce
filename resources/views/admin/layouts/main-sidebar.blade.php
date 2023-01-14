@@ -191,6 +191,9 @@
                         <li>
                             <a href="{{ route('admin.orders.cancelled') }}" class="slide-item">Cancelled Orders</a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.return-orders.index') }}" class="slide-item">Return Requests</a>
+                        </li>
                     </ul>
                 </li>
 

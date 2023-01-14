@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Order\Return;
 
 use App\Models\ReturnRequest;
 use App\Http\Requests\StoreReturnRequestRequest;
 use App\Http\Requests\UpdateReturnRequestRequest;
+use App\Http\Controllers\Controller;
 
 class ReturnRequestController extends Controller
 {
@@ -15,7 +16,8 @@ class ReturnRequestController extends Controller
      */
     public function index()
     {
-        //
+        $returns    = ReturnRequest::with(['user', 'order'])->latest()->get();
+        return view('admin.orders.return.index', ['returns' => $returns]);
     }
 
     /**
