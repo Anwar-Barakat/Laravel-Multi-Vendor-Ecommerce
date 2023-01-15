@@ -20,13 +20,13 @@ class ReturnRequest extends Model
     ];
 
     const RETURNREASONS = [
-        "performance or quality adequate",
-        "product damaged but shipping box ok",
-        "item arrived too late",
-        "wrong item was send",
-        "item defective or does not work",
-        "required smaller size",
-        "required larger size",
+        "Performance Or Quality Adequate",
+        "Product Damaged But Shipping Box Ok",
+        "Item Arrived Too Late",
+        "Wrong Item Was Send",
+        "Item Defective Or Does Not Work",
+        "Required Smaller Size",
+        "Required Larger Size",
     ];
 
 

@@ -13,7 +13,7 @@ class OrderPage extends Component
 
     public function render()
     {
-        $orders = Order::with('orderProducts')->where('user_id', Auth::user()->id)->paginate(10);
+        $orders = Order::with('orderProducts')->where('user_id', Auth::user()->id)->latest()->paginate(10);
 
         return view('livewire.front.order.order-page', ['orders' => $orders])->layout('front.layouts.master');
     }

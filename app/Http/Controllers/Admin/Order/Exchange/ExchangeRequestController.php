@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Order\Exchange;
 
 use App\Models\ExchangeRequest;
 use App\Http\Requests\StoreExchangeRequestRequest;
 use App\Http\Requests\UpdateExchangeRequestRequest;
+use App\Http\Controllers\Controller;
 
 class ExchangeRequestController extends Controller
 {
@@ -15,7 +16,8 @@ class ExchangeRequestController extends Controller
      */
     public function index()
     {
-        //
+        $exchanges  = ExchangeRequest::with(['user', 'order'])->latest()->get();
+        return view('admin.orders.exchange.index', ['exchanges' => $exchanges]);
     }
 
     /**

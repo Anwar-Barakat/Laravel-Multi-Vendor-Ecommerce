@@ -192,7 +192,10 @@
                             <a href="{{ route('admin.orders.cancelled') }}" class="slide-item">Cancelled Orders</a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.return-orders.index') }}" class="slide-item">Return Requests</a>
+                            <a href="{{ route('admin.return-requests.index') }}" class="slide-item">Return Requests</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.exchange-requests.index') }}" class="slide-item">Exchange Requests</a>
                         </li>
                     </ul>
                 </li>

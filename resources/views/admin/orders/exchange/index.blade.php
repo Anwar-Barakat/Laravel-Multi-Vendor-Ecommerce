@@ -10,9 +10,9 @@
 @endsection
 
 
-@section('title', 'Return Requests List')
+@section('title', 'Exchange Requests List')
 
-@section('breadcamb', 'Return Requests List')
+@section('breadcamb', 'Exchange Requests List')
 
 @section('content')
     <div class="row row-sm">
@@ -20,53 +20,61 @@
             <div class="card">
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mg-b-0">Return Requests TABLE</h4>
+                        <h4 class="card-title mg-b-0">Exchange Requests TABLE</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
-                    <p class="tx-12 tx-gray-500 mb-3">Customers Return Requests Details</p>
+                    <p class="tx-12 tx-gray-500 mb-3">Customers Exchange Requests Details</p>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
+                                    <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">Order</th>
                                     <th class="border-bottom-0">Customer</th>
                                     <th class="border-bottom-0">Product Code</th>
                                     <th class="border-bottom-0">Product Size</th>
+                                    <th class="border-bottom-0">Required Size</th>
                                     <th class="border-bottom-0">Request Status</th>
                                     <th class="border-bottom-0">Date</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($returns as $return)
+                                @foreach ($exchanges as $exchange)
                                     <tr>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('admin.orders.show', ['order' => $return->order]) }}" target="_blank" class="underline">{{ $return->order->id }}</a>
+                                            <a href="{{ route('admin.orders.show', ['order' => $exchange->order]) }}" target="_blank" class="underline">{{ $exchange->order->id }}</a>
                                         </td>
-                                        <td>{{ ucwords($return->user->name) }}</td>
+                                        <td>{{ ucwords($exchange->user->name) }}</td>
                                         <td>
                                             <span class="tag tag-secondary">
-                                                {{ $return->product_code }}
+                                                {{ $exchange->product_code }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="tag tag-danger">
+                                                {{ $exchange->product_size }}
                                             </span>
                                         </td>
                                         <td>
                                             <span class="tag tag-success">
-                                                {{ $return->product_size }}
+                                                {{ $exchange->required_size }}
                                             </span>
                                         </td>
                                         <td>
-                                            @livewire('admin.order.return.update-request-status', ['request_id' => $return->id, 'product_code' => $return->product_code, 'product_size' => $return->product_size])
+                                            @livewire('admin.order.exchange.update-request-status', ['request_id' => $exchange->id, 'product_code' => $exchange->product_code, 'product_size' => $exchange->product_size])
                                         </td>
-                                        <td>{{ $return->created_at }}</td>
+                                        <td>{{ $exchange->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
                                                 <button class="btn btn-outline-secondary dropdown-toggle btn-sm btn-group-sm" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fas fa-bars fa-1x"></i>
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <a href="javascript:;" class="dropdown-item" role="button" data-toggle="modal" title="Details" data-target="#details{{ $return->id }}">
+                                                    <a href="javascript:;" class="dropdown-item" role="button" data-toggle="modal" title="Details" data-target="#details{{ $exchange->id }}">
                                                         <i class="fas fa-eye"></i>
                                                         Details
                                                     </a>
@@ -74,7 +82,7 @@
                                             </div>
                                         </td>
                                         {{-- Show Details --}}
-                                        <div class="modal fade" id="details{{ $return->id }}" tabindex="-1" role="dialog" aria-labelledby="details{{ $return->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
+                                        <div class="modal fade" id="details{{ $exchange->id }}" tabindex="-1" role="dialog" aria-labelledby="details{{ $exchange->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -89,7 +97,7 @@
                                                                 $cause = '';
                                                             @endphp
                                                             @foreach (App\Models\ReturnRequest::RETURNREASONS as $key => $reason)
-                                                                @if ($key == $return->reason)
+                                                                @if ($key == $exchange->reason)
                                                                     @php
                                                                         $cause = $reason;
                                                                     @endphp
@@ -100,7 +108,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="comment">Return Comment</label>
-                                                            <textarea type="text" class="form-control" id="comment" rows="6" readonly disabled>{{ $return->comment }}</textarea>
+                                                            <textarea type="text" class="form-control" id="comment" rows="6" readonly disabled>{{ $exchange->comment }}</textarea>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary-gradient modal-effect" data-dismiss="modal">Close</button>

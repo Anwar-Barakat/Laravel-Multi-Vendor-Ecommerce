@@ -21,7 +21,7 @@ class CreateExchangeRequestsTable extends Migration
             $table->string('required_size');
             $table->string('product_code');
             $table->string('reason');
-            $table->enum('status', ['pending', 'approved', 'rejected']);
+            $table->enum('status', ['Pending', 'Approved', 'Rejected']);
             $table->string('comment');
             $table->timestamps();
         });
