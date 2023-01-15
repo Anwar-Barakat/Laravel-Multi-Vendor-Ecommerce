@@ -31,6 +31,7 @@
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                 </div>
+                <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                 <div class="card-body" id="smartwizard">
                     <div class="m-3 d-flex justify-content-around align-items-center card flex-row flex-wrap">
@@ -112,7 +113,7 @@
                                 'product' => $product,
                             ])
                             <div class="row">
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="price">Price</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -129,7 +130,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="discount">Discount</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -146,7 +147,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="gst">GST</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -163,7 +164,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="weight">Weight</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">

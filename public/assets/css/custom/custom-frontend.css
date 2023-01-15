@@ -101,3 +101,8 @@ table {
   width: 100%;
   max-width: 600px !important;
 }
+
+#currencies-table th,
+#currencies-table td {
+  padding: 7px 12px;
+}

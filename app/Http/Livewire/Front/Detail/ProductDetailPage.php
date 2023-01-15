@@ -42,8 +42,6 @@ class ProductDetailPage extends Component
 
     public function updatedSize()
     {
-        dd('hi');
-
         $product                    = Product::with('category')->select('price', 'discount', 'category_id')->findOrFail($this->productId);
         $proAttr                    = Attribute::where(['product_id' => $this->productId, 'size' => $this->size])->first();
 
@@ -69,7 +67,7 @@ class ProductDetailPage extends Component
             $proAttr        = Attribute::where(['product_id' => $id, 'size' => $size])->first();
             $proAttrStock   = $proAttr->stock;
 
-            if ($proAttrStock > $qty) {
+            if ($proAttrStock >= $qty) {
                 $proAttrStock       -= $qty;
                 $this->totalStock   -= $qty;
                 $proAttr->update(['stock' => $proAttrStock]);

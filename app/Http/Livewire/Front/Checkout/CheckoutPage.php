@@ -16,11 +16,11 @@ use Livewire\Component;
 
 class CheckoutPage extends Component
 {
-    public $couponCode, $discount, $subTotalAfterDiscount, $taxAfterDiscount, $totalAfterDiscount;
 
+    public $couponCode, $discount, $subTotalAfterDiscount, $gstAfterDiscount, $totalAfterDiscount;
     public $deliveryAddressId, $payment_gateway;
-
-    public $totalWeight, $shippingChargesValue = 0;
+    public $totalWeight, $shippingChargesValue = 0, $productsGST, $finalGST;
+    public $final_price;
 
 
     protected $rules =  [
@@ -28,13 +28,24 @@ class CheckoutPage extends Component
         'payment_gateway'       => ['required'],
     ];
 
+    public function mount()
+    {
+        $this->final_price      =   (float) str_replace(',', '', Cart::instance('cart')->subtotal());
+
+        foreach (Cart::instance('cart')->content() as $item) {
+            $this->productsGST  += Product::findOrFail($item->id)->gst;
+            $this->finalGST     = round(($this->final_price * $this->productsGST) / 100, 2);
+        }
+    }
+
     public function updatedDeliveryAddressId()
     {
         $deliveryAddress            = DeliveryAddress::findOrFail($this->deliveryAddressId);
         $shippingCharges            = ShippingCharges::where('country_id', $deliveryAddress->country_id)->first();
 
         foreach (Cart::instance('cart')->content() as $item)
-            $this->totalWeight += Product::findOrFail($item->id)->weight;
+            $this->totalWeight  += Product::findOrFail($item->id)->weight;
+
 
         $this->shippingChargesValue =  $this->getShippingCharges($shippingCharges->id, $this->totalWeight);
     }
@@ -50,8 +61,8 @@ class CheckoutPage extends Component
 
 
         $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
-        $this->taxAfterDiscount         = ($this->subTotalAfterDiscount * config('cart.tax')) / 100;
-        $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->taxAfterDiscount;
+        $this->gstAfterDiscount         = ($this->subTotalAfterDiscount * $this->productsGST) / 100;
+        $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->gstAfterDiscount;
     }
 
 
@@ -68,7 +79,14 @@ class CheckoutPage extends Component
             $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
             DB::beginTransaction();
 
-            $final_price        = (float) str_replace(',', '', Cart::instance('cart')->total()) + $this->shippingChargesValue;
+            // Check if there is a discount => get the price after discounting
+            if (session()->has('coupon') && Auth::check()) :
+                $subTotalAfterDiscount  = $this->subTotalAfterDiscount;
+                $finalPrice    =   $subTotalAfterDiscount  + $this->shippingChargesValue + $this->finalGST;
+            else :
+                $finalPrice    =   $this->final_price  + $this->shippingChargesValue + $this->finalGST;
+            endif;
+
 
             $order =  Order::create([
                 'user_id'               => Auth::user()->id,
@@ -85,16 +103,13 @@ class CheckoutPage extends Component
                 'order_status'          => "New",
                 'paymeny_method'        => $this->payment_gateway,
                 'paymeny_gateway'       => $this->payment_gateway == 'COD' ? 'COD' : 'Prepaid',
-                'final_price'           => $final_price,
+                'final_price'           => $finalPrice,
             ]);
 
             $orderId            = DB::getPdo()->lastInsertId();
 
 
-
             foreach (Cart::instance('cart')->content() as $item) {
-                $this->totalWeight += Product::findOrFail($item->id)->weight;
-
                 OrderProduct::create([
                     'order_id'          => $orderId,
                     'user_id'           => Auth::user()->id,
@@ -109,16 +124,13 @@ class CheckoutPage extends Component
             }
 
 
-
             session()->put('orderId', $orderId);
-            session()->put('finalPrice', $final_price);
+            session()->put('finalPrice', $finalPrice);
 
             DB::commit();
 
-
-
             if ($this->payment_gateway == 'COD') {
-                event(new CustomerOrderPlaced($order));
+                // event(new CustomerOrderPlaced($order));
                 Cart::instance('cart')->destroy();
                 toastr()->success('Order Has Been Placed Successfully');
                 return redirect()->route('front.thanks');
@@ -155,8 +167,9 @@ class CheckoutPage extends Component
 
     public function render()
     {
-        if (session()->has('coupon') && Auth::check())
+        if (session()->has('coupon') && Auth::check()) {
             $this->calcDiscount();
+        }
 
         return view('livewire.front.checkout.checkout-page')->layout('front.layouts.master');
     }

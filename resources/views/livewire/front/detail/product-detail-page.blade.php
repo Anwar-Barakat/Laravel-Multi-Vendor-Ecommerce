@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{ asset('front/css/rating.css') }}">
 <div>
     <div class="page-style-a">
         <div class="container">
@@ -117,7 +116,8 @@
                             @endif
                         </div>
                         <div class="section-3-price-original-discount u-s-p-y-14 table-wrapper ">
-                            <table>
+                            <h6 class="information-heading u-s-m-b-8">Currencies Coverted:</h6>
+                            <table id="currencies-table">
                                 <thead>
                                     <tr>
                                         <th>Code</th>
@@ -195,7 +195,7 @@
                                 </div>
                             @endif
                             @if (Cart::instance('cart')->content()->where('id', $product->id)->count() > 0)
-                                <span class="text-lg">
+                                <span class="text-sm font-bold">
                                     Exists
                                     <span class="text-green-600 font-bold">In Cart</span>
                                 </span>
@@ -316,7 +316,7 @@
                             @endif
                             <!-- Specifications-Tab /- -->
                             <!-- Reviews-Tab -->
-                            @livewire('front.detail.rating-product-section', ['product_id' => $product->id])
+                            {{-- @livewire('front.detail.rating-product-section', ['product_id' => $product->id]) --}}
                             <!-- Reviews-Tab /- -->
                         </div>
                     </div>
@@ -325,8 +325,8 @@
             <!-- Detail-Tabs /- -->
             <!-- Different-Product-Section -->
             <div class="detail-different-product-section u-s-p-t-80">
-                @livewire('front.detail.similar-product-section', ['product_id' => $product->id])
-                @livewire('front.detail.most-viewed-product-section', ['product_id' => $product->id])
+                {{-- @livewire('front.detail.similar-product-section', ['product_id' => $product->id]) --}}
+                {{-- @livewire('front.detail.most-viewed-product-section', ['product_id' => $product->id]) --}}
             </div>
             <!-- Different-Product-Section /- -->
         </div>

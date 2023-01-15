@@ -136,18 +136,18 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
+                                                <h3 class="calc-h3 u-s-m-b-0">Shipping Charges ({{ $totalWeight ?? 0 }}g Weight)</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">${{ Cart::instance('cart')->subtotal() }}</span>
+                                                <span class="calc-text">+ ${{ $shippingChargesValue }}</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <h3 class="calc-h3 u-s-m-b-0">Shipping Charges</h3>
+                                                <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">+ ${{ $shippingChargesValue }}</span>
+                                                <span class="calc-text">${{ Cart::instance('cart')->subtotal() }}</span>
                                             </td>
                                         </tr>
                                         @if (session()->has('coupon'))
@@ -156,15 +156,7 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Discount ({{ session()->get('coupon')['coupon_code'] }})</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">${{ $discount }}</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
-                                                </td>
-                                                <td>
-                                                    <span class="calc-text">+ ${{ $taxAfterDiscount }}</span>
+                                                    <span class="calc-text">- ${{ $discount }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -172,25 +164,33 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Subtotal With Discount</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">- ${{ $subTotalAfterDiscount }}</span>
+                                                    <span class="calc-text">${{ $subTotalAfterDiscount }}</span>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">GST (%{{ $productsGST }})</h3>
+                                                </td>
+                                                <td>
+                                                    <span class="calc-text">+ ${{ $gstAfterDiscount }}</span>
+                                                </td>
+                                            </tr>
+
                                             <tr>
                                                 <td>
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
                                                 <td class="total-amount">
-                                                    <span class="calc-text">${{ $totalAfterDiscount }}</span>
+                                                    <span class="calc-text">${{ $totalAfterDiscount + $shippingChargesValue }}</span>
                                                 </td>
                                             </tr>
                                         @else
                                             <tr>
                                                 <td>
-                                                    <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">Tax</h3>
-                                                    <span></span>
+                                                    <h3 class="calc-h3 u-s-m-b-0" id="tax-heading">GST (%{{ $productsGST }})</h3>
                                                 </td>
                                                 <td>
-                                                    <span class="calc-text">+ ${{ Cart::instance('cart')->tax() }}</span>
+                                                    <span class="calc-text">+ ${{ $finalGST }}</span>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -199,7 +199,7 @@
                                                 </td>
                                                 <td class="total-amount">
                                                     <span class="calc-text">
-                                                        ${{ (float) str_replace(',', '', Cart::instance('cart')->total()) + $shippingChargesValue }}
+                                                        ${{ (float) str_replace(',', '', Cart::instance('cart')->subtotal()) + $shippingChargesValue + $finalGST }}
                                                     </span>
                                                 </td>
                                             </tr>

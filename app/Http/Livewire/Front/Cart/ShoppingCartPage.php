@@ -11,7 +11,18 @@ use Livewire\Component;
 
 class ShoppingCartPage extends Component
 {
-    public $couponCode, $discount, $subTotalAfterDiscount, $taxAfterDiscount, $totalAfterDiscount;
+    public $couponCode, $discount, $subTotalAfterDiscount, $gstAfterDiscount, $totalAfterDiscount;
+    public $final_price, $totalWeight, $productsGST, $finalGST;
+
+    public function mount()
+    {
+        $this->final_price      =   (float) str_replace(',', '', Cart::instance('cart')->subtotal());
+
+        foreach (Cart::instance('cart')->content() as $item) {
+            $this->productsGST  += Product::findOrFail($item->id)->gst;
+            $this->finalGST     = round(($this->final_price * $this->productsGST) / 100, 2);
+        }
+    }
 
     public function increaseQty($rowId)
     {
@@ -56,7 +67,6 @@ class ShoppingCartPage extends Component
 
     public function applyCouponCode()
     {
-
         if (Auth::check()) {
             $coupon = Coupon::where('coupon_code', $this->couponCode)->first();
             if (!$coupon)
@@ -113,8 +123,8 @@ class ShoppingCartPage extends Component
 
 
         $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
-        $this->taxAfterDiscount         = ($this->subTotalAfterDiscount * config('cart.tax')) / 100;
-        $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->taxAfterDiscount;
+        $this->gstAfterDiscount         = ($this->subTotalAfterDiscount * $this->productsGST) / 100;
+        $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->gstAfterDiscount;
     }
 
     public function proccedToCheckout()
