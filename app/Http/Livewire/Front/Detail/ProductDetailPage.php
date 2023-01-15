@@ -42,6 +42,8 @@ class ProductDetailPage extends Component
 
     public function updatedSize()
     {
+        dd('hi');
+
         $product                    = Product::with('category')->select('price', 'discount', 'category_id')->findOrFail($this->productId);
         $proAttr                    = Attribute::where(['product_id' => $this->productId, 'size' => $this->size])->first();
 

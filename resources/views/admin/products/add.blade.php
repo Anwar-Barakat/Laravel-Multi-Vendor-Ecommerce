@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 
     {{-- smart wizard --}}
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
 
 @endsection
 
@@ -63,16 +62,14 @@
                             </a>
                         </li>
                     </ul>
-                    <form class="form-horizontal tab-content" method="POST" action="{{ route('admin.products.store') }}"
-                        enctype="multipart/form-data">
+                    <form class="form-horizontal tab-content" method="POST" action="{{ route('admin.products.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                             <div class="row">
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control  @error('name') is-invalid @enderror"
-                                            name="name" required value="{{ old('name') }}">
+                                        <input type="text" class="form-control  @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -83,15 +80,13 @@
                             </div>
                             @livewire('admin.product.get-category-filters')
                             <div class="row">
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="price">Price</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
                                         </div>
-                                        <input aria-label="Amount (to the nearest dollar)"
-                                            class="form-control  @error('price') is-invalid @enderror" type="number"
-                                            value="{{ old('price') }}" name="price">
+                                        <input aria-label="Amount (to the nearest dollar)" class="form-control  @error('price') is-invalid @enderror" type="number" value="{{ old('price') }}" name="price">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -102,15 +97,13 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
                                     <label for="discount">Discount</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">%</span>
                                         </div>
-                                        <input aria-label="Amount (to the nearest dollar)"
-                                            class="form-control  @error('discount') is-invalid @enderror" type="number"
-                                            value="{{ old('discount') }}" name="discount">
+                                        <input aria-label="Amount (to the nearest dollar)" class="form-control  @error('discount') is-invalid @enderror" type="number" value="{{ old('discount') }}" name="discount">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -121,15 +114,30 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-3">
+                                    <label for="gst">GST</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                        <input aria-label="Amount (to the nearest dollar)" class="form-control  @error('gst') is-invalid @enderror" type="number" value="{{ old('gst') }}" name="gst">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                        @error('gst')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-3">
                                     <label for="weight">Weight</label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">g</span>
                                         </div>
-                                        <input aria-label="Amount (to the nearest dollar)"
-                                            class="form-control  @error('weight') is-invalid @enderror" type="number"
-                                            value="{{ old('weight') }}" name="weight">
+                                        <input aria-label="Amount (to the nearest dollar)" class="form-control  @error('weight') is-invalid @enderror" type="number" value="{{ old('weight') }}" name="weight">
                                         <div class="input-group-append">
                                             <span class="input-group-text">.00</span>
                                         </div>
@@ -147,12 +155,10 @@
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="brand_id">Brands</label>
-                                        <select name="brand_id"
-                                            class="form-control  @error('brand_id') is-invalid @enderror">
+                                        <select name="brand_id" class="form-control  @error('brand_id') is-invalid @enderror">
                                             <option value="" selected>Select...</option>
                                             @foreach (App\Models\Brand::all() as $brand)
-                                                <option value="{{ $brand->id }}"
-                                                    {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
+                                                <option value="{{ $brand->id }}" {{ old('brand_id') == $brand->id ? 'selected' : '' }}>
                                                     {{ ucwords($brand->name) }}</option>
                                             @endforeach
                                         </select>
@@ -168,8 +174,7 @@
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="code">Code</label>
-                                        <input type="text" class="form-control  @error('code') is-invalid @enderror"
-                                            name="code" required value="{{ old('code') }}">
+                                        <input type="text" class="form-control  @error('code') is-invalid @enderror" name="code" required value="{{ old('code') }}">
                                         @error('code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -180,9 +185,7 @@
                                 <div class="col-md-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="group_code">Group Code</label>
-                                        <input type="text"
-                                            class="form-control  @error('group_code') is-invalid @enderror"
-                                            name="group_code" required value="{{ old('group_code') }}">
+                                        <input type="text" class="form-control  @error('group_code') is-invalid @enderror" name="group_code" required value="{{ old('group_code') }}">
                                         @error('group_code')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -194,10 +197,8 @@
                                     <label for="color">Color</label>
                                     <div class="form-group colors custom-flex">
                                         @foreach (App\Models\Product::COLORS as $item)
-                                            <input type="radio" name="color" id="{{ $item }}"
-                                                value="{{ $item }}" />
-                                            <label for="{{ $item }}"><span
-                                                    class="{{ $item }}"></span></label>
+                                            <input type="radio" name="color" id="{{ $item }}" value="{{ $item }}" />
+                                            <label for="{{ $item }}"><span class="{{ $item }}"></span></label>
                                         @endforeach
                                         @error('color')
                                             <span class="invalid-feedback" role="alert">
@@ -252,9 +253,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="meta_title">Meta title</label>
-                                        <input type="text"
-                                            class="form-control  @error('meta_title') is-invalid @enderror"
-                                            id="meta_title" name="meta_title" value="{{ old('meta_title') }}">
+                                        <input type="text" class="form-control  @error('meta_title') is-invalid @enderror" id="meta_title" name="meta_title" value="{{ old('meta_title') }}">
                                         @error('meta_title')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -265,10 +264,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="meta_description">Meta description</label>
-                                        <input type="text"
-                                            class="form-control  @error('meta_description') is-invalid @enderror"
-                                            id="meta_description" name="meta_description"
-                                            value="{{ old('meta_description') }}">
+                                        <input type="text" class="form-control  @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" value="{{ old('meta_description') }}">
                                         @error('meta_description')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -279,9 +275,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="meta_keywords">Meta keywords</label>
-                                        <input type="text"
-                                            class="form-control  @error('meta_keywords') is-invalid @enderror"
-                                            id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}">
+                                        <input type="text" class="form-control  @error('meta_keywords') is-invalid @enderror" id="meta_keywords" name="meta_keywords" value="{{ old('meta_keywords') }}">
                                         @error('meta_keywords')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -294,8 +288,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="is_featured">Is Featured</label>
-                                        <select name="is_featured"
-                                            class="form-control  @error('is_featured') is-invalid @enderror">
+                                        <select name="is_featured" class="form-control  @error('is_featured') is-invalid @enderror">
                                             <option value="" selected>Select...</option>
                                             <option value="no" {{ old('is_featured') == 'no' ? 'selected' : '' }}>
                                                 No
@@ -313,8 +306,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="is_best_seller">Is Best Seller</label>
-                                        <select name="is_best_seller"
-                                            class="form-control  @error('is_best_seller') is-invalid @enderror">
+                                        <select name="is_best_seller" class="form-control  @error('is_best_seller') is-invalid @enderror">
                                             <option value="" selected>Select...</option>
                                             <option value="0" {{ old('is_best_seller') == '0' ? 'selected' : '' }}>
                                                 No
@@ -333,8 +325,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="form-group">
                                         <label for="status">Status</label>
-                                        <select name="status"
-                                            class="form-control  @error('status') is-invalid @enderror">
+                                        <select name="status" class="form-control  @error('status') is-invalid @enderror">
                                             <option value="" selected>Select...</option>
                                             <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
                                                 Inactive
@@ -360,8 +351,7 @@
                         </div>
                         <!-- Include optional progressbar HTML -->
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0"
-                                aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </form>
                 </div>
@@ -393,8 +383,7 @@
 
 
     {{-- form wizard --}}
-    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
     <script src="{{ asset('assets/js/custom/form-wizard.js') }}"></script>
 
     <!--Internal Fileuploads js-->

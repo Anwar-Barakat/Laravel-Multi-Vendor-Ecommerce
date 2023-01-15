@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('color');
             $table->float('price');
             $table->float('discount');
+            $table->float('gst')->default(0);
             $table->float('weight');
             $table->longText('description');
             $table->string('meta_title');
