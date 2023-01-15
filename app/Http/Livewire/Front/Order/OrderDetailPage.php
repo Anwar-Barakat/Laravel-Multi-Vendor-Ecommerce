@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Front\Order;
 
 use App\Models\Attribute;
+use App\Models\ExchangeRequest;
 use App\Models\Order;
 use App\Models\OrderLog;
 use App\Models\OrderProduct;
@@ -16,12 +17,16 @@ class OrderDetailPage extends Component
 {
     public $orderId, $reason, $product_info, $comment;
     public $return_exchange, $return_exchange_text = 'Return / Exchange';
-    public $prodAttr;
-    public $required_size;
+    public $prodAttr, $required_size;
 
     protected $rules =  [
         'reason'    => ['required'],
     ];
+
+    public function mount($id)
+    {
+        $this->orderId  = $id;
+    }
 
     public function updated($fields)
     {
@@ -39,11 +44,6 @@ class OrderDetailPage extends Component
         $productInfo    = explode('-', $this->product_info); // 0 => product code & 1 => product size
         $product        = Product::where(['code' => $productInfo[0]])->first();
         $this->prodAttr = Attribute::where('product_id', $product->id)->where('size', '!=', $productInfo[1])->where('stock', '!=', 0)->pluck('size');
-    }
-
-    public function mount($id)
-    {
-        $this->orderId  = $id;
     }
 
     public function orderCancel()
@@ -70,32 +70,59 @@ class OrderDetailPage extends Component
         }
     }
 
-    public function orderReturn()
+    public function returnOrExchangeRequest()
     {
         try {
             $order  = Order::where(['id' => $this->orderId, 'user_id' => Auth::user()->id])->first();
-
             if ($order) {
-                DB::beginTransaction();
+
                 $productInfo    = explode('-', $this->product_info); // 0 => product code & 1 => product size
-
-                // Update Item Status
                 $prod = OrderProduct::where(['order_id' => $this->orderId, 'product_code' => $productInfo[0], 'product_size' => $productInfo[1]])->first();
-                $prod->update(['product_status' => 'Return Initiated']);
+                if ($this->return_exchange_text == 'return') {
+                    DB::beginTransaction();
 
-                // Add a new return request 
-                ReturnRequest::create([
-                    'order_id'      => $this->orderId,
-                    'user_id'       => Auth::user()->id,
-                    'product_code'  => $productInfo[0],
-                    'product_size'  => $productInfo[1],
-                    'reason'        => $this->reason,
-                    'status'        => 'Pending',
-                    'comment'       => $this->comment,
-                ]);
-                toastr()->success('Order Has Been Returned Successfully');
-                DB::commit();
-                $this->reset(['reason', 'comment']);
+
+                    // Update Item Status
+                    $prod->update(['product_status' => 'Return Initiated']);
+
+                    // Add a new return request 
+                    ReturnRequest::create([
+                        'order_id'      => $this->orderId,
+                        'user_id'       => Auth::user()->id,
+                        'product_code'  => $productInfo[0],
+                        'product_size'  => $productInfo[1],
+                        'reason'        => $this->reason,
+                        'status'        => 'Pending',
+                        'comment'       => $this->comment,
+                    ]);
+                    toastr()->success('Order Has Been Returned Successfully');
+                    DB::commit();
+
+                    $this->reset(['return_exchange',  'product_info', 'reason', 'comment']);
+                } elseif ($this->return_exchange_text == 'exchange') {
+
+                    DB::beginTransaction();
+
+                    // Update Item Status
+                    $prod->update(['product_status' => 'Exchange Initiated']);
+
+                    // Add a new exchange request 
+                    ExchangeRequest::create([
+                        'order_id'      => $this->orderId,
+                        'user_id'       => Auth::user()->id,
+                        'product_code'  => $productInfo[0],
+                        'product_size'  => $productInfo[1],
+                        'required_size' => $this->required_size,
+                        'reason'        => $this->reason,
+                        'status'        => 'Pending',
+                        'comment'       => $this->comment,
+                    ]);
+                    toastr()->success('Order Has Been Exchanged Successfully');
+                    DB::commit();
+
+                    $this->reset(['required_size', 'return_exchange', 'product_info', 'prodAttr', 'reason', 'comment',]);
+                } else
+                    abort(404);
             } else
                 abort(404);
         } catch (\Throwable $th) {

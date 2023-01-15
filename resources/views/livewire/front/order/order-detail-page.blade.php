@@ -83,36 +83,39 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="u-s-m-b-30">
-                                                    <label for="return_exchange">Select Return Or Exchange</label>
-                                                    <select class="text-field" id="return_exchange" wire:model="return_exchange" required>
-                                                        <option value="">Select...</option>
-                                                        <option value="return">Return</option>
-                                                        <option value="exchange">Exchange</option>
-                                                    </select>
-                                                    @error('return_exchange')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                                <div class="u-s-m-b-30">
-                                                    <label for="product_info">Select Product</label>
-                                                    <select class="text-field" id="product_info" wire:model="product_info" required>
-                                                        <option value="">Select..</option>
-                                                        @foreach ($order->orderProducts as $item)
-                                                            @if ($item->product_status != 'Return Initiated')
-                                                                <option value="{{ $item->product_code }}-{{ $item->product_size }}">
-                                                                    {{ $item->product_name }} - {{ $item->product_code }} - {{ $item->product_size }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                    @error('product_info')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
+                                                <div class="row">
+
+                                                    <div class="u-s-m-b-30 col-lg-6">
+                                                        <label for="return_exchange">Select Return Or Exchange</label>
+                                                        <select class="text-field" id="return_exchange" wire:model="return_exchange" required>
+                                                            <option value="">Select...</option>
+                                                            <option value="return">Return</option>
+                                                            <option value="exchange">Exchange</option>
+                                                        </select>
+                                                        @error('return_exchange')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="u-s-m-b-30 col-lg-6">
+                                                        <label for="product_info">Select Product</label>
+                                                        <select class="text-field" id="product_info" wire:model="product_info" required>
+                                                            <option value="">Select..</option>
+                                                            @foreach ($order->orderProducts as $item)
+                                                                @if ($item->product_status != 'Return Initiated')
+                                                                    <option value="{{ $item->product_code }}-{{ $item->product_size }}">
+                                                                        {{ $item->product_name }} - {{ $item->product_code }} - {{ $item->product_size }}
+                                                                    </option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @error('product_info')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                                 @if ($prodAttr != '')
                                                     <div class="u-s-m-b-30">
@@ -156,7 +159,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="button  button-primary" wire:click.prevent='orderReturn'>
+                                                <button type="submit" class="button  button-primary" wire:click.prevent='returnOrExchangeRequest'>
                                                     <i class="fas fa-recycle"></i> {{ ucwords($return_exchange_text) }}
                                                 </button>
                                             </div>
