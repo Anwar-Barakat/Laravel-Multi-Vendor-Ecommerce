@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Front\Order;
 
+use App\Models\Attribute;
 use App\Models\Order;
 use App\Models\OrderLog;
 use App\Models\OrderProduct;
+use App\Models\Product;
 use App\Models\ReturnRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +15,9 @@ use Livewire\Component;
 class OrderDetailPage extends Component
 {
     public $orderId, $reason, $product_info, $comment;
+    public $return_exchange, $return_exchange_text = 'Return / Exchange';
+    public $prodAttr;
+    public $required_size;
 
     protected $rules =  [
         'reason'    => ['required'],
@@ -23,6 +28,19 @@ class OrderDetailPage extends Component
         $this->validateOnly($fields);
     }
 
+    public function updatedReturnExchange()
+    {
+        $this->return_exchange_text     = $this->return_exchange;
+    }
+
+    // get required sizies 
+    public function updatedProductInfo()
+    {
+        $productInfo    = explode('-', $this->product_info); // 0 => product code & 1 => product size
+        $product        = Product::where(['code' => $productInfo[0]])->first();
+        $this->prodAttr = Attribute::where('product_id', $product->id)->where('size', '!=', $productInfo[1])->where('stock', '!=', 0)->pluck('size');
+    }
+
     public function mount($id)
     {
         $this->orderId  = $id;
@@ -30,7 +48,6 @@ class OrderDetailPage extends Component
 
     public function orderCancel()
     {
-        // $this->validate();
         try {
             DB::beginTransaction();
             $order  = Order::where(['id' => $this->orderId, 'user_id' => Auth::user()->id])->first();

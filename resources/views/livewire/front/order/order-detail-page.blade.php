@@ -68,8 +68,8 @@
                     @if ($order->order_status == 'Delivered')
                         <div class="mb-3">
                             <button role="button" data-toggle="modal" title="returnOrder" data-target="#returnOrder{{ $order->id }}" class="button button-primary">
-                                <i class="fas fa-critical-role"></i>
-                                Return Order
+                                <i class="fas fa-recycle"></i>
+                                Return / Exchange Order
                             </button>
                             <!-- Modal -->
                             <div wire:ignore.self class="modal fade" id="returnOrder{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="returnOrder{{ $order->id }}Label" aria-hidden="true" data-effect="effect-super-scaled">
@@ -77,12 +77,25 @@
                                     <form>
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Return This Order</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">{{ ucwords($return_exchange_text) }} This Order</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
+                                                <div class="u-s-m-b-30">
+                                                    <label for="return_exchange">Select Return Or Exchange</label>
+                                                    <select class="text-field" id="return_exchange" wire:model="return_exchange" required>
+                                                        <option value="">Select...</option>
+                                                        <option value="return">Return</option>
+                                                        <option value="exchange">Exchange</option>
+                                                    </select>
+                                                    @error('return_exchange')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
                                                 <div class="u-s-m-b-30">
                                                     <label for="product_info">Select Product</label>
                                                     <select class="text-field" id="product_info" wire:model="product_info" required>
@@ -101,8 +114,24 @@
                                                         </span>
                                                     @enderror
                                                 </div>
+                                                @if ($prodAttr != '')
+                                                    <div class="u-s-m-b-30">
+                                                        <label for="required_size">Required Size</label>
+                                                        <select class="text-field" id="required_size" wire:model="required_size" required>
+                                                            <option value="">Select..</option>
+                                                            @foreach ($prodAttr as $attr)
+                                                                <option value="{{ $attr }}">{{ $attr }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('required_size')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                @endif
                                                 <div class="u-s-m-b-30">
-                                                    <label for="reason">Select Reason</label>
+                                                    <label for="reason">{{ ucwords($return_exchange_text) }} Reason</label>
                                                     <select class="text-field @error('reason') is-invalid @enderror" id="reason" wire:model="reason" required>
                                                         <option value="">Select..</option>
                                                         @foreach (App\Models\ReturnRequest::RETURNREASONS as $key => $reason)
@@ -128,7 +157,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="button  btn-secondary" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="button  button-primary" wire:click.prevent='orderReturn'>
-                                                    <i class="fas fa-times"></i> Return
+                                                    <i class="fas fa-recycle"></i> {{ ucwords($return_exchange_text) }}
                                                 </button>
                                             </div>
                                         </div>
