@@ -1,3 +1,7 @@
+textarea {
+  resize: none;
+}
+
 .full-layer-mid-header .logo {
   gap: 0.5rem;
 }

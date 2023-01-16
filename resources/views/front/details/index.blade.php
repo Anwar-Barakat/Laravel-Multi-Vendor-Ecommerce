@@ -1,5 +1,5 @@
 <x-master-layout>
-    @section('title', 'Details Page')
+    @section('title', 'Details | ' . $product->name)
     @push('styles')
         <link rel="stylesheet" href="{{ asset('front/css/rating.css') }}">
     @endpush
@@ -62,7 +62,7 @@
                                         <a class="nav-link" data-toggle="tab" href="#specification">Specifications</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-toggle="tab" href="#rating">Reviews (15)</a>
+                                        <a class="nav-link" data-toggle="tab" href="#rating">Reviews ({{ $reviewsCount }})</a>
                                     </li>
                                 </ul>
                             </div>

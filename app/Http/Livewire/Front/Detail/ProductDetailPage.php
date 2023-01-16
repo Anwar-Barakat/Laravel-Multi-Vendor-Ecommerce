@@ -16,10 +16,22 @@ use Illuminate\Support\Facades\Auth;
 class ProductDetailPage extends Component
 {
     public $productId;
-
     public $size = 'small', $qty = 1, $discount, $final_price, $original_price, $totalStock;
-
     public $currencies;
+    public $average_rating, $average_rating_star;
+
+    protected $listeners    = ['updateAverageRating', 'updateAverageRatingStar'];
+
+    public function updateAverageRating($count)
+    {
+        $this->average_rating       = $count;
+    }
+
+    public function updateAverageRatingStar($total)
+    {
+        $this->average_rating_star  = $total;
+    }
+
 
 
     public function mount($productId)
@@ -111,8 +123,8 @@ class ProductDetailPage extends Component
         $data['rating_count']           = ProductRating::ratingProduct($data['product']->id)->count();
         if ($data['rating_count'] > 0) {
             $data['rating_sum']             = ProductRating::ratingProduct($data['product']->id)->sum('rating');
-            $data['average_rating']         = round($data['rating_sum'] / $data['rating_count'], 2);
-            $data['average_star_rating']    = round($data['rating_sum'] / $data['rating_count']);
+            $this->average_rating           = round($data['rating_sum'] / $data['rating_count'], 1);
+            $this->average_rating_star      = round($data['rating_sum'] / $data['rating_count']);
         }
 
         return view('livewire.front.detail.product-detail-page', $data)->layout('front.layouts.master');

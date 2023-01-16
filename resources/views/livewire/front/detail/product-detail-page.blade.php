@@ -38,11 +38,11 @@
             </ul>
             @if ($rating_count > 0)
                 <div class="product-rating">
-                    <div class="inline-block" title="4.5 out of 5 - based on 23 Reviews">
+                    <div class="inline-block" title="{{ $average_rating }} out of 5 - based on {{ $rating_count }} Reviews">
                         @php
                             $star = 1;
                         @endphp
-                        @while ($star <= $average_star_rating)
+                        @while ($star <= $average_rating_star)
                             <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
                             @php
                                 $star++;

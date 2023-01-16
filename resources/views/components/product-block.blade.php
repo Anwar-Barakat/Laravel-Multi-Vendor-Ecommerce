@@ -24,10 +24,18 @@
                 <a href="{{ route('front.product.detail', ['product' => $product]) }}">{{ ucwords($product->name) }}</a>
             </h6>
             <div class="item-stars">
-                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                    <span style='width:67px'></span>
+                <div title="{{ $average_rating }} out of 5 - based on {{ $rating_count }} Reviews" class="flex items-center gap-1">
+                    @php
+                        $star = 1;
+                    @endphp
+                    @while ($star <= $average_rating_star)
+                        <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                        @php
+                            $star++;
+                        @endphp
+                    @endwhile
+                    <span>({{ $average_rating }})</span>
                 </div>
-                <span>(23)</span>
                 <span class="block text-xm mt-1">{{ $product->created_at }}</span>
             </div>
         </div>
