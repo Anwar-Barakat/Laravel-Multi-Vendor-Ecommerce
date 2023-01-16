@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\Order\Cancelled\CancelledOrderController;
 use App\Http\Controllers\Admin\Order\Exchange\ExchangeRequestController;
 use App\Http\Controllers\Admin\Order\Return\ReturnRequestController;
 use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
+use App\Http\Controllers\Front\Contact\ContactController;
 use App\Http\Controllers\Front\Detail\ProductDetailController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
@@ -219,7 +220,7 @@ Route::name('front.')->group(function () {
 
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
 
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth', 'verified']], function () {
 
         Route::get('/checkout',                                 CheckoutPage::class)->name('checkout');
 
@@ -234,6 +235,8 @@ Route::name('front.')->group(function () {
         Route::get('/orders/{id}/show',                         OrderDetailPage::class)->name('orders.show');
 
         Route::get('/profile',                                  ProfilePage::class)->name('profile');
+
+        Route::resource('/contact',                             ContactController::class)->only(['index']);
     });
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');

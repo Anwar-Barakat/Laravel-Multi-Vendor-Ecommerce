@@ -124,6 +124,7 @@ class ProductDetailPage extends Component
             'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
         ])->findOrFail($this->productId);
 
+
         $data['groupProducts']      = $this->getProductGroup($data['product']);
 
         $data['rating_count']           = ProductRating::ratingProduct($data['product']->id)->count();

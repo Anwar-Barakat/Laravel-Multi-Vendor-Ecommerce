@@ -101,7 +101,7 @@
                                                 <h3 class="calc-h3 u-s-m-b-0">Subtotal</h3>
                                             </td>
                                             <td>
-                                                <span class="calc-text">${{ Cart::instance('cart')->subtotal() }}</span>
+                                                <span class="calc-text">${{ $final_price }}</span>
                                             </td>
                                         </tr>
                                         @if (session()->has('coupon'))
@@ -151,7 +151,7 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
                                                 <td class="total-amount">
-                                                    <span class="calc-text">${{ Cart::instance('cart')->subtotal() + $finalGST }}</span>
+                                                    <span class="calc-text">${{ $final_price + $finalGST }}</span>
                                                 </td>
                                             </tr>
                                         @endif

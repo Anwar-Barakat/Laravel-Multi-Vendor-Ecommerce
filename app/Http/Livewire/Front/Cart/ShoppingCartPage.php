@@ -62,7 +62,7 @@ class ShoppingCartPage extends Component
     public function updateHeader()
     {
         $this->emit('updateCardAmount', Cart::instance('cart')->count());
-        $this->emit('updateCardTotal', Cart::instance('cart')->total());
+        $this->emit('updateCardTotal', $this->final_price);
     }
 
     public function applyCouponCode()

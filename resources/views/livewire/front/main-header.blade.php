@@ -212,8 +212,8 @@
                     @endforelse
                 </ul>
                 <div class="mini-shop-total clearfix">
-                    <span class="mini-total-heading float-left">Total:</span>
-                    <span class="mini-total-price float-right">${{ Cart::total() }}</span>
+                    <span class="mini-total-heading float-left">Sub-Total:</span>
+                    <span class="mini-total-price float-right">${{ Cart::instance('cart')->subtotal() }}</span>
                 </div>
                 <div class="mini-action-anchors">
                     <a href="{{ route('front.shopping.cart') }}" class="cart-anchor">View Cart</a>

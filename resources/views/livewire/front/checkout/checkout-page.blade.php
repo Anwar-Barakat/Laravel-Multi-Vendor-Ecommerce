@@ -25,9 +25,11 @@
                         <div class="table-wrapper u-s-m-b-60">
                             <table>
                                 <thead>
-                                    <tr>
-                                        <th class="flex justify-between align-items-center">
+                                    <tr class="flex justify-between items-center">
+                                        <th>
                                             <span>Delivery Addresses</span>
+                                        </th>
+                                        <th>
                                             <a href="{{ route('front.delivery.addresses.add') }}" class="custom-btn">Add</a>
                                         </th>
                                     </tr>
