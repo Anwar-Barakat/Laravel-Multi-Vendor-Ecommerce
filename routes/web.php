@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\Order\Cancelled\CancelledOrderController;
 use App\Http\Controllers\Admin\Order\Exchange\ExchangeRequestController;
 use App\Http\Controllers\Admin\Order\Return\ReturnRequestController;
 use App\Http\Controllers\Admin\ProductRating\ProductRatingController;
+use App\Http\Controllers\Front\Detail\ProductDetailController;
 use App\Http\Controllers\Vendor\UpdateVendorBankController;
 use App\Http\Controllers\Vendor\UpdateVendorBusinessController;
 use App\Http\Controllers\Vendor\UpdateVendorDetailController;
@@ -214,7 +215,7 @@ Route::name('front.')->group(function () {
 
     Route::get('/shop/{url}',                               CategoryProducts::class)->name('shop.category.products');
 
-    Route::get('/product/{productId}',                      ProductDetailPage::class)->name('product.detail');
+    Route::get('/product/{product}',                        [ProductDetailController::class, 'index'])->name('product.detail');
 
     Route::get('/shopping-cart',                            ShoppingCartPage::class)->name('shopping.cart');
 
@@ -237,7 +238,6 @@ Route::name('front.')->group(function () {
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 });
-
 
 
 Route::get('/{page}', [App\Http\Controllers\AdminController::class, 'index']);

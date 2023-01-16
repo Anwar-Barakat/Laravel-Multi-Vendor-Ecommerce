@@ -11,7 +11,6 @@ class RatingProductSection extends Component
 {
     use WithPagination;
 
-
     public $product_id;
     public $name, $email, $rating, $review;
     public $reviews;
@@ -38,20 +37,20 @@ class RatingProductSection extends Component
         if (Auth::check()) {
             // $this->validate();
 
-            // $ratingExists   = ProductRating::where(['user_id' => Auth::user()->id, 'product_id' => $this->product_id])->count();
-            // if ($ratingExists > 0) {
-            //     toastr()->info('Your Rating Already Exists For This Product');
-            //     $this->reset();
-            // } else {
-            ProductRating::create([
-                'user_id'       => Auth::user()->id,
-                'product_id'    => $this->product_id,
-                'review'        => $this->review,
-                'rating'        => $this->rating,
-            ]);
-            toastr()->success('Rating Has Been Added Successfully to This Product');
-            $this->reset(['rating', 'review']);
-            // }
+            $ratingExists   = ProductRating::where(['user_id' => Auth::user()->id, 'product_id' => $this->product_id])->count();
+            if ($ratingExists > 0) {
+                toastr()->info('Your Rating Already Exists For This Product');
+                $this->reset();
+            } else {
+                ProductRating::create([
+                    'user_id'       => Auth::user()->id,
+                    'product_id'    => $this->product_id,
+                    'review'        => $this->review,
+                    'rating'        => $this->rating,
+                ]);
+                toastr()->success('Rating Has Been Added Successfully to This Product');
+                $this->reset(['rating', 'review']);
+            }
         } else {
             toastr()->info('Login First, Then Add Your Rating');
         }
@@ -60,6 +59,7 @@ class RatingProductSection extends Component
 
     public function render()
     {
+
         $this->getReviews();
         return view('livewire.front.detail.rating-product-section');
     }

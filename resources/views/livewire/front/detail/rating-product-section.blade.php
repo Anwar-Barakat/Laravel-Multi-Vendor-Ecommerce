@@ -1,4 +1,4 @@
-<div class="tab-pane fade" id="review" wire:ignore>
+<div class="tab-pane fade" id="rating" wire:ignore.self>
     <div class="review-whole-container">
         <div class="row r-1 u-s-m-b-26 u-s-p-b-22">
             <div class="col-lg-6 col-md-6">
@@ -12,42 +12,54 @@
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="total-star-meter">
-                    <div class="star-wrapper">
-                        <span class="flex justify-between w-1/3">
-                            <span>1 Stars</span>
-                            <i class="fas fa-star text-warning"></i>
-                        </span>
-
-                        <span class="flex justify-between w-1/3">
-                            <span>2 Stars</span>
-                            <span>
+                    <div class="star-wrapper ">
+                        <span class="flex justify-between">
+                            <span style="width: 40%" class="flex justify-end">Reviews ({{ App\Models\ProductRating::where(['product_id' => $product_id, 'rating' => 1])->count() }})</span>
+                            <span class="w-50 flex items-center justify-start gap-1">
                                 <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
                             </span>
                         </span>
 
-                        <span class="flex justify-between w-1/3">
-                            <span>3 Stars</span>
-                            <span>
+                        <span class="flex justify-between">
+                            <span style="width: 40%" class="flex justify-end">Reviews ({{ App\Models\ProductRating::where(['product_id' => $product_id, 'rating' => 2])->count() }})</span>
+                            <span class="w-50 flex items-center justify-start gap-1">
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
                             </span>
                         </span>
 
-                        <span class="flex justify-between w-1/3">
-                            <span>4 Stars</span>
-                            <span>
+                        <span class="flex justify-between">
+                            <span style="width: 40%" class="flex justify-end">Reviews ({{ App\Models\ProductRating::where(['product_id' => $product_id, 'rating' => 3])->count() }})</span>
+                            <span class="w-50 flex items-center justify-start gap-1">
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
-                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-secondary"></i>
+                                <i class="far fa-star text-secondary"></i>
                             </span>
                         </span>
 
-                        <span class="flex justify-between w-1/3">
-                            <span>5 Stars</span>
-                            <span>
+                        <span class="flex justify-between">
+                            <span style="width: 40%" class="flex justify-end">Reviews ({{ App\Models\ProductRating::where(['product_id' => $product_id, 'rating' => 4])->count() }})</span>
+                            <span class="w-50 flex items-center justify-start gap-1">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-secondary"></i>
+                            </span>
+                        </span>
+
+                        <span class="flex justify-between">
+                            <span style="width: 40%" class="flex justify-end">Reviews ({{ App\Models\ProductRating::where(['product_id' => $product_id, 'rating' => 5])->count() }})</span>
+                            <span class="w-50 flex items-center justify-start gap-1">
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
                                 <i class="fas fa-star text-warning"></i>
@@ -67,31 +79,32 @@
                     <form id="rating-form">
                         <div class="star-wrapper">
                             <span class="star__container">
-                                <input type="radio" name="rating" value="1" id="star-1" class="star__radio visuhide" wire:model="rating">
-                                <input type="radio" name="rating" value="2" id="star-2" class="star__radio visuhide" wire:model="rating">
-                                <input type="radio" name="rating" value="3" id="star-3" class="star__radio visuhide" wire:model="rating">
-                                <input type="radio" name="rating" value="4" id="star-4" class="star__radio visuhide" wire:model="rating">
-                                <input type="radio" name="rating" value="5" id="star-5" class="star__radio visuhide" wire:model="rating">
+                                <input type="radio" name="rating" value="1" id="star-01" class="star__radio visuhide" wire:model="rating">
+                                <input type="radio" name="rating" value="2" id="star-02" class="star__radio visuhide" wire:model="rating">
+                                <input type="radio" name="rating" value="3" id="star-03" class="star__radio visuhide" wire:model="rating">
+                                <input type="radio" name="rating" value="4" id="star-04" class="star__radio visuhide" wire:model="rating">
+                                <input type="radio" name="rating" value="5" id="star-05" class="star__radio visuhide" wire:model="rating">
 
-                                <label class="star__item" for="star-1"><span class="visuhide">1 star</span></label>
-                                <label class="star__item" for="star-2"><span class="visuhide">2 stars</span></label>
-                                <label class="star__item" for="star-3"><span class="visuhide">3 stars</span></label>
-                                <label class="star__item" for="star-4"><span class="visuhide">4 stars</span></label>
-                                <label class="star__item" for="star-5"><span class="visuhide">5 stars</span></label>
+                                <label class="star__item" for="star-01"><span class="visuhide">1 star</span></label>
+                                <label class="star__item" for="star-02"><span class="visuhide">2 stars</span></label>
+                                <label class="star__item" for="star-03"><span class="visuhide">3 stars</span></label>
+                                <label class="star__item" for="star-04"><span class="visuhide">4 stars</span></label>
+                                <label class="star__item" for="star-05"><span class="visuhide">5 stars</span></label>
                             </span>
                         </div>
 
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <x-label for="email" :value="__('Review')" />
-                                <textarea id="email" class="text-field mb-2 shadow-none pt-2" rows="5" required style="height: 130px;" wire:model="review"></textarea>
+                                <x-label for="review" :value="__('Review')" />
+                                <textarea id="review" class="text-field mb-2 shadow-none pt-2" rows="5" required style="height: 130px;" wire:model="review"></textarea>
                             </div>
                         </div>
 
 
-                        <button class="button button-outline-secondary" type="submit" wire:click.prevent="addRating">Submit
-                            Review</button>
+                        <button class="button button-outline-secondary" type="submit" wire:click.prevent="addRating">
+                            Submit Review
+                        </button>
                     </form>
                 </div>
             </div>
@@ -152,89 +165,3 @@
         @endif
     </div>
 </div>
-
-<style>
-    .visuhide {
-        position: absolute !important;
-        overflow: hidden;
-        width: 1px;
-        height: 1px;
-        clip: rect(1px, 1px, 1px, 1px);
-    }
-
-    .star__container:hover .star__item,
-    .star__radio:checked~.star__item {
-        filter: grayscale(0);
-    }
-
-    .star__item:hover~.star__item,
-    .star__item,
-    .star__container:not(:hover)>.star__radio:nth-of-type(5):checked~.star__item:nth-of-type(5)~.star__item,
-    .star__container:not(:hover)>.star__radio:nth-of-type(4):checked~.star__item:nth-of-type(4)~.star__item,
-    .star__container:not(:hover)>.star__radio:nth-of-type(3):checked~.star__item:nth-of-type(3)~.star__item,
-    .star__container:not(:hover)>.star__radio:nth-of-type(2):checked~.star__item:nth-of-type(2)~.star__item,
-    .star__container:not(:hover)>.star__radio:nth-of-type(1):checked~.star__item:nth-of-type(1)~.star__item {
-        filter: grayscale(1);
-    }
-
-    .star__radio:nth-of-type(1):checked~.star__item:nth-of-type(1)::before {
-        transform: scale(1.5);
-        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
-    }
-
-    .star__radio:nth-of-type(2):checked~.star__item:nth-of-type(2)::before {
-        transform: scale(1.5);
-        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
-    }
-
-    .star__radio:nth-of-type(3):checked~.star__item:nth-of-type(3)::before {
-        transform: scale(1.5);
-        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
-    }
-
-    .star__radio:nth-of-type(4):checked~.star__item:nth-of-type(4)::before {
-        transform: scale(1.5);
-        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
-    }
-
-    .star__radio:nth-of-type(5):checked~.star__item:nth-of-type(5)::before {
-        transform: scale(1.5);
-        transition-timing-function: cubic-bezier(0.5, 1.5, 0.25, 1);
-    }
-
-    .star__container {
-        display: flex;
-        border-radius: 0.25em;
-        background-color: #00a39b;
-        box-shadow: 0 0.25em 1em rgb(0 0 0 / 25%);
-        transition: box-shadow 0.3s ease;
-        justify-content: center;
-        margin: 1rem 0;
-    }
-
-    .star__container:focus-within {
-        box-shadow: 0 0.125em 0.5em rgba(0, 0, 0, 0.5);
-    }
-
-    .star__item {
-        display: inline-flex;
-        width: 1.25em;
-        height: 1.5em;
-    }
-
-    .star__item::before {
-        content: "⭐️";
-        display: inline-block;
-        margin: auto;
-        font-size: 0.75em;
-        vertical-align: top;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
-        transform-origin: 50% 33.3%;
-        transition: transform 0.3s ease-out;
-    }
-
-    #rating-form .star__container label {
-        font-size: 25px;
-    }
-</style>
