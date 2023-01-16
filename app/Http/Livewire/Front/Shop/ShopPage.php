@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Filter;
 use App\Models\FilterValue;
 use App\Models\Product;
+use App\Models\ProductRating;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -83,11 +84,8 @@ class ShopPage extends Component
     {
 
         $data['categories'] = $this->getCategories();
-
         $data['brands']     = $this->getBrands();
-
         $data['filters']    = $this->getFilters();
-
         $data['products']   = Product::with('brand')->active()
             ->when($this->brandInputs, fn ($q)      => $q->whereIn('brand_id', $this->brandInputs))
             ->when($this->color, fn ($q)            => $q->where('color', $this->color))
@@ -96,6 +94,7 @@ class ShopPage extends Component
             ->search(trim($this->search))
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);
+
 
         return view('livewire.front.shop.shop-page', $data)->layout('front.layouts.master');
     }

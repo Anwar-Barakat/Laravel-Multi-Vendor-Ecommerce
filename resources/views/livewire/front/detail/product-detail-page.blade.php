@@ -198,11 +198,20 @@
 
                     </div>
                 </div>
+                @php
+                    $wishItems = Cart::instance('wishlist')
+                        ->content()
+                        ->pluck('id');
+                @endphp
                 <div>
                     <button class="button button-outline-secondary" wire:click.prevent="addToCart({{ $product->id }},'{{ $product->name }}',{{ $qty }},{{ $final_price }},'{{ $size }}','{{ $product->code }}','{{ $product->color }}')">
                         Add to cart
                     </button>
-                    <button class="button button-outline-secondary far fa-heart u-s-m-l-6"></button>
+                    @if ($wishItems->contains($product->id))
+                        <a class="button button-outline-secondary far fa-heart u-s-m-l-6" href="{{ route('front.wishlist') }}"></a>
+                    @else
+                        <button class="button button-outline-secondary far fa-heart bg-cyan-300 text-white u-s-m-l-6" wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $final_price }})"></button>
+                    @endif
                     <button class="button button-outline-secondary far fa-envelope u-s-m-l-6"></button>
                 </div>
             </form>

@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use App\Models\Attribute;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
 
 class Product extends Model implements HasMedia
@@ -71,6 +72,13 @@ class Product extends Model implements HasMedia
     public static function discountingPrice($price, $discount)
     {
         return $price - ($price * $discount / 100);
+    }
+
+    public static function addToWishList($id, $name, $qty, $price)
+    {
+        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
+        self::emit('updateWishListCount', Cart::instance('wishlist')->count());
+        toastr()->success('Product Has Been Added Successfully to Cart');
     }
 
     public function scopeSearch($query, $term)

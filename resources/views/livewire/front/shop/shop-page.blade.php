@@ -261,10 +261,30 @@
                                                 <p>{{ $product->description }} </p>
                                             </div>
                                             <div class="item-stars">
-                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                    <span style='width:67px'></span>
+                                                @php
+                                                    $data = App\Models\ProductRating::getAverageRating($product->id);
+                                                @endphp
+                                                <div class="item-stars">
+                                                    @if ($data['rating_count'] > 0)
+                                                        <div title="{{ $data['average_rating'] }} out of 5 - based on {{ $data['rating_count'] }} Reviews" class="flex items-center gap-1">
+                                                            @php
+                                                                $star = 1;
+                                                            @endphp
+                                                            @while ($star <= $data['average_rating_star'])
+                                                                <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                                                                @php
+                                                                    $star++;
+                                                                @endphp
+                                                            @endwhile
+                                                            <span>({{ $data['average_rating'] }})</span>
+                                                        </div>
+                                                    @else
+                                                        <div title="0 out of 5 - based on 0 Reviews" class="flex items-center gap-1">
+                                                            <i class="far fa-star"></i>
+                                                            <span>(0)</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
-                                                <span>(23)</span>
                                             </div>
                                         </div>
                                         <div class="price-template">

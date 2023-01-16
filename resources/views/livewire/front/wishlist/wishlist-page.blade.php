@@ -39,7 +39,7 @@
                                                 $product = App\Models\Product::findOrFail($item->model->id);
                                             @endphp
                                             <div class="cart-anchor-image">
-                                                <a href="{{ route('front.product.detail', ['product' => $product]) }}">
+                                                <a href="{{ route('front.product.detail', ['product' => $product]) }}" class="d-flex items-center">
                                                     <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ $item->model->name }}" loading="lazy" class="img img-thumbnail" />
                                                     <h6>{{ ucwords($item->model->name) }}
                                                     </h6>

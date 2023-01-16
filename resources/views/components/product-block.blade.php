@@ -4,13 +4,7 @@
             <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ ucwords($product->name) }}">
         </a>
         <div class="item-action-behaviors">
-            <a class="item-quick-look" data-toggle="modal" href="#quick-view">Quick
-                Look
-            </a>
-            <a class="item-mail" href="javascript:void(0)">Mail</a>
-            <a class="item-addwishlist" href="javascript:void(0)">Add to
-                Wishlist</a>
-            <a class="item-addCart" href="javascript:void(0)">Add to Cart</a>
+            <a class="item-addCart" href="{{ route('front.product.detail', ['product' => $product]) }}">Add to Cart</a>
         </div>
     </div>
     <div class="item-content">
@@ -24,20 +18,28 @@
                 <a href="{{ route('front.product.detail', ['product' => $product]) }}">{{ ucwords($product->name) }}</a>
             </h6>
             <div class="item-stars">
-                <div title="{{ $average_rating }} out of 5 - based on {{ $rating_count }} Reviews" class="flex items-center gap-1">
-                    @php
-                        $star = 1;
-                    @endphp
-                    @while ($star <= $average_rating_star)
-                        <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                @if ($rating_count > 0)
+                    <div title="{{ $average_rating }} out of 5 - based on {{ $rating_count }} Reviews" class="flex items-center gap-1">
                         @php
-                            $star++;
+                            $star = 1;
                         @endphp
-                    @endwhile
-                    <span>({{ $average_rating }})</span>
-                </div>
+                        @while ($star <= $average_rating_star)
+                            <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                            @php
+                                $star++;
+                            @endphp
+                        @endwhile
+                        <span>({{ $average_rating }})</span>
+                    </div>
+                @else
+                    <div title="0 out of 5 - based on 0 Reviews" class="flex items-center gap-1">
+                        <i class="far fa-star"></i>
+                        <span>(0)</span>
+                    </div>
+                @endif
                 <span class="block text-xm mt-1">{{ $product->created_at }}</span>
             </div>
+
         </div>
         <div class="price-template">
             @php

@@ -110,6 +110,12 @@ class ProductDetailPage extends Component
             return Product::where('group_code', $product->group_code)->where('id', '!=', $product->id)->active()->inRandomOrder()->take(3)->get();
     }
 
+    public function addToWishList($id, $name, $qty, $price)
+    {
+        Cart::instance('wishlist')->add($id, $name, 1, $price)->associate('App\Models\Product');
+        $this->emit('updateWishListCount', Cart::instance('wishlist')->count());
+        toastr()->success('Product Has Been Added Successfully to Cart');
+    }
 
     public function render()
     {

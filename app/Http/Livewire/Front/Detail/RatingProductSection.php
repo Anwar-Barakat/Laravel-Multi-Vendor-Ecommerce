@@ -14,7 +14,6 @@ class RatingProductSection extends Component
     public $product_id;
     public $rating, $review;
     public $reviews;
-    public $rating_count, $rating_sum, $average_rating;
     public  $sortBy  = 'asc';
 
 
@@ -57,26 +56,13 @@ class RatingProductSection extends Component
         }
     }
 
-    public function getReviews()
-    {
-        $this->reviews          = ProductRating::where('product_id', $this->product_id)->orderBy('rating', $this->sortBy)->latest()->get();
-        $this->rating_count     = ProductRating::where('product_id', $this->product_id)->count();
-
-
-        if ($this->rating_count > 0) {
-            $this->rating_sum       = ProductRating::ratingProduct($this->product_id)->sum('rating');
-            $this->average_rating   = round($this->rating_sum / $this->rating_count, 1);
-            $this->emit('updateAverageRatingStar', round($this->rating_sum / $this->rating_count));
-        } else
-            $this->average_rating   = 0;
-
-        $this->emit('updateAverageRating', $this->average_rating);
-    }
-
 
     public function render()
     {
-        $this->getReviews();
-        return view('livewire.front.detail.rating-product-section');
+        $this->reviews  = ProductRating::where('product_id', $this->product_id)->orderBy('rating', $this->sortBy)->latest()->get();
+        $data           = ProductRating::getAverageRating($this->product_id);
+        $this->emit('updateAverageRating', $data['average_rating']);
+
+        return view('livewire.front.detail.rating-product-section', $data);
     }
 }
