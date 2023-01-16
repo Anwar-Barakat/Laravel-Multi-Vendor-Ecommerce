@@ -87,7 +87,10 @@
                                         <tr>
                                             <td>
                                                 <div class="cart-anchor-image">
-                                                    <a class="d-flex align-items-center gap-2" href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
+                                                    @php
+                                                        $product = App\Models\Product::findOrFail($item->model->id);
+                                                    @endphp
+                                                    <a href="{{ route('front.product.detail', ['product' => $product]) }}" class="d-flex align-items-center gap-2">
                                                         <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ $item->model->name }}" loading="lazy" class="img img-thumbnail" />
                                                         <h6 class="grid">
                                                             <span>{{ ucwords($item->model->name) }}</span>

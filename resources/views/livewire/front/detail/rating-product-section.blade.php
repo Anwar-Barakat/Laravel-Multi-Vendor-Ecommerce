@@ -77,8 +77,8 @@
                     <h6 class="review-h6">Your Review is matter.</h6>
                     <h6 class="review-h6">Have you used this product before?</h6>
                     <form id="rating-form">
-                        <div class="star-wrapper">
-                            <span class="star__container">
+                        <div class="star-wrapper mb-3">
+                            <span class="star__container mb-0">
                                 <input type="radio" name="rating" value="1" id="star-01" class="star__radio visuhide" wire:model="rating">
                                 <input type="radio" name="rating" value="2" id="star-02" class="star__radio visuhide" wire:model="rating">
                                 <input type="radio" name="rating" value="3" id="star-03" class="star__radio visuhide" wire:model="rating">
@@ -91,13 +91,24 @@
                                 <label class="star__item" for="star-04"><span class="visuhide">4 stars</span></label>
                                 <label class="star__item" for="star-05"><span class="visuhide">5 stars</span></label>
                             </span>
+                            @error('rating')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
 
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 mb-3">
                                 <x-label for="review" :value="__('Review')" />
-                                <textarea id="review" class="text-field mb-2 shadow-none pt-2" rows="5" required style="height: 130px;" wire:model="review"></textarea>
+                                <textarea id="review" class="text-field shadow-none pt-2" rows="5" required style="height: 130px;" wire:model="review"></textarea>
+                                @error('review')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                             </div>
                         </div>
 
@@ -122,9 +133,9 @@
                     <div class="review-option-box">
                         <div class="select-box-wrapper">
                             <label class="sr-only" for="review-sort">Review Sorter</label>
-                            <select class="select-box" id="review-sort">
-                                <option value="">Sort by: Best Rating</option>
-                                <option value="">Sort by: Worst Rating</option>
+                            <select class="select-box" id="review-sort" wire:model='sortBy'>
+                                <option value="desc">Sort by: Best Rating</option>
+                                <option value="asc">Sort by: Worst Rating</option>
                             </select>
                         </div>
                     </div>

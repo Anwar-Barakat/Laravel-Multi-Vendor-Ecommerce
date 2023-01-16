@@ -1,6 +1,6 @@
 <div class="item main-shadow">
     <div class="image-container">
-        <a class="item-img-wrapper-link" href="{{ route('front.product.detail', $product->id) }}">
+        <a class="item-img-wrapper-link" href="{{ route('front.product.detail', ['product' => $product]) }}">
             <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ ucwords($product->name) }}">
         </a>
         <div class="item-action-behaviors">
@@ -21,7 +21,7 @@
                 </li>
             </ul>
             <h6 class="item-title">
-                <a href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
+                <a href="{{ route('front.product.detail', ['product' => $product]) }}">{{ ucwords($product->name) }}</a>
             </h6>
             <div class="item-stars">
                 <div class='star' title="4.5 out of 5 - based on 23 Reviews">

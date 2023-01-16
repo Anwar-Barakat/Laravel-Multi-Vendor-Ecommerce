@@ -12,9 +12,10 @@ class RatingProductSection extends Component
     use WithPagination;
 
     public $product_id;
-    public $name, $email, $rating, $review;
+    public $rating, $review;
     public $reviews;
     public $rating_count, $rating_sum, $average_rating;
+    public  $sortBy  = 'asc';
 
 
     protected $rules = [
@@ -35,12 +36,12 @@ class RatingProductSection extends Component
     public function addRating()
     {
         if (Auth::check()) {
-            // $this->validate();
+            $this->validate();
 
             $ratingExists   = ProductRating::where(['user_id' => Auth::user()->id, 'product_id' => $this->product_id])->count();
             if ($ratingExists > 0) {
                 toastr()->info('Your Rating Already Exists For This Product');
-                $this->reset();
+                $this->reset(['rating', 'review']);
             } else {
                 ProductRating::create([
                     'user_id'       => Auth::user()->id,
@@ -54,7 +55,6 @@ class RatingProductSection extends Component
         } else {
             toastr()->info('Login First, Then Add Your Rating');
         }
-        $this->getReviews();
     }
 
     public function render()
@@ -66,7 +66,7 @@ class RatingProductSection extends Component
 
     public function getReviews()
     {
-        $this->reviews          =   ProductRating::where('product_id', $this->product_id)->get();
+        $this->reviews          = ProductRating::where('product_id', $this->product_id)->orderBy('rating', $this->sortBy)->latest()->get();
         $this->rating_count     = ProductRating::where('product_id', $this->product_id)->count();
 
         if ($this->rating_count > 0) {

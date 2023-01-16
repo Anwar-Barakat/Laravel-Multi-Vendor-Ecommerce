@@ -226,7 +226,7 @@
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                 <div class="item main-shadow">
                                     <div class="image-container">
-                                        <a class="item-img-wrapper-link" href="{{ route('front.product.detail', $product->id) }}">
+                                        <a class="item-img-wrapper-link" href="{{ route('front.product.detail', ['product' => $product]) }}">
                                             <img class="img-fluid" src="{{ $product->getFirstMediaUrl('main_img_of_product') }}" alt="{{ ucwords($product->name) }}">
                                         </a>
                                         <div class="item-action-behaviors">
@@ -242,7 +242,7 @@
                                                     to
                                                     Wishlist</a>
                                             @endif
-                                            <a class="item-addCart" href="{{ route('front.product.detail', ['productId' => $product->id]) }}">Add
+                                            <a class="item-addCart" href="{{ route('front.product.detail', ['product' => $product]) }}">Add
                                                 to Cart</a>
                                         </div>
                                     </div>
@@ -255,7 +255,7 @@
                                             </ul>
                                             <h6 class="text-gray-500 text-xs">{{ $product->created_at }}</h6>
                                             <h6 class="item-title">
-                                                <a href="{{ route('front.product.detail', $product->id) }}">{{ ucwords($product->name) }}</a>
+                                                <a href="{{ route('front.product.detail', ['product' => $product]) }}">{{ ucwords($product->name) }}</a>
                                             </h6>
                                             <div class="item-description">
                                                 <p>{{ $product->description }} </p>

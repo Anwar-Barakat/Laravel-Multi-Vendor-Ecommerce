@@ -127,7 +127,7 @@
                                     <ul class="mb-0">
                                         @forelse ($searchResults as $product)
                                             <li class="border-b border-gray-500 bg-white hover:bg-gray-300 transition ease-in-out px-4 py-2">
-                                                <a href="{{ route('front.product.detail', $product->id) }}" class=" flex items-center gap-4">
+                                                <a href="{{ route('front.product.detail', ['product' => $product]) }}" class=" flex items-center gap-4">
                                                     @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
                                                         <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ ucwords($product->name) }}" class="w-8">
                                                     @else
@@ -195,7 +195,10 @@
                 <ul class="mini-cart-list">
                     @forelse (Cart::instance('cart')->content() as $item)
                         <li class="clearfix">
-                            <a href="{{ route('front.product.detail', ['productId' => $item->model->id]) }}">
+                            @php
+                                $product = App\Models\Product::findOrFail($item->model->id);
+                            @endphp
+                            <a href="{{ route('front.product.detail', ['product' => $product]) }}">
                                 <img src="{{ $item->model->getFirstMediaUrl('main_img_of_product', 'small') }}" loading="lazy" alt="{{ $item->model->name }}">
                                 <span class="mini-item-name">{{ ucwords($item->model->name) }}</span>
                                 <span class="mini-item-price">${{ $item->price }}</span>

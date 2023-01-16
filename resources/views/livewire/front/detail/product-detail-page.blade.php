@@ -132,7 +132,7 @@
                 @isset($groupProducts)
                     <div class="flex gap-2">
                         @foreach ($groupProducts as $product)
-                            <a href="{{ route('front.product.detail', $product->id) }}">
+                            <a href="{{ route('front.product.detail', ['product' => $product]) }}">
                                 <img src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="{{ $product->name }}" width="80" class="img img-thumbnail shadow-sm">
                             </a>
                         @endforeach

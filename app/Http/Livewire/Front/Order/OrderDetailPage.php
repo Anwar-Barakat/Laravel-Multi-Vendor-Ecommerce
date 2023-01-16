@@ -15,12 +15,16 @@ use Livewire\Component;
 
 class OrderDetailPage extends Component
 {
-    public $orderId, $reason, $product_info, $comment;
-    public $return_exchange, $return_exchange_text = 'Return / Exchange';
-    public $prodAttr, $required_size;
+    public $orderId, $cancelled_reason,
+        $reason, $product_info, $comment,
+        $return_exchange, $return_exchange_text = 'Return / Exchange',
+        $prodAttr, $required_size;
 
     protected $rules =  [
-        'reason'    => ['required'],
+        'reason'            => ['required'],
+        'comment'           => ['required', 'min:10'],
+        'return_exchange'   => ['required', 'in:return,exchange'],
+        'product_info'      => ['required']
     ];
 
     public function mount($id)
@@ -48,6 +52,9 @@ class OrderDetailPage extends Component
 
     public function orderCancel()
     {
+        $this->validate([
+            'cancelled_reason' => 'required',
+        ]);
         try {
             DB::beginTransaction();
             $order  = Order::where(['id' => $this->orderId, 'user_id' => Auth::user()->id])->first();
@@ -55,16 +62,17 @@ class OrderDetailPage extends Component
             if ($order) {
                 $order->update(['order_status' => 'Cancelled']);
                 OrderLog::create([
-                    'order_id'      => $order->id,
-                    'status'        => 'Cancelled',
-                    'reason'        => $this->reason,
-                    'updated_by'    => 'Customer'
+                    'order_id'          => $order->id,
+                    'status'            => 'Cancelled',
+                    'reason'            => $this->cancelled_reason,
+                    'updated_by'        => 'Customer'
                 ]);
+                $this->reset(['cancelled_reason']);
+                toastr()->info('Order Has Been Cancelled Successfully');
             } else
                 abort(404);
 
             DB::commit();
-            toastr()->info('Order Has Been Cancelled Successfully');
         } catch (\Throwable $th) {
             DB::rollBack();
         }
@@ -72,16 +80,16 @@ class OrderDetailPage extends Component
 
     public function returnOrExchangeRequest()
     {
+        $this->validate();
         try {
             $order  = Order::where(['id' => $this->orderId, 'user_id' => Auth::user()->id])->first();
             if ($order) {
 
                 $productInfo    = explode('-', $this->product_info); // 0 => product code & 1 => product size
                 $prod = OrderProduct::where(['order_id' => $this->orderId, 'product_code' => $productInfo[0], 'product_size' => $productInfo[1]])->first();
+                DB::beginTransaction();
+
                 if ($this->return_exchange_text == 'return') {
-                    DB::beginTransaction();
-
-
                     // Update Item Status
                     $prod->update(['product_status' => 'Return Initiated']);
 
@@ -96,13 +104,10 @@ class OrderDetailPage extends Component
                         'comment'       => $this->comment,
                     ]);
                     toastr()->success('Order Has Been Returned Successfully');
-                    DB::commit();
 
                     $this->reset(['return_exchange',  'product_info', 'reason', 'comment']);
                 } elseif ($this->return_exchange_text == 'exchange') {
-
-                    DB::beginTransaction();
-
+                    $this->validate(['required_size' => 'required']);
                     // Update Item Status
                     $prod->update(['product_status' => 'Exchange Initiated']);
 
@@ -118,11 +123,12 @@ class OrderDetailPage extends Component
                         'comment'       => $this->comment,
                     ]);
                     toastr()->success('Order Has Been Exchanged Successfully');
-                    DB::commit();
 
                     $this->reset(['required_size', 'return_exchange', 'product_info', 'prodAttr', 'reason', 'comment',]);
                 } else
                     abort(404);
+
+                DB::commit();
             } else
                 abort(404);
         } catch (\Throwable $th) {

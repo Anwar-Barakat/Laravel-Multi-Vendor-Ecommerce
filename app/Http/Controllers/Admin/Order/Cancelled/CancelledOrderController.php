@@ -16,7 +16,7 @@ class CancelledOrderController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $data['cancelledOrders']    =   Order::where('order_status', 'Cancelled')->get();
+        $data['cancelledOrders']    =   Order::with('user')->where('order_status', 'Cancelled')->get();
         return view('admin.orders.cancelled.index', $data);
     }
 }
