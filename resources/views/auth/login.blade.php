@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="reg-wrapper item p-4">
-                        <h2 class="account-h2 u-s-m-b-20 main-title md:text-sm">Customer Login</h2>
+                        <h2 class="account-h1">Customer Login</h2>
 
                         <!-- Session Status -->
                         <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -66,7 +66,7 @@
                                     </a>
                                 </div>
 
-                                <button class="ml-4 button button-primary" type="submit">
+                                <button class="ml-4 button button-outline-secondary" type="submit">
                                     {{ __('Log in') }}
                                 </button>
                             </div>

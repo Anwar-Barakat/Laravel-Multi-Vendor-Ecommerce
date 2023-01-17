@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="reg-wrapper wide item p-4">
-                        <h2 class="account-h2 u-s-m-b-20 md:text-sm main-title">Add Delivery Address</h2>
+                        <h2 class="contact-h1">Add Delivery Address</h2>
                         <form>
                             <div class="row mt-4">
                                 <div class="form-group col-lg-6 col-md-12">

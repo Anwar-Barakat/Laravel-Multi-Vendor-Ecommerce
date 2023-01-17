@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-lg-8 offset-lg-2">
                     <div class="reg-wrapper item p-4 ">
-                        <h2 class="account-h2 u-s-m-b-20 main-title md:text-sm">Customer Reset Password</h2>
+                        <h2 class="account-h1">Customer Reset Password</h2>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
                         <form method="POST" action="{{ route('password.update') }}">
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <button class="button button-primary" type="submit">
+                                <button class="button button button-outline-secondary" type="submit">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>

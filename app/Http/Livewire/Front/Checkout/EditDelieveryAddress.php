@@ -47,9 +47,12 @@ class EditDelieveryAddress extends Component
         $validations            = $this->validate();
         $validations['user_id'] = Auth::user()->id;
         try {
-            $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
-            $deliveryAddress->update($validations);
-
+            $deliveryAddress    = DeliveryAddress::where(['id', $this->deliveryAddressId, 'user_id' => Auth::user()->id])->first();
+            if ($deliveryAddress)
+                $deliveryAddress->update($validations);
+            else
+                abort(404);
+                
             toastr()->success('Delivery Address Has Been Updated Successfully');
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);

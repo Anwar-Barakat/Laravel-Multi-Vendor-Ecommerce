@@ -328,7 +328,9 @@
                                         <li>
                                             <a href="{{ route('front.shopping.cart') }}">Shopping Cart</a>
                                         </li>
-
+                                        <li>
+                                            <a href="{{ route('front.wishlist') }}">My Wishlist</a>
+                                        </li>
                                     </ul>
                                     <ul>
                                         <li class="menu-title">ACCOUNT</li>
@@ -340,12 +342,6 @@
                                         </li>
                                         <li>
                                             <a href="{{ route('front.orders.index') }}">My Orders</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('front.shopping.cart') }}">My Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('front.wishlist') }}">My Wishlist</a>
                                         </li>
                                     </ul>
                                 </div>

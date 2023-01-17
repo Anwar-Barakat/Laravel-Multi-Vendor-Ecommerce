@@ -110,3 +110,21 @@ table {
 #currencies-table td {
   padding: 7px 12px;
 }
+
+::-webkit-scrollbar {
+  width: 0.3em;
+  background-color: red;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: green;
+  border-radius: 0.5em;
+  transition: 0.3s ease-in-out;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: yellow;
+}
+
+::-webkit-scrollbar-track {
+  background-color: blue;
+}
