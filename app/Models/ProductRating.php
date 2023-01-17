@@ -9,13 +9,7 @@ class ProductRating extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'product_id',
-        'review',
-        'rating',
-        'status',
-    ];
+    protected $fillable = ['user_id', 'product_id', 'review', 'rating', 'status'];
 
     protected $casts = [
         'created_at' => 'date:Y-m-d h:m:s A',

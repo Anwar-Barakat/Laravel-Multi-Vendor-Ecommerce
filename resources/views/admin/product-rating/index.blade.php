@@ -63,7 +63,9 @@
                                                 @endphp
                                             @endwhile
                                         </td>
-                                        <td>{{ $review->status }}</td>
+                                        <td>
+                                            @livewire('admin.product-rating.update-status', ['status' => $review->status, 'review_id' => $review->id])
+                                        </td>
                                         <td>{{ $review->created_at }}</td>
                                         <td>
                                             <span class="tag tag-gray">

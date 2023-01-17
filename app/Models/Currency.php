@@ -11,7 +11,8 @@ class Currency extends Model
 
     protected $fillable = [
         'code',
-        'exchange_rate'
+        'exchange_rate',
+        'status'
     ];
 
     public function scopeActive($query)

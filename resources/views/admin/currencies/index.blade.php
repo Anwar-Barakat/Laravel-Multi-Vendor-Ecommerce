@@ -40,6 +40,7 @@
                                     <th class="border-bottom-15">#</th>
                                     <th class="border-bottom-15">Code</th>
                                     <th class="border-bottom-15">Exchange Rate</th>
+                                    <th class="border-bottom-15">status</th>
                                     <th class="border-bottom-15">Created At</th>
                                     <th class="border-bottom-15">Actions</th>
                                 </tr>
@@ -50,6 +51,9 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $currency->code }}</td>
                                         <td>${{ $currency->exchange_rate }}</td>
+                                        <td>
+                                            @livewire('admin.currency.update-status', ['status' => $currency->status, 'currency_id' => $currency->id])
+                                        </td>
                                         <td>{{ $currency->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">
