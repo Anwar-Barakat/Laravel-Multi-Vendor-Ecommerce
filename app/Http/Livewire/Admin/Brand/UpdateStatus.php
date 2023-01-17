@@ -13,11 +13,7 @@ class UpdateStatus extends Component
     public function updateStatus($brand_id)
     {
         $brand =  Brand::findOrFail($brand_id);
-        if ($brand->status == '1') :
-            $brand->update(['status' => '0']);
-        else :
-            $brand->update(['status' => '1']);
-        endif;
+        $brand->update(['status' => !$this->status]);
         $this->status = $brand->status;
     }
 

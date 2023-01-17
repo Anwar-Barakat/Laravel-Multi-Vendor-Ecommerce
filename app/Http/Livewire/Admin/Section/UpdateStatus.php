@@ -7,17 +7,12 @@ use Livewire\Component;
 
 class UpdateStatus extends Component
 {
-    public $status;
-    public $section_id;
+    public $status, $section_id;
 
     public function updateStatus($section_id)
     {
         $section =  Section::findOrFail($section_id);
-        if ($section->status == '1') :
-            $section->update(['status' => '0']);
-        else :
-            $section->update(['status' => '1']);
-        endif;
+        $section->update(['status' => !$this->status]);
         $this->status = $section->status;
     }
 

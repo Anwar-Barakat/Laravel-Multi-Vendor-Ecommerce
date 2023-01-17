@@ -1,46 +1,3 @@
-.spinner-grow.green,
-.spinner-grow.Approved {
-  background-color: #4caf50;
-}
-.Approved {
-  color: #4caf50;
-}
-
-.spinner-grow.red,
-.spinner-grow.Cancelled {
-  background-color: #f44336;
-}
-
-.Cancelled {
-  color: #f44336;
-}
-
-.spinner-grow.yellow,
-.spinner-grow.Pending {
-  background-color: #ffeb3b;
-}
-
-.Pending {
-  color: #ffeb3b;
-}
-
-.spinner-grow.orange {
-  background-color: #ff9800;
-}
-
-.orange {
-  color: #ff9800;
-}
-
-.spinner-grow.blue,
-.spinner-grow.New {
-  background-color: #2196f3;
-}
-
-.New {
-  color: #2196f3;
-}
-
 .main-content .container,
 .main-content .container-fluid {
   padding-bottom: 1rem;
@@ -139,4 +96,79 @@ textarea {
 }
 
 /* **************** MultField Form Product Attributes  ************************ */
+/* **************************************************************************** */
+
+/* **************************************************************************** */
+/* ****************  Order Status Colors   ************************ */
+.spinner-grow.green,
+.spinner-grow.Approved {
+  background-color: #4caf50;
+}
+
+.Approved {
+  color: #4caf50;
+}
+
+.spinner-grow.red,
+.spinner-grow.Cancelled {
+  background-color: #f44336;
+}
+
+.Cancelled {
+  color: #f44336;
+}
+
+.spinner-grow.blue,
+.spinner-grow.New {
+  background-color: #2196f3;
+}
+
+.New {
+  color: #2196f3;
+}
+
+.spinner-grow.yellow,
+.spinner-grow.Pending {
+  background-color: #e7cf00;
+}
+
+.Pending {
+  color: #e7cf00;
+}
+
+.spinner-grow.In-Process,
+.spinner-grow.orange {
+  background-color: #ff9800;
+}
+
+.orange,
+.In-Process {
+  color: #ff9800;
+}
+
+.spinner-grow.Paid {
+  background-color: #009688;
+}
+
+.Paid {
+  color: #009688;
+}
+
+.spinner-grow.Shipped {
+  background-color: #0dcaf0;
+}
+
+.Shipped {
+  color: #0dcaf0;
+}
+
+.spinner-grow.Delivered {
+  background-color: #4caf50;
+}
+
+.Delivered {
+  color: #4caf50;
+}
+
+/* ****************  Order Status Colors   ************************ */
 /* **************************************************************************** */

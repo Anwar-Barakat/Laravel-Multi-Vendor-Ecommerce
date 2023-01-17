@@ -49,7 +49,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $coupon->coupon_code }}</td>
-                                        <td>{{ $coupon->coupon_type }}</td>
+                                        <td>
+                                            <span class="tag tag-gray">
+                                                {{ ucwords($coupon->coupon_type) }}
+                                            </span>
+                                        </td>
                                         <td>
                                             {{ $coupon->amount_type == 'Percentage' ? '%' : '$' }}
                                             {{ number_format($coupon->amount, 2) }}</td>

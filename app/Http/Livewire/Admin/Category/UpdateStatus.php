@@ -13,11 +13,7 @@ class UpdateStatus extends Component
     public function updateStatus($category_id)
     {
         $category =  Category::findOrFail($category_id);
-        if ($category->status == '1') :
-            $category->update(['status' => '0']);
-        else :
-            $category->update(['status' => '1']);
-        endif;
+        $category->update(['status' => !$this->status]);
         $this->status = $category->status;
     }
 

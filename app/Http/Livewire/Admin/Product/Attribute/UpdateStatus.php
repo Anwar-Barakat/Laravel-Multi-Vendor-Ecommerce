@@ -13,11 +13,7 @@ class UpdateStatus extends Component
     public function updateStatus($attribute_id)
     {
         $attribute =  Attribute::findOrFail($attribute_id);
-        if ($attribute->status == '1') :
-            $attribute->update(['status' => '0']);
-        else :
-            $attribute->update(['status' => '1']);
-        endif;
+        $attribute->update(['status' => !$this->status]);
         $this->status = $attribute->status;
     }
 

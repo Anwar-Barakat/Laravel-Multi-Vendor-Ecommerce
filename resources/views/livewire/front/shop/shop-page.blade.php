@@ -280,7 +280,7 @@
                                                         </div>
                                                     @else
                                                         <div title="0 out of 5 - based on 0 Reviews" class="flex items-center gap-1">
-                                                            <i class="far fa-star"></i>
+                                                            <span class="font-bold text-lg">&star;</span>
                                                             <span>(0)</span>
                                                         </div>
                                                     @endif

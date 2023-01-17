@@ -31,7 +31,6 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0">Order</th>
-                                    <th class="border-bottom-0">Customer</th>
                                     <th class="border-bottom-0">Product Code</th>
                                     <th class="border-bottom-0">Product Size</th>
                                     <th class="border-bottom-0">Request Status</th>
@@ -43,9 +42,11 @@
                                 @foreach ($returns as $return)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('admin.orders.show', ['order' => $return->order]) }}" target="_blank" class="underline">{{ $return->order->id }}</a>
+                                            <span class="text text-secondary">
+                                                <a href="{{ route('admin.orders.show', $return->order) }}">#{{ $return->order->id }}</a>
+                                                {{ ucwords($return->order->name) }}
+                                            </span>
                                         </td>
-                                        <td>{{ ucwords($return->user->name) }}</td>
                                         <td>
                                             <span class="tag tag-secondary">
                                                 {{ $return->product_code }}
@@ -67,7 +68,7 @@
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a href="javascript:;" class="dropdown-item" role="button" data-toggle="modal" title="Details" data-target="#details{{ $return->id }}">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fas fa-eye text text-warning"></i>
                                                         Details
                                                     </a>
                                                 </div>

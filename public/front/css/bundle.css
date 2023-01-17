@@ -1659,6 +1659,7 @@ body {
 .item-stars {
   font-size: 12px;
   margin-bottom: 8px;
+  height: 47px;
 }
 
 .price-template {
@@ -3196,10 +3197,6 @@ body {
 
 .section-1-title-breadcrumb-rating .bread-crumb > li.is-marked {
   font-weight: bold;
-}
-
-.section-1-title-breadcrumb-rating .product-rating span {
-  font-size: 13px;
 }
 
 .information-heading {

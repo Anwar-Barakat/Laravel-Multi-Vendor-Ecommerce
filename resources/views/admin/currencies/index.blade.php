@@ -49,7 +49,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $currency->code }}</td>
-                                        <td>{{ $currency->exchange_rate }}</td>
+                                        <td>${{ $currency->exchange_rate }}</td>
                                         <td>{{ $currency->created_at }}</td>
                                         <td>
                                             <div class="dropdown dropup">

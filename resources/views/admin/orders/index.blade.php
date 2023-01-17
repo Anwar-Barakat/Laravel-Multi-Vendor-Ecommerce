@@ -7,6 +7,7 @@
     <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
 @endsection
 
 
@@ -30,29 +31,35 @@
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">Order Date</th>
-                                    <th class="border-bottom-0">Customer Name</th>
+                                    <th class="border-bottom-0">Order</th>
                                     <th class="border-bottom-0">Order Products</th>
+                                    <th class="border-bottom-0">Order Date</th>
                                     <th class="border-bottom-0">Status</th>
                                     <th class="border-bottom-0">Final Price</th>
-                                    <th class="border-bottom-0">Payment Method</th>
+                                    <th class="border-bottom-0">Payment</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->created_at }}</td>
-                                        <td>{{ ucwords($order->name) }}</td>
+                                        <td>
+                                            <span class="text text-secondary">
+                                                #{{ $order->id }}
+                                                {{ ucwords($order->name) }}
+                                            </span>
+                                        </td>
+
                                         <td>
                                             @foreach ($order->orderProducts as $item)
-                                                <span class="badge badge-success d-block mb-1">
-                                                    {{ $item->product_name }} - {{ $item->product_code }}
-                                                </span>
+                                                <div>
+                                                    <span class="badge badge-success mb-1" style="font-size: 13px !important;">
+                                                        {{ $item->product_name }} | {{ $item->product_code }}
+                                                    </span>
+                                                </div>
                                             @endforeach
                                         </td>
+                                        <td>{{ $order->created_at }}</td>
                                         <td>
                                             <div>
                                                 <div class="spinner-grow  spinner-grow-sm {{ $order->order_status }}" role="status">
@@ -69,24 +76,20 @@
                                                     <i class="fas fa-bars fa-1x"></i>
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
-                                                    <form action="{{ route('admin.categories.destroy', $order) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a href="{{ route('admin.orders.show', $order) }}" class="dropdown-item" title="Details">
-                                                            <i class="fas fa-file-alt text-warning"></i>&nbsp;
-                                                            Details
+                                                    <a href="{{ route('admin.orders.show', $order) }}" class="dropdown-item" title="Details">
+                                                        <i class="fas fa-file-alt text-warning"></i>&nbsp;
+                                                        Details
+                                                    </a>
+                                                    @if ($order->order_status == 'Delivered' || $order->order_status == 'Shipped')
+                                                        <a href="{{ route('admin.orders.invoice.show', $order) }}" class="dropdown-item" title="Invoice">
+                                                            <i class="fas fa-print text-success"></i>&nbsp;
+                                                            Invoice
                                                         </a>
-                                                        @if ($order->order_status == 'Delivered' || $order->order_status == 'Shipped')
-                                                            <a href="{{ route('admin.orders.invoice.show', $order) }}" class="dropdown-item" title="Invoice">
-                                                                <i class="fas fa-print text-success"></i>&nbsp;
-                                                                Invoice
-                                                            </a>
-                                                            <a href="{{ route('admin.orders.invoice.pdf', $order) }}" class="dropdown-item" title="Invoice">
-                                                                <i class="fas fa-file-pdf text-danger"></i>&nbsp;
-                                                                Download
-                                                            </a>
-                                                        @endif
-                                                    </form>
+                                                        <a href="{{ route('admin.orders.invoice.pdf', $order) }}" class="dropdown-item" title="Invoice">
+                                                            <i class="fas fa-file-pdf text-danger"></i>&nbsp;
+                                                            Download
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>

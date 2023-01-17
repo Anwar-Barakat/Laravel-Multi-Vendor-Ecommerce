@@ -13,11 +13,7 @@ class UpdateStatus extends Component
     public function updateStatus($banner_id)
     {
         $banner =  Banner::findOrFail($banner_id);
-        if ($banner->status == '1') :
-            $banner->update(['status' => '0']);
-        else :
-            $banner->update(['status' => '1']);
-        endif;
+        $banner->update(['status' => !$this->status]);
         $this->status = $banner->status;
     }
 

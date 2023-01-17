@@ -15,7 +15,6 @@ class UpdateRequestStatus extends Component
     {
         $returnRequest          = ExchangeRequest::findOrFail($this->request_id);
         $this->request_status   = $returnRequest->status;
-        dd($this->request_status);
     }
 
     public function updatedRequestStatus()

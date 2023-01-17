@@ -13,11 +13,7 @@ class UpdateStatus extends Component
     public function updateStatus($coupon_id)
     {
         $coupon =  Coupon::findOrFail($coupon_id);
-        if ($coupon->status == '1') :
-            $coupon->update(['status' => '0']);
-        else :
-            $coupon->update(['status' => '1']);
-        endif;
+        $coupon->update(['status' => !$this->status]);
         $this->status = $coupon->status;
     }
 

@@ -78,6 +78,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="u-s-m-b-1 d-flex justify-center mb-4 mt-4">
+                <a href="{{ route('front.shopping.store') }}" class="button button-outline-secondary pt-2 pb-2">
+                    <i class="fas fa-shopping-basket"></i>
+                    Continue Shopping
+                </a>
+            </div>
         </div>
     </section>
     <section class="app-priority">

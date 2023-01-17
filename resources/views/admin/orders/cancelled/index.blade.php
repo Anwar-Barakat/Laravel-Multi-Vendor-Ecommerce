@@ -30,33 +30,38 @@
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">#</th>
+                                    <th class="border-bottom-0">Order</th>
                                     <th class="border-bottom-0">Order Date</th>
-                                    <th class="border-bottom-0">Customer Name</th>
                                     <th class="border-bottom-0">Order Products</th>
                                     <th class="border-bottom-0">Final Price</th>
-                                    <th class="border-bottom-0">Payment Method</th>
+                                    <th class="border-bottom-0">Payment</th>
                                     <th class="border-bottom-0">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($cancelledOrders as $order)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->created_at }}</td>
-                                        <td>{{ ucwords($order->name) }}</td>
+                                        <td>
+                                            <span class="text text-secondary">
+                                                <a href="{{ route('admin.orders.show', $order) }}">#{{ $order->id }}</a>
+                                                {{ ucwords($order->name) }}
+                                            </span>
+                                        </td>
                                         <td>
                                             @foreach ($order->orderProducts as $item)
-                                                <span class="badge badge-success d-block mb-1">
-                                                    {{ $item->product_name }} - {{ $item->product_code }}
-                                                </span>
+                                                <div>
+                                                    <span class="badge badge-success mb-1" style="font-size: 13px !important">
+                                                        {{ $item->product_name }} | {{ $item->product_code }}
+                                                    </span>
+                                                </div>
                                             @endforeach
                                         </td>
+                                        <td>{{ $order->created_at }}</td>
                                         <td>${{ $order->final_price }}</td>
                                         <td>{{ $order->paymeny_method }}</td>
                                         <td>
                                             <span class="tag tag-warning">
-                                                <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"title="Details" style="color: white">
+                                                <a href="{{ route('admin.orders.show', $order) }}"title="Details" style="color: white">
                                                     <i class="fas fa-eye"></i>
                                                     Show
                                                 </a>

@@ -12,11 +12,7 @@ class UpdateStatus extends Component
     public function updateStatus($filter_value_id)
     {
         $filter_value           =  FilterValue::findOrFail($filter_value_id);
-        if ($filter_value->status == '1') :
-            $filter_value->update(['status' => '0']);
-        else :
-            $filter_value->update(['status' => '1']);
-        endif;
+        $filter_value->update(['status' => !$this->status]);
         $this->status           = $filter_value->status;
     }
 

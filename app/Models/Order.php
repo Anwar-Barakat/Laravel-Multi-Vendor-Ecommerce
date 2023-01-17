@@ -22,7 +22,7 @@ class Order extends Model
     ];
 
     const STATUSES = [
-        'New', 'Pending', 'Hold', 'In Process', 'Paid', 'Shipped', 'Delivered', 'Cancelled'
+        'New', 'Pending', 'Hold', 'In-Process', 'Paid', 'Shipped', 'Delivered', 'Cancelled'
     ];
 
 

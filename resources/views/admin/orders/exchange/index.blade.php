@@ -30,9 +30,7 @@
                         <table class="table text-md-nowrap table-hover table-striped" id="example1">
                             <thead>
                                 <tr>
-                                    <th class="border-bottom-0">#</th>
                                     <th class="border-bottom-0">Order</th>
-                                    <th class="border-bottom-0">Customer</th>
                                     <th class="border-bottom-0">Product Code</th>
                                     <th class="border-bottom-0">Product Size</th>
                                     <th class="border-bottom-0">Required Size</th>
@@ -44,11 +42,12 @@
                             <tbody>
                                 @foreach ($exchanges as $exchange)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <a href="{{ route('admin.orders.show', ['order' => $exchange->order]) }}" target="_blank" class="underline">{{ $exchange->order->id }}</a>
+                                            <span class="text text-secondary">
+                                                <a href="{{ route('admin.orders.show', $exchange->order) }}">#{{ $exchange->order->id }}</a>
+                                                {{ ucwords($exchange->order->name) }}
+                                            </span>
                                         </td>
-                                        <td>{{ ucwords($exchange->user->name) }}</td>
                                         <td>
                                             <span class="tag tag-secondary">
                                                 {{ $exchange->product_code }}
@@ -75,7 +74,7 @@
                                                 </button>
                                                 <div class="dropdown-menu tx-13">
                                                     <a href="javascript:;" class="dropdown-item" role="button" data-toggle="modal" title="Details" data-target="#details{{ $exchange->id }}">
-                                                        <i class="fas fa-eye"></i>
+                                                        <i class="fas fa-eye text text-warning"></i>
                                                         Details
                                                     </a>
                                                 </div>

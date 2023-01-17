@@ -32,17 +32,17 @@ class UpdateOrderStatus extends Component
         }
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields);
+    }
+
     public function updatedStatus()
     {
         if ($this->status == 'Shipped')
             $this->courierAndTracking = true;
         else
             $this->courierAndTracking = false;
-    }
-
-    public function updated($fields)
-    {
-        $this->validateOnly($fields);
     }
 
     public function updateOrderStatus()
