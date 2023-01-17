@@ -41,7 +41,7 @@
                                 <div class="form-group col-lg-4 col-md-12">
                                     <x-label for="address" :value="__('Address')" />
                                     <input id="address" wire:model="address" class="text-field mt-1 w-full" type="text" required />
-                                    @error('adress')
+                                    @error('address')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <button class="ml-4 button button-primary" wire:click.prevent="storeDeliveryAddress">
+                                <button class="ml-4 button button-outline-secondary" wire:click.prevent="storeDeliveryAddress">
                                     <i class="fas fa-save"></i>&nbsp; {{ __('Submit') }}
                                 </button>
                             </div>

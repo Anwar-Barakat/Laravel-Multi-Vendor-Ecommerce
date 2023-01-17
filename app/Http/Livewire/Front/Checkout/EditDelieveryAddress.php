@@ -9,6 +9,7 @@ use Livewire\Component;
 class EditDelieveryAddress extends Component
 {
     public $name,
+        $email,
         $address,
         $mobile,
         $city,
@@ -20,7 +21,7 @@ class EditDelieveryAddress extends Component
     protected $rules =  [
         'name'          => ['required', 'string', 'min:3', 'max:30'],
         'address'       => ['required', 'min:3', 'max:30'],
-        'mobile'        => ['required', 'min:3', 'max:30'],
+        'mobile'        => ['required', 'min:10', 'max:10'],
         'city'          => ['required', 'min:3', 'max:30'],
         'state'         => ['required', 'min:3', 'max:30'],
         'country_id'    => ['required'],
@@ -43,19 +44,11 @@ class EditDelieveryAddress extends Component
 
     public function updateDeliveryAddress()
     {
-        $this->validate();
+        $validations            = $this->validate();
+        $validations['user_id'] = Auth::user()->id;
         try {
             $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
-            $deliveryAddress->update([
-                'user_id'       => Auth::user()->id,
-                'name'          => $this->name,
-                'address'       => $this->address,
-                'mobile'        => $this->mobile,
-                'city'          => $this->city,
-                'state'         => $this->state,
-                'country_id'    => $this->country_id,
-                'pincode'       => $this->pincode,
-            ]);
+            $deliveryAddress->update($validations);
 
             toastr()->success('Delivery Address Has Been Updated Successfully');
         } catch (\Throwable $th) {
