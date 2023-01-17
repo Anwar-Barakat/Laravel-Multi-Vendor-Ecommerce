@@ -4911,3 +4911,18 @@ body {
     top: 8px;
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.3em;
+  background-color: var(--main-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 0.5em;
+  transition: 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #707070;
+}

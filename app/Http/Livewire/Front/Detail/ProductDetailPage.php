@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductDetailPage extends Component
 {
     public $productId;
-    public $size = 'small', $qty = 1, $discount, $final_price, $original_price, $totalStock;
+    public $size = 'small', $qty = 1, $original_price, $final_price, $discount, $totalStock;
     public $currencies;
     public $average_rating, $average_rating_star;
 
@@ -32,43 +32,25 @@ class ProductDetailPage extends Component
         $this->average_rating_star  = $total;
     }
 
-
-
     public function mount($productId)
     {
-        $this->productId    = $productId;
+        $this->productId            = $productId;
+        $product                    = Product::findOrFail($productId);
+        $this->getPrices($productId, $product->price);
+        $this->totalStock           = $this->getTotalStock($productId);
+    }
 
-        $product                    = Product::findOrFail($this->productId);
-        $this->original_price       = $product->price;
-
-        if ($product->discount > 0)
-            $this->final_price      = Product::discountingPrice($product->price, $product->discount);
-        elseif ($product->category->discount > 0)
-            $this->final_price      =  Product::discountingPrice($product->price, $product->category->discount);
-        else
-            $this->final_price      = $product->price;
-
-        $this->discount             = Product::applyDiscount($this->productId);
-        $this->totalStock           = $this->getTotalStock($product);
+    public function getPrices($id, $price)
+    {
+        $this->original_price       = Product::applyDiscount($id, $price)['original_price'];
+        $this->final_price          = Product::applyDiscount($id, $price)['final_price'];
+        $this->discount             = Product::applyDiscount($id, $price)['discount'];
     }
 
     public function updatedSize()
     {
-        $product                    = Product::with('category')->select('price', 'discount', 'category_id')->findOrFail($this->productId);
         $proAttr                    = Attribute::where(['product_id' => $this->productId, 'size' => $this->size])->first();
-
-        if ($product->discount > 0) :
-            $this->final_price      = Product::discountingPrice($proAttr->price, $product->discount);
-            $this->discount         = $product->discount;
-        elseif ($product->category->discount > 0) :
-            $this->final_price      = Product::discountingPrice($proAttr->price, $product->category->discount);
-            $this->discount         = $product->category->discount;
-        else :
-            $this->final_price      = $proAttr->price;
-            $this->discount         = 0.00;
-        endif;
-
-        $this->original_price       = $proAttr->price;
+        $this->getPrices($this->productId, $proAttr->price);
     }
 
     public function addToCart($id, $name, $qty, $price, $size, $code, $color)
@@ -86,9 +68,8 @@ class ProductDetailPage extends Component
                 Cart::instance('cart')->add($id, $name, $qty, $price,  ['size' => $size, 'code' => $code, 'color' => $color])->associate('App\Models\Product');
                 $this->updateHeader();
                 toastr()->success('Product Has Been Added Successfully to Cart');
-            } else {
+            } else
                 toastr()->info('Product Quntity is out of Stock');
-            }
         }
     }
 
@@ -98,9 +79,9 @@ class ProductDetailPage extends Component
         $this->emit('updateCardTotal', Cart::instance('cart')->total());
     }
 
-    public function getTotalStock($product)
+    public function getTotalStock($productId)
     {
-        return Attribute::where(['product_id' => $product->id, 'status' => '1'])->sum('stock');
+        return Attribute::where(['product_id' => $productId, 'status' => '1'])->sum('stock');
     }
 
 

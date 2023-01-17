@@ -221,7 +221,7 @@
                         @endphp
                         @forelse ($products as $product)
                             @php
-                                $final_price = App\Models\Product::applyDiscount($product->id);
+                                $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
                             @endphp
                             <div class="product-item col-lg-4 col-md-6 col-sm-6">
                                 <div class="item main-shadow">
@@ -238,7 +238,7 @@
                                                     Add to
                                                     Wishlist</a>
                                             @else
-                                                <a class="item-addwishlist" href="#" wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $final_price }})">Add
+                                                <a class="item-addwishlist" href="#" wire:click.prevent="addToWishList({{ $product->id }},'{{ $product->name }}',1,{{ $dataPrices['final_price'] }})">Add
                                                     to
                                                     Wishlist</a>
                                             @endif
@@ -288,15 +288,11 @@
                                             </div>
                                         </div>
                                         <div class="price-template">
-                                            @if ($final_price > 0)
-                                                <div class="item-new-price">
-                                                    ${{ $final_price }}
-                                                </div>
+                                            <div class="item-new-price">
+                                                ${{ $dataPrices['final_price'] }}
+                                            </div>
+                                            @if ($dataPrices['discount'] > 0)
                                                 <div class="item-old-price">
-                                                    ${{ $product->price }}
-                                                </div>
-                                            @else
-                                                <div class="item-new-price">
                                                     ${{ $product->price }}
                                                 </div>
                                             @endif

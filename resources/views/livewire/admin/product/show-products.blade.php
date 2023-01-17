@@ -74,8 +74,7 @@
         <div class="card">
             <div class="card-body p-2">
                 <div class="input-group">
-                    <input type="search" class="form-control" placeholder="Search..."
-                        wire:model.debounce.350ms="search">
+                    <input type="search" class="form-control" placeholder="Search..." wire:model.debounce.350ms="search">
                 </div>
             </div>
         </div>
@@ -91,12 +90,9 @@
                                     @endif
                                 </div>
                                 @if ($product->getFirstMediaUrl('main_img_of_product', 'small'))
-                                    <img class="w-100"
-                                        src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}"
-                                        alt="product-image">
+                                    <img class="w-100" src="{{ $product->getFirstMediaUrl('main_img_of_product', 'small') }}" alt="product-image">
                                 @else
-                                    <img class="w-100" src="{{ URL::asset('assets/img/ecommerce/01.jpg') }}"
-                                        alt="product-image">
+                                    <img class="w-100" src="{{ URL::asset('assets/img/ecommerce/01.jpg') }}" alt="product-image">
                                 @endif
                                 <a href="{{ route('admin.products.edit', $product) }}" class="adtocart">
                                     <i class="fas fa-edit fa-1x icon"></i>
@@ -115,25 +111,21 @@
                                 </span>
                                 <div class="grid gap-4 h-100 mt-2">
                                     @php
-                                        $final_price = App\Models\Product::applyDiscount($product->id);
+                                        $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
                                     @endphp
-                                    <h4
-                                        class="h5 mb-0 mt-2 text-center font-weight-bold text-danger flex justify-between">
-                                        @if ($final_price > 0)
-                                            ${{ $product->price }}
-                                            <span
-                                                class="text-secondary font-weight-normal tx-13 ml-1 prev-price">${{ $final_price }}</span>
+                                    <h4 class="h5 mb-0 mt-2 text-center font-weight-bold text-danger flex justify-between">
+                                        @if ($dataPrices['discount'] > 0)
+                                            {{ $dataPrices['final_price'] }}
+                                            <span class="text-secondary font-weight-normal tx-13 ml-1 prev-price">${{ $dataPrices['original_price'] }}</span>
                                         @else
                                             ${{ $product->price }}
                                         @endif
                                     </h4>
                                     <div class="d-flex align-content-center" style="gap:.5rem">
-                                        <a href="{{ route('admin.products.attributes.create', $product) }}"
-                                            class="btn btn-info-gradient btn-sm rounded">
+                                        <a href="{{ route('admin.products.attributes.create', $product) }}" class="btn btn-info-gradient btn-sm rounded">
                                             <i class="fas fa-plus"></i>
                                         </a>
-                                        <a href="{{ route('admin.products.attachments.create', $product) }}"
-                                            class="btn btn-dark-gradient btn-sm rounded">
+                                        <a href="{{ route('admin.products.attachments.create', $product) }}" class="btn btn-dark-gradient btn-sm rounded">
                                             <i class="fas fa-images"></i>
                                         </a>
                                     </div>
@@ -147,8 +139,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center pt-3">
-                                <img src="{{ URL::asset('assets/img/svgicons/note_taking.svg') }}" alt=""
-                                    width="120" class="m-auto">
+                                <img src="{{ URL::asset('assets/img/svgicons/note_taking.svg') }}" alt="" width="120" class="m-auto">
                                 <h5 class="mg-b-10 mg-t-15 tx-18">Not results found !!</h5>
                             </div>
                         </div>

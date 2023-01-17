@@ -118,7 +118,7 @@ class CheckoutPage extends Component
                     'product_name'      => $item->model->name,
                     'product_color'     => $item->model->color,
                     'product_size'      => $item->options->size,
-                    'product_price'     => Product::applyDiscount($item->model->id),
+                    'product_price'     => Product::applyDiscount($item->model->id, $item->model->price)['final_price'],
                     'product_qty'       => $item->qty,
                 ]);
             }

@@ -66,17 +66,13 @@
                                         </div>
                                         <div class="price-template">
                                             @php
-                                                $final_price = App\Models\Product::applyDiscount($product->id);
+                                                $dataPrices = App\Models\Product::applyDiscount($product->id, $product->price);
                                             @endphp
-                                            @if ($final_price > 0)
-                                                <div class="item-new-price">
-                                                    ${{ $final_price }}
-                                                </div>
+                                            <div class="item-new-price">
+                                                ${{ $dataPrices['final_price'] }}
+                                            </div>
+                                            @if ($dataPrices['discount'] > 0)
                                                 <div class="item-old-price">
-                                                    ${{ $product->price }}
-                                                </div>
-                                            @else
-                                                <div class="item-new-price">
                                                     ${{ $product->price }}
                                                 </div>
                                             @endif
