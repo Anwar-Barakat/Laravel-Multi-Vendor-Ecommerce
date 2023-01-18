@@ -13,6 +13,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laraveldaily/laravel-charts": "^0.1.29",
         "livewire/livewire": "^2.10",
         "milon/barcode": "^9.0",
         "spatie/laravel-medialibrary": "*",

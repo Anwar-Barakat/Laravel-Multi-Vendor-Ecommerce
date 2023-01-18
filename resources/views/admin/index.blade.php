@@ -37,17 +37,22 @@
             <div class="card overflow-hidden sales-card bg-primary-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">TODAY ORDERS</h6>
+                        <h6 class="mb-3 tx-12 text-white">TODAY REVENUE</h6>
                     </div>
+                    @php
+                        $ordersCount = App\Models\Order::count();
+                        $ordersSum = App\Models\Order::sum('final_price');
+                        $todayRevenue = App\Models\Order::whereDate('created_at', \Carbon\Carbon::today())->sum('final_price');
+                    @endphp
                     <div class="pb-0 mt-0">
-                        <div class="d-flex">
+                        <div class="d-flex justify-between">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">${{ number_format(App\Models\Order::sum('final_price'), 2) ?? 0 }}</h4>
-                                <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">
+                                    {{ number_format($todayRevenue, 2) }}
+                                </h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
-                                <i class="fas fa-arrow-circle-up text-white"></i>
-                                <span class="text-white op-7"> +427</span>
+                            <span class="my-auto">
+                                <span class="text-white op-7"></span>
                             </span>
                         </div>
                     </div>
@@ -59,17 +64,21 @@
             <div class="card overflow-hidden sales-card bg-danger-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">TODAY EARNINGS</h6>
+                        <h6 class="mb-3 tx-12 text-white">TOTAL REVENUE</h6>
                     </div>
+                    @php
+                        $deliveredSum = App\Models\Order::where('order_status', 'Delivered')->sum('final_price');
+                    @endphp
                     <div class="pb-0 mt-0">
-                        <div class="d-flex">
+                        <div class="d-flex justify-between">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">$1,230.17</h4>
-                                <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">
+                                    ${{ number_format($deliveredSum, 2) }}
+                                </h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
-                                <i class="fas fa-arrow-circle-down text-white"></i>
-                                <span class="text-white op-7"> -23.09%</span>
+                            <span class="my-auto">
+                                <span class="text-white op-7">
+                                    {{ round(($deliveredSum / $ordersSum) * 100, 2) }}%</span>
                             </span>
                         </div>
                     </div>
@@ -78,42 +87,18 @@
             </div>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
-            <div class="card overflow-hidden sales-card bg-success-gradient">
-                <div class="pl-3 pt-3 pr-3 pb-2">
-                    <div class="">
-                        <h6 class="mb-3 tx-12 text-white">TOTAL EARNINGS</h6>
-                    </div>
-                    <div class="pb-0 mt-0">
-                        <div class="d-flex">
-                            <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">$7,125.70</h4>
-                                <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
-                            </div>
-                            <span class="float-right my-auto mr-auto">
-                                <i class="fas fa-arrow-circle-up text-white"></i>
-                                <span class="text-white op-7"> 52.09%</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <span id="compositeline3" class="pt-1">5,10,5,20,22,12,15,18,20,15,8,12,22,5,10,12,22,15,16,10</span>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
             <div class="card overflow-hidden sales-card bg-warning-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">PRODUCT SOLD</h6>
+                        <h6 class="mb-3 tx-12 text-white">TOTAL ORDERS</h6>
                     </div>
                     <div class="pb-0 mt-0">
-                        <div class="d-flex">
+                        <div class="d-flex justify-between">
                             <div class="">
-                                <h4 class="tx-20 font-weight-bold mb-1 text-white">$4,820.50</h4>
-                                <p class="mb-0 tx-12 text-white op-7">Compared to last week</p>
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">{{ $ordersCount }}</h4>
                             </div>
-                            <span class="float-right my-auto mr-auto">
-                                <i class="fas fa-arrow-circle-down text-white"></i>
-                                <span class="text-white op-7"> -152.3</span>
+                            <span class="my-auto">
+                                <span class="text-white op-7">100%</span>
                             </span>
                         </div>
                     </div>
@@ -121,37 +106,48 @@
                 <span id="compositeline4" class="pt-1">5,9,5,6,4,12,18,14,10,15,12,5,8,5,12,5,12,10,16,12</span>
             </div>
         </div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-xm-12">
+            <div class="card overflow-hidden sales-card bg-success-gradient">
+                <div class="pl-3 pt-3 pr-3 pb-2">
+                    <div class="">
+                        <h6 class="mb-3 tx-12 text-white">TOTAL SALES</h6>
+                    </div>
+                    @php
+                        $deliveredOrders = App\Models\Order::where('order_status', 'Delivered')->count();
+                    @endphp
+                    <div class="pb-0 mt-0">
+                        <div class="d-flex justify-between">
+                            <div class="">
+                                <h4 class="tx-20 font-weight-bold mb-1 text-white">
+                                    {{ $deliveredOrders }}
+                                </h4>
+                            </div>
+                            <span class="my-auto">
+                                <span class="text-white op-7">{{ round(($deliveredOrders / $ordersCount) * 100, 2) }}%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <span id="compositeline3" class="pt-1">5,10,5,20,22,12,15,18,20,15,8,12,22,5,10,12,22,15,16,10</span>
+            </div>
+        </div>
+
     </div>
     <!-- row closed -->
-
     <!-- row opened -->
     <div class="row row-sm">
         <div class="col-md-12 col-lg-12 col-xl-7">
             <div class="card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title mb-0">Order status</h4>
+                        <h4 class="card-title mb-0">Orders</h4>
                         <i class="mdi mdi-dots-horizontal text-gray"></i>
                     </div>
                     <p class="tx-12 text-muted mb-0">Order Status and Tracking. Track your order from ship date to arrival.
                         To begin, enter your order number.</p>
                 </div>
                 <div class="card-body">
-                    <div class="total-revenue">
-                        <div>
-                            <h4>120,750</h4>
-                            <label><span class="bg-primary"></span>success</label>
-                        </div>
-                        <div>
-                            <h4>56,108</h4>
-                            <label><span class="bg-danger"></span>Pending</label>
-                        </div>
-                        <div>
-                            <h4>32,895</h4>
-                            <label><span class="bg-warning"></span>Failed</label>
-                        </div>
-                    </div>
-                    <div id="bar" class="sales-bar mt-4"></div>
+                    {!! $ordersChart->renderHtml() !!}
                 </div>
             </div>
         </div>
@@ -464,4 +460,7 @@
     <!--Internal  index js -->
     <script src="{{ URL::asset('assets/js/index.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.vmap.sampledata.js') }}"></script>
+
+    {!! $ordersChart->renderChartJsLibrary() !!}
+    {!! $ordersChart->renderJs() !!}
 @endsection

@@ -5,12 +5,66 @@ namespace App\Http\Controllers\Admin\AdminSetting;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class AdminLoginController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $new_orders_options      = [
+            'chart_title'           => 'New',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'conditions'            => [
+                ['name' => 'New', 'condition' => 'order_status = "New"', 'color' => 'rgb(33 150 243)', 'fill' => true],
+            ],
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '60',
+            'continous_time'        => true,
+            'group_by_field_format' => 'Y-m-d H:i:s',
+            'column_class'          => 'col-md-12',
+        ];
+        $delivered_orders_options      = [
+            'chart_title'           => 'Delivered',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'conditions'            => [
+                ['name' => 'Delivered', 'condition' => 'order_status = "Delivered"', 'color' => 'rgb(76 175 80)', 'fill' => true],
+            ],
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '60',
+            'continous_time'        => true,
+            'group_by_field_format' => 'Y-m-d H:i:s',
+        ];
+        $cancelled_orders_options      = [
+            'chart_title'           => 'Cancelled',
+            'chart_type'            => 'line',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\Order',
+            'conditions'            => [
+                ['name' => 'Cancelled', 'condition' => 'order_status = "Cancelled"', 'color' => 'rgb(244 67 54)', 'fill' => true],
+            ],
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'day',
+            'aggregate_function'    => 'count',
+            'filter_field'          => 'created_at',
+            'filter_days'           => '60',
+            'continous_time'        => true,
+            'group_by_field_format' => 'Y-m-d H:i:s',
+            'column_class'          => 'col-md-12',
+        ];
+
+        $data['ordersChart'] = new LaravelChart($new_orders_options, $delivered_orders_options, $cancelled_orders_options);
+
+        return view('admin.index', $data);
     }
 
     public function loginForm()
