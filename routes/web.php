@@ -235,12 +235,12 @@ Route::name('front.')->group(function () {
         Route::get('/orders/{id}/show',                         OrderDetailPage::class)->name('orders.show');
 
         Route::get('/profile',                                  ProfilePage::class)->name('profile');
-
-        Route::resource('/contact',                             ContactController::class)->only(['index']);
     });
+    Route::view('/contact',                                 'front.cms-pages.contact')->name('contact');
+    Route::view('/about',                                   'front.cms-pages.about')->name('contact');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 });
 
 
-Route::get('/{page}', [App\Http\Controllers\AdminController::class, 'index']);
+// Route::get('/{page}', [App\Http\Controllers\AdminController::class, 'index']);
