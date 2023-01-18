@@ -27,7 +27,7 @@
         <ul class="side-menu">
             <li class="side-item side-item-category">Main</li>
             <li class="slide">
-                <a class="side-menu__item" data-toggle="slide" href="{{ route('admin.dashboard') }}">
+                <a class="side-menu__item" href="{{ route('admin.dashboard') }}">
                     <i class="fas fa-chart-pie side-menu__icon"></i>
                     <span class="side-menu__label">Index</span>
                 </a>
@@ -37,7 +37,7 @@
                 <li class="side-item side-item-category">General</li>
                 {{-- Products --}}
                 <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
+                    <a class="side-menu__item" href="javascript:;">
                         <i class="fas fa-tags side-menu__icon"></i>
                         <span class="side-menu__label">Products</span>
                         <i class="angle fas fa-chevron-down"></i>
@@ -127,6 +127,14 @@
                             <a href="{{ route('admin.products.create') }}" class="slide-item">Add Product</a>
                         </li>
                     </ul>
+                </li>
+
+                {{-- Rating Products --}}
+                <li class="slide">
+                    <a class="side-menu__item" href="{{ route('admin.product-ratings.index') }}">
+                        <i class="fas fa-star side-menu__icon"></i>
+                        <span class="side-menu__label">Product Rating</span>
+                    </a>
                 </li>
 
                 {{-- Filters --}}
@@ -230,29 +238,10 @@
 
                 {{-- Currencies --}}
                 <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
+                    <a class="side-menu__item" href="{{ route('admin.currencies.index') }}">
                         <i class="fas fa-money-bill side-menu__icon"></i>
                         <span class="side-menu__label">Currencies</span>
-                        <i class="angle fas fa-chevron-down"></i>
                     </a>
-                    <ul class="slide-menu">
-                        <li>
-                            <a href="{{ route('admin.currencies.index') }}" class="slide-item">Currencies List</a>
-                        </li>
-                    </ul>
-                </li>
-                {{-- Rating Products --}}
-                <li class="slide">
-                    <a class="side-menu__item" data-toggle="slide" href="javascript:;">
-                        <i class="fas fa-star side-menu__icon"></i>
-                        <span class="side-menu__label">Product Rating</span>
-                        <i class="angle fas fa-chevron-down"></i>
-                    </a>
-                    <ul class="slide-menu">
-                        <li>
-                            <a href="{{ route('admin.product-ratings.index') }}" class="slide-item">Currencies List</a>
-                        </li>
-                    </ul>
                 </li>
             @endif
             <li class="slide">

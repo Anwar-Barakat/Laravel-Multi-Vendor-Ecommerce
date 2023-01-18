@@ -25,8 +25,6 @@ class AdminLoginController extends Controller
             'filter_field'          => 'created_at',
             'filter_days'           => '60',
             'continous_time'        => true,
-            'group_by_field_format' => 'Y-m-d H:i:s',
-            'column_class'          => 'col-md-12',
         ];
         $delivered_orders_options      = [
             'chart_title'           => 'Delivered',
@@ -42,7 +40,6 @@ class AdminLoginController extends Controller
             'filter_field'          => 'created_at',
             'filter_days'           => '60',
             'continous_time'        => true,
-            'group_by_field_format' => 'Y-m-d H:i:s',
         ];
         $cancelled_orders_options      = [
             'chart_title'           => 'Cancelled',
@@ -58,11 +55,9 @@ class AdminLoginController extends Controller
             'filter_field'          => 'created_at',
             'filter_days'           => '60',
             'continous_time'        => true,
-            'group_by_field_format' => 'Y-m-d H:i:s',
-            'column_class'          => 'col-md-12',
         ];
-
         $data['ordersChart'] = new LaravelChart($new_orders_options, $delivered_orders_options, $cancelled_orders_options);
+
 
         return view('admin.index', $data);
     }

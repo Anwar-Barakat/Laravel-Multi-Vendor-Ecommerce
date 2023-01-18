@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="reg-wrapper wide item p-4">
-                        <h2 class="account-h2 u-s-m-b-20 md:text-sm main-title">Customer Profile</h2>
+                        <h2 class="contact-h1">Customer Profile</h2>
                         <form>
                             <div class="row mt-4">
                                 <div class="form-group col-lg-6 col-md-12">
@@ -103,7 +103,8 @@
                             </div>
 
                             <div class="flex items-center justify-end mt-4">
-                                <button class="ml-4 button button-primary" wire:click.prevent="storeCustomer">
+                                <button class="ml-4 button button-outline-secondary" wire:click.prevent="storeCustomer">
+                                    <i class="fas fa-save"></i>
                                     {{ __('Update Profile') }}
                                 </button>
                             </div>

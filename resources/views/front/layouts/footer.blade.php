@@ -26,15 +26,11 @@
                     <div class="footer-list">
                         <h6>COMPANY</h6>
                         <ul>
-                            <li>
-                                <a href="about.html">About Us</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="faq.html">FAQ</a>
-                            </li>
+                            @foreach (App\Models\CmsPage::all() as $page)
+                                <li>
+                                    <a href="{{ route('front.' . $page->url) }}">{{ $page->title }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -42,15 +38,11 @@
                     <div class="footer-list">
                         <h6>COLLECTION</h6>
                         <ul>
-                            <li>
-                                <a href="cart.html">Men Clothing</a>
-                            </li>
-                            <li>
-                                <a href="checkout.html">Women Clothing</a>
-                            </li>
-                            <li>
-                                <a href="account.html">Kids Clothing</a>
-                            </li>
+                            @foreach (App\Models\Category::inRandomOrder()->take(3)->get() as $cat)
+                                <li>
+                                    <a href="{{ route('front.shop.category.products', ['url' => $cat->url]) }}">{{ ucwords($cat->name) }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -59,13 +51,13 @@
                         <h6>ACCOUNT</h6>
                         <ul>
                             <li>
-                                <a href="shop-v1-root-category.html">My Account</a>
+                                <a href="{{ route('front.profile') }}">My Account</a>
                             </li>
                             <li>
-                                <a href="shop-v1-root-category.html">My Profile</a>
+                                <a href="{{ route('front.shopping.cart') }}">My Cart</a>
                             </li>
                             <li>
-                                <a href="listing.html">My Orders</a>
+                                <a href="{{ route('front.orders.index') }}">My Orders</a>
                             </li>
                         </ul>
                     </div>
