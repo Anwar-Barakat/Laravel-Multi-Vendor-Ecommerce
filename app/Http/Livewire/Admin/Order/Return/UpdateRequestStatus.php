@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Order\Return;
 
+use App\Events\ReturnRequestStatus;
 use App\Models\OrderProduct;
 use App\Models\ReturnRequest;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,9 @@ class UpdateRequestStatus extends Component
 
                 $orderProduct           = OrderProduct::where(['order_id' => $returnRequest->order->id, 'product_code' => $this->product_code, 'product_size' => $this->product_size])->first();
                 $orderProduct->update(['product_status' => 'Return ' . $this->request_status]);
-                DB::commit();
+                event(new ReturnRequestStatus($returnRequest));
                 toastr()->success('Return Request Status Has Been Updated Successfully');
+                DB::commit();
             } else
                 abort(404);
         } catch (\Throwable $th) {

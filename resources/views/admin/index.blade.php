@@ -156,7 +156,7 @@
                 <label class="main-content-label">Count of Products</label>
                 <span class="d-block mg-b-20 text-muted tx-12">Display products has been added</span>
                 <div class="">
-                    {{-- {!! $productsChart->renderHtml() !!} --}}
+                    {!! $chart1->renderHtml() !!}
                 </div>
             </div>
         </div>
@@ -242,4 +242,7 @@
 
     {!! $ordersChart->renderChartJsLibrary() !!}
     {!! $ordersChart->renderJs() !!}
+
+    {!! $chart1->renderChartJsLibrary() !!}
+    {!! $chart1->renderJs() !!}
 @endsection

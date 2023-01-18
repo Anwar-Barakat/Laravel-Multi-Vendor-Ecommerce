@@ -130,7 +130,7 @@ class CheckoutPage extends Component
             DB::commit();
 
             if ($this->payment_gateway == 'COD') {
-                // event(new CustomerOrderPlaced($order));
+                event(new CustomerOrderPlaced($order));
                 Cart::instance('cart')->destroy();
                 toastr()->success('Order Has Been Placed Successfully');
                 return redirect()->route('front.thanks');
@@ -167,9 +167,9 @@ class CheckoutPage extends Component
 
     public function render()
     {
-        if (session()->has('coupon') && Auth::check()) {
+        if (session()->has('coupon') && Auth::check())
             $this->calcDiscount();
-        }
+
 
         return view('livewire.front.checkout.checkout-page')->layout('front.layouts.master');
     }

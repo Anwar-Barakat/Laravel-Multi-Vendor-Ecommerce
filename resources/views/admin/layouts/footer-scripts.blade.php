@@ -1,5 +1,7 @@
 <!-- Back-to-top -->
-<a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
+<a href="#top" id="back-to-top" class="d-flex justify-center items-center">
+    <i class="fas fa-arrow-up text-lg"></i>
+</a>
 <!-- Fontawesome JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <!-- JQuery min js -->

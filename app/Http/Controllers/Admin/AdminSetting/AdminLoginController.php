@@ -56,8 +56,19 @@ class AdminLoginController extends Controller
             'filter_days'           => '60',
             'continous_time'        => true,
         ];
-        $data['ordersChart'] = new LaravelChart($new_orders_options, $delivered_orders_options, $cancelled_orders_options);
+        $chart_options = [
+            'chart_title'           => 'Users by months',
+            'report_type'           => 'group_by_date',
+            'model'                 => 'App\Models\User',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'month',
+            'chart_type'            => 'bar',
+            'aggregate_function'    => 'count',
+            'filter_days'           => 30,
+        ];
 
+        $data['ordersChart'] = new LaravelChart($new_orders_options, $delivered_orders_options, $cancelled_orders_options);
+        $data['chart1'] = new LaravelChart($chart_options);
 
         return view('admin.index', $data);
     }

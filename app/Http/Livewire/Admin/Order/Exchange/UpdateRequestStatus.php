@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Order\Exchange;
 
+use App\Events\ExchangeRequestStatus;
 use App\Models\ExchangeRequest;
 use App\Models\OrderProduct;
 use Illuminate\Support\Facades\DB;
@@ -13,22 +14,23 @@ class UpdateRequestStatus extends Component
 
     public function mount()
     {
-        $returnRequest          = ExchangeRequest::findOrFail($this->request_id);
-        $this->request_status   = $returnRequest->status;
+        $exchangeRequest        = ExchangeRequest::findOrFail($this->request_id);
+        $this->request_status   = $exchangeRequest->status;
     }
 
     public function updatedRequestStatus()
     {
         try {
-            $returnRequest          = ExchangeRequest::with('order')->findOrFail($this->request_id);
-            if ($returnRequest) {
+            $exchangeRequest          = ExchangeRequest::with('order')->findOrFail($this->request_id);
+            if ($exchangeRequest) {
                 DB::beginTransaction();
-                $returnRequest->update(['status' => $this->request_status]);
+                $exchangeRequest->update(['status' => $this->request_status]);
 
-                $orderProduct           = OrderProduct::where(['order_id' => $returnRequest->order->id, 'product_code' => $this->product_code, 'product_size' => $this->product_size])->first();
+                $orderProduct           = OrderProduct::where(['order_id' => $exchangeRequest->order->id, 'product_code' => $this->product_code, 'product_size' => $this->product_size])->first();
                 $orderProduct->update(['product_status' => 'Exchange ' . $this->request_status]);
-                DB::commit();
+                event(new ExchangeRequestStatus($exchangeRequest));
                 toastr()->success('Exchange Request Status Has Been Updated Successfully');
+                DB::commit();
             } else
                 abort(404);
         } catch (\Throwable $th) {
