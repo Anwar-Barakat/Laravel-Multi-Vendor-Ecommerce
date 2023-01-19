@@ -1,3 +1,4 @@
+@section('title', 'Add Deliverey Address')
 <div>
     <div class="page-style-a">
         <div class="container">

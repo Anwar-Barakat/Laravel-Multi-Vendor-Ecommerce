@@ -1,3 +1,4 @@
+@section('title', 'Vendor Register Page')
 <div>
     <div class="page-style-a">
         <div class="container">
@@ -27,9 +28,7 @@
                                 <label for="name">Name
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="text" id="name"
-                                    class="text-field @error('name') is-invalid @enderror" placeholder="Your Name"
-                                    wire:model="name">
+                                <input type="text" id="name" class="text-field @error('name') is-invalid @enderror" placeholder="Your Name" wire:model="name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -40,9 +39,7 @@
                                 <label for="email">Email
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="email" id="email"
-                                    class="text-field @error('email') is-invalid @enderror" placeholder="Your Email"
-                                    wire:model="email">
+                                <input type="email" id="email" class="text-field @error('email') is-invalid @enderror" placeholder="Your Email" wire:model="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,9 +50,7 @@
                                 <label for="mobile">Mobile
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="tel" id="mobile"
-                                    class="text-field @error('mobile') is-invalid @enderror" placeholder="Mobile Number"
-                                    wire:model="mobile">
+                                <input type="tel" id="mobile" class="text-field @error('mobile') is-invalid @enderror" placeholder="Mobile Number" wire:model="mobile">
                                 @error('mobile')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -66,9 +61,7 @@
                                 <label for="password">Password
                                     <span class="astk">*</span>
                                 </label>
-                                <input type="password" id="password"
-                                    class="text-field @error('password') is-invalid @enderror"
-                                    placeholder="Password More than 8 chars" wire:model="password">
+                                <input type="password" id="password" class="text-field @error('password') is-invalid @enderror" placeholder="Password More than 8 chars" wire:model="password">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,8 +69,7 @@
                                 @enderror
                             </div>
                             <div class="u-s-m-b-30">
-                                <input type="checkbox" class="check-box" id="accept" value="true"
-                                    wire:model="accept">
+                                <input type="checkbox" class="check-box" id="accept" value="true" wire:model="accept">
                                 <label class="label-text no-color" for="accept">
                                     I’ve read and accept the
                                     <a href="" class="u-c-brand">terms & conditions</a>

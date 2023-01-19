@@ -1,3 +1,4 @@
+@section('title', 'My Wishlist')
 <div>
     <div class="page-style-a">
         <div class="container">

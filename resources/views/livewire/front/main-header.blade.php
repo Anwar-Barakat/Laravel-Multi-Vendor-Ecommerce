@@ -310,6 +310,9 @@
                                 <div class="mega-menu mega-3-colm">
                                     <ul>
                                         <li class="menu-title">COMPANY</li>
+                                        <li>
+                                            <a href="{{ route('front.home') }}">Home</a>
+                                        </li>
                                         @foreach (App\Models\CmsPage::all() as $page)
                                             <li>
                                                 <a href="{{ route('front.' . $page->url) }}">{{ $page->title }}</a>

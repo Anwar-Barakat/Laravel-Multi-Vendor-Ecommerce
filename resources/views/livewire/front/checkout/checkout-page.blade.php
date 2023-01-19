@@ -1,3 +1,4 @@
+@section('title', 'Checkout Page')
 <div>
     <div class="page-style-a">
         <div class="container">

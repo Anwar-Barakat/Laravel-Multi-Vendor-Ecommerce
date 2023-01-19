@@ -1,3 +1,4 @@
+@section('title', 'Thanks Page')
 <div>
     <div class="page-style-a">
         <div class="container">

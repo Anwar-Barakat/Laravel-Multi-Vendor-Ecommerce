@@ -1,3 +1,5 @@
+@section('title', $vendor->businessInfo->shop_name . 'Store Products')
+
 <div>
     <div class="page-style-a">
         <div class="container">

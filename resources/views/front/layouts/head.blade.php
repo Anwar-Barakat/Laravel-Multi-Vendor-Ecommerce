@@ -1,6 +1,7 @@
-<title>Multi Vendor E-commerce | @yield('title')</title>
+<title>Multi Vendor Store | @yield('title')</title>
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 <!-- Base Google Font for Web-app -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
 <!-- Google Fonts for Banners only -->
@@ -23,5 +24,7 @@
 <link rel="stylesheet" href="{{ asset('front/css/bundle') }}.css">
 
 <link rel="stylesheet" href="{{ asset('assets/css/custom/custom-frontend.css') }}">
+
+
 
 @stack('styles')

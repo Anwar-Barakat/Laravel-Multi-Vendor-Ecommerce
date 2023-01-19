@@ -9,6 +9,7 @@
     ga('send', 'pageview')
 </script>
 <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
 <!-- Modernizr-JS -->
 <script type="text/javascript" src="{{ asset('front/js/vendor/modernizr-custom.min.js') }}"></script>
 <!-- NProgress -->
@@ -38,4 +39,5 @@
 <!-- Main -->
 <script type="text/javascript" src="{{ asset('front/js/app.js') }}"></script>
 
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 @stack('scripts')

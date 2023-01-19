@@ -239,6 +239,7 @@ Route::name('front.')->group(function () {
     Route::view('/contact',                                 'front.cms-pages.contact')->name('contact');
     Route::view('/about',                                   'front.cms-pages.about')->name('about');
     Route::view('/faq',                                     'front.cms-pages.faq')->name('faq');
+    Route::view('/directory',                               'front.cms-pages.directory')->name('directory');
 
     Route::get('/wishlist',                                 WishlistPage::class)->name('wishlist');
 });

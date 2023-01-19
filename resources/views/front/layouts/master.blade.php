@@ -12,11 +12,14 @@
     <link rel="icon" href="{{ asset('front/images/favicon/favicon.ico') }}" type="image/x-icon" />
 
     @include('front.layouts.head')
-    
+
     @livewireStyles
 </head>
 
 <body>
+    <div id="global-loader">
+        <img src="{{ URL::asset('assets/img/loader.svg') }}" class="loader-img" alt="Loader">
+    </div>
     <div id="app">
         @livewire('front.main-header')
 

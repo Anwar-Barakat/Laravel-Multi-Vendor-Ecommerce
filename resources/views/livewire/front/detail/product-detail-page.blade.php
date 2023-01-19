@@ -92,7 +92,7 @@
                             </td>
                             <td>
                                 <div class="cart-price">
-                                    ${{ round($final_price / $currency->exchange_rate, 2) }}
+                                    {{ round($final_price / $currency->exchange_rate, 2) }}
                                 </div>
                             </td>
                         </tr>

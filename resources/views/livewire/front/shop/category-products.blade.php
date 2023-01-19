@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom/colors.css') }}">
 @endpush
 
+@section('title', $selectedCategory->name . ' Category')
 <div>
     <div class="page-style-a">
         <div class="container">
@@ -30,24 +31,30 @@
                     <div class="fetch-categories img-thumbnail filtering-padding">
                         <h3 class="title-name">Browse Categories</h3>
                         @foreach ($categories as $category)
-                            <h3 class="fetch-mark-category">
-                                <a href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">{{ ucwords($category->name) }}
-                                    <span class="total-fetch-items"></span>
-                                </a>
-                            </h3>
-                            <ul>
-                                @foreach ($category->subCategories as $sub)
-                                    @if ($sub->products_count > 0)
-                                        <li>
-                                            <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
-                                                <i class="fas fa-chevron-circle-right"></i> &nbsp;
-                                                {{ ucwords($sub->name) }}
-                                                <span class="total-fetch-items">({{ $sub->products_count }})</span>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
+                            @php
+                                $catProductsCount = App\Models\Category::categoryProductsCount($category->id);
+                            @endphp
+                            @if ($catProductsCount > 0)
+                                <h3 class="fetch-mark-category">
+                                    <a href="{{ route('front.shop.category.products', ['url' => $category->url]) }}">
+                                        {{ ucwords($category->name) }}
+                                        <span class="total-fetch-items">({{ $catProductsCount }})</span>
+                                    </a>
+                                </h3>
+                                <ul>
+                                    @foreach ($category->subCategories as $sub)
+                                        @if ($sub->products_count > 0)
+                                            <li>
+                                                <a href="{{ route('front.shop.category.products', ['url' => $sub->url]) }}">
+                                                    <i class="fas fa-chevron-circle-right"></i> &nbsp;
+                                                    {{ ucwords($sub->name) }}
+                                                    <span class="total-fetch-items">({{ $sub->products_count }})</span>
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
                         @endforeach
                     </div>
                     <div class="facet-filter-associates img-thumbnail filtering-padding">
@@ -101,61 +108,7 @@
                             @endif
                         @endforeach
                     @endif
-                    {{-- <div class="facet-filter-by-rating">
-                        <h3 class="title-name">Rating</h3>
-                        <div class="facet-form">
-                            <!-- 5 Stars -->
-                            <div class="facet-link">
-                                <div class="item-stars">
-                                    <div class='star'>
-                                        <span style='width:76px'></span>
-                                    </div>
-                                </div>
-                                <span class="total-fetch-items">(0)</span>
-                            </div>
-                            <!-- 5 Stars /- -->
-                            <!-- 4 & Up Stars -->
-                            <div class="facet-link">
-                                <div class="item-stars">
-                                    <div class='star'>
-                                        <span style='width:60px'></span>
-                                    </div>
-                                </div>
-                                <span class="total-fetch-items">& Up (5)</span>
-                            </div>
-                            <!-- 4 & Up Stars /- -->
-                            <!-- 3 & Up Stars -->
-                            <div class="facet-link">
-                                <div class="item-stars">
-                                    <div class='star'>
-                                        <span style='width:45px'></span>
-                                    </div>
-                                </div>
-                                <span class="total-fetch-items">& Up (0)</span>
-                            </div>
-                            <!-- 3 & Up Stars /- -->
-                            <!-- 2 & Up Stars -->
-                            <div class="facet-link">
-                                <div class="item-stars">
-                                    <div class='star'>
-                                        <span style='width:30px'></span>
-                                    </div>
-                                </div>
-                                <span class="total-fetch-items">& Up (0)</span>
-                            </div>
-                            <!-- 2 & Up Stars /- -->
-                            <!-- 1 & Up Stars -->
-                            <div class="facet-link">
-                                <div class="item-stars">
-                                    <div class='star'>
-                                        <span style='width:15px'></span>
-                                    </div>
-                                </div>
-                                <span class="total-fetch-items">& Up (0)</span>
-                            </div>
-                            <!-- 1 & Up Stars /- -->
-                        </div>
-                    </div> --}}
+
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12">
                     <div>
@@ -275,10 +228,30 @@
                                                 <p>{{ $product->description }} </p>
                                             </div>
                                             <div class="item-stars">
-                                                <div class='star' title="4.5 out of 5 - based on 23 Reviews">
-                                                    <span style='width:67px'></span>
+                                                @php
+                                                    $data = App\Models\ProductRating::getAverageRating($product->id);
+                                                @endphp
+                                                <div class="item-stars">
+                                                    @if ($data['rating_count'] > 0)
+                                                        <div title="{{ $data['average_rating'] }} out of 5 - based on {{ $data['rating_count'] }} Reviews" class="flex items-center gap-1">
+                                                            @php
+                                                                $star = 1;
+                                                            @endphp
+                                                            @while ($star <= $data['average_rating_star'])
+                                                                <span class="text-yellow-500 font-bold text-lg">&#9733;</span>
+                                                                @php
+                                                                    $star++;
+                                                                @endphp
+                                                            @endwhile
+                                                            <span>({{ $data['average_rating'] }})</span>
+                                                        </div>
+                                                    @else
+                                                        <div title="0 out of 5 - based on 0 Reviews" class="flex items-center gap-1">
+                                                            <span class="font-bold text-lg">&star;</span>
+                                                            <span>(0)</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
-                                                <span>(23)</span>
                                             </div>
                                         </div>
                                         <div class="price-template">

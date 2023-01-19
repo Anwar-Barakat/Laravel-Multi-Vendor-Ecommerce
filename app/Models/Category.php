@@ -53,9 +53,7 @@ class Category extends Model  implements HasMedia
 
     public static function categoryDetails($url)
     {
-        $category   = Category::with([
-            'subCategories' => fn ($q) => $q->select('id', 'parent_id', 'name', 'url', 'description')
-        ])->where('url', $url)->active()->first();
+        $category   = Category::with(['subCategories' => fn ($q) => $q->select('id', 'parent_id', 'name', 'url', 'description')])->where('url', $url)->active()->first();
 
         $catIds     = [];
         $catIds[]   = $category->id;
@@ -81,6 +79,25 @@ class Category extends Model  implements HasMedia
 
         $categoryDetails = ['category' => $category, 'catIds' => $catIds, 'breadcrumb' => $breadcrumb];
         return $categoryDetails;
+    }
+
+    public static function categoryProductsCount($cat_id)
+    {
+        $category   = Category::with(['subCategories' => fn ($q) => $q->select('id', 'parent_id', 'name', 'url', 'description')])->where('id', $cat_id)->active()->first();
+
+        $catIds     = [];
+        $catIds[]   = $category->id;
+        foreach ($category->subCategories as $sub) :
+            $catIds[]   = $sub->id;
+        endforeach;
+
+        if ($category->parent == 0) :
+            $count  = Product::whereIn('category_id', $catIds)->active()->count();
+        else :
+            $count  = Product::where('category_id', $cat_id)->active()->count();
+        endif;
+
+        return $count;
     }
 
     public function section()

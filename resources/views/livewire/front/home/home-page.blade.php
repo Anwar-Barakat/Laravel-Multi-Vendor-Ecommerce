@@ -1,3 +1,4 @@
+@section('title', 'Home Page')
 <div>
     <div class="default-height ph-item">
         <div class="slider-main owl-carousel">
