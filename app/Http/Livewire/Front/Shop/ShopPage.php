@@ -92,6 +92,7 @@ class ShopPage extends Component
             ->when($this->filter_column, fn ($q)    => $q->where($this->filter_column, $this->filter_value))
             ->whereBetween('price', [$this->min_price, $this->max_price])
             ->search(trim($this->search))
+            ->active()
             ->orderBy($this->ordering, $this->sortBy)
             ->paginate($this->perPage);
 

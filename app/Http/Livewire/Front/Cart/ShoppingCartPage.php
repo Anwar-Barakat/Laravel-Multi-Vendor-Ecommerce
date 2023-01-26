@@ -12,7 +12,7 @@ use Livewire\Component;
 class ShoppingCartPage extends Component
 {
     public $couponCode, $discount, $subTotalAfterDiscount, $gstAfterDiscount, $totalAfterDiscount;
-    public $final_price, $totalWeight, $productsGST, $finalGST;
+    public $final_price, $totalWeight, $productsGST, $finalGST = 0;
 
     public function mount()
     {
@@ -57,10 +57,12 @@ class ShoppingCartPage extends Component
         $prodAttr->update(['stock' => $prodAttr->stock + $product->qty]);
         $this->updateHeader();
         toastr()->info('Item Has Been Deleted');
+        $this->finalGST     = 0;
     }
 
     public function updateHeader()
     {
+        $this->final_price  = Cart::instance('cart')->subtotal();
         $this->emit('updateCardAmount', Cart::instance('cart')->count());
         $this->emit('updateCardTotal', $this->final_price);
     }
@@ -91,9 +93,9 @@ class ShoppingCartPage extends Component
                     }
                 }
 
-                if (!in_array(Auth::user()->id, $usersArr)) {
-                    toastr()->info('This Coupon Code is not for you!');
-                }
+                // if (!in_array(Auth::user()->id, $usersArr)) {
+                //     toastr()->info('This Coupon Code is not for you!');
+                // }
 
 
                 if (session()->has('coupon')) :
@@ -116,13 +118,14 @@ class ShoppingCartPage extends Component
 
     public function calcDiscount()
     {
+        $final_price = (float) str_replace(',', '', Cart::instance('cart')->subtotal());
         if (session()->get('coupon')['coupon_type'] == 'fixed')
             $this->discount     = session()->get('coupon')['amount'];
         else
-            $this->discount     = (Cart::instance('cart')->subtotal()  * session()->get('coupon')['amount']) / 100;
+            $this->discount     = ($final_price  * session()->get('coupon')['amount']) / 100;
 
 
-        $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
+        $this->subTotalAfterDiscount    = $final_price - $this->discount;
         $this->gstAfterDiscount         = ($this->subTotalAfterDiscount * $this->productsGST) / 100;
         $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->gstAfterDiscount;
     }

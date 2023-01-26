@@ -4,7 +4,7 @@
         <div class="section-1-title-breadcrumb-rating u-s-p-y-14">
             <div class="product-title">
                 <h1>
-                    <a href="single-product.html">{{ ucwords($product->name) }}</a>
+                    <a href="javascript:;">{{ ucwords($product->name) }}</a>
                 </h1>
             </div>
             <ul class="bread-crumb">
@@ -139,19 +139,21 @@
                     </div>
                 @endisset
             </div>
-            @if (count($product->attributes) > 0)
+            @if ($attributes->count() > 0)
+
                 <div class="sizes u-s-m-b-11">
                     <span>Available Size:</span>
                     <div class="size-variant select-box-wrapper">
                         <select class="select-box product-size" wire:model="size">
-                            @foreach ($product->attributes as $attr)
-                                <option value="{{ $attr->size }}">{{ ucwords($attr->size) }} ({{ $attr->stock }})
+                            @foreach ($attributes as $attr)
+                                <option value="{{ $attr->size }}">{{ $attr->size }} ({{ $attr->stock }})
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
             @endif
+
             @if (Cart::instance('cart')->content()->where('id', $product->id)->count() > 0)
                 <span class="text-sm font-bold">
                     Exists

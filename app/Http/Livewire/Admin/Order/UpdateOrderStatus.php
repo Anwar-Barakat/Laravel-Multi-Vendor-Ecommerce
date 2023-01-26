@@ -65,12 +65,17 @@ class UpdateOrderStatus extends Component
                 $order->update(['order_status'  => $this->status]);
             }
 
-            OrderLog::create(['order_id'    => $order->id, 'status' =>  $this->status,]);
 
-            DB::commit();
+            OrderLog::create([
+                'order_id' => $order->id,
+                'status' => $this->status,
+                'updated_by' => 'Admin',
+            ]);
 
             event(new EventsUpdateOrderStatus($order));
             toastr()->success('Order Status Has Been Updated');
+
+            DB::commit();
         } catch (\Throwable $th) {
         }
     }

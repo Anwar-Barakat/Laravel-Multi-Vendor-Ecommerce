@@ -223,7 +223,7 @@
                                 </tr>
                                 <tr>
                                     <th>Country</th>
-                                    <th>{{ $order->user->country->name }}</th>
+                                    <th>{{ $order->country->name }}</th>
                                 </tr>
                             </tbody>
                         </table>

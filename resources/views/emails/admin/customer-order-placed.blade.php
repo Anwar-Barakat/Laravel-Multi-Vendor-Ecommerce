@@ -11,16 +11,16 @@ Your Order Details :<br>
 @foreach ($order->orderProducts as $p)
 | {{ $p->product_name }} | {{ $p->product_code }} | {{ $p->product_color }} | {{ $p->product_size }} | {{ $p->product_qty }} | {{ $p->product_price }} |
 @endforeach
-| :-----------   | :-----------  |  :-----------   |  :-----------  |  Shipping Charges | {{ $order->shipping_charges ?? '0' }} |
-| :-----------   | :-----------  |  :-----------   |  :-----------  |  Coupon Discount  | {{ $order->coupon_amount ?? '-' }} |
-| :-----------   | :-----------  |  :-----------   |  :-----------  |  Final Price      | ${{ $order->final_price }} |
+|    |   |     |    |  Shipping Charges | {{ $order->shipping_charges ?? '0' }} |
+|    |   |     |    |  Coupon Discount  | {{ $order->coupon_amount ?? '-' }} |
+|    |   |     |    |  Final Price      | ${{ $order->final_price }} |
 @endcomponent
 
 Your Delivery Address :<br>
 @component('mail::table')
 |  Name  |  Address  |   Mobile |  City  |  State   | Country  |
 | :-----------   | :-----------   | :-----------   | :-----------   | :-----------   | :----------- |
-| {{ $p->name }} | {{ $p->address }} | {{ $p->mobile }} | {{ $p->city }} | {{ $p->state }} | {{ $p->country->name }} |
+| {{ $order->name }} | {{ $order->address }} | {{ $order->mobile }} | {{ $order->city }} | {{ $order->state }} | {{ $order->country->name }} |
 @endcomponent
 
 

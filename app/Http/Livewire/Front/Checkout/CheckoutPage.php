@@ -57,10 +57,10 @@ class CheckoutPage extends Component
         if (session()->get('coupon')['coupon_type'] == 'fixed')
             $this->discount     = session()->get('coupon')['amount'];
         else
-            $this->discount     = (Cart::instance('cart')->subtotal()  * session()->get('coupon')['amount']) / 100;
+            $this->discount     = ($this->final_price  * session()->get('coupon')['amount']) / 100;
 
 
-        $this->subTotalAfterDiscount    = Cart::instance('cart')->subtotal() - $this->discount;
+        $this->subTotalAfterDiscount    = $this->final_price - $this->discount;
         $this->gstAfterDiscount         = ($this->subTotalAfterDiscount * $this->productsGST) / 100;
         $this->totalAfterDiscount       = $this->subTotalAfterDiscount + $this->gstAfterDiscount;
     }
@@ -74,6 +74,7 @@ class CheckoutPage extends Component
 
     public function placeToOrder()
     {
+
         $this->validate();
         try {
             $deliveryAddress    = DeliveryAddress::findOrFail($this->deliveryAddressId);
@@ -86,6 +87,7 @@ class CheckoutPage extends Component
             else :
                 $finalPrice    =   $this->final_price  + $this->shippingChargesValue + $this->finalGST;
             endif;
+
 
 
             $order =  Order::create([
@@ -105,10 +107,10 @@ class CheckoutPage extends Component
                 'paymeny_gateway'       => $this->payment_gateway == 'COD' ? 'COD' : 'Prepaid',
                 'final_price'           => $finalPrice,
             ]);
+            // dd('hi');
 
-            $orderId            = DB::getPdo()->lastInsertId();
 
-
+            $orderId = DB::getPdo()->lastInsertId();
             foreach (Cart::instance('cart')->content() as $item) {
                 OrderProduct::create([
                     'order_id'          => $orderId,
@@ -123,11 +125,10 @@ class CheckoutPage extends Component
                 ]);
             }
 
-
             session()->put('orderId', $orderId);
             session()->put('finalPrice', $finalPrice);
-
             DB::commit();
+
 
             if ($this->payment_gateway == 'COD') {
                 event(new CustomerOrderPlaced($order));

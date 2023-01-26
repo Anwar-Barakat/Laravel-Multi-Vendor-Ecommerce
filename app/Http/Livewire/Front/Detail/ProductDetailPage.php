@@ -100,11 +100,8 @@ class ProductDetailPage extends Component
 
     public function render()
     {
-        $data['product']            = Product::with([
-            'section', 'category', 'brand', 'admin',
-            'attributes'            => fn ($q)  => $q->where('stock', '>', 0)->where('status', '1')
-        ])->findOrFail($this->productId);
-
+        $data['product']            = Product::with(['section', 'category', 'brand', 'admin'])->findOrFail($this->productId);
+        $data['attributes']     = Attribute::where('product_id', $data['product']->id)->where('stock', '>', 0)->where('status', '1')->get();
 
         $data['groupProducts']      = $this->getProductGroup($data['product']);
 

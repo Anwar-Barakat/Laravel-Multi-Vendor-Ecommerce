@@ -1,4 +1,5 @@
 @section('title', 'Shopping Cart')
+{{-- @dump(session()->forget('coupon')) --}}
 <div>
     <div class="page-style-a">
         <div class="container">
@@ -152,7 +153,7 @@
                                                     <h3 class="calc-h3 u-s-m-b-0">Total</h3>
                                                 </td>
                                                 <td class="total-amount">
-                                                    <span class="calc-text">${{ $final_price + $finalGST }}</span>
+                                                    <span class="calc-text">${{ (float) str_replace(',', '', Cart::instance('cart')->subtotal()) + $finalGST }}</span>
                                                 </td>
                                             </tr>
                                         @endif
